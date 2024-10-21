@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scripts/fsm/NetworkConnectingState.gd" id="5_a887b"]
 [ext_resource type="Script" path="res://scripts/fsm/NetworkProcessState.gd" id="6_fx80y"]
 [ext_resource type="PackedScene" uid="uid://dhw27gk6nbfgu" path="res://assets/3d/uploads_files_2176038_SHC+Free+Cybertruck/SHC Free Cybertruck.blend" id="7_qehum"]
+[ext_resource type="Script" path="res://scripts/Ultrason.gd" id="8_bqb3x"]
 
 [sub_resource type="GDScript" id="GDScript_d2gei"]
 
@@ -24,41 +25,6 @@ albedo_color = Color(1, 0, 0, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_s3cat"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i2j0s"]
-
-[sub_resource type="GDScript" id="GDScript_yfn4p"]
-script/source = "extends Node3D
-
-var nfsm = 0
-var speed = 0
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	nfsm = $\"../NetworkFSM\"
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	# Process data received here from simulation and RPiCar
-	# If websocket connection
-	if nfsm.current_state == $\"../NetworkFSM/NetworkProcessState\" :
-		# Do something here
-		print(\"Hey do something here :)\")
-		
-	# Car movement toggle
-	if Input.is_key_pressed(KEY_W):
-		speed = 1
-	if Input.is_key_pressed(KEY_S):
-		speed = 0
-		
-	translate(Vector3(-delta * speed,0,0))
-	pass
-
-func _physics_process(delta):
-	# Raycast collision system
-	if $RayCast3D.is_colliding():
-		print(\"Hey yo dont touch me\")
-	pass
-"
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jv41d"]
 sky_top_color = Color(0.635294, 0.756863, 0.901961, 1)
@@ -107,48 +73,42 @@ size = Vector3(4.9, 0.1, 0.1)
 material = SubResource("StandardMaterial3D_qirr2")
 
 [node name="Wall1" type="CSGBox3D" parent="Floor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, 0)
-size = Vector3(0.01, 0.5, 0.5)
+transform = Transform3D(0.01, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 2, 0.5, 0)
 material = SubResource("StandardMaterial3D_insm8")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Floor/Wall1"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/Wall1/StaticBody3D"]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 shape = SubResource("BoxShape3D_ldjyf")
 
 [node name="Wall2" type="CSGBox3D" parent="Floor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, 0)
-size = Vector3(0.01, 0.5, 0.5)
+transform = Transform3D(0.01, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1, 0.5, 0)
 material = SubResource("StandardMaterial3D_insm8")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Floor/Wall2"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/Wall2/StaticBody3D"]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 shape = SubResource("BoxShape3D_s3cat")
 
 [node name="Wall3" type="CSGBox3D" parent="Floor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-size = Vector3(0.01, 0.5, 0.5)
+transform = Transform3D(0.01, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.5, 0)
 material = SubResource("StandardMaterial3D_insm8")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Floor/Wall3"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/Wall3/StaticBody3D"]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 shape = SubResource("BoxShape3D_i2j0s")
 
 [node name="PiCar" parent="." instance=ExtResource("7_qehum")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0.25, 0)
-script = SubResource("GDScript_yfn4p")
+script = ExtResource("8_bqb3x")
 
 [node name="Camera3D" type="Camera3D" parent="PiCar"]
 transform = Transform3D(-4.37114e-08, -0.258819, 0.965926, 0, 0.965926, 0.258819, -1, 1.13133e-08, -4.2222e-08, 2, 1, 0)
 current = true
 
 [node name="RayCast3D" type="RayCast3D" parent="PiCar"]
-transform = Transform3D(-2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 0, 0, 0, 0.5, -0.15, 0.05, 0)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -0.15, 0.05, 0)
 debug_shape_custom_color = Color(0, 0, 1, 1)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]

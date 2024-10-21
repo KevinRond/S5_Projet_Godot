@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="S5i_projet"
-run/main_scene="res://main.tscn"
+run/main_scene="res://Ultrason.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+DrawLine3d="*res://scripts/DrawLine3D.gd"
 
 [display]
 
