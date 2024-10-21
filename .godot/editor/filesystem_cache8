@@ -1,15 +1,15 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1729524416
+::res://::1729525185
 gitignore.txt::TextFile::-1::1729524353::0::1::::<><>::
 icon.svg::CompressedTexture2D::1374322914596704389::1729524353::1729524417::1::::<><>::
-main.tscn::PackedScene::3150966554309188884::1729524353::0::1::::<><>::res://scripts/main.gd<>res://addons/finite_state_machine/scripts/finite_state_machine.gd<>res://scripts/fsm/NetworkInitState.gd<>res://scripts/fsm/NetworkWaitingState.gd<>res://scripts/fsm/NetworkConnectingState.gd<>res://scripts/fsm/NetworkProcessState.gd<>uid://dhw27gk6nbfgu::::res://assets/3d/uploads_files_2176038_SHC+Free+Cybertruck/SHC Free Cybertruck.blend<>uid://booqvrcnt2ujl::::res://assets/blend/plaquette.obj
+main.tscn::PackedScene::3150966554309188884::1729525177::0::1::::<><>::res://scripts/main.gd<>res://addons/finite_state_machine/scripts/finite_state_machine.gd<>res://scripts/fsm/NetworkInitState.gd<>res://scripts/fsm/NetworkWaitingState.gd<>res://scripts/fsm/NetworkConnectingState.gd<>res://scripts/fsm/NetworkProcessState.gd<>uid://dhw27gk6nbfgu::::res://assets/3d/uploads_files_2176038_SHC+Free+Cybertruck/SHC Free Cybertruck.blend<>uid://booqvrcnt2ujl::::res://assets/blend/plaquette.obj
 README.md::TextFile::-1::1729524353::0::1::::<><>::
 ::res://addons/::1729524353
 ::res://addons/finite_state_machine/::1729524353
 plugin.cfg::TextFile::-1::1729524353::0::1::::<><>::
 plugin.gd::GDScript::-1::1729524353::0::1::::<>EditorPlugin<>::
 readme.md::TextFile::-1::1729524353::0::1::::<><>::
-::res://addons/finite_state_machine/icons/::1729524353
+::res://addons/finite_state_machine/icons/::1729524417
 finite_state_machine.svg::CompressedTexture2D::4888590432077469794::1729524353::1729524417::1::::<><>::
 state_machine_state.svg::CompressedTexture2D::2400681936130987388::1729524353::1729524417::1::::<><>::
 ::res://addons/finite_state_machine/scripts/::1729524353
@@ -18,7 +18,9 @@ state_machine_state.gd::GDScript::-1::1729524353::0::1::::StateMachineState<>Nod
 ::res://assets/::1729524353
 ::res://assets/3d/::1729524353
 ::res://assets/3d/uploads_files_2176038_SHC+Free+Cybertruck/::1729524353
-::res://assets/blend/::1729524353
+SHC Free Cybertruck.blend::PackedScene::7697697103358556972::1729524353::1729524353::1::::<><>::
+::res://assets/blend/::1729524417
+parcours.blend::PackedScene::2672271465074343887::1729524353::1729524353::1::::<><>::
 plaquette.obj::Mesh::3398975653342354357::1729524353::1729524417::1::::<><>::
 plaquetteTest.glb::PackedScene::8206606296191019569::1729524353::1729524353::1::::<><>::
 ::res://scripts/::1729524353
