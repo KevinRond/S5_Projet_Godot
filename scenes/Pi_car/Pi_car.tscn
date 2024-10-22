@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cwtn8ob7bli"]
+[gd_scene load_steps=25 format=3 uid="uid://cwtn8ob7bli"]
 
 [ext_resource type="PackedScene" uid="uid://dw6g45j7rk3xl" path="res://scenes/Plaquette/Plaquette.tscn" id="1_ands8"]
 [ext_resource type="Script" path="res://scenes/Pi_car/scripts/Pi_car.gd" id="1_ayftu"]
@@ -515,6 +515,10 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_diyqt")
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_mdvc5"]
+height = 0.123985
+radius = 0.003
+
 [node name="PiCar" type="Node3D"]
 transform = Transform3D(0.999047, 0, 0.0436518, 0, 1, 0, -0.0436518, 0, 0.999047, 2.22149, 0, 0.0399336)
 script = ExtResource("1_ayftu")
@@ -544,16 +548,69 @@ skeleton = NodePath("")
 metadata/_edit_lock_ = true
 
 [node name="RR" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.0625, 0, -2.03651e-08, 0, 0.0625, 0, 2.03651e-08, 0, -0.0625, 0.123092, 0.0304715, -0.0427033)
+transform = Transform3D(-0.0625, 0, -2.02563e-08, 0, 0.0625, 0, 2.02563e-08, 0, -0.0625, 0.123092, 0.0304715, -0.0427033)
 mesh = SubResource("ArrayMesh_egc8m")
 skeleton = NodePath("")
 metadata/_edit_lock_ = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-4.65661e-10, -0.258819, 0.965925, 0, 0.965926, 0.258819, -1, 1.16415e-10, -4.65661e-10, 0.429327, 0.216249, -0.00237848)
+transform = Transform3D(-7.45058e-09, -0.258819, 0.965926, 0, 0.965926, 0.258819, -1, 1.86265e-09, -3.72529e-09, 0.429327, 0.216249, -0.00237848)
 current = true
 fov = 72.3349
+metadata/_edit_lock_ = true
 
 [node name="Plaquette" parent="." instance=ExtResource("1_ands8")]
 transform = Transform3D(0.00199996, 1.991e-08, -1.25308e-05, -9.54606e-12, 0.002, 3.17627e-06, 1.25308e-05, -3.17621e-06, 0.00199996, 0.0350025, 0.118, 9.68575e-08)
 skeleton = NodePath("../..")
+metadata/_edit_lock_ = true
+
+[node name="Capteur1" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00169921, 0, -0.0381285)
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Capteur1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.179545, 0, -0.00199747)
+shape = SubResource("CylinderShape3D_mdvc5")
+
+[node name="Capteur2" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00169849, 0, -0.0181285)
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Capteur2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.179545, 0, -0.00199747)
+shape = SubResource("CylinderShape3D_mdvc5")
+
+[node name="Capteur3" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000300169, 0, 0.0018715)
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Capteur3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.179545, 0, -0.00199747)
+shape = SubResource("CylinderShape3D_mdvc5")
+
+[node name="Capteur4" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000300884, 0, 0.0218715)
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Capteur4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.179545, 0, -0.00199747)
+shape = SubResource("CylinderShape3D_mdvc5")
+
+[node name="Capteur5" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000910997, 0, 0.0415325)
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Capteur5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.179545, 0, -0.00199747)
+shape = SubResource("CylinderShape3D_mdvc5")
+
+[connection signal="area_entered" from="Capteur1" to="." method="_on_capteur_1_area_entered"]
+[connection signal="area_exited" from="Capteur1" to="." method="_on_capteur_1_area_exited"]
+[connection signal="area_entered" from="Capteur2" to="." method="_on_capteur_2_area_entered"]
+[connection signal="area_exited" from="Capteur2" to="." method="_on_capteur_2_area_exited"]
+[connection signal="area_entered" from="Capteur3" to="." method="_on_capteur_3_area_entered"]
+[connection signal="area_exited" from="Capteur3" to="." method="_on_capteur_3_area_exited"]
+[connection signal="area_entered" from="Capteur4" to="." method="_on_capteur_4_area_entered"]
+[connection signal="area_exited" from="Capteur4" to="." method="_on_capteur_4_area_exited"]
+[connection signal="area_entered" from="Capteur5" to="." method="_on_capteur_5_area_entered"]
+[connection signal="area_exited" from="Capteur5" to="." method="_on_capteur_5_area_exited"]

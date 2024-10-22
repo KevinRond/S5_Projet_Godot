@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bk5l7umgip4v5"]
+[gd_scene load_steps=18 format=3 uid="uid://bk5l7umgip4v5"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_eka3w"]
 [ext_resource type="Script" path="res://addons/finite_state_machine/scripts/finite_state_machine.gd" id="2_wl1fq"]
@@ -26,15 +26,21 @@ background_mode = 2
 sky = SubResource("Sky_nfout")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y2p80"]
-albedo_color = Color(0, 0, 0.521569, 1)
+albedo_color = Color(0.901961, 0.772549, 0.984314, 1)
 
 [sub_resource type="Curve3D" id="Curve3D_knqh8"]
-bake_interval = 2.0
+bake_interval = 5.0
 _data = {
 "points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1.363, 0, 0.051, 0, 0, 0, 0, 0, 0, -1.5, 0, 1, 0, 0, 0, 0, 0, 0, -3, 0, 1, 0, 0, 0, 0, 0, 0, -3, 0, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
 }
 point_count = 6
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2bjp5"]
+size = Vector3(0.609619, 0.438721, 0.0336914)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_43hm4"]
+albedo_color = Color(0, 0, 0, 1)
 
 [node name="Main" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0100098, 0.0284071, -0.0135775)
@@ -83,3 +89,14 @@ transform = Transform3D(0.00626546, 0, -0.999981, 0, 1, 0, 0.999981, 0, 0.006265
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.157021)
+
+[node name="Line" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Line"]
+transform = Transform3D(0.999391, 0, 0.0348995, 0, 1, 0, -0.0348995, 0, 0.999391, 1.60636, -0.216919, 0.0558362)
+shape = SubResource("BoxShape3D_2bjp5")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Line/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+size = Vector3(0.61, 0.439, 0.034)
+material = SubResource("StandardMaterial3D_43hm4")
