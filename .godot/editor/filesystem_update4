@@ -1,6 +1,2 @@
-res://main.tscn
 res://Ultrason.tscn
-res://assets/3d/uploads_files_2176038_SHC+Free+Cybertruck/Ultrason.gd
-res://scripts/main.gd
-res://scripts/DrawLine3D.gd
 res://scripts/Ultrason.gd
