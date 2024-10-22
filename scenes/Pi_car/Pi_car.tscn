@@ -1,7 +1,7 @@
 [gd_scene load_steps=24 format=3 uid="uid://cwtn8ob7bli"]
 
-[ext_resource type="PackedScene" uid="uid://dw6g45j7rk3xl" path="res://Plaquette/Plaquette.tscn" id="1_ands8"]
-[ext_resource type="Script" path="res://Pi_car/scripts/Pi_car.gd" id="1_ayftu"]
+[ext_resource type="PackedScene" uid="uid://dw6g45j7rk3xl" path="res://scenes/Plaquette/Plaquette.tscn" id="1_ands8"]
+[ext_resource type="Script" path="res://scenes/Pi_car/scripts/Pi_car.gd" id="1_ayftu"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wmfwi"]
 resource_name = "Metal Bodywork"
