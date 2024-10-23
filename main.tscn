@@ -37,7 +37,7 @@ _data = {
 point_count = 6
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2bjp5"]
-size = Vector3(0.609619, 0.438721, 0.0336914)
+size = Vector3(0.61, 0.439, 0.015)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_43hm4"]
 albedo_color = Color(0, 0, 0, 1)
@@ -90,12 +90,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.157021)
 [node name="Line" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Line"]
-transform = Transform3D(0.999391, 0, 0.0348995, 0, 1, 0, -0.0348995, 0, 0.999391, 1.60636, -0.216919, 0.0558362)
+transform = Transform3D(0.999391, 0, 0.0348995, 0, 1, 0, -0.0348995, 0, 0.999391, 1.60621, -0.216919, 0.0618578)
 shape = SubResource("BoxShape3D_2bjp5")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Line/CollisionShape3D"]
-size = Vector3(0.61, 0.439, 0.034)
+size = Vector3(0.61, 0.439, 0.015)
 material = SubResource("StandardMaterial3D_43hm4")
 
 [node name="PiCar" parent="." instance=ExtResource("9_mg36i")]
-transform = Transform3D(0.999048, 0, 0.0436518, 0, 1, 0, -0.0436518, 0, 0.999048, 2.22149, 0, 0.0399335)
+transform = Transform3D(0.999048, 0, 0.0436518, 0, 1, 0, -0.0436518, 0, 0.999048, 2.06463, 0, 0.0456624)
