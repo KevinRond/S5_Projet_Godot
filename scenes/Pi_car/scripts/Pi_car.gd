@@ -2,7 +2,10 @@ extends Node3D
 
 var nfsm = 0
 var speed = 0
+var turn_speed = 0.5
 var capteurs_SL = []
+var ACCELERATION = 0.0001
+var V_MAX = 0.15
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -19,10 +22,23 @@ func _process(delta):
 		#pass
 	
 	if Input.is_key_pressed(KEY_W):
-		speed = 0.1
+		if speed < V_MAX:
+			speed += ACCELERATION
+	if !Input.is_key_pressed(KEY_W):
+		if speed > 0:
+			speed -= ACCELERATION
 	if Input.is_key_pressed(KEY_S):
 		speed = 0
+		
+	# Rotate left/right
+	if Input.is_key_pressed(KEY_A) && Input.is_key_pressed(KEY_W):
+		rotate_y(turn_speed * delta)  # Rotate left
+	if Input.is_key_pressed(KEY_D) && Input.is_key_pressed(KEY_W):
+		rotate_y(-turn_speed * delta)  # Rotate right
+		
 	translate(Vector3(-delta * speed, 0, 0))
+	
+	# print("Vitesse courante: %d" % speed)
 	
 
 func _physics_process(delta):
