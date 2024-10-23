@@ -69,6 +69,7 @@ script = SubResource("GDScript_d2gei")
 environment = SubResource("Environment_c8ocf")
 
 [node name="Boule" parent="." instance=ExtResource("7_gi8vq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.10343, 0.141192, 0.0422636)
 
 [node name="Floor" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.053, -0.25, -0.027)
@@ -88,12 +89,57 @@ script = ExtResource("7_st7bl")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.157021)
 
 [node name="Line" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00099802, -5.96046e-08, -0.00209783)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Line"]
 transform = Transform3D(0.999391, 0, 0.0348995, 0, 1, 0, -0.0348995, 0, 0.999391, 1.60621, -0.216919, 0.0618578)
 shape = SubResource("BoxShape3D_2bjp5")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Line/CollisionShape3D"]
+size = Vector3(0.61, 0.439, 0.015)
+material = SubResource("StandardMaterial3D_43hm4")
+
+[node name="Line2" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00099802, -5.96046e-08, -0.00209783)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Line2"]
+transform = Transform3D(0.866026, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866026, 1.04012, -0.216919, 0.223965)
+shape = SubResource("BoxShape3D_2bjp5")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Line2/CollisionShape3D"]
+size = Vector3(0.61, 0.439, 0.015)
+material = SubResource("StandardMaterial3D_43hm4")
+
+[node name="Line4" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00099802, -5.96046e-08, -0.00209783)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Line4"]
+transform = Transform3D(0.377437, 0, 0.926035, 0, 1, 0, -0.926035, 0, 0.377437, 0.664552, -0.216919, 0.657204)
+shape = SubResource("BoxShape3D_2bjp5")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Line4/CollisionShape3D"]
+size = Vector3(0.61, 0.439, 0.015)
+material = SubResource("StandardMaterial3D_43hm4")
+
+[node name="Line6" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00099802, -5.96046e-08, -0.00209783)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Line6"]
+transform = Transform3D(0.377437, 0, 0.926035, 0, 1, 0, -0.926035, 0, 0.377437, 0.989184, -0.216919, 1.43505)
+shape = SubResource("BoxShape3D_2bjp5")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Line6/CollisionShape3D"]
+size = Vector3(0.61, 0.439, 0.015)
+material = SubResource("StandardMaterial3D_43hm4")
+
+[node name="Line5" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00099802, -5.96046e-08, -0.00209783)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Line5"]
+transform = Transform3D(0.925871, 0, -0.377841, 0, 1, 0, 0.377841, 0, 0.925871, 0.827959, -0.216919, 1.04509)
+shape = SubResource("BoxShape3D_2bjp5")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Line5/CollisionShape3D"]
 size = Vector3(0.61, 0.439, 0.015)
 material = SubResource("StandardMaterial3D_43hm4")
 

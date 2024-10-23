@@ -6,6 +6,10 @@ var turn_speed = 0.5
 var capteurs_SL = []
 var ACCELERATION = 0.0001
 var V_MAX = 0.15
+var state = State.manual_control
+var tick_counter = 0
+
+enum State { manual_control, following_line, turning_right, turning_left }
 
 @onready var indicateur_capt1 = $Indicateur_Capteur1
 @onready var indicateur_capt2 = $Indicateur_Capteur2
@@ -27,29 +31,52 @@ func _process(delta):
 	#if nfsm.current_state == $"../NetworkFSM/NetworkProcessState" :
 		## Do something here
 		#pass
-		
 	
-	
-	if Input.is_key_pressed(KEY_W):
-		if speed < V_MAX:
-			speed += ACCELERATION
-	if !Input.is_key_pressed(KEY_W):
-		if speed > 0:
-			speed -= ACCELERATION
-	if Input.is_key_pressed(KEY_S):
-		speed = 0
-		
-	# Rotate left/right
-	if Input.is_key_pressed(KEY_A):
-		rotate_y(turn_speed * delta)  # Rotate left
-	if Input.is_key_pressed(KEY_D):
-		rotate_y(-turn_speed * delta)  # Rotate right
-		
-	if line_detected():
-		speed = suivre_ligne(delta, speed)
+
+	match state:
+		State.following_line:
+			var result = suivre_ligne(delta, speed)
+			speed = result[0]
+			state = result[1]
+		State.turning_left:
+			tick_counter += 1
+			if speed > 0:
+				speed -= ACCELERATION
+			rotate_y(-turn_speed * delta)
+			if tick_counter >= 2000:
+				state = State.following_line
+				tick_counter = 0
+		State.turning_right:
+			tick_counter += 1
+			if speed > 0:
+				speed -= ACCELERATION
+			rotate_y(turn_speed * delta)
+			if tick_counter >= 2000:
+				state = State.following_line
+				tick_counter = 0
+
+		State.manual_control:
+			if Input.is_key_pressed(KEY_W):
+				if speed < V_MAX:
+					speed += ACCELERATION
+			if !Input.is_key_pressed(KEY_W):
+				if speed > 0:
+					speed -= ACCELERATION
+			if Input.is_key_pressed(KEY_S):
+				speed = 0
+				
+			# Rotate left/right
+			if Input.is_key_pressed(KEY_A):
+				rotate_y(turn_speed * delta)
+			if Input.is_key_pressed(KEY_D):
+				rotate_y(-turn_speed * delta) 
+				
+			if line_detected():
+				state = State.following_line
+			
 	translate(Vector3(-delta * speed, 0, 0))
-	
-	# print("Vitesse courante: %d" % speed)
+
+	# print("Vitesse courante: %f" % speed)
 	
 
 func _physics_process(delta):
@@ -63,30 +90,59 @@ func line_detected():
 
 func suivre_ligne(delta, speed):
 	var new_speed = speed
+	var new_state = State.following_line
 	if capteurs_SL == [false, false, false, false, false]:
 		if speed > 0:
-			new_speed = speed - ACCELERATION
-		print("Aucun capteur ne détecte la ligne")
+			new_speed -= ACCELERATION
+		new_state = State.manual_control
 	elif capteurs_SL == [false, false, true, false, false]:
 		if speed < V_MAX:
-			new_speed = speed + ACCELERATION
+			new_speed += ACCELERATION
 	elif capteurs_SL == [false, true, true, false, false]:
-		rotate_y(0.2 * delta)
+		rotate_y(-0.1 * delta)
+		if speed < V_MAX:
+			new_speed += ACCELERATION
 	elif capteurs_SL == [false, false, true, true, false]:
+		rotate_y(0.1 * delta)
+		if speed < V_MAX:
+			new_speed += ACCELERATION
+	elif capteurs_SL == [false, true, false, false, false]:
 		rotate_y(-0.2 * delta)
+		if speed < V_MAX:
+			new_speed += ACCELERATION
+	elif capteurs_SL == [false, false, false, true, false]:
+		rotate_y(0.2 * delta)
+		if speed < V_MAX:
+			new_speed += ACCELERATION
+	elif capteurs_SL == [true, true, false, false, false]:
+		rotate_y(-0.3 * delta)
+		if speed < V_MAX:
+			new_speed += ACCELERATION
+	elif capteurs_SL == [false, false, false, true, true]:
+		rotate_y(0.3 * delta)
+		if speed < V_MAX:
+			new_speed += ACCELERATION
+	elif capteurs_SL == [true, false, false, false, false]:
+		rotate_y(-0.4 * delta)
+		if speed < V_MAX:
+			new_speed += ACCELERATION
+	elif capteurs_SL == [false, false, false, false, true]:
+		rotate_y(0.4 * delta)
+		if speed < V_MAX:
+			new_speed += ACCELERATION
+	elif capteurs_SL == [true, true, true, false, false] or capteurs_SL == [true, true, true, true, false] or capteurs_SL == [true, true, false, true, false]:
+		rotate_y(-5 * delta)  # Left turn
+		if speed > 0:
+			new_speed -= ACCELERATION
+		new_state = State.turning_left
+	elif capteurs_SL == [false, false, true, true, true] or capteurs_SL == [false, true, true, true, true] or capteurs_SL == [false, true, false, true, true]:
+		rotate_y(5 * delta)  # Right turn
+		if speed > 0:
+			new_speed -= ACCELERATION
+		new_state = State.turning_right
 
-		
-	return new_speed
+	return [new_speed, new_state] 
 	
-
-# Fonction utilitaire pour vérifier ce que les capteurs du suiveur de ligne voient
-func check_capteurs_SL():
-	for i in range(capteurs_SL.size()):
-		if capteurs_SL[i] == true:
-			print("Capteurs %d detecte la ligne" % (i+1))
-		else:
-			print("Capteurs %d ne detecte pas la ligne" % (i+1))
-
 
 func change_color(index, detected):
 	var green = Color(0, 1, 0)
@@ -119,63 +175,62 @@ func change_color(index, detected):
 				indicateur_capt5.color = red
 	
 
-
 func _on_capteur_1_area_entered(area):
-	if area.name == "Line":
+	if area.name.begins_with("Line"):
 		capteurs_SL[0] = true
 		change_color(0, true)
 
 
 func _on_capteur_1_area_exited(area):
-	if area.name == "Line":
+	if area.name.begins_with("Line"):
 		capteurs_SL[0] = false
 		change_color(0, false)
 
 
 func _on_capteur_2_area_entered(area):
-	if area.name == "Line":
+	if area.name.begins_with("Line"):
 		capteurs_SL[1] = true
 		change_color(1, true)
 
 
 func _on_capteur_2_area_exited(area):
-	if area.name == "Line":
+	if area.name.begins_with("Line"):
 		capteurs_SL[1] = false
 		change_color(1, false)
 
 
 func _on_capteur_3_area_entered(area):
-	if area.name == "Line":
+	if area.name.begins_with("Line"):
 		capteurs_SL[2] = true
 		change_color(2, true)
 
 
 func _on_capteur_3_area_exited(area):
-	if area.name == "Line":
+	if area.name.begins_with("Line"):
 		capteurs_SL[2] = false
 		change_color(2, false)
 
 
 func _on_capteur_4_area_entered(area):
-	if area.name == "Line":
+	if area.name.begins_with("Line"):
 		capteurs_SL[3] = true
 		change_color(3, true)
 
 
 func _on_capteur_4_area_exited(area):
-	if area.name == "Line":
+	if area.name.begins_with("Line"):
 		capteurs_SL[3] = false
 		change_color(3, false)
 
 
 func _on_capteur_5_area_entered(area):
-	if area.name == "Line":
+	if area.name.begins_with("Line"):
 		capteurs_SL[4] = true
 		change_color(4, true)
 
 
 func _on_capteur_5_area_exited(area):
-	if area.name == "Line":
+	if area.name.begins_with("Line"):
 		capteurs_SL[4] = false
 		change_color(4, false)
 
