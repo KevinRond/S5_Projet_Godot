@@ -9,7 +9,7 @@ var V_MAX = 0.15
 var state = State.manual_control
 var tick_counter = 0
 
-enum State { manual_control, following_line, turning_right, turning_left }
+enum State { manual_control, following_line, turning_left, turning_right }
 
 @onready var indicateur_capt1 = $Indicateur_Capteur1
 @onready var indicateur_capt2 = $Indicateur_Capteur2
