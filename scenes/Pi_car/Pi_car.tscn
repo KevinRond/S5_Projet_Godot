@@ -554,10 +554,9 @@ skeleton = NodePath("")
 metadata/_edit_lock_ = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-7.45058e-09, -0.258819, 0.965926, 0, 0.965926, 0.258819, -1, 1.86265e-09, -3.72529e-09, 0.429327, 0.216249, -0.00237848)
+transform = Transform3D(-4.37114e-08, -0.258819, 0.965926, 0, 0.965926, 0.258819, -1, 1.13133e-08, -4.2222e-08, 0.472206, 0.224748, 0.00458886)
 current = true
 fov = 72.3349
-metadata/_edit_lock_ = true
 
 [node name="Plaquette" parent="." instance=ExtResource("1_ands8")]
 transform = Transform3D(0.00199996, 1.991e-08, -1.25308e-05, -9.54606e-12, 0.002, 3.17627e-06, 1.25308e-05, -3.17621e-06, 0.00199996, 0.0350025, 0.118, 9.68575e-08)
@@ -697,6 +696,15 @@ offset_top = 24.0
 offset_right = 1192.0
 offset_bottom = 96.0
 text = "Détection des capteurs du suiveur de ligne:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label_State" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
+offset_left = 352.0
+offset_top = 24.0
+offset_right = 480.0
+offset_bottom = 96.0
 horizontal_alignment = 1
 vertical_alignment = 1
 
