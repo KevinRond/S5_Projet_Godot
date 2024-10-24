@@ -2,10 +2,10 @@ extends Node3D
 
 var nfsm = 0
 var speed = 0
-var turn_speed = 0.5
+var turn_speed = 0.75
 var capteurs_SL = []
-var ACCELERATION = 0.0001
-var V_MAX = 0.15
+var ACCELERATION = ((9.8*0.0015)/0.002)/1000 # 0.00735 m/s^2
+var V_MAX = 0.15 # m/s
 var state = State.manual_control
 var tick_counter = 0
 
@@ -16,12 +16,12 @@ enum State { manual_control, following_line, turning_left, turning_right }
 @onready var indicateur_capt3 = $Indicateur_Capteur3
 @onready var indicateur_capt4 = $Indicateur_Capteur4
 @onready var indicateur_capt5 = $Indicateur_Capteur5
+@onready var state_label = $Label_State
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	nfsm = $"../NetworkFSM"
 	capteurs_SL = [false, false, false, false, false]
-	print(indicateur_capt1)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -38,23 +38,25 @@ func _process(delta):
 			var result = suivre_ligne(delta, speed)
 			speed = result[0]
 			state = result[1]
+			update_state_label()
 		State.turning_left:
 			tick_counter += 1
-			if speed > 0:
-				speed -= ACCELERATION
+			if speed > 0.025:
+				speed -= ACCELERATION/500
 			rotate_y(-turn_speed * delta)
-			if tick_counter >= 2000:
+			if tick_counter >= 3000:
 				state = State.following_line
 				tick_counter = 0
+			update_state_label()	
 		State.turning_right:
 			tick_counter += 1
-			if speed > 0:
-				speed -= ACCELERATION
+			if speed > 0.025:
+				speed -= ACCELERATION/500
 			rotate_y(turn_speed * delta)
-			if tick_counter >= 2000:
+			if tick_counter >= 3000:
 				state = State.following_line
 				tick_counter = 0
-
+			update_state_label()
 		State.manual_control:
 			if Input.is_key_pressed(KEY_W):
 				if speed < V_MAX:
@@ -71,6 +73,7 @@ func _process(delta):
 			if Input.is_key_pressed(KEY_D):
 				rotate_y(-turn_speed * delta) 
 				
+			update_state_label()
 			if line_detected():
 				state = State.following_line
 			
@@ -81,6 +84,25 @@ func _process(delta):
 
 func _physics_process(delta):
 	pass
+	
+func update_state_label():
+	var state_text
+	match state:
+		State.manual_control:
+			state_text = "Manual Control"
+		State.following_line:
+			state_text = "Following Line"
+		State.turning_left:
+			state_text = "Turning Left"
+		State.turning_right:
+			state_text = "Turning Right"
+		_:
+			state_text = "Unknown State"
+	
+	state_label.text = "Current PiCar State: %s" % state_text  # Converts the state enum to string
+	
+func calculate_actual_speed(translation, delta):
+	return translation/delta
 	
 func line_detected():
 	if capteurs_SL != [false, false, false, false, false]:
