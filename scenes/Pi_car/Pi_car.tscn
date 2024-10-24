@@ -573,7 +573,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.179545, 0, -0.00199747)
 shape = SubResource("CylinderShape3D_mdvc5")
 
 [node name="Capteur2" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00169849, 0, -0.0181285)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00169802, 0, -0.0181285)
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Capteur2"]
@@ -597,7 +597,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.179545, 0, -0.00199747)
 shape = SubResource("CylinderShape3D_mdvc5")
 
 [node name="Capteur5" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000910997, 0, 0.0415325)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000911236, 0, 0.0415325)
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Capteur5"]

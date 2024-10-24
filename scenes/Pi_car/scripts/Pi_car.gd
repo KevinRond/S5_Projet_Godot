@@ -31,7 +31,6 @@ func _process(delta):
 	#if nfsm.current_state == $"../NetworkFSM/NetworkProcessState" :
 		## Do something here
 		#pass
-	
 
 	match state:
 		State.following_line:
@@ -51,7 +50,7 @@ func _process(delta):
 			if speed > 0:
 				speed -= ACCELERATION
 			rotate_y(turn_speed * delta)
-			if tick_counter >= 2000:
+			if tick_counter >= 500:
 				state = State.following_line
 				tick_counter = 0
 
@@ -91,6 +90,7 @@ func line_detected():
 func suivre_ligne(delta, speed):
 	var new_speed = speed
 	var new_state = State.following_line
+	print("plz")
 	if capteurs_SL == [false, false, false, false, false]:
 		if speed > 0:
 			new_speed -= ACCELERATION
@@ -137,9 +137,13 @@ func suivre_ligne(delta, speed):
 		new_state = State.turning_left
 	elif capteurs_SL == [false, false, true, true, true] or capteurs_SL == [false, true, true, true, true] or capteurs_SL == [false, true, false, true, true]:
 		rotate_y(5 * delta)  # Right turn
+		print("yoooooooooooooooooooooooooooooooooooo")
 		if speed > 0:
 			new_speed -= ACCELERATION
 		new_state = State.turning_right
+	else:
+		if speed < V_MAX:
+			new_speed += ACCELERATION
 
 	return [new_speed, new_state] 
 	
@@ -176,61 +180,61 @@ func change_color(index, detected):
 	
 
 func _on_capteur_1_area_entered(area):
-	if area.name.begins_with("Line"):
+	if area.name.begins_with("Line") or area.name.begins_with("Parcours"):
 		capteurs_SL[0] = true
 		change_color(0, true)
 
 
 func _on_capteur_1_area_exited(area):
-	if area.name.begins_with("Line"):
+	if area.name.begins_with("Line") or area.name.begins_with("Parcours"):
 		capteurs_SL[0] = false
 		change_color(0, false)
 
-
 func _on_capteur_2_area_entered(area):
-	if area.name.begins_with("Line"):
+	if area.name.begins_with("Line") or area.name.begins_with("Parcours"):
 		capteurs_SL[1] = true
 		change_color(1, true)
 
 
 func _on_capteur_2_area_exited(area):
-	if area.name.begins_with("Line"):
+	if area.name.begins_with("Line") or area.name.begins_with("Parcours"):
 		capteurs_SL[1] = false
 		change_color(1, false)
 
 
 func _on_capteur_3_area_entered(area):
-	if area.name.begins_with("Line"):
+	if area.name.begins_with("Line") or area.name.begins_with("Parcours"):
 		capteurs_SL[2] = true
 		change_color(2, true)
 
 
 func _on_capteur_3_area_exited(area):
-	if area.name.begins_with("Line"):
+	if area.name.begins_with("Line") or area.name.begins_with("Parcours"):
 		capteurs_SL[2] = false
 		change_color(2, false)
 
 
 func _on_capteur_4_area_entered(area):
-	if area.name.begins_with("Line"):
+	if area.name.begins_with("Line") or area.name.begins_with("Parcours"):
 		capteurs_SL[3] = true
 		change_color(3, true)
 
 
 func _on_capteur_4_area_exited(area):
-	if area.name.begins_with("Line"):
+	if area.name.begins_with("Line") or area.name.begins_with("Parcours"):
 		capteurs_SL[3] = false
 		change_color(3, false)
 
 
 func _on_capteur_5_area_entered(area):
-	if area.name.begins_with("Line"):
+	if area.name.begins_with("Line") or area.name.begins_with("Parcours"):
 		capteurs_SL[4] = true
 		change_color(4, true)
+		print(capteurs_SL)
 
 
 func _on_capteur_5_area_exited(area):
-	if area.name.begins_with("Line"):
+	if area.name.begins_with("Line") or area.name.begins_with("Parcours"):
 		capteurs_SL[4] = false
 		change_color(4, false)
 
