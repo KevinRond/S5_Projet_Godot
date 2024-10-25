@@ -1,0 +1,33 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1729524382
+gitignore.txt::TextFile::-1::1729523346::0::1::::<><>::
+icon.svg::CompressedTexture2D::1374322914596704389::1708028022::1708028028::1::::<><>::
+main.tscn::PackedScene::3150966554309188884::1729523809::0::1::::<><>::res://scripts/main.gd<>res://addons/finite_state_machine/scripts/finite_state_machine.gd<>res://scripts/fsm/NetworkInitState.gd<>res://scripts/fsm/NetworkWaitingState.gd<>res://scripts/fsm/NetworkConnectingState.gd<>res://scripts/fsm/NetworkProcessState.gd<>uid://dhw27gk6nbfgu::::res://assets/3d/uploads_files_2176038_SHC+Free+Cybertruck/SHC Free Cybertruck.blend<>uid://booqvrcnt2ujl::::res://assets/blend/plaquette.obj
+README.md::TextFile::-1::1729523173::0::1::::<><>::
+::res://addons/::1726743762
+::res://addons/finite_state_machine/::1726743762
+plugin.cfg::TextFile::-1::1709306516::0::1::::<><>::
+plugin.gd::GDScript::-1::1709306516::0::1::::<>EditorPlugin<>::
+readme.md::TextFile::-1::1709306516::0::1::::<><>::
+::res://addons/finite_state_machine/icons/::1726743762
+finite_state_machine.svg::CompressedTexture2D::4888590432077469794::1709306516::1709306524::1::::<><>::
+state_machine_state.svg::CompressedTexture2D::2400681936130987388::1709306516::1709306524::1::::<><>::
+::res://addons/finite_state_machine/scripts/::1729175376
+finite_state_machine.gd::GDScript::-1::1729175376::0::1::::FiniteStateMachine<>Node<>res://addons/finite_state_machine/icons/finite_state_machine.svg::
+state_machine_state.gd::GDScript::-1::1709306516::0::1::::StateMachineState<>Node<>res://addons/finite_state_machine/icons/state_machine_state.svg::
+::res://assets/::1729522159
+::res://assets/3d/::1726743762
+::res://assets/3d/uploads_files_2176038_SHC+Free+Cybertruck/::1729515749
+SHC Free Cybertruck.blend::PackedScene::7697697103358556972::1710160222::1710160234::1::::<><>::
+::res://assets/blend/::1729522681
+parcours.blend::PackedScene::2672271465074343887::1714141334::1714395460::1::::<><>::
+plaquette.obj::Mesh::3398975653342354357::1729520877::1729521000::1::::<><>::
+plaquetteTest.glb::PackedScene::8206606296191019569::1729522676::1729522681::1::::<><>::
+::res://scripts/::1726743762
+main.gd::GDScript::-1::1723122272::0::1::::<>Node3D<>::
+::res://scripts/fsm/::1726743762
+NetworkClosingConnectionState.gd::GDScript::-1::1710421690::0::1::::NetworkFSMClosingConnectionState<>StateMachineState<>::
+NetworkConnectingState.gd::GDScript::-1::1723121394::0::1::::NetworkFSMConnectingState<>StateMachineState<>::
+NetworkInitState.gd::GDScript::-1::1712252326::0::1::::NetworkFSMInitState<>StateMachineState<>::
+NetworkProcessState.gd::GDScript::-1::1723121496::0::1::::NetworkFSMProcessState<>StateMachineState<>::
+NetworkWaitingState.gd::GDScript::-1::1710422796::0::1::::NetworkFSMWaitingState<>StateMachineState<>::
