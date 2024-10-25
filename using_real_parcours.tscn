@@ -50,10 +50,10 @@ script = ExtResource("6_85p0o")
 script = SubResource("GDScript_y6n3l")
 
 [node name="Boule" parent="." instance=ExtResource("7_aafmw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.49741, 0.146126, 1.52403)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4477, 0.146126, 1.52817)
 
 [node name="PiCar" parent="." instance=ExtResource("8_u4slb")]
-transform = Transform3D(-0.999048, 0, -0.0436195, 0, 1, 0, 0.0436195, 0, -0.999048, -1.47205, -0.00201693, 1.52452)
+transform = Transform3D(-0.999048, 0, -0.0436195, 0, 1, 0, 0.0436195, 0, -0.999048, -1.40163, -0.00201693, 1.52659)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_8gtbh")
