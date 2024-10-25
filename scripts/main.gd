@@ -1,20 +1,20 @@
 extends Node3D
 
+# Variables
+var NetworkIPAddrRegex = RegEx.new()
 
+# Engine functions
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	NetworkIPAddrRegex.compile(r'^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)(\.(?!$)|$)){4}$')
+	
+# Move this part of code anywhere you like. You might need to add a button or something before starting websocket connexion?!?
+	var RegexResult = NetworkIPAddrRegex.search_all("127.0.0.1")
+	if RegexResult.size() > 0:
+		get_node("NetworkFSM").current_state = $NetworkFSM/NetworkInitState
+	else:
+		pass
 
-func _on_parcours_sl_button_pressed():
-	get_tree().change_scene_to_file("res://scenes/parcours/Parcours_SL/parcours_SL.tscn")
-
-
-func _on_parcours_reel_button_pressed():
-	get_tree().change_scene_to_file("res://scenes/parcours/Parcours_Reel/parcours_reel.tscn")
-
-
-func _on_parcours_us_button_pressed():
-	pass # Replace with function body.
-
-
-
-func _on_quit_button_pressed():
-	get_tree().quit()
-
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
