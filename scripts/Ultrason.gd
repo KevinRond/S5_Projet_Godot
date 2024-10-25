@@ -44,15 +44,27 @@ func _physics_process(delta):
 		rot = 1
 		state = "block"
 		print(state)
-	elif !$RayCast3D.is_colliding() and state == "block" and self.rotation.y > PI/2:
+	elif !$RayCast3D.is_colliding() and state == "block" and self.rotation.y > 5*PI/8:
 		rot = -1
 		state = "avoid"
 		print(state)
 	elif state == "avoid" and self.rotation.y < -PI/2:
-		rot = 1
+		speed = 1
+		rot = 0
+		self.rotation.y = -PI/2
 		state = "recover"
 		print(state)
-	elif state == "recover" and self.rotation.y > 0:
+	elif state == "avoid" and $RayCast3D.is_colliding():
+		rot = 1
+		state = "block"
+		print(state)
+	elif state == "recover" and self.position.z < 0:
+		speed = 0
+		rot = 1
+		self.position.z = 0
+		state = "line"
+		print(state)
+	elif state == "line" and self.rotation.y > 0:
 		speed = 1
 		rot = 0
 		self.rotation.y = 0
