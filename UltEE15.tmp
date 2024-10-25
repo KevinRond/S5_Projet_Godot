@@ -1,0 +1,115 @@
+[gd_scene load_steps=19 format=3 uid="uid://bi7po2gmh5lr2"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_tlbv5"]
+[ext_resource type="Script" path="res://addons/finite_state_machine/scripts/finite_state_machine.gd" id="2_8xq31"]
+[ext_resource type="Script" path="res://scripts/fsm/NetworkInitState.gd" id="3_sqnri"]
+[ext_resource type="Script" path="res://scripts/fsm/NetworkWaitingState.gd" id="4_2e5dg"]
+[ext_resource type="Script" path="res://scripts/fsm/NetworkConnectingState.gd" id="5_a887b"]
+[ext_resource type="Script" path="res://scripts/fsm/NetworkProcessState.gd" id="6_fx80y"]
+[ext_resource type="PackedScene" uid="uid://dhw27gk6nbfgu" path="res://assets/3d/uploads_files_2176038_SHC+Free+Cybertruck/SHC Free Cybertruck.blend" id="7_qehum"]
+[ext_resource type="Script" path="res://scripts/Ultrason.gd" id="8_bqb3x"]
+
+[sub_resource type="GDScript" id="GDScript_d2gei"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y2p80"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qirr2"]
+albedo_color = Color(1, 1, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_insm8"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ldjyf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s3cat"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i2j0s"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jv41d"]
+sky_top_color = Color(0.635294, 0.756863, 0.901961, 1)
+sky_horizon_color = Color(0.839216, 0.890196, 0.929412, 1)
+ground_bottom_color = Color(0.580392, 0.737255, 0.796078, 1)
+ground_horizon_color = Color(0.686275, 0.815686, 0.890196, 1)
+
+[sub_resource type="Sky" id="Sky_nfout"]
+sky_material = SubResource("ProceduralSkyMaterial_jv41d")
+
+[sub_resource type="Environment" id="Environment_c8ocf"]
+background_mode = 2
+sky = SubResource("Sky_nfout")
+
+[node name="Ultrason" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0100098, 0.0284071, -0.0135775)
+script = ExtResource("1_tlbv5")
+
+[node name="NetworkFSM" type="Node" parent="." node_paths=PackedStringArray("current_state")]
+script = ExtResource("2_8xq31")
+current_state = NodePath("NetworkWaitingState")
+
+[node name="NetworkInitState" type="Node" parent="NetworkFSM"]
+script = ExtResource("3_sqnri")
+
+[node name="NetworkWaitingState" type="Node" parent="NetworkFSM"]
+script = ExtResource("4_2e5dg")
+
+[node name="NetworkConnectingState" type="Node" parent="NetworkFSM"]
+script = ExtResource("5_a887b")
+
+[node name="NetworkProcessState" type="Node" parent="NetworkFSM"]
+script = ExtResource("6_fx80y")
+
+[node name="NetworkDisconnectingState" type="Node" parent="NetworkFSM"]
+script = SubResource("GDScript_d2gei")
+
+[node name="Floor" type="CSGBox3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0)
+size = Vector3(5, 0.5, 5)
+material = SubResource("StandardMaterial3D_y2p80")
+
+[node name="Line" type="CSGBox3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+size = Vector3(4.9, 0.1, 0.1)
+material = SubResource("StandardMaterial3D_qirr2")
+
+[node name="Wall1" type="CSGBox3D" parent="Floor"]
+transform = Transform3D(0.01, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 2, 0.5, 0)
+material = SubResource("StandardMaterial3D_insm8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor/Wall1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/Wall1/StaticBody3D"]
+shape = SubResource("BoxShape3D_ldjyf")
+
+[node name="Wall2" type="CSGBox3D" parent="Floor"]
+transform = Transform3D(0.01, 0, 0, 0, 0.5, 0, 0, 0, 2, 1, 0.5, 0)
+material = SubResource("StandardMaterial3D_insm8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor/Wall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/Wall2/StaticBody3D"]
+shape = SubResource("BoxShape3D_s3cat")
+
+[node name="Wall3" type="CSGBox3D" parent="Floor"]
+transform = Transform3D(0.01, 0, 0, 0, 0.5, 0, 0, 0, 3, 0, 0.5, 0)
+material = SubResource("StandardMaterial3D_insm8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor/Wall3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/Wall3/StaticBody3D"]
+shape = SubResource("BoxShape3D_i2j0s")
+
+[node name="PiCar" parent="." instance=ExtResource("7_qehum")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0.25, 0)
+script = ExtResource("8_bqb3x")
+
+[node name="Camera3D" type="Camera3D" parent="PiCar"]
+transform = Transform3D(-4.37114e-08, -0.258819, 0.965926, 0, 0.965926, 0.258819, -1, 1.13133e-08, -4.2222e-08, 2, 1, 0)
+current = true
+
+[node name="RayCast3D" type="RayCast3D" parent="PiCar"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -0.15, 0.05, 0)
+debug_shape_custom_color = Color(0, 0, 1, 1)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_c8ocf")

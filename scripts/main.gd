@@ -11,7 +11,7 @@ func _on_parcours_reel_button_pressed():
 
 
 func _on_parcours_us_button_pressed():
-	pass # Replace with function body.
+	get_tree().change_scene_to_file("res://scenes/parcours/Parcours_US/Ultrason.tscn")
 
 
 
