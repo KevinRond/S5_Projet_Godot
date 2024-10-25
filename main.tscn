@@ -1,48 +1,76 @@
-[gd_scene load_steps=2 format=3 uid="uid://bk5l7umgip4v5"]
+[gd_scene load_steps=5 format=3 uid="uid://bk5l7umgip4v5"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_tvob0"]
+[ext_resource type="Theme" uid="uid://ekscuk6fac2g" path="res://scenes/custom_bouton_theme.tres" id="2_ajflq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_khfg4"]
+bg_color = Color(0.842687, 0, 0.00884624, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5lqn7"]
+bg_color = Color(1, 0.168627, 0.184314, 1)
 
 [node name="Main" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0100098, 0.0284071, -0.0135775)
 script = ExtResource("1_tvob0")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.901961, 0.901961, 0.901961, 1)
+
 [node name="Label" type="Label" parent="."]
-offset_left = 832.0
-offset_top = 128.0
-offset_right = 1029.0
-offset_bottom = 192.0
-scale = Vector2(0.975301, 1)
+offset_left = 404.0
+offset_top = 134.0
+offset_right = 1434.0
+offset_bottom = 189.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
 text = "Test Selection"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Parcours_SL_Button" type="MenuButton" parent="."]
-offset_left = 824.0
-offset_top = 320.0
-offset_right = 1035.0
-offset_bottom = 384.0
+[node name="Parcours_SL_Button" type="Button" parent="."]
+offset_left = 736.0
+offset_top = 250.0
+offset_right = 1111.0
+offset_bottom = 338.0
+size_flags_horizontal = 4
+theme = ExtResource("2_ajflq")
+theme_override_font_sizes/font_size = 25
 text = "Parcours suiveur de ligne"
 
-[node name="Parcours_Reel_Button" type="MenuButton" parent="."]
-offset_left = 832.0
-offset_top = 448.0
-offset_right = 1024.0
-offset_bottom = 512.0
-text = "Parcours réel
-"
+[node name="Parcours_Reel_Button" type="Button" parent="."]
+offset_left = 736.0
+offset_top = 400.0
+offset_right = 1114.0
+offset_bottom = 492.0
+size_flags_horizontal = 0
+theme = ExtResource("2_ajflq")
+theme_override_font_sizes/font_size = 25
+text = "Parcours Reel"
 
-[node name="Parcours_US_Button" type="MenuButton" parent="."]
-offset_left = 832.0
-offset_top = 576.0
-offset_right = 1024.0
-offset_bottom = 640.0
+[node name="Parcours_US_Button" type="Button" parent="."]
+offset_left = 733.0
+offset_top = 559.0
+offset_right = 1115.0
+offset_bottom = 653.0
+theme = ExtResource("2_ajflq")
+theme_override_font_sizes/font_size = 25
 text = "Parcours Ultrason"
 
-[node name="Quit_Button" type="MenuButton" parent="."]
-offset_left = 832.0
-offset_top = 768.0
-offset_right = 1024.0
-offset_bottom = 832.0
+[node name="Quit_Button" type="Button" parent="."]
+offset_left = 818.0
+offset_top = 745.0
+offset_right = 1030.0
+offset_bottom = 826.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_khfg4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5lqn7")
 text = "Quit"
 
 [connection signal="pressed" from="Parcours_SL_Button" to="." method="_on_parcours_sl_button_pressed"]

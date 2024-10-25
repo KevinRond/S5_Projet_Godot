@@ -1,3 +1,6 @@
+Button
+VBoxContainer
+ColorRect
 CSGCylinder3D
 PathFollow3D
 Path3D
@@ -8,8 +11,4 @@ CharacterBody3D
 CSGSphere3D
 CSGBox3D
 CheckBox
-Button
 Area3D
-RayCast3D
-Node
-WorldEnvironment
