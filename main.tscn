@@ -1,271 +1,51 @@
-[gd_scene load_steps=20 format=3 uid="uid://bk5l7umgip4v5"]
+[gd_scene load_steps=2 format=3 uid="uid://bk5l7umgip4v5"]
 
-[ext_resource type="Script" path="res://scripts/main.gd" id="1_eka3w"]
-[ext_resource type="Script" path="res://addons/finite_state_machine/scripts/finite_state_machine.gd" id="2_wl1fq"]
-[ext_resource type="Script" path="res://scripts/fsm/NetworkInitState.gd" id="3_lglb8"]
-[ext_resource type="Script" path="res://scripts/fsm/NetworkWaitingState.gd" id="4_s7v0d"]
-[ext_resource type="Script" path="res://scripts/fsm/NetworkConnectingState.gd" id="5_itktg"]
-[ext_resource type="Script" path="res://scripts/fsm/NetworkProcessState.gd" id="6_017ts"]
-[ext_resource type="PackedScene" uid="uid://bjabyq4k71lco" path="res://scenes/Boule/Boule.tscn" id="7_gi8vq"]
-[ext_resource type="Script" path="res://PathFollow3D.gd" id="7_st7bl"]
-[ext_resource type="PackedScene" uid="uid://cwtn8ob7bli" path="res://scenes/Pi_car/Pi_car.tscn" id="9_mg36i"]
-
-[sub_resource type="GDScript" id="GDScript_d2gei"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jv41d"]
-sky_top_color = Color(0.635294, 0.756863, 0.901961, 1)
-sky_horizon_color = Color(0.839216, 0.890196, 0.929412, 1)
-ground_bottom_color = Color(0.580392, 0.737255, 0.796078, 1)
-ground_horizon_color = Color(0.686275, 0.815686, 0.890196, 1)
-
-[sub_resource type="Sky" id="Sky_sq4pr"]
-sky_material = SubResource("ProceduralSkyMaterial_jv41d")
-
-[sub_resource type="Environment" id="Environment_c8ocf"]
-background_mode = 2
-sky = SubResource("Sky_sq4pr")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y2p80"]
-albedo_color = Color(0.901961, 0.772549, 0.984314, 1)
-
-[sub_resource type="Curve3D" id="Curve3D_knqh8"]
-bake_interval = 5.0
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1.363, 0, 0.051, 0, 0, 0, 0, 0, 0, -1.5, 0, 1, 0, 0, 0, 0, 0, 0, -3, 0, 1, 0, 0, 0, 0, 0, 0, -3, 0, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
-}
-point_count = 6
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_2bjp5"]
-size = Vector3(0.61, 0.439, 0.018)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_43hm4"]
-albedo_color = Color(0, 0, 0, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_uix4b"]
-size = Vector3(0.3, 0.2, 0.018)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jcjph"]
-albedo_color = Color(0, 0, 0, 1)
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_tvob0"]
 
 [node name="Main" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0100098, 0.0284071, -0.0135775)
-script = ExtResource("1_eka3w")
+script = ExtResource("1_tvob0")
 
-[node name="NetworkFSM" type="Node" parent="." node_paths=PackedStringArray("current_state")]
-script = ExtResource("2_wl1fq")
-current_state = NodePath("NetworkWaitingState")
+[node name="Label" type="Label" parent="."]
+offset_left = 832.0
+offset_top = 128.0
+offset_right = 1029.0
+offset_bottom = 192.0
+scale = Vector2(0.975301, 1)
+text = "Test Selection"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="NetworkInitState" type="Node" parent="NetworkFSM"]
-script = ExtResource("3_lglb8")
+[node name="Parcours_SL_Button" type="MenuButton" parent="."]
+offset_left = 824.0
+offset_top = 320.0
+offset_right = 1035.0
+offset_bottom = 384.0
+text = "Parcours suiveur de ligne"
 
-[node name="NetworkWaitingState" type="Node" parent="NetworkFSM"]
-script = ExtResource("4_s7v0d")
+[node name="Parcours_Reel_Button" type="MenuButton" parent="."]
+offset_left = 832.0
+offset_top = 448.0
+offset_right = 1024.0
+offset_bottom = 512.0
+text = "Parcours réel
+"
 
-[node name="NetworkConnectingState" type="Node" parent="NetworkFSM"]
-script = ExtResource("5_itktg")
+[node name="Parcours_US_Button" type="MenuButton" parent="."]
+offset_left = 832.0
+offset_top = 576.0
+offset_right = 1024.0
+offset_bottom = 640.0
+text = "Parcours Ultrason"
 
-[node name="NetworkProcessState" type="Node" parent="NetworkFSM"]
-script = ExtResource("6_017ts")
+[node name="Quit_Button" type="MenuButton" parent="."]
+offset_left = 832.0
+offset_top = 768.0
+offset_right = 1024.0
+offset_bottom = 832.0
+text = "Quit"
 
-[node name="NetworkDisconnectingState" type="Node" parent="NetworkFSM"]
-script = SubResource("GDScript_d2gei")
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_c8ocf")
-
-[node name="Boule" parent="." instance=ExtResource("7_gi8vq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0064, 0.141192, -0.0120147)
-
-[node name="PiCar" parent="." instance=ExtResource("9_mg36i")]
-transform = Transform3D(0.999048, 0, 0.0436518, 0, 1, 0, -0.0436518, 0, 0.999048, 1.9676, 0, -0.00861593)
-
-[node name="Floor" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.053, -0.25, -0.027)
-use_collision = true
-size = Vector3(5, 0.5, 5)
-material = SubResource("StandardMaterial3D_y2p80")
-
-[node name="Path3D" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1665, 0.0186835, 0.0545075)
-curve = SubResource("Curve3D_knqh8")
-
-[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(-0.0373915, 0, 0.999301, 0, 1, 0, -0.999301, 0, -0.0373915, 0, 0, 0)
-script = ExtResource("7_st7bl")
-
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.157021)
-
-[node name="Line" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00099802, -5.96046e-08, -0.00209783)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Line"]
-transform = Transform3D(0.999391, 0, 0.0348995, 0, 1, 0, -0.0348995, 0, 0.999391, 1.60621, -0.216919, 0.0618578)
-shape = SubResource("BoxShape3D_2bjp5")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="Line/CollisionShape3D"]
-size = Vector3(0.61, 0.439, 0.015)
-material = SubResource("StandardMaterial3D_43hm4")
-
-[node name="Line2" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00099802, -5.96046e-08, -0.00209783)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Line2"]
-transform = Transform3D(0.866026, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866026, 1.04012, -0.216919, 0.223965)
-shape = SubResource("BoxShape3D_2bjp5")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="Line2/CollisionShape3D"]
-size = Vector3(0.61, 0.439, 0.015)
-material = SubResource("StandardMaterial3D_43hm4")
-
-[node name="Line4" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00099802, -5.96046e-08, -0.00209783)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Line4"]
-transform = Transform3D(0.377437, 0, 0.926035, 0, 1, 0, -0.926035, 0, 0.377437, 0.664552, -0.216919, 0.657204)
-shape = SubResource("BoxShape3D_2bjp5")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="Line4/CollisionShape3D"]
-size = Vector3(0.61, 0.439, 0.015)
-material = SubResource("StandardMaterial3D_43hm4")
-
-[node name="Line6" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00099802, -5.96046e-08, -0.00209783)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Line6"]
-transform = Transform3D(0.377437, 0, 0.926035, 0, 1, 0, -0.926035, 0, 0.377437, 0.989184, -0.216919, 1.43505)
-shape = SubResource("BoxShape3D_2bjp5")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="Line6/CollisionShape3D"]
-size = Vector3(0.61, 0.439, 0.015)
-material = SubResource("StandardMaterial3D_43hm4")
-
-[node name="Line5" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00099802, -5.96046e-08, -0.00209783)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Line5"]
-transform = Transform3D(0.925871, 0, -0.377841, 0, 1, 0, 0.377841, 0, 0.925871, 0.827959, -0.216919, 1.04509)
-shape = SubResource("BoxShape3D_2bjp5")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="Line5/CollisionShape3D"]
-size = Vector3(0.61, 0.439, 0.015)
-material = SubResource("StandardMaterial3D_43hm4")
-
-[node name="Area3D" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.52174, 0, -1.44256)
-
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.99695, 0)
-radius = 1.0
-sides = 24
-
-[node name="LineCircle" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6389, -5.96046e-08, -0.457463)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="LineCircle"]
-transform = Transform3D(0.991445, 0, 0.130526, 0, 1, 0, -0.130526, 0, 0.991445, 0.0126399, -0.0967564, 0.00263324)
-shape = SubResource("BoxShape3D_uix4b")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="LineCircle/CollisionShape3D"]
-size = Vector3(0.3, 0.2, 0.018)
-material = SubResource("StandardMaterial3D_jcjph")
-
-[node name="LineCircle2" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.37665, -5.96046e-08, -0.457463)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="LineCircle2"]
-transform = Transform3D(0.991445, 0, -0.130526, 0, 1, 0, 0.130526, 0, 0.991445, 0.0142891, -0.0967564, 0.00263324)
-shape = SubResource("BoxShape3D_uix4b")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="LineCircle2/CollisionShape3D"]
-size = Vector3(0.3, 0.2, 0.018)
-material = SubResource("StandardMaterial3D_jcjph")
-
-[node name="LineCircle3" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.11917, -5.96046e-08, -0.52751)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="LineCircle3"]
-transform = Transform3D(0.923879, 0, -0.382683, 0, 1, 0, 0.382683, 0, 0.923879, 0.0199281, -0.0967564, 0.00577748)
-shape = SubResource("BoxShape3D_uix4b")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="LineCircle3/CollisionShape3D"]
-size = Vector3(0.25, 0.2, 0.018)
-material = SubResource("StandardMaterial3D_jcjph")
-
-[node name="LineCircle4" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.884533, -5.96046e-08, -0.66375)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="LineCircle4"]
-transform = Transform3D(0.793353, 0, -0.608761, 0, 1, 0, 0.608761, 0, 0.793353, 0.0287043, -0.0967564, 0.0114312)
-shape = SubResource("BoxShape3D_uix4b")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="LineCircle4/CollisionShape3D"]
-size = Vector3(0.27, 0.2, 0.018)
-material = SubResource("StandardMaterial3D_jcjph")
-
-[node name="LineCircle5" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.884533, -5.96046e-08, -0.66375)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="LineCircle5"]
-transform = Transform3D(0.608761, 0, -0.793353, 0, 1, 0, 0.793353, 0, 0.608761, -0.154937, -0.0967564, -0.170816)
-shape = SubResource("BoxShape3D_uix4b")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="LineCircle5/CollisionShape3D"]
-size = Vector3(0.27, 0.2, 0.018)
-material = SubResource("StandardMaterial3D_jcjph")
-
-[node name="LineCircle6" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.884533, -5.96046e-08, -0.66375)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="LineCircle6"]
-transform = Transform3D(0.382683, 0, -0.923879, 0, 1, 0, 0.923879, 0, 0.382683, -0.286942, -0.0967565, -0.398729)
-shape = SubResource("BoxShape3D_uix4b")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="LineCircle6/CollisionShape3D"]
-size = Vector3(0.27, 0.2, 0.018)
-material = SubResource("StandardMaterial3D_jcjph")
-
-[node name="LineCircle7" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.498981, -6.33299e-08, -1.32568)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="LineCircle7"]
-transform = Transform3D(0.130526, 0, -0.991445, 0, 1, 0, 0.991445, 0, 0.130526, 0.0308253, -0.0967564, 0.0114312)
-shape = SubResource("BoxShape3D_uix4b")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="LineCircle7/CollisionShape3D"]
-size = Vector3(0.27, 0.2, 0.018)
-material = SubResource("StandardMaterial3D_jcjph")
-
-[node name="LineCircle8" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.498981, -6.33299e-08, -1.59174)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="LineCircle8"]
-transform = Transform3D(-0.130526, 0, -0.991445, 0, 1, 0, 0.991445, 0, -0.130526, 0.0308253, -0.0967564, 0.0144224)
-shape = SubResource("BoxShape3D_uix4b")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="LineCircle8/CollisionShape3D"]
-size = Vector3(0.27, 0.2, 0.018)
-material = SubResource("StandardMaterial3D_jcjph")
-
-[node name="LineCircle9" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.555346, -6.33299e-08, -1.83561)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="LineCircle9"]
-transform = Transform3D(-0.382683, 0, -0.923879, 0, 1, 0, 0.923879, 0, -0.382683, 0.0422795, -0.0967564, 0.0060271)
-shape = SubResource("BoxShape3D_uix4b")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="LineCircle9/CollisionShape3D"]
-size = Vector3(0.27, 0.2, 0.018)
-material = SubResource("StandardMaterial3D_jcjph")
-
-[node name="LineCircle10" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.677291, -6.33299e-08, -2.04741)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="LineCircle10"]
-transform = Transform3D(-0.608761, 0, -0.793353, 0, 1, 0, 0.793353, 0, -0.608761, 0.0515749, -0.0967564, -0.00890779)
-shape = SubResource("BoxShape3D_uix4b")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="LineCircle10/CollisionShape3D"]
-size = Vector3(0.27, 0.2, 0.018)
-material = SubResource("StandardMaterial3D_jcjph")
+[connection signal="pressed" from="Parcours_SL_Button" to="." method="_on_parcours_sl_button_pressed"]
+[connection signal="pressed" from="Parcours_Reel_Button" to="." method="_on_parcours_reel_button_pressed"]
+[connection signal="pressed" from="Parcours_US_Button" to="." method="_on_parcours_us_button_pressed"]
+[connection signal="pressed" from="Quit_Button" to="." method="_on_quit_button_pressed"]
