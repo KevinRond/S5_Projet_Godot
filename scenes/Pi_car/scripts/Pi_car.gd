@@ -1,7 +1,7 @@
 extends Node3D
 
-""" EXPLICATION ACCELERATION
-En theorie, l'acceleration est sensée être g*h/x où h est la profondeur de la
+""" EXPLICATION ACCÉLÉRATION
+En théorie, l'accélération est sensée être g*h/x où h est la profondeur de la
 plaquette et x est le rayon. Cela nous donnerait une accel max de 7.35 m/s^2, 
 ce qui est évidemment beaucoup trop. En testant, un facteur de 1/1200 semblait
 donné la meilleure valeur d'acceleration.
@@ -21,10 +21,10 @@ SI ON MODIFIE CETTE VALEUR, ON DOIT S'ASSURER DE REFAIRE LE TEST D'ARRÊT
 """ 
 var V_MAX = 0.18 # m/s
 """ EXPLICATION V_TURN ET V_TIGHT_TURN
-Ses vitesses ont été trouvées en vérifiant si le robot pouvait faire les 
+Ces vitesses ont été trouvées en vérifiant si le robot pouvait faire les 
 virages du parcours réel
 
-SI ON MODIFIE SES VALEUR, ON DOIT S'ASSURER DE VÉRIFIER LES RÉSULTATS DANS LE 
+SI ON MODIFIE CES VALEURS, ON DOIT S'ASSURER DE VÉRIFIER LES RÉSULTATS DANS LE 
 PARCOURS RÉEL
 """ 
 var V_TURN = 0.12
