@@ -701,11 +701,20 @@ vertical_alignment = 1
 
 [node name="Label_State" type="Label" parent="."]
 modulate = Color(0, 0, 0, 1)
-offset_left = 352.0
+offset_left = 344.0
 offset_top = 24.0
-offset_right = 480.0
-offset_bottom = 96.0
-horizontal_alignment = 1
+offset_right = 472.0
+offset_bottom = 48.0
+text = "state"
+vertical_alignment = 1
+
+[node name="Label_Speed" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
+offset_left = 344.0
+offset_top = 48.0
+offset_right = 472.0
+offset_bottom = 72.0
+text = "Vitesse"
 vertical_alignment = 1
 
 [connection signal="area_entered" from="Capteur1" to="." method="_on_capteur_1_area_entered"]

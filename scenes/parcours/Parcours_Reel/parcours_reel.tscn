@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dk0qg5cdbhhth"]
+[gd_scene load_steps=17 format=3 uid="uid://dk0qg5cdbhhth"]
 
 [ext_resource type="Script" path="res://addons/finite_state_machine/scripts/finite_state_machine.gd" id="1_2t5op"]
 [ext_resource type="Script" path="res://scenes/parcours/Parcours_Reel/scripts/parcours_reel.gd" id="1_aqu0k"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bjabyq4k71lco" path="res://scenes/Boule/Boule.tscn" id="6_2msf7"]
 [ext_resource type="PackedScene" uid="uid://cwtn8ob7bli" path="res://scenes/Pi_car/Pi_car.tscn" id="7_1v0ee"]
 [ext_resource type="PackedScene" uid="uid://becp6khq8gjql" path="res://assets/blend/parcours.blend" id="8_vkb14"]
+[ext_resource type="Script" path="res://scenes/Pi_car/scripts/Pi_car.gd" id="9_q8l0r"]
 [ext_resource type="PackedScene" uid="uid://d3e1fl8cheal0" path="res://scenes/Label_Bouton/label_bouton.tscn" id="10_87wma"]
 
 [sub_resource type="GDScript" id="GDScript_y6n3l"]
@@ -56,7 +57,8 @@ script = SubResource("GDScript_y6n3l")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.43163, 0.132941, 1.52817)
 
 [node name="PiCar" parent="." instance=ExtResource("7_1v0ee")]
-transform = Transform3D(-0.999048, 0, -0.0436195, 0, 1, 0, 0.0436195, 0, -0.999048, -1.40163, -0.00201693, 1.52659)
+transform = Transform3D(-0.999968, 0, -0.00794128, 0, 1, 0, 0.00794128, 0, -0.999968, -1.40163, -0.00201693, 1.52659)
+script = ExtResource("9_q8l0r")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_8gtbh")
@@ -69,9 +71,9 @@ transform = Transform3D(0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, 0.189197, 0.00446
 [node name="CollisionShape3D" parent="parcours/Parcours Picar/StaticBody3D" index="0"]
 disabled = true
 
-[node name="Parcours" type="Area3D" parent="parcours/Parcours Picar" index="1"]
+[node name="Line" type="Area3D" parent="parcours/Parcours Picar" index="1"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="parcours/Parcours Picar/Parcours"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="parcours/Parcours Picar/Line"]
 shape = SubResource("ConcavePolygonShape3D_mh38x")
 
 [node name="Label_Bouton" parent="." instance=ExtResource("10_87wma")]
