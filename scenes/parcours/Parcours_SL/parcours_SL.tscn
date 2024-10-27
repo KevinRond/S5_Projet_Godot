@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://djq6tcu4bx3dl"]
+[gd_scene load_steps=20 format=3 uid="uid://djq6tcu4bx3dl"]
 
 [ext_resource type="Script" path="res://scenes/parcours/Parcours_SL/scripts/parcours_SL.gd" id="1_1ejj2"]
 [ext_resource type="PackedScene" uid="uid://d3e1fl8cheal0" path="res://scenes/Label_Bouton/label_bouton.tscn" id="2_8ka0m"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://scripts/fsm/NetworkProcessState.gd" id="6_42wor"]
 [ext_resource type="PackedScene" uid="uid://bjabyq4k71lco" path="res://scenes/Boule/Boule.tscn" id="7_wnt8t"]
 [ext_resource type="PackedScene" uid="uid://cwtn8ob7bli" path="res://scenes/Pi_car/Pi_car.tscn" id="8_dxxop"]
+[ext_resource type="Script" path="res://scenes/Pi_car/scripts/Pi_car.gd" id="10_rjavb"]
 
 [sub_resource type="GDScript" id="GDScript_d2gei"]
 
@@ -29,7 +30,7 @@ sky = SubResource("Sky_nfout")
 albedo_color = Color(0.901961, 0.772549, 0.984314, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2bjp5"]
-size = Vector3(0.61, 0.439, 0.018)
+size = Vector3(1, 0.439, 0.018)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_43hm4"]
 albedo_color = Color(0, 0, 0, 1)
@@ -69,10 +70,11 @@ script = SubResource("GDScript_d2gei")
 environment = SubResource("Environment_c8ocf")
 
 [node name="Boule" parent="." instance=ExtResource("7_wnt8t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0064, 0.141192, -0.0120147)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6761, 0.131097, 0.0576155)
 
 [node name="PiCar" parent="." instance=ExtResource("8_dxxop")]
-transform = Transform3D(0.999048, 0, 0.0436518, 0, 1, 0, -0.0436518, 0, 0.999048, 1.9676, 0, -0.00861593)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.64817, 0, 0.0595195)
+script = ExtResource("10_rjavb")
 
 [node name="Floor" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.053, -0.25, -0.027)
@@ -84,24 +86,35 @@ material = SubResource("StandardMaterial3D_y2p80")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.157021)
 
 [node name="Line" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00099802, -5.96046e-08, -0.00209783)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.002)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Line"]
-transform = Transform3D(0.999391, 0, 0.0348995, 0, 1, 0, -0.0348995, 0, 0.999391, 1.60621, -0.216919, 0.0618578)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.217, 0.062)
 shape = SubResource("BoxShape3D_2bjp5")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Line/CollisionShape3D"]
-size = Vector3(0.61, 0.439, 0.015)
+size = Vector3(1, 0.439, 0.015)
 material = SubResource("StandardMaterial3D_43hm4")
 
 [node name="Line2" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00099802, -5.96046e-08, -0.00209783)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Line2"]
-transform = Transform3D(0.866026, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866026, 1.04012, -0.216919, 0.223965)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.217, 0.0862417)
 shape = SubResource("BoxShape3D_2bjp5")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Line2/CollisionShape3D"]
+size = Vector3(0.61, 0.439, 0.015)
+material = SubResource("StandardMaterial3D_43hm4")
+
+[node name="TOO_FAR" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.47, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TOO_FAR"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.217, 0.0862417)
+shape = SubResource("BoxShape3D_2bjp5")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="TOO_FAR/CollisionShape3D"]
 size = Vector3(0.61, 0.439, 0.015)
 material = SubResource("StandardMaterial3D_43hm4")
 
@@ -255,3 +268,15 @@ shape = SubResource("BoxShape3D_uix4b")
 [node name="CSGBox3D" type="CSGBox3D" parent="LineCircle10/CollisionShape3D"]
 size = Vector3(0.27, 0.2, 0.018)
 material = SubResource("StandardMaterial3D_jcjph")
+
+[node name="Label_Explication_Test" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
+offset_left = 736.0
+offset_top = 216.0
+offset_right = 1184.0
+offset_bottom = 339.0
+text = "Si les sensors deviennent rose, ça veut dire que le picar a pris plus de 30mm pour decel"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+uppercase = true
