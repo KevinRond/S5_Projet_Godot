@@ -15,5 +15,5 @@ shape = SubResource("SphereShape3D_gqqqf")
 [node name="CSGSphere3D" type="CSGSphere3D" parent="CollisionShape3D"]
 snap = 0.01
 use_collision = true
-radius = 0.01
+radius = 0.008
 material = SubResource("StandardMaterial3D_4yxpm")
