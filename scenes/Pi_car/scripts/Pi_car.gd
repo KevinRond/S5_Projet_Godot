@@ -1,5 +1,8 @@
 extends Node3D
 
+const MovementType = preload("res://scripts/enums.gd").MovementType
+var Movement = load("res://scripts/classes/Movement.gd")
+
 """ EXPLICATION ACCÉLÉRATION
 En théorie, l'accélération est sensée être g*h/x où h est la profondeur de la
 plaquette et x est le rayon. Cela nous donnerait une accel max de 7.35 m/s^2, 
@@ -29,12 +32,15 @@ PARCOURS RÉEL
 """ 
 var V_TURN = 0.12
 var V_TIGHT_TURN = 0.066
+var MAX_DISPLACEMENT = 0.2
 
 var nfsm = 0
 var speed = 0
 var capteurs_SL = []
 var state = State.manual_control
 var tick_counter = 0
+var previous_moves: Array[Movement] = []
+var previous_moves_length = 0
 
 enum State { manual_control, following_line, turning_left, turning_right }
 
@@ -46,10 +52,14 @@ enum State { manual_control, following_line, turning_left, turning_right }
 @onready var state_label = $Label_State
 @onready var speed_label = $Label_Speed
 
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	nfsm = $"../NetworkFSM"
 	capteurs_SL = [false, false, false, false, false]
+	var test = Movement.new(0.01, MovementType.translation)
+	save_move(test)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -59,7 +69,7 @@ func _process(delta):
 	#if nfsm.current_state == $"../NetworkFSM/NetworkProcessState" :
 		## Do something here
 		#pass
-	
+
 
 	match state:
 		State.following_line:
@@ -112,6 +122,25 @@ func _process(delta):
 
 func _physics_process(delta):
 	pass
+	
+func save_move(movement: Movement):
+	if movement.type == MovementType.translation:
+		if movement.displacement + previous_moves_length < MAX_DISPLACEMENT:
+			previous_moves.append(movement)
+			previous_moves_length += movement.displacement
+		else:
+			while (previous_moves_length + movement.displacement) > MAX_DISPLACEMENT:
+				if previous_moves.size() > 0: # this condition shouldnt be possible but wtv
+					previous_moves_length -= previous_moves[0].displacement
+					previous_moves.pop_front()
+				
+			previous_moves.append(movement)
+			previous_moves_length += movement.displacement
+	else:
+		previous_moves.append(movement)
+		
+	movement.print_movement()
+
 	
 func update_speed_label():
 	speed_label.text = "Vitesse: %.3f m/s" % speed
