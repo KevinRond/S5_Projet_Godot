@@ -62,6 +62,10 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	pass
+	
+
+func _physics_process(delta):
 	# Process data received here from simulation and RPiCar
 	# If websocket connection
 	#if nfsm.current_state == $"../NetworkFSM/NetworkProcessState" :
@@ -76,7 +80,11 @@ func _process(delta):
 			speed = result[0]
 			state = result[1]
 			rotation = result[2]
+			
+			if Input.is_key_pressed(KEY_SPACE):
+				state = State.reverse
 			update_state_label()
+			
 		State.turning_left:
 			tick_counter += 1
 			if speed > 0.025:
@@ -86,6 +94,7 @@ func _process(delta):
 				state = State.following_line
 				tick_counter = 0
 			update_state_label()	
+			
 		State.turning_right:
 			tick_counter += 1
 			if speed > 0.025:
@@ -95,6 +104,7 @@ func _process(delta):
 				state = State.following_line
 				tick_counter = 0
 			update_state_label()
+			
 		State.manual_control:
 			if Input.is_key_pressed(KEY_W):
 				if speed < V_MAX:
@@ -104,37 +114,38 @@ func _process(delta):
 					speed -= ACCELERATION
 			if Input.is_key_pressed(KEY_S):
 				speed = 0
-				
 			# Rotate left/right
 			if Input.is_key_pressed(KEY_A):
 				rotate_y(0.30 * delta)
 			if Input.is_key_pressed(KEY_D):
 				rotate_y(-0.30 * delta) 
+			if Input.is_key_pressed(KEY_SPACE):
+				state = State.reverse
 				
 			update_state_label()
 			if line_detected():
 				state = State.following_line
 			
 		State.reverse:	
-			var old_move = movement_array.get_last_move()
-			if old_move != null:
-				speed = -old_move[0]
-				rotation = -old_move[1]
-			else:
-				if speed < 0:
-					speed += ACCELERATION
-				
-		State.decelerate:
 			if speed > 0:
 				speed -= ACCELERATION
 			else:
-				state = State.reverse
-				
+				var old_move = movement_array.get_last_move()
+				if old_move != null:
+					speed = -old_move[0]
+					rotation = -old_move[1]
+				else:
+					if speed < 0:
+						speed += ACCELERATION
+
+			update_state_label()
+
+
 	rotate_y(rotation * delta)
 	translate(Vector3(-delta * speed, 0, 0))
 	update_speed_label()
 	
-	if state != State.reverse:
+	if state != State.reverse && speed > 0:
 		if rotation == 0:
 			var movement = Movement.new(speed, (delta * speed), MovementType.translation, rotation)
 			movement_array.add_move(movement)
@@ -143,10 +154,6 @@ func _process(delta):
 			movement_array.add_move(movement)
 		
 	# print("Vitesse courante: %f" % speed)
-	
-
-func _physics_process(delta):
-	pass
 	
 
 	
@@ -165,6 +172,8 @@ func update_state_label():
 			state_text = "Turning Left"
 		State.turning_right:
 			state_text = "Turning Right"
+		State.reverse:
+			state_text = "Reverse"
 		_:
 			state_text = "Unknown State"
 	
@@ -240,7 +249,7 @@ func suivre_ligne(delta, speed, use_90deg_turns=false):
 	elif capteurs_SL == [true, true, true, true, true]:
 		if speed > 0:
 			new_speed -= ACCELERATION
-		new_state = State.decelerate
+		new_state = State.manual_control
 
 	return [new_speed, new_state, new_rotation] 
 	
