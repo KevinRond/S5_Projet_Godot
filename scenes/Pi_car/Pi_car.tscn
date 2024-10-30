@@ -1,7 +1,7 @@
-[gd_scene load_steps=25 format=3 uid="uid://cwtn8ob7bli"]
+[gd_scene load_steps=26 format=3 uid="uid://cwtn8ob7bli"]
 
 [ext_resource type="PackedScene" uid="uid://dw6g45j7rk3xl" path="res://scenes/Plaquette/Plaquette.tscn" id="1_ands8"]
-[ext_resource type="Script" path="res://scenes/Pi_car/scripts/Pi_car_new_parcours.gd" id="1_eluju"]
+[ext_resource type="Script" path="res://scenes/Pi_car/scripts/Pi_car.gd" id="1_e22jq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wmfwi"]
 resource_name = "Metal Bodywork"
@@ -519,9 +519,11 @@ shadow_mesh = SubResource("ArrayMesh_diyqt")
 height = 0.123985
 radius = 0.007
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_v1yl6"]
+
 [node name="PiCar" type="Node3D"]
 transform = Transform3D(0.999047, 0, 0.0436518, 0, 1, 0, -0.0436518, 0, 0.999047, 2.22149, 0, 0.0399336)
-script = ExtResource("1_eluju")
+script = ExtResource("1_e22jq")
 
 [node name="Body" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.0625, 0, 0, 0, 0.0625, 0, 0, 0, 0.0625, -0.008253, 0.0762663, 0)
@@ -717,6 +719,12 @@ offset_bottom = 72.0
 text = "Vitesse"
 vertical_alignment = 1
 
+[node name="CapteurFin" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CapteurFin"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.18707, 0.0291655, 0.00131002)
+shape = SubResource("CylinderShape3D_v1yl6")
+
 [connection signal="area_entered" from="Capteur1" to="." method="_on_capteur_1_area_entered"]
 [connection signal="area_exited" from="Capteur1" to="." method="_on_capteur_1_area_exited"]
 [connection signal="area_entered" from="Capteur2" to="." method="_on_capteur_2_area_entered"]
@@ -727,3 +735,4 @@ vertical_alignment = 1
 [connection signal="area_exited" from="Capteur4" to="." method="_on_capteur_4_area_exited"]
 [connection signal="area_entered" from="Capteur5" to="." method="_on_capteur_5_area_entered"]
 [connection signal="area_exited" from="Capteur5" to="." method="_on_capteur_5_area_exited"]
+[connection signal="area_entered" from="CapteurFin" to="." method="_on_capteur_fin_area_entered"]
