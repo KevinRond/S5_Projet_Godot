@@ -153,45 +153,45 @@ func suivre_ligne(delta, speed, use_90deg_turns=false):
 	elif capteurs_SL == [false, false, true, false, false]:
 		if speed < V_MAX:
 			new_speed += ACCELERATION
-	elif capteurs_SL == [false, true, true, false, false]:
+	elif capteurs_SL == [false, false, true, true, false]:
 		rotate_y(-deg_to_rad(3) * delta)
 		if speed > V_TURN:
-			new_speed -= ACCELERATION
-	elif capteurs_SL == [false, false, true, true, false]:
+			new_speed -= ACCELERATION/2
+	elif capteurs_SL == [false, true, true, false, false]:
 		rotate_y(deg_to_rad(3) * delta)
 		if speed > V_TURN:
-			new_speed -= ACCELERATION
-	elif capteurs_SL == [false, true, false, false, false]:
+			new_speed -= ACCELERATION/2
+	elif capteurs_SL == [false, false, false, true, false]:
 		rotate_y(-deg_to_rad(10) * delta)
 		if speed > V_TURN:
 			new_speed -= ACCELERATION
-	elif capteurs_SL == [false, false, false, true, false]:
+	elif capteurs_SL == [false, true, false, false, false]:
 		rotate_y(deg_to_rad(10) * delta)
 		if speed > V_TURN:
 			new_speed -= ACCELERATION
-	elif capteurs_SL == [true, true, false, false, false]:
+	elif capteurs_SL == [false, false, false, true, true]:
 		rotate_y(-deg_to_rad(30) * delta)
 		if speed > V_TIGHT_TURN:
 			new_speed -= ACCELERATION
-	elif capteurs_SL == [false, false, false, true, true]:
+	elif capteurs_SL == [true, true, false, false, false]:
 		rotate_y(deg_to_rad(30) * delta)
 		if speed > V_TIGHT_TURN:
 			new_speed -= ACCELERATION
-	elif capteurs_SL == [true, false, false, false, false]:
+	elif capteurs_SL == [false, false, false, false, true]:
 		rotate_y(-deg_to_rad(45) * delta)
 		if speed > V_TIGHT_TURN:
 			new_speed -= ACCELERATION
-	elif capteurs_SL == [false, false, false, false, true]:
+	elif capteurs_SL == [true, false, false, false, false]:
 		rotate_y(deg_to_rad(45) * delta)
 		if speed > V_TIGHT_TURN:
 			new_speed -= ACCELERATION
 	elif use_90deg_turns == true:
-		if capteurs_SL == [true, true, true, false, false] or capteurs_SL == [true, true, true, true, false] or capteurs_SL == [true, true, false, true, false]:
+		if capteurs_SL == [false, false, true, true, true] or capteurs_SL == [false, true, true, true, true] or capteurs_SL == [false, true, false, true, true]:
 			rotate_y(-5 * delta)  # Left turn
 			if speed > 0:
 				new_speed -= ACCELERATION
 			new_state = State.turning_left
-		elif capteurs_SL == [false, false, true, true, true] or capteurs_SL == [false, true, true, true, true] or capteurs_SL == [false, true, false, true, true]:
+		elif capteurs_SL == [true, true, true, false, false] or capteurs_SL == [true, true, true, true, false] or capteurs_SL == [true, true, false, true, false]:
 			rotate_y(5 * delta)  # Right turn
 			if speed > 0:
 				new_speed -= ACCELERATION
@@ -248,7 +248,7 @@ func change_color(index, detected, too_far=false):
 
 func _on_capteur_1_area_entered(area):
 	if area.name.begins_with("Line") or area.name.begins_with("Parcours"):
-		capteurs_SL[0] = true
+		capteurs_SL[4] = true
 		change_color(0, true)
 	if area.name == "TOO_FAR":
 		change_color(0, true, true)
@@ -256,13 +256,13 @@ func _on_capteur_1_area_entered(area):
 
 func _on_capteur_1_area_exited(area):
 	if area.name.begins_with("Line") or area.name.begins_with("Parcours"):
-		capteurs_SL[0] = false
+		capteurs_SL[4] = false
 		change_color(0, false)
 	
 
 func _on_capteur_2_area_entered(area):
 	if area.name.begins_with("Line") or area.name.begins_with("Parcours"):
-		capteurs_SL[1] = true
+		capteurs_SL[3] = true
 		change_color(1, true)
 	if area.name == "TOO_FAR":
 		change_color(1, true, true)
@@ -270,7 +270,7 @@ func _on_capteur_2_area_entered(area):
 
 func _on_capteur_2_area_exited(area):
 	if area.name.begins_with("Line") or area.name.begins_with("Parcours"):
-		capteurs_SL[1] = false
+		capteurs_SL[3] = false
 		change_color(1, false)
 
 
@@ -290,7 +290,7 @@ func _on_capteur_3_area_exited(area):
 
 func _on_capteur_4_area_entered(area):
 	if area.name.begins_with("Line") or area.name.begins_with("Parcours"):
-		capteurs_SL[3] = true
+		capteurs_SL[1] = true
 		change_color(3, true)
 	if area.name == "TOO_FAR":
 		change_color(3, true, true)
@@ -298,13 +298,13 @@ func _on_capteur_4_area_entered(area):
 
 func _on_capteur_4_area_exited(area):
 	if area.name.begins_with("Line") or area.name.begins_with("Parcours"):
-		capteurs_SL[3] = false
+		capteurs_SL[1] = false
 		change_color(3, false)
 
 
 func _on_capteur_5_area_entered(area):
 	if area.name.begins_with("Line") or area.name.begins_with("Parcours"):
-		capteurs_SL[4] = true
+		capteurs_SL[0] = true
 		change_color(4, true)
 	if area.name == "TOO_FAR":
 		change_color(4, true, true)
@@ -312,6 +312,14 @@ func _on_capteur_5_area_entered(area):
 
 func _on_capteur_5_area_exited(area):
 	if area.name.begins_with("Line") or area.name.begins_with("Parcours"):
-		capteurs_SL[4] = false
+		capteurs_SL[0] = false
 		change_color(4, false)
+		
+func _on_capteur_fin_area_entered(area):
+	if area.name.begins_with("Finish"):
+		print("entered the right tings")
+		get_tree().quit()
+		
+	
+	
 

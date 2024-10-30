@@ -4,7 +4,7 @@ var nfsm = 0
 var speed = 0
 var turn_speed = 1
 var capteurs_SL = []
-var ACCELERATION = 0.0075
+var ACCELERATION = ((9.8*0.0015)/0.002)/1500 # 0.0049 m/s^2
 var V_MAX = 0.15
 var state = State.manual_control
 var tick_counter = 0
@@ -289,4 +289,8 @@ func _on_capteur_5_area_exited(area):
 	if area.name.begins_with("Line") or area.name.begins_with("Parcours"):
 		capteurs_SL[4] = false
 		change_color(4, false)
+		
+func _on_capteur_fin_area_entered(area):
+	if area.name.begins_with("Finish"):
+		get_tree().quit()
 
