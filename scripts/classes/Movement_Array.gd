@@ -4,7 +4,8 @@ class_name MovementArray
 
 var Movement = load("res://scripts/classes/Movement.gd")
 
-const MAX_DISPLACEMENT: float = 1
+# Changer cette const pour sauvegarder plus de mouvements et reculer plus loin
+const MAX_DISPLACEMENT: float = 0.2
 
 var array: Array[Movement] = []
 var total_distance: float = 0
@@ -16,7 +17,6 @@ func add_move(movement: Movement):
 	else:
 		while (total_distance + movement.displacement) > MAX_DISPLACEMENT:
 			if array.size() > 0: # this condition shouldnt be possible but wtv
-				print("deleting first move")
 				array[0].print_movement()
 				total_distance -= array[0].displacement
 				array.pop_front()
@@ -24,9 +24,7 @@ func add_move(movement: Movement):
 		array.append(movement)
 		total_distance += movement.displacement
 		
-	print("adding movement: ")
 	movement.print_movement()
-	print("total distance: %.3f" % total_distance)
 	
 func get_last_move():
 	var move = array.back()
