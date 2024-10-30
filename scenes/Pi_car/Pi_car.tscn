@@ -1,7 +1,7 @@
 [gd_scene load_steps=25 format=3 uid="uid://cwtn8ob7bli"]
 
+[ext_resource type="Script" path="res://scenes/Pi_car/scripts/Pi_car.gd" id="1_1b0sq"]
 [ext_resource type="PackedScene" uid="uid://dw6g45j7rk3xl" path="res://scenes/Plaquette/Plaquette.tscn" id="1_ands8"]
-[ext_resource type="Script" path="res://scenes/Pi_car/scripts/Pi_car_new_parcours.gd" id="1_eluju"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wmfwi"]
 resource_name = "Metal Bodywork"
@@ -521,7 +521,7 @@ radius = 0.007
 
 [node name="PiCar" type="Node3D"]
 transform = Transform3D(0.999047, 0, 0.0436518, 0, 1, 0, -0.0436518, 0, 0.999047, 2.22149, 0, 0.0399336)
-script = ExtResource("1_eluju")
+script = ExtResource("1_1b0sq")
 
 [node name="Body" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.0625, 0, 0, 0, 0.0625, 0, 0, 0, 0.0625, -0.008253, 0.0762663, 0)

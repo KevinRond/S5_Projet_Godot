@@ -50,7 +50,10 @@ enum State { manual_control, following_line, turning_left, turning_right }
 func _ready():
 	nfsm = $"../NetworkFSM"
 	capteurs_SL = [false, false, false, false, false]
-
+	ACCELERATION = Settings.acceleration
+	V_MAX = Settings.v_max
+	V_TURN = Settings.v_turn
+	V_TIGHT_TURN = Settings.v_tight_turn
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

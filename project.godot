@@ -18,6 +18,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 DrawLine3d="*res://scripts/DrawLine3D.gd"
+Global="*res://Globals.gd"
+Settings="*res://scripts/Settings.gd"
 
 [display]
 
