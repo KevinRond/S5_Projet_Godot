@@ -4,6 +4,7 @@ const MovementType = Enums.MovementType
 const State = Enums.State
 var Movement = load("res://scripts/classes/Movement.gd")
 var MovementArray = load("res://scripts/classes/Movement_Array.gd")
+var utils = load("res://scenes/Pi_car/scripts/utils.gd").new()
 
 """ EXPLICATION ACCÉLÉRATION
 En théorie, l'accélération est sensée être g*h/x où h est la profondeur de la
@@ -162,22 +163,7 @@ func update_speed_label():
 
 	
 func update_state_label():
-	var state_text
-	match state:
-		State.manual_control:
-			state_text = "Manual Control"
-		State.following_line:
-			state_text = "Following Line"
-		State.turning_left:
-			state_text = "Turning Left"
-		State.turning_right:
-			state_text = "Turning Right"
-		State.reverse:
-			state_text = "Reverse"
-		_:
-			state_text = "Unknown State"
-	
-	state_label.text = "Current PiCar State: %s" % state_text  # Converts the state enum to string
+	state_label.text = utils.set_state_text(state)
 	
 	
 func calculate_actual_speed(translation, delta):
