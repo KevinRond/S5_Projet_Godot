@@ -34,7 +34,7 @@ func _process(delta):
 	rotate(Vector3(0,1,0), delta * rot)
 	
 	# Raycast line for debug
-	DrawLine3d.DrawRay(self.position, Vector3(-range*cos(self.rotation.y),0,range*sin(self.rotation.y)),Color(0,0,1), delta)
+	# DrawLine3d.DrawRay(self.position, Vector3(-range*cos(self.rotation.y),0,range*sin(self.rotation.y)),Color(0,0,1), delta)
 	
 	if Input.is_key_pressed(KEY_ESCAPE):
 		get_tree().change_scene_to_file("res://main.tscn")

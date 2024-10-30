@@ -35,7 +35,7 @@ PARCOURS RÉEL
 """ 
 const V_TURN = 0.12
 const V_TIGHT_TURN = 0.066
-const MAX_DISPLACEMENT = 0.2
+const RAYCAST_RANGE = 1
 
 var nfsm = 0
 var speed = 0
@@ -58,6 +58,7 @@ var movement_array: MovementArray = MovementArray.new()
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	nfsm = $"../NetworkFSM"
+	$RayCast3D.scale = Vector3(RAYCAST_RANGE, RAYCAST_RANGE, RAYCAST_RANGE)
 	capteurs_SL = [false, false, false, false, false]
 
 
@@ -126,6 +127,10 @@ func _physics_process(delta):
 			update_state_label()
 			if line_detected():
 				state = State.following_line
+			if $RayCast3D.is_colliding():
+				speed = 0.5
+				rotation = 1
+				state = State.blocked 
 			
 		State.reverse:	
 			if speed > 0:
@@ -139,6 +144,32 @@ func _physics_process(delta):
 					if speed < 0:
 						speed += ACCELERATION
 
+			update_state_label()
+			
+		State.blocked:
+			print("Blocked state - Colliding: ", $RayCast3D.is_colliding(), " Rotation Y: ", self.rotation.y)
+			if !$RayCast3D.is_colliding() and self.rotation.y > 5*PI/8:
+				rotation = -1
+				state = State.avoiding
+				
+			update_state_label()
+		State.avoiding:
+			if self.rotation.y < -PI/2:
+				speed = 1
+				rotation = 0
+				self.rotation.y = -PI/2
+				state = State.recovering
+			if $RayCast3D.is_colliding():
+				rotation = 1
+				state = State.blocked
+				
+			update_state_label()
+		State.recovering:
+			if self.position.z < 0:
+				speed = 0
+				rotation = 1
+				self.position.z = 0
+				state = State.manual_control
 			update_state_label()
 
 

@@ -1,14 +1,15 @@
-[gd_scene load_steps=20 format=3 uid="uid://bi7po2gmh5lr2"]
+[gd_scene load_steps=21 format=3 uid="uid://bi7po2gmh5lr2"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_tlbv5"]
 [ext_resource type="PackedScene" uid="uid://d3e1fl8cheal0" path="res://scenes/Label_Bouton/label_bouton.tscn" id="2_7d7gg"]
 [ext_resource type="Script" path="res://addons/finite_state_machine/scripts/finite_state_machine.gd" id="2_8xq31"]
 [ext_resource type="Script" path="res://scripts/fsm/NetworkInitState.gd" id="3_sqnri"]
 [ext_resource type="Script" path="res://scripts/fsm/NetworkWaitingState.gd" id="4_2e5dg"]
+[ext_resource type="PackedScene" uid="uid://cwtn8ob7bli" path="res://scenes/Pi_car/Pi_car.tscn" id="4_7oomj"]
 [ext_resource type="Script" path="res://scripts/fsm/NetworkConnectingState.gd" id="5_a887b"]
+[ext_resource type="Script" path="res://scenes/Pi_car/scripts/Pi_car.gd" id="5_umhu5"]
 [ext_resource type="Script" path="res://scripts/fsm/NetworkProcessState.gd" id="6_fx80y"]
 [ext_resource type="PackedScene" uid="uid://dhw27gk6nbfgu" path="res://assets/3d/uploads_files_2176038_SHC+Free+Cybertruck/SHC Free Cybertruck.blend" id="7_qehum"]
-[ext_resource type="Script" path="res://scenes/parcours/Parcours_US/scripts/Ultrason.gd" id="8_bqb3x"]
 
 [sub_resource type="GDScript" id="GDScript_d2gei"]
 
@@ -44,6 +45,21 @@ sky = SubResource("Sky_nfout")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0100098, 0.0284071, -0.0135775)
 script = ExtResource("1_tlbv5")
 
+[node name="PiCar" parent="." instance=ExtResource("7_qehum")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0.25, -1.33941)
+
+[node name="Camera3D" type="Camera3D" parent="PiCar"]
+transform = Transform3D(-4.37114e-08, -0.258819, 0.965926, 0, 0.965926, 0.258819, -1, 1.13133e-08, -4.2222e-08, 2, 1, 0)
+current = true
+
+[node name="RayCast3D" type="RayCast3D" parent="PiCar"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -0.15, 0.05, 0)
+debug_shape_custom_color = Color(0, 0, 1, 1)
+
+[node name="PiCar2" parent="." instance=ExtResource("4_7oomj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0.25, 0)
+script = ExtResource("5_umhu5")
+
 [node name="Label_Bouton" parent="." instance=ExtResource("2_7d7gg")]
 
 [node name="NetworkFSM" type="Node" parent="." node_paths=PackedStringArray("current_state")]
@@ -70,7 +86,7 @@ transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0)
 size = Vector3(5, 0.5, 5)
 material = SubResource("StandardMaterial3D_y2p80")
 
-[node name="Line" type="CSGBox3D" parent="Floor"]
+[node name="test" type="CSGBox3D" parent="Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
 size = Vector3(4.9, 0.1, 0.1)
 material = SubResource("StandardMaterial3D_qirr2")
@@ -101,18 +117,6 @@ material = SubResource("StandardMaterial3D_insm8")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/Wall3/StaticBody3D"]
 shape = SubResource("BoxShape3D_i2j0s")
-
-[node name="PiCar" parent="." instance=ExtResource("7_qehum")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0.25, 0)
-script = ExtResource("8_bqb3x")
-
-[node name="Camera3D" type="Camera3D" parent="PiCar"]
-transform = Transform3D(-4.37114e-08, -0.258819, 0.965926, 0, 0.965926, 0.258819, -1, 1.13133e-08, -4.2222e-08, 2, 1, 0)
-current = true
-
-[node name="RayCast3D" type="RayCast3D" parent="PiCar"]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -0.15, 0.05, 0)
-debug_shape_custom_color = Color(0, 0, 1, 1)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_c8ocf")
