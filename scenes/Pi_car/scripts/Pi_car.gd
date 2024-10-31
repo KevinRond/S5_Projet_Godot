@@ -63,6 +63,7 @@ func _ready():
 	V_MAX = Settings.v_max
 	V_TURN = Settings.v_turn
 	V_TIGHT_TURN = Settings.v_tight_turn
+	write_to_log("scene started good with acceleration : " + ACCELERATION)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -374,6 +375,14 @@ func _on_capteur_fin_area_entered(area):
 	if area.name.begins_with("Finish"):
 		print("entered the right tings")
 		get_tree().quit()
+		
+func write_to_log(message: String):
+	var path = "res://logs.txt"
+	var file = FileAccess.open(path, FileAccess.WRITE_READ)
+	
+	var dt = Time.get_time_string_from_system()
+	file.store_string(dt + "  " + message)
+	file = null
 		
 	
 	
