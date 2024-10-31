@@ -4,6 +4,7 @@ const MovementType = Enums.MovementType
 const State = Enums.State
 var Movement = load("res://scripts/classes/Movement.gd")
 var MovementArray = load("res://scripts/classes/Movement_Array.gd")
+var stuff = 1
 
 """ EXPLICATION ACCÉLÉRATION
 En théorie, l'accélération est sensée être g*h/x où h est la profondeur de la
@@ -17,14 +18,14 @@ que si on relance le test avec "r", la boule tombe toujours.
 SI L'ACCÉLÉRATION EST MODIFIÉE, LA VITESSE MAX ET LES VITESSES DE TOURNAGE 
 DOIVENT ÊTRE RETESTÉES
 """ 
-const ACCELERATION = ((9.8*0.0015)/0.002)/1500 # 0.0049 m/s^2
+var ACCELERATION = ((9.8*0.0015)/0.002)/1500 # 0.0049 m/s^2
 """ EXPLICATION V_MAX
 La vitesse maximale fut trouvée en vérifiant si le robot pouvait arrêter avec 
 l'incertitude de 30mm selon l'accélération trouvée
 
 SI ON MODIFIE CETTE VALEUR, ON DOIT S'ASSURER DE REFAIRE LE TEST D'ARRÊT
 """ 
-const V_MAX = 0.18 # m/s
+var V_MAX = 0.18 # m/s
 """ EXPLICATION V_TURN ET V_TIGHT_TURN
 Ces vitesses ont été trouvées en vérifiant si le robot pouvait faire les 
 virages du parcours réel
@@ -32,8 +33,8 @@ virages du parcours réel
 SI ON MODIFIE CES VALEURS, ON DOIT S'ASSURER DE VÉRIFIER LES RÉSULTATS DANS LE 
 PARCOURS RÉEL
 """ 
-const V_TURN = 0.12
-const V_TIGHT_TURN = 0.066
+var V_TURN = 0.12
+var V_TIGHT_TURN = 0.066
 const MAX_DISPLACEMENT = 0.2
 
 var nfsm = 0
