@@ -44,6 +44,8 @@ var state = State.manual_control
 var tick_counter = 0
 var movement_array: MovementArray = MovementArray.new()
 
+var start_time = 0
+
 
 @onready var indicateur_capt1 = $Indicateur_Capteur1
 @onready var indicateur_capt2 = $Indicateur_Capteur2
@@ -57,13 +59,13 @@ var movement_array: MovementArray = MovementArray.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	start_time = Time.get_ticks_msec()
 	nfsm = $"../NetworkFSM"
 	capteurs_SL = [false, false, false, false, false]
 	ACCELERATION = Settings.acceleration
 	V_MAX = Settings.v_max
 	V_TURN = Settings.v_turn
 	V_TIGHT_TURN = Settings.v_tight_turn
-	write_to_log("scene started good with acceleration : " + ACCELERATION)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -99,6 +101,11 @@ func _physics_process(delta):
 				state = State.following_line
 				tick_counter = 0
 			update_state_label()	
+			if !line_detected():
+				write_to_log("Valeurs du parcours:\n" + "Acceleration : " + str(ACCELERATION) + "    Vmax : " + str(V_MAX) 
+				+ "    Vitesse turn : " + str(V_TURN) + "    Vitesse tight turn : " + str(V_TIGHT_TURN)
+				+ "\nLe suiveur de ligne suit pus les lignes   FAIL")
+				get_tree().quit()
 			
 		State.turning_right:
 			tick_counter += 1
@@ -109,6 +116,11 @@ func _physics_process(delta):
 				state = State.following_line
 				tick_counter = 0
 			update_state_label()
+			if !line_detected():
+				write_to_log("Valeurs du parcours:\n" + "Acceleration : " + str(ACCELERATION) + "    Vmax : " + str(V_MAX) 
+				+ "    Vitesse turn : " + str(V_TURN) + "    Vitesse tight turn : " + str(V_TIGHT_TURN)
+				+ "\nLe suiveur de ligne suit pus les lignes   FAIL")
+				get_tree().quit()
 			
 		State.manual_control:
 			if Input.is_key_pressed(KEY_W):
@@ -204,7 +216,12 @@ func suivre_ligne(delta, speed, use_90deg_turns=false):
 	if capteurs_SL == [false, false, false, false, false]:
 		if speed > 0:
 			new_speed -= ACCELERATION
-		new_state = State.manual_control
+		#new_state = State.manual_control
+		write_to_log("Valeurs du parcours:\n" + "Acceleration : " + str(ACCELERATION) + "    Vmax : " + str(V_MAX) 
+		+ "    Vitesse turn : " + str(V_TURN) + "    Vitesse tight turn : " + str(V_TIGHT_TURN)
+		+ "\nLe suiveur de ligne suit pus les lignes  FAIL")
+		get_tree().quit()
+		
 	elif capteurs_SL == [false, false, true, false, false]:
 		if speed < V_MAX:
 			new_speed += ACCELERATION
@@ -374,16 +391,40 @@ func _on_capteur_5_area_exited(area):
 func _on_capteur_fin_area_entered(area):
 	if area.name.begins_with("Finish"):
 		print("entered the right tings")
+		
+		var end_time = Time.get_ticks_msec()
+		var elapsed_time = (end_time - start_time) / 1000.0
+		write_to_log("Valeurs du parcours:\n" + "Acceleration : " + str(ACCELERATION) + "    Vmax : " + str(V_MAX) 
+		+ "    Vitesse turn : " + str(V_TURN) + "    Vitesse tight turn : " + str(V_TIGHT_TURN) 
+		+ "\nTime taken: " + str(elapsed_time) + " seconds")
 		get_tree().quit()
 		
 func write_to_log(message: String):
-	var path = "res://logs.txt"
-	var file = FileAccess.open(path, FileAccess.WRITE_READ)
-	
+	var today_date = Time.get_date_string_from_system()  # Format: "YYYY-MM-DD"
+	var path = "res://log/" + today_date + ".txt"
+
+	# Check if the file exists, and create it if it doesn't
+	if !FileAccess.file_exists(path):
+		var file = FileAccess.open(path, FileAccess.WRITE)
+		file.close()
+
+	var file = FileAccess.open(path, FileAccess.READ_WRITE)
+	file.seek_end()  # Move to the end for appending
+
 	var dt = Time.get_time_string_from_system()
-	file.store_string(dt + "  " + message)
+	file.store_string(dt + "\n" + message + "\n\n")
+
 	file = null
 		
 	
 	
 
+
+
+func _on_boule_fell_capteur_body_entered(body):
+	if body.name == "Boule":  # Replace with the actual name of your ball node
+		write_to_log("Valeurs du parcours:\n" + "Acceleration : " + str(ACCELERATION) + "    Vmax : " + str(V_MAX) 
+		+ "    Vitesse turn : " + str(V_TURN) + "    Vitesse tight turn : " + str(V_TIGHT_TURN)
+		+ "\nLa boule a dip  FAIL")
+		get_tree().quit()
+		# Handle the fall, such as resetting the ball position or ending the simulation

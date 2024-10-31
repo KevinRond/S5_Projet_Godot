@@ -7,7 +7,7 @@ func _on_parcours_sl_button_pressed():
 
 
 func _on_parcours_reel_button_pressed():
-	get_tree().change_scene_to_file("res://scenes/parcours/Parcours_Reel/parcours_reel.tscn")
+	get_tree().change_scene_to_file("res://scenes/Choix_Valeurs/chooseParcoursValues.tscn")
 
 
 func _on_parcours_us_button_pressed():
