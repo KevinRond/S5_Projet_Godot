@@ -7,8 +7,8 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#Set spin boxes
-	acceleration_spinbox.min_value = 0.003
-	acceleration_spinbox.max_value = 0.006
+	acceleration_spinbox.min_value = 0.0000001
+	acceleration_spinbox.max_value = 1000
 	acceleration_spinbox.step = 0.0001
 	acceleration_spinbox.value = Settings.acceleration  # Valeur par défaut
 	

@@ -18,7 +18,7 @@ que si on relance le test avec "r", la boule tombe toujours.
 SI L'ACCÉLÉRATION EST MODIFIÉE, LA VITESSE MAX ET LES VITESSES DE TOURNAGE 
 DOIVENT ÊTRE RETESTÉES
 """ 
-var ACCELERATION = ((9.8*0.0015)/0.002)/1500 # 0.0049 m/s^2
+var ACCELERATION = ((9.8*0.0015)/0.02) # 0.0049 m/s^2
 """ EXPLICATION V_MAX
 La vitesse maximale fut trouvée en vérifiant si le robot pouvait arrêter avec 
 l'incertitude de 30mm selon l'accélération trouvée
@@ -95,7 +95,7 @@ func _physics_process(delta):
 		State.turning_left:
 			tick_counter += 1
 			if speed > 0.025:
-				speed -= ACCELERATION/500
+				speed -= ACCELERATION/500 * delta
 			rotate_y(-0.30 * delta)
 			if tick_counter >= 3000:
 				state = State.following_line
@@ -110,7 +110,7 @@ func _physics_process(delta):
 		State.turning_right:
 			tick_counter += 1
 			if speed > 0.025:
-				speed -= ACCELERATION/500
+				speed -= ACCELERATION/500 * delta
 			rotate_y(0.30 * delta)
 			if tick_counter >= 3000:
 				state = State.following_line
@@ -145,7 +145,7 @@ func _physics_process(delta):
 			
 		State.reverse:	
 			if speed > 0:
-				speed -= ACCELERATION
+				speed -= ACCELERATION * delta
 			else:
 				var old_move = movement_array.get_last_move()
 				if old_move != null:
@@ -153,7 +153,7 @@ func _physics_process(delta):
 					rotation = -old_move[1]
 				else:
 					if speed < 0:
-						speed += ACCELERATION
+						speed += ACCELERATION * delta
 
 			update_state_label()
 
@@ -215,7 +215,7 @@ func suivre_ligne(delta, speed, use_90deg_turns=false):
 	var new_rotation = 0
 	if capteurs_SL == [false, false, false, false, false]:
 		if speed > 0:
-			new_speed -= ACCELERATION
+			new_speed -= ACCELERATION * delta
 		#new_state = State.manual_control
 		write_to_log("Valeurs du parcours:\n" + "Acceleration : " + str(ACCELERATION) + "    Vmax : " + str(V_MAX) 
 		+ "    Vitesse turn : " + str(V_TURN) + "    Vitesse tight turn : " + str(V_TIGHT_TURN)
@@ -224,54 +224,54 @@ func suivre_ligne(delta, speed, use_90deg_turns=false):
 		
 	elif capteurs_SL == [false, false, true, false, false]:
 		if speed < V_MAX:
-			new_speed += ACCELERATION
+			new_speed += ACCELERATION * delta
 	elif capteurs_SL == [false, false, true, true, false]:
-		rotate_y(-deg_to_rad(3) * delta)
+		new_rotation = -deg_to_rad(3)
 		if speed > V_TURN:
-			new_speed -= ACCELERATION/2
+			new_speed -= ACCELERATION/2 * delta
 	elif capteurs_SL == [false, true, true, false, false]:
-		rotate_y(deg_to_rad(3) * delta)
+		new_rotation = deg_to_rad(3)
 		if speed > V_TURN:
-			new_speed -= ACCELERATION/2
+			new_speed -= ACCELERATION/2 * delta
 	elif capteurs_SL == [false, false, false, true, false]:
-		rotate_y(-deg_to_rad(10) * delta)
+		new_rotation = -deg_to_rad(10)
 		if speed > V_TURN:
-			new_speed -= ACCELERATION
+			new_speed -= ACCELERATION * delta
 	elif capteurs_SL == [false, true, false, false, false]:
-		rotate_y(deg_to_rad(10) * delta)
+		new_rotation = deg_to_rad(10)
 		if speed > V_TURN:
-			new_speed -= ACCELERATION
+			new_speed -= ACCELERATION * delta
 	elif capteurs_SL == [false, false, false, true, true]:
-		rotate_y(-deg_to_rad(30) * delta)
+		new_rotation = -deg_to_rad(30)
 		if speed > V_TIGHT_TURN:
-			new_speed -= ACCELERATION
+			new_speed -= ACCELERATION * delta
 	elif capteurs_SL == [true, true, false, false, false]:
-		rotate_y(deg_to_rad(30) * delta)
+		new_rotation = deg_to_rad(30)
 		if speed > V_TIGHT_TURN:
-			new_speed -= ACCELERATION
+			new_speed -= ACCELERATION * delta
 	elif capteurs_SL == [false, false, false, false, true]:
-		rotate_y(-deg_to_rad(45) * delta)
+		new_rotation = -deg_to_rad(45)
 		if speed > V_TIGHT_TURN:
-			new_speed -= ACCELERATION
+			new_speed -= ACCELERATION * delta
 	elif capteurs_SL == [true, false, false, false, false]:
-		rotate_y(deg_to_rad(45) * delta)
+		new_rotation = deg_to_rad(45)
 		if speed > V_TIGHT_TURN:
-			new_speed -= ACCELERATION
+			new_speed -= ACCELERATION * delta
 	elif use_90deg_turns == true:
 		if capteurs_SL == [false, false, true, true, true] or capteurs_SL == [false, true, true, true, true] or capteurs_SL == [false, true, false, true, true]:
-			rotate_y(-5 * delta)  # Left turn
+			new_rotation = -5  # Left turn
 			if speed > 0:
-				new_speed -= ACCELERATION
+				new_speed -= ACCELERATION * delta
 			new_state = State.turning_left
 		elif capteurs_SL == [true, true, true, false, false] or capteurs_SL == [true, true, true, true, false] or capteurs_SL == [true, true, false, true, false]:
-			rotate_y(5 * delta)  # Right turn
+			new_rotation = 5  # Right turn
 
 			if speed > 0:
-				new_speed -= ACCELERATION
+				new_speed -= ACCELERATION * delta
 			new_state = State.turning_right
 	elif capteurs_SL == [true, true, true, true, true]:
 		if speed > 0:
-			new_speed -= ACCELERATION
+			new_speed -= ACCELERATION * delta
 		new_state = State.manual_control
 
 	return [new_speed, new_state, new_rotation] 

@@ -1,2 +1,12 @@
-res://Ultrason.tscn
-res://scripts/Ultrason.gd
+res://scenes/Pi_car/Pi_car.tscn
+res://scenes/Pi_car/scripts/Pi_car.gd
+res://scenes/custom_bouton_theme.tres
+res://scenes/Label_Bouton/label_bouton.tscn
+res://main.tscn
+res://scenes/Choix_Valeurs/ChooseParcoursValues.tscn
+res://scenes/parcours/Parcours_Reel/parcours_reel.tscn
+res://scripts/main.gd
+res://scenes/parcours/Parcours_Reel/scripts/parcours_reel.gd
+res://scenes/Boule/Boule.tscn
+res://scenes/Choix_Valeurs/scripts/ChooseParcoursValues.gd
+res://scenes/Plaquette/Plaquette.tscn
