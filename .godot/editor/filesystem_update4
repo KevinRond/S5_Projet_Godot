@@ -1,2 +1,2 @@
-res://Ultrason.tscn
-res://scripts/Ultrason.gd
+res://scenes/parcours/Parcours_US/Ultrason.tscn
+res://scenes/Pi_car/scripts/Pi_car.gd

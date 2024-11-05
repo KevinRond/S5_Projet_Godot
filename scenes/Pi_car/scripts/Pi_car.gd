@@ -35,7 +35,8 @@ PARCOURS RÉEL
 """ 
 const V_TURN = 0.12
 const V_TIGHT_TURN = 0.066
-const RAYCAST_RANGE = 1
+const ULTRASON_RANGE = 0.1
+const BRAKE_RANGE = 0.06
 
 var nfsm = 0
 var speed = 0
@@ -58,7 +59,6 @@ var movement_array: MovementArray = MovementArray.new()
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	nfsm = $"../NetworkFSM"
-	$RayCast3D.scale = Vector3(RAYCAST_RANGE, RAYCAST_RANGE, RAYCAST_RANGE)
 	capteurs_SL = [false, false, false, false, false]
 
 
@@ -75,6 +75,7 @@ func _physics_process(delta):
 		#pass
 
 	var rotation = 0
+	var US_distance = 0
 
 	match state:
 		State.following_line:
@@ -85,6 +86,11 @@ func _physics_process(delta):
 			
 			if Input.is_key_pressed(KEY_SPACE):
 				state = State.reverse
+			if $RayCast3D.is_colliding():
+				var CollideObject = $RayCast3D.get_collider().get_parent()
+				US_distance = (CollideObject.position - Vector3(self.position.x + $RayCast3D.position.x, CollideObject.position.y, self.position.z)).length()
+				if US_distance < ULTRASON_RANGE + BRAKE_RANGE:
+					state = State.blocked
 			update_state_label()
 			
 		State.turning_left:
@@ -127,12 +133,8 @@ func _physics_process(delta):
 			update_state_label()
 			if line_detected():
 				state = State.following_line
-			if $RayCast3D.is_colliding():
-				speed = 0.5
-				rotation = 1
-				state = State.blocked 
 			
-		State.reverse:	
+		State.reverse:
 			if speed > 0:
 				speed -= ACCELERATION
 			else:
@@ -145,31 +147,38 @@ func _physics_process(delta):
 						speed += ACCELERATION
 
 			update_state_label()
-			
 		State.blocked:
-			print("Blocked state - Colliding: ", $RayCast3D.is_colliding(), " Rotation Y: ", self.rotation.y)
-			if !$RayCast3D.is_colliding() and self.rotation.y > 5*PI/8:
-				rotation = -1
-				state = State.avoiding
-				
-			update_state_label()
-		State.avoiding:
-			if self.rotation.y < -PI/2:
-				speed = 1
-				rotation = 0
-				self.rotation.y = -PI/2
-				state = State.recovering
 			if $RayCast3D.is_colliding():
-				rotation = 1
-				state = State.blocked
-				
+				var CollideObject = $RayCast3D.get_collider().get_parent()
+				US_distance = (CollideObject.position - Vector3(self.position.x + $RayCast3D.position.x, CollideObject.position.y, self.position.z)).length()
+			else:
+				US_distance = 2*ULTRASON_RANGE
+			if US_distance < 2*ULTRASON_RANGE:
+				if speed > -V_MAX:
+					speed -= ACCELERATION
+			else:
+				if speed < V_MAX:
+					speed += ACCELERATION
+				if self.rotation.y < PI/2:
+					rotation = 0.75
+				else:
+					
+					state = State.avoiding
+			update_state_label()
+			
+		State.avoiding:
+			rotation = -0.75
+			if $RayCast3D.is_colliding():
+				var CollideObject = $RayCast3D.get_collider().get_parent()
+				US_distance = (CollideObject.position - Vector3(self.position.x + $RayCast3D.position.x, CollideObject.position.y, self.position.z)).length()
+				if US_distance < ULTRASON_RANGE + BRAKE_RANGE:
+					state = State.blocked
+			elif self.rotation.y < -PI/4:
+				state = State.recovering
 			update_state_label()
 		State.recovering:
-			if self.position.z < 0:
-				speed = 0
-				rotation = 1
-				self.position.z = 0
-				state = State.manual_control
+			if capteurs_SL[0] or capteurs_SL[1] or capteurs_SL[2] or capteurs_SL[3] or capteurs_SL[4]:
+				state = State.following_line
 			update_state_label()
 
 

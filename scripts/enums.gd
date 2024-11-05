@@ -3,13 +3,13 @@ extends Node
 enum MovementType { translation, rotation }
 
 enum State { 
-	manual_control, 
-	following_line, 
-	turning_left, 
+	manual_control,
+	following_line,
+	turning_left,
 	turning_right,
-	reverse, 
-	blocked, 
+	reverse,
+	blocked,
 	avoiding,
-	recovering 
+	recovering
 }
 
