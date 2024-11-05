@@ -4,6 +4,7 @@ const MovementType = Enums.MovementType
 const State = Enums.State
 var Movement = load("res://scripts/classes/Movement.gd")
 var MovementArray = load("res://scripts/classes/Movement_Array.gd")
+var utils = load("res://scenes/Pi_car/scripts/utils.gd").new()
 
 """ EXPLICATION ACCÉLÉRATION
 En théorie, l'accélération est sensée être g*h/x où h est la profondeur de la
@@ -34,7 +35,8 @@ PARCOURS RÉEL
 """ 
 const V_TURN = 0.12
 const V_TIGHT_TURN = 0.066
-const MAX_DISPLACEMENT = 0.2
+const ULTRASON_RANGE = 0.1
+const BRAKE_RANGE = 0.06
 
 var nfsm = 0
 var speed = 0
@@ -73,6 +75,7 @@ func _physics_process(delta):
 		#pass
 
 	var rotation = 0
+	var US_distance = 0
 
 	match state:
 		State.following_line:
@@ -83,6 +86,11 @@ func _physics_process(delta):
 			
 			if Input.is_key_pressed(KEY_SPACE):
 				state = State.reverse
+			if $RayCast3D.is_colliding():
+				var CollideObject = $RayCast3D.get_collider().get_parent()
+				US_distance = (CollideObject.position - Vector3(self.position.x + $RayCast3D.position.x, CollideObject.position.y, self.position.z)).length()
+				if US_distance < ULTRASON_RANGE + BRAKE_RANGE:
+					state = State.blocked
 			update_state_label()
 			
 		State.turning_left:
@@ -126,7 +134,7 @@ func _physics_process(delta):
 			if line_detected():
 				state = State.following_line
 			
-		State.reverse:	
+		State.reverse:
 			if speed > 0:
 				speed -= ACCELERATION
 			else:
@@ -138,6 +146,39 @@ func _physics_process(delta):
 					if speed < 0:
 						speed += ACCELERATION
 
+			update_state_label()
+		State.blocked:
+			if $RayCast3D.is_colliding():
+				var CollideObject = $RayCast3D.get_collider().get_parent()
+				US_distance = (CollideObject.position - Vector3(self.position.x + $RayCast3D.position.x, CollideObject.position.y, self.position.z)).length()
+			else:
+				US_distance = 2*ULTRASON_RANGE
+			if US_distance < 2*ULTRASON_RANGE:
+				if speed > -V_MAX:
+					speed -= ACCELERATION
+			else:
+				if speed < V_MAX:
+					speed += ACCELERATION
+				if self.rotation.y < PI/2:
+					rotation = 0.75
+				else:
+					
+					state = State.avoiding
+			update_state_label()
+			
+		State.avoiding:
+			rotation = -0.75
+			if $RayCast3D.is_colliding():
+				var CollideObject = $RayCast3D.get_collider().get_parent()
+				US_distance = (CollideObject.position - Vector3(self.position.x + $RayCast3D.position.x, CollideObject.position.y, self.position.z)).length()
+				if US_distance < ULTRASON_RANGE + BRAKE_RANGE:
+					state = State.blocked
+			elif self.rotation.y < -PI/4:
+				state = State.recovering
+			update_state_label()
+		State.recovering:
+			if capteurs_SL[0] or capteurs_SL[1] or capteurs_SL[2] or capteurs_SL[3] or capteurs_SL[4]:
+				state = State.following_line
 			update_state_label()
 
 
@@ -162,22 +203,7 @@ func update_speed_label():
 
 	
 func update_state_label():
-	var state_text
-	match state:
-		State.manual_control:
-			state_text = "Manual Control"
-		State.following_line:
-			state_text = "Following Line"
-		State.turning_left:
-			state_text = "Turning Left"
-		State.turning_right:
-			state_text = "Turning Right"
-		State.reverse:
-			state_text = "Reverse"
-		_:
-			state_text = "Unknown State"
-	
-	state_label.text = "Current PiCar State: %s" % state_text  # Converts the state enum to string
+	state_label.text = utils.set_state_text(state)
 	
 	
 func calculate_actual_speed(translation, delta):
