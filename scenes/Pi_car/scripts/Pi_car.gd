@@ -6,6 +6,8 @@ var Movement = load("res://scripts/classes/Movement.gd")
 var MovementArray = load("res://scripts/classes/Movement_Array.gd")
 var utils = load("res://scenes/Pi_car/scripts/utils.gd").new()
 
+var stuff = 1
+signal test_completed
 """ EXPLICATION ACCÉLÉRATION
 En théorie, l'accélération est sensée être g*h/x où h est la profondeur de la
 plaquette et x est le rayon. Cela nous donnerait une accel max de 7.35 m/s^2, 
@@ -18,14 +20,14 @@ que si on relance le test avec "r", la boule tombe toujours.
 SI L'ACCÉLÉRATION EST MODIFIÉE, LA VITESSE MAX ET LES VITESSES DE TOURNAGE 
 DOIVENT ÊTRE RETESTÉES
 """ 
-const ACCELERATION = ((9.8*0.0015)/0.002)/1500 # 0.0049 m/s^2
+var ACCELERATION = ((9.8*0.0015)/0.02) # 0.0049 m/s^2
 """ EXPLICATION V_MAX
 La vitesse maximale fut trouvée en vérifiant si le robot pouvait arrêter avec 
 l'incertitude de 30mm selon l'accélération trouvée
 
 SI ON MODIFIE CETTE VALEUR, ON DOIT S'ASSURER DE REFAIRE LE TEST D'ARRÊT
 """ 
-const V_MAX = 0.18 # m/s
+var V_MAX = 0.18 # m/s
 """ EXPLICATION V_TURN ET V_TIGHT_TURN
 Ces vitesses ont été trouvées en vérifiant si le robot pouvait faire les 
 virages du parcours réel
@@ -33,8 +35,9 @@ virages du parcours réel
 SI ON MODIFIE CES VALEURS, ON DOIT S'ASSURER DE VÉRIFIER LES RÉSULTATS DANS LE 
 PARCOURS RÉEL
 """ 
-const V_TURN = 0.12
-const V_TIGHT_TURN = 0.066
+var V_TURN = 0.12
+var V_TIGHT_TURN = 0.066
+const MAX_DISPLACEMENT = 0.2
 const ULTRASON_RANGE = 0.1
 const BRAKE_RANGE = 0.06
 
@@ -44,6 +47,8 @@ var capteurs_SL = []
 var state = State.manual_control
 var tick_counter = 0
 var movement_array: MovementArray = MovementArray.new()
+
+var start_time = 0
 
 
 @onready var indicateur_capt1 = $Indicateur_Capteur1
@@ -58,9 +63,13 @@ var movement_array: MovementArray = MovementArray.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	start_time = Time.get_ticks_msec()
 	nfsm = $"../NetworkFSM"
 	capteurs_SL = [false, false, false, false, false]
-
+	ACCELERATION = Settings.acceleration
+	V_MAX = Settings.v_max
+	V_TURN = Settings.v_turn * V_MAX
+	V_TIGHT_TURN = Settings.v_tight_turn * V_MAX
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -96,22 +105,34 @@ func _physics_process(delta):
 		State.turning_left:
 			tick_counter += 1
 			if speed > 0.025:
-				speed -= ACCELERATION/500
+				speed -= ACCELERATION/500 * delta
 			rotate_y(-0.30 * delta)
 			if tick_counter >= 3000:
 				state = State.following_line
 				tick_counter = 0
 			update_state_label()	
+			if !line_detected():
+				write_to_log("Valeurs du parcours:\n" + "Acceleration : " + str(ACCELERATION) + "    Vmax : " + str(V_MAX) 
+				+ "    Vitesse turn : " + str(Settings.v_turn) + "    Vitesse tight turn : " + str(Settings.v_tight_turn)
+				+ "\nLe suiveur de ligne suit pus les lignes   FAIL", "fail")
+				#get_tree().quit()
+				emit_signal("test_completed")
 			
 		State.turning_right:
 			tick_counter += 1
 			if speed > 0.025:
-				speed -= ACCELERATION/500
+				speed -= ACCELERATION/500 * delta
 			rotate_y(0.30 * delta)
 			if tick_counter >= 3000:
 				state = State.following_line
 				tick_counter = 0
 			update_state_label()
+			if !line_detected():
+				write_to_log("Valeurs du parcours:\n" + "Acceleration : " + str(ACCELERATION) + "    Vmax : " + str(V_MAX) 
+				+ "    Vitesse turn : " + str(Settings.v_turn) + "    Vitesse tight turn : " + str(Settings.v_tight_turn)
+				+ "\nLe suiveur de ligne suit pus les lignes   FAIL", "fail")
+				#get_tree().quit()
+				emit_signal("test_completed")
 			
 		State.manual_control:
 			if Input.is_key_pressed(KEY_W):
@@ -136,7 +157,7 @@ func _physics_process(delta):
 			
 		State.reverse:
 			if speed > 0:
-				speed -= ACCELERATION
+				speed -= ACCELERATION * delta
 			else:
 				var old_move = movement_array.get_last_move()
 				if old_move != null:
@@ -144,7 +165,7 @@ func _physics_process(delta):
 					rotation = -old_move[1]
 				else:
 					if speed < 0:
-						speed += ACCELERATION
+						speed += ACCELERATION * delta
 
 			update_state_label()
 		State.blocked:
@@ -224,57 +245,64 @@ func suivre_ligne(delta, speed, use_90deg_turns=false):
 	var new_rotation = 0
 	if capteurs_SL == [false, false, false, false, false]:
 		if speed > 0:
-			new_speed -= ACCELERATION
-		new_state = State.manual_control
+			new_speed -= ACCELERATION * delta
+		#new_state = State.manual_control
+		write_to_log("Valeurs du parcours:\n" + "Acceleration : " + str(ACCELERATION) + "    Vmax : " + str(V_MAX) 
+		+ "    Vitesse turn : " + str(Settings.v_turn) + "    Vitesse tight turn : " + str(Settings.v_tight_turn)
+		+ "\nLe suiveur de ligne suit pus les lignes  FAIL", "fail")
+		emit_signal("test_completed")
+		#get_tree().quit()
+		
 	elif capteurs_SL == [false, false, true, false, false]:
 		if speed < V_MAX:
-			new_speed += ACCELERATION
-	elif capteurs_SL == [false, true, true, false, false]:
+			new_speed += ACCELERATION * delta
+	elif capteurs_SL == [false, false, true, true, false]:
 		new_rotation = -deg_to_rad(3)
 		if speed > V_TURN:
-			new_speed -= ACCELERATION
-	elif capteurs_SL == [false, false, true, true, false]:
+			new_speed -= ACCELERATION/2 * delta
+	elif capteurs_SL == [false, true, true, false, false]:
 		new_rotation = deg_to_rad(3)
 		if speed > V_TURN:
-			new_speed -= ACCELERATION
-	elif capteurs_SL == [false, true, false, false, false]:
+			new_speed -= ACCELERATION/2 * delta
+	elif capteurs_SL == [false, false, false, true, false]:
 		new_rotation = -deg_to_rad(10)
 		if speed > V_TURN:
-			new_speed -= ACCELERATION
-	elif capteurs_SL == [false, false, false, true, false]:
+			new_speed -= ACCELERATION * delta
+	elif capteurs_SL == [false, true, false, false, false]:
 		new_rotation = deg_to_rad(10)
 		if speed > V_TURN:
-			new_speed -= ACCELERATION
-	elif capteurs_SL == [true, true, false, false, false]:
+			new_speed -= ACCELERATION * delta
+	elif capteurs_SL == [false, false, false, true, true]:
 		new_rotation = -deg_to_rad(30)
 		if speed > V_TIGHT_TURN:
-			new_speed -= ACCELERATION
-	elif capteurs_SL == [false, false, false, true, true]:
+			new_speed -= ACCELERATION * delta
+	elif capteurs_SL == [true, true, false, false, false]:
 		new_rotation = deg_to_rad(30)
 		if speed > V_TIGHT_TURN:
-			new_speed -= ACCELERATION
-	elif capteurs_SL == [true, false, false, false, false]:
+			new_speed -= ACCELERATION * delta
+	elif capteurs_SL == [false, false, false, false, true]:
 		new_rotation = -deg_to_rad(45)
 		if speed > V_TIGHT_TURN:
-			new_speed -= ACCELERATION
-	elif capteurs_SL == [false, false, false, false, true]:
+			new_speed -= ACCELERATION * delta
+	elif capteurs_SL == [true, false, false, false, false]:
 		new_rotation = deg_to_rad(45)
 		if speed > V_TIGHT_TURN:
-			new_speed -= ACCELERATION
+			new_speed -= ACCELERATION * delta
 	elif use_90deg_turns == true:
-		if capteurs_SL == [true, true, true, false, false] or capteurs_SL == [true, true, true, true, false] or capteurs_SL == [true, true, false, true, false]:
-			new_rotation = -5
+		if capteurs_SL == [false, false, true, true, true] or capteurs_SL == [false, true, true, true, true] or capteurs_SL == [false, true, false, true, true]:
+			new_rotation = -5  # Left turn
 			if speed > 0:
-				new_speed -= ACCELERATION
+				new_speed -= ACCELERATION * delta
 			new_state = State.turning_left
-		elif capteurs_SL == [false, false, true, true, true] or capteurs_SL == [false, true, true, true, true] or capteurs_SL == [false, true, false, true, true]:
-			new_rotation = 5
+		elif capteurs_SL == [true, true, true, false, false] or capteurs_SL == [true, true, true, true, false] or capteurs_SL == [true, true, false, true, false]:
+			new_rotation = 5  # Right turn
+
 			if speed > 0:
-				new_speed -= ACCELERATION
+				new_speed -= ACCELERATION * delta
 			new_state = State.turning_right
 	elif capteurs_SL == [true, true, true, true, true]:
 		if speed > 0:
-			new_speed -= ACCELERATION
+			new_speed -= ACCELERATION * delta
 		new_state = State.manual_control
 
 	return [new_speed, new_state, new_rotation] 
@@ -324,7 +352,7 @@ func change_color(index, detected, too_far=false):
 
 func _on_capteur_1_area_entered(area):
 	if area.name.begins_with("Line") or area.name.begins_with("Parcours"):
-		capteurs_SL[0] = true
+		capteurs_SL[4] = true
 		change_color(0, true)
 	if area.name == "TOO_FAR":
 		change_color(0, true, true)
@@ -332,13 +360,13 @@ func _on_capteur_1_area_entered(area):
 
 func _on_capteur_1_area_exited(area):
 	if area.name.begins_with("Line") or area.name.begins_with("Parcours"):
-		capteurs_SL[0] = false
+		capteurs_SL[4] = false
 		change_color(0, false)
 	
 
 func _on_capteur_2_area_entered(area):
 	if area.name.begins_with("Line") or area.name.begins_with("Parcours"):
-		capteurs_SL[1] = true
+		capteurs_SL[3] = true
 		change_color(1, true)
 	if area.name == "TOO_FAR":
 		change_color(1, true, true)
@@ -346,7 +374,7 @@ func _on_capteur_2_area_entered(area):
 
 func _on_capteur_2_area_exited(area):
 	if area.name.begins_with("Line") or area.name.begins_with("Parcours"):
-		capteurs_SL[1] = false
+		capteurs_SL[3] = false
 		change_color(1, false)
 
 
@@ -366,7 +394,7 @@ func _on_capteur_3_area_exited(area):
 
 func _on_capteur_4_area_entered(area):
 	if area.name.begins_with("Line") or area.name.begins_with("Parcours"):
-		capteurs_SL[3] = true
+		capteurs_SL[1] = true
 		change_color(3, true)
 	if area.name == "TOO_FAR":
 		change_color(3, true, true)
@@ -374,13 +402,13 @@ func _on_capteur_4_area_entered(area):
 
 func _on_capteur_4_area_exited(area):
 	if area.name.begins_with("Line") or area.name.begins_with("Parcours"):
-		capteurs_SL[3] = false
+		capteurs_SL[1] = false
 		change_color(3, false)
 
 
 func _on_capteur_5_area_entered(area):
 	if area.name.begins_with("Line") or area.name.begins_with("Parcours"):
-		capteurs_SL[4] = true
+		capteurs_SL[0] = true
 		change_color(4, true)
 	if area.name == "TOO_FAR":
 		change_color(4, true, true)
@@ -388,6 +416,45 @@ func _on_capteur_5_area_entered(area):
 
 func _on_capteur_5_area_exited(area):
 	if area.name.begins_with("Line") or area.name.begins_with("Parcours"):
-		capteurs_SL[4] = false
+		capteurs_SL[0] = false
 		change_color(4, false)
+		
+func _on_capteur_fin_area_entered(area):
+	if area.name.begins_with("Finish"):
+		print("entered the right tings")
+		
+		var end_time = Time.get_ticks_msec()
+		var elapsed_time = (end_time - start_time) / 1000.0
+		write_to_log("Valeurs du parcours:\n" + "Acceleration : " + str(ACCELERATION) + "    Vmax : " + str(V_MAX) 
+		+ "    Vitesse turn : " + str(Settings.v_turn) + "    Vitesse tight turn : " + str(Settings.v_tight_turn) 
+		+ "\nTime taken: " + str(elapsed_time) + " seconds")
+		emit_signal("test_completed")
+		
+func write_to_log(message: String, filename="success"):
+	var today_date = Time.get_date_string_from_system()  # Format: "YYYY-MM-DD"
+	var path = "res://log/" + filename + "_" + today_date + ".txt"
 
+	# Check if the file exists, and create it if it doesn't
+	if !FileAccess.file_exists(path):
+		var file = FileAccess.open(path, FileAccess.WRITE)
+		file.close()
+
+	var file = FileAccess.open(path, FileAccess.READ_WRITE)
+	file.seek_end()  # Move to the end for appending
+
+	var dt = Time.get_time_string_from_system()
+	file.store_string(dt + "\n" + message + "\n\n")
+
+	file = null
+		
+	
+	
+
+func _on_boule_fell_capteur_body_entered(body):
+	if body.name == "Boule":  # Replace with the actual name of your ball node
+		write_to_log("Valeurs du parcours:\n" + "Acceleration : " + str(ACCELERATION) + "    Vmax : " + str(V_MAX) 
+		+ "    Vitesse turn : " + str(Settings.v_turn) + "    Vitesse tight turn : " + str(V_TIGHT_TURN)
+		+ "\nLa boule a dip  FAIL", "fail")
+		#get_tree().quit()
+		emit_signal("test_completed")
+		# Handle the fall, such as resetting the ball position or ending the simulation

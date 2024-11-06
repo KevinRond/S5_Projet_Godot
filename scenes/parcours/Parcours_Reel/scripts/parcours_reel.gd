@@ -22,4 +22,4 @@ func _process(delta):
 		get_tree().change_scene_to_file("res://main.tscn")
 		
 	if Input.is_key_pressed(KEY_R):
-		get_tree().change_scene_to_file("res://scenes/parcours/Parcours_Reel/parcours_reel.tscn")
+		get_tree().change_scene_to_file("res://scenes/Choix_Valeurs/chooseParcoursValues.tscn")

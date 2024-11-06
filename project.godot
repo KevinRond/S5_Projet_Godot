@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 DrawLine3d="*res://scripts/DrawLine3D.gd"
+Settings="*res://scripts/Settings.gd"
 Enums="*res://scripts/enums.gd"
 
 [display]
@@ -57,3 +58,7 @@ xbox_controller_inputs={
 , Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":5,"axis_value":1.0,"script":null)
 ]
 }
+
+[physics]
+
+common/physics_ticks_per_second=120

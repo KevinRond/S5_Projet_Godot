@@ -1,2 +1,9 @@
-res://scenes/parcours/Parcours_US/Ultrason.tscn
+res://scenes/Pi_car/Pi_car.tscn
 res://scenes/Pi_car/scripts/Pi_car.gd
+res://scenes/custom_bouton_theme.tres
+res://scenes/Label_Bouton/label_bouton.tscn
+res://main.tscn
+res://scenes/parcours/Parcours_Reel/parcours_reel.tscn
+res://scenes/Boule/Boule.tscn
+res://scenes/Plaquette/Plaquette.tscn
+res://test_runner.tscn
