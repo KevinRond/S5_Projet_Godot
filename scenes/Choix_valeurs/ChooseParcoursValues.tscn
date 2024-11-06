@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/Choix_Valeurs/scripts/ChooseParcoursValues.gd" id="1_i7c12"]
 [ext_resource type="Theme" uid="uid://dr1p05vgqcplh" path="res://scenes/custom_bouton_theme.tres" id="2_3uefs"]
 
-[node name="ChooseValuesScene" type="Node2D"]
+[node name="ChooseValuesScene2" type="Node2D"]
 script = ExtResource("1_i7c12")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -92,4 +92,15 @@ theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 25
 text = "Start"
 
+[node name="RunTestsButton" type="Button" parent="."]
+offset_left = 853.0
+offset_top = 728.0
+offset_right = 1054.0
+offset_bottom = 788.0
+theme = ExtResource("2_3uefs")
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "Run Track Tests"
+
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="RunTestsButton" to="." method="_on_run_tests_button_pressed"]

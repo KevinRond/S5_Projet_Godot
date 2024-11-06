@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+Globals="*res://scripts/globals.gd"
 DrawLine3d="*res://scripts/DrawLine3D.gd"
 Settings="*res://scripts/Settings.gd"
 Enums="*res://scripts/enums.gd"
