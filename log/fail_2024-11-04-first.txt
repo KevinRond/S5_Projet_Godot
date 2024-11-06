@@ -1,0 +1,2395 @@
+00:45:15
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.14    Vitesse turn : 0.5    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:46:28
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.14    Vitesse turn : 0.65    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:47:39
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.14    Vitesse turn : 0.8    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:48:48
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.15    Vitesse turn : 0.5    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:49:57
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.15    Vitesse turn : 0.65    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:51:05
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.15    Vitesse turn : 0.8    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:52:11
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.16    Vitesse turn : 0.5    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:53:17
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.16    Vitesse turn : 0.65    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:54:22
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.16    Vitesse turn : 0.8    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:54:27
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.17    Vitesse turn : 0.5    Vitesse tight turn : 0.15
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:54:31
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.17    Vitesse turn : 0.5    Vitesse tight turn : 0.35
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:54:36
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.17    Vitesse turn : 0.5    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:54:40
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.17    Vitesse turn : 0.65    Vitesse tight turn : 0.15
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:54:44
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.17    Vitesse turn : 0.65    Vitesse tight turn : 0.35
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:54:49
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.17    Vitesse turn : 0.65    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:54:53
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.17    Vitesse turn : 0.8    Vitesse tight turn : 0.15
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:54:57
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.17    Vitesse turn : 0.8    Vitesse tight turn : 0.35
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:55:02
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.17    Vitesse turn : 0.8    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:55:06
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.175    Vitesse turn : 0.5    Vitesse tight turn : 0.15
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:55:10
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.175    Vitesse turn : 0.5    Vitesse tight turn : 0.35
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:55:15
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.175    Vitesse turn : 0.5    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:55:19
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.175    Vitesse turn : 0.65    Vitesse tight turn : 0.15
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:55:23
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.175    Vitesse turn : 0.65    Vitesse tight turn : 0.35
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:55:27
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.175    Vitesse turn : 0.65    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:55:32
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.175    Vitesse turn : 0.8    Vitesse tight turn : 0.15
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:55:36
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.175    Vitesse turn : 0.8    Vitesse tight turn : 0.35
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:55:40
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.175    Vitesse turn : 0.8    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:55:44
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.18    Vitesse turn : 0.5    Vitesse tight turn : 0.15
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:55:48
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.18    Vitesse turn : 0.5    Vitesse tight turn : 0.35
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:55:52
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.18    Vitesse turn : 0.5    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:55:56
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.18    Vitesse turn : 0.65    Vitesse tight turn : 0.15
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:56:00
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.18    Vitesse turn : 0.65    Vitesse tight turn : 0.35
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:56:05
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.18    Vitesse turn : 0.65    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:56:09
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.18    Vitesse turn : 0.8    Vitesse tight turn : 0.15
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:56:13
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.18    Vitesse turn : 0.8    Vitesse tight turn : 0.35
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:56:17
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.18    Vitesse turn : 0.8    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:56:21
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.185    Vitesse turn : 0.5    Vitesse tight turn : 0.15
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:56:25
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.185    Vitesse turn : 0.5    Vitesse tight turn : 0.35
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:56:29
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.185    Vitesse turn : 0.5    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:56:33
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.185    Vitesse turn : 0.65    Vitesse tight turn : 0.15
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:56:38
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.185    Vitesse turn : 0.65    Vitesse tight turn : 0.35
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:56:42
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.185    Vitesse turn : 0.65    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:56:46
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.185    Vitesse turn : 0.8    Vitesse tight turn : 0.15
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:56:50
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.185    Vitesse turn : 0.8    Vitesse tight turn : 0.35
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:56:54
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.185    Vitesse turn : 0.8    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:56:58
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.19    Vitesse turn : 0.5    Vitesse tight turn : 0.15
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:57:02
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.19    Vitesse turn : 0.5    Vitesse tight turn : 0.35
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:57:06
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.19    Vitesse turn : 0.5    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:57:10
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.19    Vitesse turn : 0.65    Vitesse tight turn : 0.15
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:57:14
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.19    Vitesse turn : 0.65    Vitesse tight turn : 0.35
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:57:18
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.19    Vitesse turn : 0.65    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:57:22
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.19    Vitesse turn : 0.8    Vitesse tight turn : 0.15
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:57:26
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.19    Vitesse turn : 0.8    Vitesse tight turn : 0.35
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:57:29
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.19    Vitesse turn : 0.8    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:57:34
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.2    Vitesse turn : 0.5    Vitesse tight turn : 0.15
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:57:37
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.2    Vitesse turn : 0.5    Vitesse tight turn : 0.35
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:57:41
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.2    Vitesse turn : 0.5    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:57:45
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.2    Vitesse turn : 0.65    Vitesse tight turn : 0.15
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:57:49
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.2    Vitesse turn : 0.65    Vitesse tight turn : 0.35
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:57:53
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.2    Vitesse turn : 0.65    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:57:57
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.2    Vitesse turn : 0.8    Vitesse tight turn : 0.15
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:58:01
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.2    Vitesse turn : 0.8    Vitesse tight turn : 0.35
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:58:05
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.2    Vitesse turn : 0.8    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:58:08
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.22    Vitesse turn : 0.5    Vitesse tight turn : 0.15
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:58:12
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.22    Vitesse turn : 0.5    Vitesse tight turn : 0.35
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:58:15
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.22    Vitesse turn : 0.5    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:58:19
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.22    Vitesse turn : 0.65    Vitesse tight turn : 0.15
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:58:22
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.22    Vitesse turn : 0.65    Vitesse tight turn : 0.35
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:58:26
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.22    Vitesse turn : 0.65    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:58:30
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.22    Vitesse turn : 0.8    Vitesse tight turn : 0.15
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:58:33
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.22    Vitesse turn : 0.8    Vitesse tight turn : 0.35
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:58:37
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.22    Vitesse turn : 0.8    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+00:59:50
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.14    Vitesse turn : 0.5    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:01:04
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.14    Vitesse turn : 0.65    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:02:16
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.14    Vitesse turn : 0.8    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:03:27
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.15    Vitesse turn : 0.5    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:04:36
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.15    Vitesse turn : 0.65    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:05:45
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.15    Vitesse turn : 0.8    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:06:52
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.16    Vitesse turn : 0.5    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:08:00
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.16    Vitesse turn : 0.65    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:09:06
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.16    Vitesse turn : 0.8    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:10:10
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.17    Vitesse turn : 0.5    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:11:14
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.17    Vitesse turn : 0.65    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:12:16
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.17    Vitesse turn : 0.8    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:13:19
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.175    Vitesse turn : 0.5    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:14:22
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.175    Vitesse turn : 0.65    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:15:24
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.175    Vitesse turn : 0.8    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:16:26
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.18    Vitesse turn : 0.5    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:17:27
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.18    Vitesse turn : 0.65    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:18:27
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.18    Vitesse turn : 0.8    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:18:31
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.185    Vitesse turn : 0.5    Vitesse tight turn : 0.15
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:18:35
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.185    Vitesse turn : 0.5    Vitesse tight turn : 0.35
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:18:39
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.185    Vitesse turn : 0.5    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:18:44
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.185    Vitesse turn : 0.65    Vitesse tight turn : 0.15
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:18:48
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.185    Vitesse turn : 0.65    Vitesse tight turn : 0.35
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:18:51
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.185    Vitesse turn : 0.65    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:18:56
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.185    Vitesse turn : 0.8    Vitesse tight turn : 0.15
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:19:00
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.185    Vitesse turn : 0.8    Vitesse tight turn : 0.35
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:19:04
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.185    Vitesse turn : 0.8    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:19:07
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.19    Vitesse turn : 0.5    Vitesse tight turn : 0.15
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:19:11
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.19    Vitesse turn : 0.5    Vitesse tight turn : 0.35
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:19:15
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.19    Vitesse turn : 0.5    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:19:19
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.19    Vitesse turn : 0.65    Vitesse tight turn : 0.15
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:19:23
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.19    Vitesse turn : 0.65    Vitesse tight turn : 0.35
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:19:27
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.19    Vitesse turn : 0.65    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:19:30
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.19    Vitesse turn : 0.8    Vitesse tight turn : 0.15
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:19:34
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.19    Vitesse turn : 0.8    Vitesse tight turn : 0.35
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:19:38
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.19    Vitesse turn : 0.8    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:19:42
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.2    Vitesse turn : 0.5    Vitesse tight turn : 0.15
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:19:45
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.2    Vitesse turn : 0.5    Vitesse tight turn : 0.35
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:19:49
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.2    Vitesse turn : 0.5    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:19:52
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.2    Vitesse turn : 0.65    Vitesse tight turn : 0.15
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:19:56
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.2    Vitesse turn : 0.65    Vitesse tight turn : 0.35
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:20:00
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.2    Vitesse turn : 0.65    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:20:03
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.2    Vitesse turn : 0.8    Vitesse tight turn : 0.15
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:20:07
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.2    Vitesse turn : 0.8    Vitesse tight turn : 0.35
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:20:11
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.2    Vitesse turn : 0.8    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:20:14
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.22    Vitesse turn : 0.5    Vitesse tight turn : 0.15
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:20:17
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.22    Vitesse turn : 0.5    Vitesse tight turn : 0.35
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:20:21
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.22    Vitesse turn : 0.5    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:20:24
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.22    Vitesse turn : 0.65    Vitesse tight turn : 0.15
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:20:28
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.22    Vitesse turn : 0.65    Vitesse tight turn : 0.35
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:20:32
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.22    Vitesse turn : 0.65    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:20:35
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.22    Vitesse turn : 0.8    Vitesse tight turn : 0.15
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:20:39
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.22    Vitesse turn : 0.8    Vitesse tight turn : 0.35
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:20:42
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.22    Vitesse turn : 0.8    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:20:43
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.14    Vitesse turn : 0.5    Vitesse tight turn : 0.021
+La boule a dip  FAIL
+
+01:20:43
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.14    Vitesse turn : 0.5    Vitesse tight turn : 0.049
+La boule a dip  FAIL
+
+01:20:43
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.14    Vitesse turn : 0.5    Vitesse tight turn : 0.07
+La boule a dip  FAIL
+
+01:20:44
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.14    Vitesse turn : 0.65    Vitesse tight turn : 0.021
+La boule a dip  FAIL
+
+01:20:44
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.14    Vitesse turn : 0.65    Vitesse tight turn : 0.049
+La boule a dip  FAIL
+
+01:20:45
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.14    Vitesse turn : 0.65    Vitesse tight turn : 0.07
+La boule a dip  FAIL
+
+01:20:45
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.14    Vitesse turn : 0.8    Vitesse tight turn : 0.021
+La boule a dip  FAIL
+
+01:20:46
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.14    Vitesse turn : 0.8    Vitesse tight turn : 0.049
+La boule a dip  FAIL
+
+01:20:46
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.14    Vitesse turn : 0.8    Vitesse tight turn : 0.07
+La boule a dip  FAIL
+
+01:20:46
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.15    Vitesse turn : 0.5    Vitesse tight turn : 0.0225
+La boule a dip  FAIL
+
+01:20:47
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.15    Vitesse turn : 0.5    Vitesse tight turn : 0.0525
+La boule a dip  FAIL
+
+01:20:47
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.15    Vitesse turn : 0.5    Vitesse tight turn : 0.075
+La boule a dip  FAIL
+
+01:20:48
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.15    Vitesse turn : 0.65    Vitesse tight turn : 0.0225
+La boule a dip  FAIL
+
+01:20:48
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.15    Vitesse turn : 0.65    Vitesse tight turn : 0.0525
+La boule a dip  FAIL
+
+01:20:49
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.15    Vitesse turn : 0.65    Vitesse tight turn : 0.075
+La boule a dip  FAIL
+
+01:20:49
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.15    Vitesse turn : 0.8    Vitesse tight turn : 0.0225
+La boule a dip  FAIL
+
+01:20:49
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.15    Vitesse turn : 0.8    Vitesse tight turn : 0.0525
+La boule a dip  FAIL
+
+01:20:50
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.15    Vitesse turn : 0.8    Vitesse tight turn : 0.075
+La boule a dip  FAIL
+
+01:20:50
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.16    Vitesse turn : 0.5    Vitesse tight turn : 0.024
+La boule a dip  FAIL
+
+01:20:51
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.16    Vitesse turn : 0.5    Vitesse tight turn : 0.056
+La boule a dip  FAIL
+
+01:20:51
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.16    Vitesse turn : 0.5    Vitesse tight turn : 0.08
+La boule a dip  FAIL
+
+01:20:52
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.16    Vitesse turn : 0.65    Vitesse tight turn : 0.024
+La boule a dip  FAIL
+
+01:20:52
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.16    Vitesse turn : 0.65    Vitesse tight turn : 0.056
+La boule a dip  FAIL
+
+01:20:53
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.16    Vitesse turn : 0.65    Vitesse tight turn : 0.08
+La boule a dip  FAIL
+
+01:20:53
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.16    Vitesse turn : 0.8    Vitesse tight turn : 0.024
+La boule a dip  FAIL
+
+01:20:54
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.16    Vitesse turn : 0.8    Vitesse tight turn : 0.056
+La boule a dip  FAIL
+
+01:20:54
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.16    Vitesse turn : 0.8    Vitesse tight turn : 0.08
+La boule a dip  FAIL
+
+01:20:55
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.17    Vitesse turn : 0.5    Vitesse tight turn : 0.0255
+La boule a dip  FAIL
+
+01:20:55
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.17    Vitesse turn : 0.5    Vitesse tight turn : 0.0595
+La boule a dip  FAIL
+
+01:20:56
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.17    Vitesse turn : 0.5    Vitesse tight turn : 0.085
+La boule a dip  FAIL
+
+01:20:56
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.17    Vitesse turn : 0.65    Vitesse tight turn : 0.0255
+La boule a dip  FAIL
+
+01:20:57
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.17    Vitesse turn : 0.65    Vitesse tight turn : 0.0595
+La boule a dip  FAIL
+
+01:20:57
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.17    Vitesse turn : 0.65    Vitesse tight turn : 0.085
+La boule a dip  FAIL
+
+01:20:57
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.17    Vitesse turn : 0.8    Vitesse tight turn : 0.0255
+La boule a dip  FAIL
+
+01:20:58
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.17    Vitesse turn : 0.8    Vitesse tight turn : 0.0595
+La boule a dip  FAIL
+
+01:20:58
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.17    Vitesse turn : 0.8    Vitesse tight turn : 0.085
+La boule a dip  FAIL
+
+01:20:58
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.175    Vitesse turn : 0.5    Vitesse tight turn : 0.02625
+La boule a dip  FAIL
+
+01:20:59
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.175    Vitesse turn : 0.5    Vitesse tight turn : 0.06125
+La boule a dip  FAIL
+
+01:20:59
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.175    Vitesse turn : 0.5    Vitesse tight turn : 0.0875
+La boule a dip  FAIL
+
+01:20:59
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.175    Vitesse turn : 0.65    Vitesse tight turn : 0.02625
+La boule a dip  FAIL
+
+01:21:00
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.175    Vitesse turn : 0.65    Vitesse tight turn : 0.06125
+La boule a dip  FAIL
+
+01:21:00
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.175    Vitesse turn : 0.65    Vitesse tight turn : 0.0875
+La boule a dip  FAIL
+
+01:21:00
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.175    Vitesse turn : 0.8    Vitesse tight turn : 0.02625
+La boule a dip  FAIL
+
+01:21:01
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.175    Vitesse turn : 0.8    Vitesse tight turn : 0.06125
+La boule a dip  FAIL
+
+01:21:01
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.175    Vitesse turn : 0.8    Vitesse tight turn : 0.0875
+La boule a dip  FAIL
+
+01:21:02
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.18    Vitesse turn : 0.5    Vitesse tight turn : 0.027
+La boule a dip  FAIL
+
+01:21:02
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.18    Vitesse turn : 0.5    Vitesse tight turn : 0.063
+La boule a dip  FAIL
+
+01:21:02
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.18    Vitesse turn : 0.5    Vitesse tight turn : 0.09
+La boule a dip  FAIL
+
+01:21:03
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.18    Vitesse turn : 0.65    Vitesse tight turn : 0.027
+La boule a dip  FAIL
+
+01:21:03
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.18    Vitesse turn : 0.65    Vitesse tight turn : 0.063
+La boule a dip  FAIL
+
+01:21:03
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.18    Vitesse turn : 0.65    Vitesse tight turn : 0.09
+La boule a dip  FAIL
+
+01:21:04
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.18    Vitesse turn : 0.8    Vitesse tight turn : 0.027
+La boule a dip  FAIL
+
+01:21:04
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.18    Vitesse turn : 0.8    Vitesse tight turn : 0.063
+La boule a dip  FAIL
+
+01:21:04
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.18    Vitesse turn : 0.8    Vitesse tight turn : 0.09
+La boule a dip  FAIL
+
+01:21:05
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.185    Vitesse turn : 0.5    Vitesse tight turn : 0.02775
+La boule a dip  FAIL
+
+01:21:05
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.185    Vitesse turn : 0.5    Vitesse tight turn : 0.06475
+La boule a dip  FAIL
+
+01:21:05
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.185    Vitesse turn : 0.5    Vitesse tight turn : 0.0925
+La boule a dip  FAIL
+
+01:21:06
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.185    Vitesse turn : 0.65    Vitesse tight turn : 0.02775
+La boule a dip  FAIL
+
+01:21:06
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.185    Vitesse turn : 0.65    Vitesse tight turn : 0.06475
+La boule a dip  FAIL
+
+01:21:07
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.185    Vitesse turn : 0.65    Vitesse tight turn : 0.0925
+La boule a dip  FAIL
+
+01:21:07
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.185    Vitesse turn : 0.8    Vitesse tight turn : 0.02775
+La boule a dip  FAIL
+
+01:21:07
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.185    Vitesse turn : 0.8    Vitesse tight turn : 0.06475
+La boule a dip  FAIL
+
+01:21:08
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.185    Vitesse turn : 0.8    Vitesse tight turn : 0.0925
+La boule a dip  FAIL
+
+01:21:08
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.19    Vitesse turn : 0.5    Vitesse tight turn : 0.0285
+La boule a dip  FAIL
+
+01:21:08
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.19    Vitesse turn : 0.5    Vitesse tight turn : 0.0665
+La boule a dip  FAIL
+
+01:21:09
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.19    Vitesse turn : 0.5    Vitesse tight turn : 0.095
+La boule a dip  FAIL
+
+01:21:09
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.19    Vitesse turn : 0.65    Vitesse tight turn : 0.0285
+La boule a dip  FAIL
+
+01:21:09
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.19    Vitesse turn : 0.65    Vitesse tight turn : 0.0665
+La boule a dip  FAIL
+
+01:21:10
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.19    Vitesse turn : 0.65    Vitesse tight turn : 0.095
+La boule a dip  FAIL
+
+01:21:10
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.19    Vitesse turn : 0.8    Vitesse tight turn : 0.0285
+La boule a dip  FAIL
+
+01:21:10
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.19    Vitesse turn : 0.8    Vitesse tight turn : 0.0665
+La boule a dip  FAIL
+
+01:21:11
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.19    Vitesse turn : 0.8    Vitesse tight turn : 0.095
+La boule a dip  FAIL
+
+01:21:11
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.2    Vitesse turn : 0.5    Vitesse tight turn : 0.03
+La boule a dip  FAIL
+
+01:21:12
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.2    Vitesse turn : 0.5    Vitesse tight turn : 0.07
+La boule a dip  FAIL
+
+01:21:12
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.2    Vitesse turn : 0.5    Vitesse tight turn : 0.1
+La boule a dip  FAIL
+
+01:21:12
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.2    Vitesse turn : 0.65    Vitesse tight turn : 0.03
+La boule a dip  FAIL
+
+01:21:13
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.2    Vitesse turn : 0.65    Vitesse tight turn : 0.07
+La boule a dip  FAIL
+
+01:21:13
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.2    Vitesse turn : 0.65    Vitesse tight turn : 0.1
+La boule a dip  FAIL
+
+01:21:13
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.2    Vitesse turn : 0.8    Vitesse tight turn : 0.03
+La boule a dip  FAIL
+
+01:21:14
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.2    Vitesse turn : 0.8    Vitesse tight turn : 0.07
+La boule a dip  FAIL
+
+01:21:14
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.2    Vitesse turn : 0.8    Vitesse tight turn : 0.1
+La boule a dip  FAIL
+
+01:21:14
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.22    Vitesse turn : 0.5    Vitesse tight turn : 0.033
+La boule a dip  FAIL
+
+01:21:15
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.22    Vitesse turn : 0.5    Vitesse tight turn : 0.077
+La boule a dip  FAIL
+
+01:21:15
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.22    Vitesse turn : 0.5    Vitesse tight turn : 0.11
+La boule a dip  FAIL
+
+01:21:15
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.22    Vitesse turn : 0.65    Vitesse tight turn : 0.033
+La boule a dip  FAIL
+
+01:21:16
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.22    Vitesse turn : 0.65    Vitesse tight turn : 0.077
+La boule a dip  FAIL
+
+01:21:16
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.22    Vitesse turn : 0.65    Vitesse tight turn : 0.11
+La boule a dip  FAIL
+
+01:21:17
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.22    Vitesse turn : 0.8    Vitesse tight turn : 0.033
+La boule a dip  FAIL
+
+01:21:17
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.22    Vitesse turn : 0.8    Vitesse tight turn : 0.077
+La boule a dip  FAIL
+
+01:21:17
+Valeurs du parcours:
+Acceleration : 0.55    Vmax : 0.22    Vitesse turn : 0.8    Vitesse tight turn : 0.11
+La boule a dip  FAIL
+
+01:21:32
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.14    Vitesse turn : 0.5    Vitesse tight turn : 0.021
+La boule a dip  FAIL
+
+01:22:05
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.14    Vitesse turn : 0.5    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:23:19
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.14    Vitesse turn : 0.65    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:24:33
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.14    Vitesse turn : 0.8    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:25:43
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.15    Vitesse turn : 0.5    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:26:53
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.15    Vitesse turn : 0.65    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:28:03
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.15    Vitesse turn : 0.8    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:29:11
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.16    Vitesse turn : 0.5    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:30:18
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.16    Vitesse turn : 0.65    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:31:25
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.16    Vitesse turn : 0.8    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:32:30
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.17    Vitesse turn : 0.5    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:33:34
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.17    Vitesse turn : 0.65    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:34:37
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.17    Vitesse turn : 0.8    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:35:41
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.175    Vitesse turn : 0.5    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:36:44
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.175    Vitesse turn : 0.65    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:37:46
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.175    Vitesse turn : 0.8    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:38:48
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.18    Vitesse turn : 0.5    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:39:50
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.18    Vitesse turn : 0.65    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:40:52
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.18    Vitesse turn : 0.8    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:41:53
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.185    Vitesse turn : 0.5    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:42:53
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.185    Vitesse turn : 0.65    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:43:53
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.185    Vitesse turn : 0.8    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:44:53
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.19    Vitesse turn : 0.5    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:45:53
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.19    Vitesse turn : 0.65    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:46:51
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.19    Vitesse turn : 0.8    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:46:54
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.2    Vitesse turn : 0.5    Vitesse tight turn : 0.15
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:46:58
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.2    Vitesse turn : 0.5    Vitesse tight turn : 0.35
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:47:02
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.2    Vitesse turn : 0.5    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:47:05
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.2    Vitesse turn : 0.65    Vitesse tight turn : 0.15
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:47:09
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.2    Vitesse turn : 0.65    Vitesse tight turn : 0.35
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:47:12
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.2    Vitesse turn : 0.65    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:47:16
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.2    Vitesse turn : 0.8    Vitesse tight turn : 0.15
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:47:20
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.2    Vitesse turn : 0.8    Vitesse tight turn : 0.35
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:47:23
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.2    Vitesse turn : 0.8    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:47:26
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.22    Vitesse turn : 0.5    Vitesse tight turn : 0.15
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:47:30
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.22    Vitesse turn : 0.5    Vitesse tight turn : 0.35
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:47:33
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.22    Vitesse turn : 0.5    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:47:37
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.22    Vitesse turn : 0.65    Vitesse tight turn : 0.15
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:47:40
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.22    Vitesse turn : 0.65    Vitesse tight turn : 0.35
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:47:44
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.22    Vitesse turn : 0.65    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:47:47
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.22    Vitesse turn : 0.8    Vitesse tight turn : 0.15
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:47:50
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.22    Vitesse turn : 0.8    Vitesse tight turn : 0.35
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:47:54
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.22    Vitesse turn : 0.8    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:47:54
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.14    Vitesse turn : 0.5    Vitesse tight turn : 0.021
+La boule a dip  FAIL
+
+01:47:55
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.14    Vitesse turn : 0.5    Vitesse tight turn : 0.049
+La boule a dip  FAIL
+
+01:47:55
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.14    Vitesse turn : 0.5    Vitesse tight turn : 0.07
+La boule a dip  FAIL
+
+01:47:55
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.14    Vitesse turn : 0.65    Vitesse tight turn : 0.021
+La boule a dip  FAIL
+
+01:47:56
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.14    Vitesse turn : 0.65    Vitesse tight turn : 0.049
+La boule a dip  FAIL
+
+01:47:56
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.14    Vitesse turn : 0.65    Vitesse tight turn : 0.07
+La boule a dip  FAIL
+
+01:47:57
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.14    Vitesse turn : 0.8    Vitesse tight turn : 0.021
+La boule a dip  FAIL
+
+01:47:57
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.14    Vitesse turn : 0.8    Vitesse tight turn : 0.049
+La boule a dip  FAIL
+
+01:47:58
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.14    Vitesse turn : 0.8    Vitesse tight turn : 0.07
+La boule a dip  FAIL
+
+01:47:58
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.15    Vitesse turn : 0.5    Vitesse tight turn : 0.0225
+La boule a dip  FAIL
+
+01:47:58
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.15    Vitesse turn : 0.5    Vitesse tight turn : 0.0525
+La boule a dip  FAIL
+
+01:47:59
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.15    Vitesse turn : 0.5    Vitesse tight turn : 0.075
+La boule a dip  FAIL
+
+01:47:59
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.15    Vitesse turn : 0.65    Vitesse tight turn : 0.0225
+La boule a dip  FAIL
+
+01:47:59
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.15    Vitesse turn : 0.65    Vitesse tight turn : 0.0525
+La boule a dip  FAIL
+
+01:48:00
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.15    Vitesse turn : 0.65    Vitesse tight turn : 0.075
+La boule a dip  FAIL
+
+01:48:00
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.15    Vitesse turn : 0.8    Vitesse tight turn : 0.0225
+La boule a dip  FAIL
+
+01:48:00
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.15    Vitesse turn : 0.8    Vitesse tight turn : 0.0525
+La boule a dip  FAIL
+
+01:48:01
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.15    Vitesse turn : 0.8    Vitesse tight turn : 0.075
+La boule a dip  FAIL
+
+01:48:01
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.16    Vitesse turn : 0.5    Vitesse tight turn : 0.024
+La boule a dip  FAIL
+
+01:48:02
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.16    Vitesse turn : 0.5    Vitesse tight turn : 0.056
+La boule a dip  FAIL
+
+01:48:02
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.16    Vitesse turn : 0.5    Vitesse tight turn : 0.08
+La boule a dip  FAIL
+
+01:48:02
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.16    Vitesse turn : 0.65    Vitesse tight turn : 0.024
+La boule a dip  FAIL
+
+01:48:03
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.16    Vitesse turn : 0.65    Vitesse tight turn : 0.056
+La boule a dip  FAIL
+
+01:48:03
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.16    Vitesse turn : 0.65    Vitesse tight turn : 0.08
+La boule a dip  FAIL
+
+01:48:03
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.16    Vitesse turn : 0.8    Vitesse tight turn : 0.024
+La boule a dip  FAIL
+
+01:48:04
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.16    Vitesse turn : 0.8    Vitesse tight turn : 0.056
+La boule a dip  FAIL
+
+01:48:04
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.16    Vitesse turn : 0.8    Vitesse tight turn : 0.08
+La boule a dip  FAIL
+
+01:48:04
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.17    Vitesse turn : 0.5    Vitesse tight turn : 0.0255
+La boule a dip  FAIL
+
+01:48:05
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.17    Vitesse turn : 0.5    Vitesse tight turn : 0.0595
+La boule a dip  FAIL
+
+01:48:05
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.17    Vitesse turn : 0.5    Vitesse tight turn : 0.085
+La boule a dip  FAIL
+
+01:48:05
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.17    Vitesse turn : 0.65    Vitesse tight turn : 0.0255
+La boule a dip  FAIL
+
+01:48:06
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.17    Vitesse turn : 0.65    Vitesse tight turn : 0.0595
+La boule a dip  FAIL
+
+01:48:06
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.17    Vitesse turn : 0.65    Vitesse tight turn : 0.085
+La boule a dip  FAIL
+
+01:48:07
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.17    Vitesse turn : 0.8    Vitesse tight turn : 0.0255
+La boule a dip  FAIL
+
+01:48:07
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.17    Vitesse turn : 0.8    Vitesse tight turn : 0.0595
+La boule a dip  FAIL
+
+01:48:07
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.17    Vitesse turn : 0.8    Vitesse tight turn : 0.085
+La boule a dip  FAIL
+
+01:48:07
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.175    Vitesse turn : 0.5    Vitesse tight turn : 0.02625
+La boule a dip  FAIL
+
+01:48:08
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.175    Vitesse turn : 0.5    Vitesse tight turn : 0.06125
+La boule a dip  FAIL
+
+01:48:09
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.175    Vitesse turn : 0.5    Vitesse tight turn : 0.0875
+La boule a dip  FAIL
+
+01:48:09
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.175    Vitesse turn : 0.65    Vitesse tight turn : 0.02625
+La boule a dip  FAIL
+
+01:48:09
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.175    Vitesse turn : 0.65    Vitesse tight turn : 0.06125
+La boule a dip  FAIL
+
+01:48:09
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.175    Vitesse turn : 0.65    Vitesse tight turn : 0.0875
+La boule a dip  FAIL
+
+01:48:10
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.175    Vitesse turn : 0.8    Vitesse tight turn : 0.02625
+La boule a dip  FAIL
+
+01:48:10
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.175    Vitesse turn : 0.8    Vitesse tight turn : 0.06125
+La boule a dip  FAIL
+
+01:48:11
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.175    Vitesse turn : 0.8    Vitesse tight turn : 0.0875
+La boule a dip  FAIL
+
+01:48:11
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.18    Vitesse turn : 0.5    Vitesse tight turn : 0.027
+La boule a dip  FAIL
+
+01:48:11
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.18    Vitesse turn : 0.5    Vitesse tight turn : 0.063
+La boule a dip  FAIL
+
+01:48:12
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.18    Vitesse turn : 0.5    Vitesse tight turn : 0.09
+La boule a dip  FAIL
+
+01:48:13
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.18    Vitesse turn : 0.65    Vitesse tight turn : 0.027
+La boule a dip  FAIL
+
+01:48:13
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.18    Vitesse turn : 0.65    Vitesse tight turn : 0.063
+La boule a dip  FAIL
+
+01:48:13
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.18    Vitesse turn : 0.65    Vitesse tight turn : 0.09
+La boule a dip  FAIL
+
+01:48:13
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.18    Vitesse turn : 0.8    Vitesse tight turn : 0.027
+La boule a dip  FAIL
+
+01:48:14
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.18    Vitesse turn : 0.8    Vitesse tight turn : 0.063
+La boule a dip  FAIL
+
+01:48:14
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.18    Vitesse turn : 0.8    Vitesse tight turn : 0.09
+La boule a dip  FAIL
+
+01:48:14
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.185    Vitesse turn : 0.5    Vitesse tight turn : 0.02775
+La boule a dip  FAIL
+
+01:48:15
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.185    Vitesse turn : 0.5    Vitesse tight turn : 0.06475
+La boule a dip  FAIL
+
+01:48:15
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.185    Vitesse turn : 0.5    Vitesse tight turn : 0.0925
+La boule a dip  FAIL
+
+01:48:15
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.185    Vitesse turn : 0.65    Vitesse tight turn : 0.02775
+La boule a dip  FAIL
+
+01:48:16
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.185    Vitesse turn : 0.65    Vitesse tight turn : 0.06475
+La boule a dip  FAIL
+
+01:48:16
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.185    Vitesse turn : 0.65    Vitesse tight turn : 0.0925
+La boule a dip  FAIL
+
+01:48:17
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.185    Vitesse turn : 0.8    Vitesse tight turn : 0.02775
+La boule a dip  FAIL
+
+01:48:17
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.185    Vitesse turn : 0.8    Vitesse tight turn : 0.06475
+La boule a dip  FAIL
+
+01:48:17
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.185    Vitesse turn : 0.8    Vitesse tight turn : 0.0925
+La boule a dip  FAIL
+
+01:48:18
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.19    Vitesse turn : 0.5    Vitesse tight turn : 0.0285
+La boule a dip  FAIL
+
+01:48:18
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.19    Vitesse turn : 0.5    Vitesse tight turn : 0.0665
+La boule a dip  FAIL
+
+01:48:19
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.19    Vitesse turn : 0.5    Vitesse tight turn : 0.095
+La boule a dip  FAIL
+
+01:48:19
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.19    Vitesse turn : 0.65    Vitesse tight turn : 0.0285
+La boule a dip  FAIL
+
+01:48:19
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.19    Vitesse turn : 0.65    Vitesse tight turn : 0.0665
+La boule a dip  FAIL
+
+01:48:20
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.19    Vitesse turn : 0.65    Vitesse tight turn : 0.095
+La boule a dip  FAIL
+
+01:48:20
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.19    Vitesse turn : 0.8    Vitesse tight turn : 0.0285
+La boule a dip  FAIL
+
+01:48:20
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.19    Vitesse turn : 0.8    Vitesse tight turn : 0.0665
+La boule a dip  FAIL
+
+01:48:20
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.19    Vitesse turn : 0.8    Vitesse tight turn : 0.095
+La boule a dip  FAIL
+
+01:48:21
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.2    Vitesse turn : 0.5    Vitesse tight turn : 0.03
+La boule a dip  FAIL
+
+01:48:21
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.2    Vitesse turn : 0.5    Vitesse tight turn : 0.07
+La boule a dip  FAIL
+
+01:48:22
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.2    Vitesse turn : 0.5    Vitesse tight turn : 0.1
+La boule a dip  FAIL
+
+01:48:22
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.2    Vitesse turn : 0.65    Vitesse tight turn : 0.03
+La boule a dip  FAIL
+
+01:48:23
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.2    Vitesse turn : 0.65    Vitesse tight turn : 0.07
+La boule a dip  FAIL
+
+01:48:23
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.2    Vitesse turn : 0.65    Vitesse tight turn : 0.1
+La boule a dip  FAIL
+
+01:48:23
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.2    Vitesse turn : 0.8    Vitesse tight turn : 0.03
+La boule a dip  FAIL
+
+01:48:24
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.2    Vitesse turn : 0.8    Vitesse tight turn : 0.07
+La boule a dip  FAIL
+
+01:48:25
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.2    Vitesse turn : 0.8    Vitesse tight turn : 0.1
+La boule a dip  FAIL
+
+01:48:25
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.22    Vitesse turn : 0.5    Vitesse tight turn : 0.033
+La boule a dip  FAIL
+
+01:48:25
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.22    Vitesse turn : 0.5    Vitesse tight turn : 0.077
+La boule a dip  FAIL
+
+01:48:25
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.22    Vitesse turn : 0.5    Vitesse tight turn : 0.11
+La boule a dip  FAIL
+
+01:48:26
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.22    Vitesse turn : 0.65    Vitesse tight turn : 0.033
+La boule a dip  FAIL
+
+01:48:26
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.22    Vitesse turn : 0.65    Vitesse tight turn : 0.077
+La boule a dip  FAIL
+
+01:48:26
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.22    Vitesse turn : 0.65    Vitesse tight turn : 0.11
+La boule a dip  FAIL
+
+01:48:27
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.22    Vitesse turn : 0.8    Vitesse tight turn : 0.033
+La boule a dip  FAIL
+
+01:48:27
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.22    Vitesse turn : 0.8    Vitesse tight turn : 0.077
+La boule a dip  FAIL
+
+01:48:28
+Valeurs du parcours:
+Acceleration : 0.65    Vmax : 0.22    Vitesse turn : 0.8    Vitesse tight turn : 0.11
+La boule a dip  FAIL
+
+01:49:42
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.14    Vitesse turn : 0.5    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:50:56
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.14    Vitesse turn : 0.65    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:52:09
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.14    Vitesse turn : 0.8    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:53:19
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.15    Vitesse turn : 0.5    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:54:29
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.15    Vitesse turn : 0.65    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:55:39
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.15    Vitesse turn : 0.8    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:56:47
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.16    Vitesse turn : 0.5    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:58:00
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.16    Vitesse turn : 0.65    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+01:59:10
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.16    Vitesse turn : 0.8    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+02:00:19
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.17    Vitesse turn : 0.5    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+02:01:24
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.17    Vitesse turn : 0.65    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+02:02:28
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.17    Vitesse turn : 0.8    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+02:03:32
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.175    Vitesse turn : 0.5    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+02:04:35
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.175    Vitesse turn : 0.65    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+02:05:38
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.175    Vitesse turn : 0.8    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+02:06:41
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.18    Vitesse turn : 0.5    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+02:07:43
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.18    Vitesse turn : 0.65    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+02:08:45
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.18    Vitesse turn : 0.8    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+02:09:46
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.185    Vitesse turn : 0.5    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+02:10:47
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.185    Vitesse turn : 0.65    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+02:11:48
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.185    Vitesse turn : 0.8    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+02:12:48
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.19    Vitesse turn : 0.5    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+02:13:48
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.19    Vitesse turn : 0.65    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+02:14:48
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.19    Vitesse turn : 0.8    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+02:15:47
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.2    Vitesse turn : 0.5    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+02:16:45
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.2    Vitesse turn : 0.65    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+02:17:42
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.2    Vitesse turn : 0.8    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+02:17:45
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.22    Vitesse turn : 0.5    Vitesse tight turn : 0.15
+Le suiveur de ligne suit pus les lignes  FAIL
+
+02:17:49
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.22    Vitesse turn : 0.5    Vitesse tight turn : 0.35
+Le suiveur de ligne suit pus les lignes  FAIL
+
+02:17:52
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.22    Vitesse turn : 0.5    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+02:17:55
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.22    Vitesse turn : 0.65    Vitesse tight turn : 0.15
+Le suiveur de ligne suit pus les lignes  FAIL
+
+02:17:59
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.22    Vitesse turn : 0.65    Vitesse tight turn : 0.35
+Le suiveur de ligne suit pus les lignes  FAIL
+
+02:18:02
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.22    Vitesse turn : 0.65    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+02:18:05
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.22    Vitesse turn : 0.8    Vitesse tight turn : 0.15
+Le suiveur de ligne suit pus les lignes  FAIL
+
+02:18:08
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.22    Vitesse turn : 0.8    Vitesse tight turn : 0.35
+Le suiveur de ligne suit pus les lignes  FAIL
+
+02:18:12
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.22    Vitesse turn : 0.8    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+02:18:12
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.14    Vitesse turn : 0.5    Vitesse tight turn : 0.021
+La boule a dip  FAIL
+
+02:18:13
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.14    Vitesse turn : 0.5    Vitesse tight turn : 0.049
+La boule a dip  FAIL
+
+02:18:13
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.14    Vitesse turn : 0.5    Vitesse tight turn : 0.07
+La boule a dip  FAIL
+
+02:18:13
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.14    Vitesse turn : 0.65    Vitesse tight turn : 0.021
+La boule a dip  FAIL
+
+02:18:14
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.14    Vitesse turn : 0.65    Vitesse tight turn : 0.049
+La boule a dip  FAIL
+
+02:18:14
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.14    Vitesse turn : 0.65    Vitesse tight turn : 0.07
+La boule a dip  FAIL
+
+02:18:14
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.14    Vitesse turn : 0.8    Vitesse tight turn : 0.021
+La boule a dip  FAIL
+
+02:18:15
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.14    Vitesse turn : 0.8    Vitesse tight turn : 0.049
+La boule a dip  FAIL
+
+02:18:15
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.14    Vitesse turn : 0.8    Vitesse tight turn : 0.07
+La boule a dip  FAIL
+
+02:18:15
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.15    Vitesse turn : 0.5    Vitesse tight turn : 0.0225
+La boule a dip  FAIL
+
+02:18:16
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.15    Vitesse turn : 0.5    Vitesse tight turn : 0.0525
+La boule a dip  FAIL
+
+02:18:16
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.15    Vitesse turn : 0.5    Vitesse tight turn : 0.075
+La boule a dip  FAIL
+
+02:18:17
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.15    Vitesse turn : 0.65    Vitesse tight turn : 0.0225
+La boule a dip  FAIL
+
+02:18:17
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.15    Vitesse turn : 0.65    Vitesse tight turn : 0.0525
+La boule a dip  FAIL
+
+02:18:17
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.15    Vitesse turn : 0.65    Vitesse tight turn : 0.075
+La boule a dip  FAIL
+
+02:18:18
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.15    Vitesse turn : 0.8    Vitesse tight turn : 0.0225
+La boule a dip  FAIL
+
+02:18:18
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.15    Vitesse turn : 0.8    Vitesse tight turn : 0.0525
+La boule a dip  FAIL
+
+02:18:18
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.15    Vitesse turn : 0.8    Vitesse tight turn : 0.075
+La boule a dip  FAIL
+
+02:18:18
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.16    Vitesse turn : 0.5    Vitesse tight turn : 0.024
+La boule a dip  FAIL
+
+02:18:19
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.16    Vitesse turn : 0.5    Vitesse tight turn : 0.056
+La boule a dip  FAIL
+
+02:18:19
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.16    Vitesse turn : 0.5    Vitesse tight turn : 0.08
+La boule a dip  FAIL
+
+02:18:20
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.16    Vitesse turn : 0.65    Vitesse tight turn : 0.024
+La boule a dip  FAIL
+
+02:18:20
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.16    Vitesse turn : 0.65    Vitesse tight turn : 0.056
+La boule a dip  FAIL
+
+02:18:20
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.16    Vitesse turn : 0.65    Vitesse tight turn : 0.08
+La boule a dip  FAIL
+
+02:18:21
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.16    Vitesse turn : 0.8    Vitesse tight turn : 0.024
+La boule a dip  FAIL
+
+02:18:21
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.16    Vitesse turn : 0.8    Vitesse tight turn : 0.056
+La boule a dip  FAIL
+
+02:18:21
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.16    Vitesse turn : 0.8    Vitesse tight turn : 0.08
+La boule a dip  FAIL
+
+02:18:22
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.17    Vitesse turn : 0.5    Vitesse tight turn : 0.0255
+La boule a dip  FAIL
+
+02:18:22
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.17    Vitesse turn : 0.5    Vitesse tight turn : 0.0595
+La boule a dip  FAIL
+
+02:18:23
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.17    Vitesse turn : 0.5    Vitesse tight turn : 0.085
+La boule a dip  FAIL
+
+02:18:23
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.17    Vitesse turn : 0.65    Vitesse tight turn : 0.0255
+La boule a dip  FAIL
+
+02:18:23
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.17    Vitesse turn : 0.65    Vitesse tight turn : 0.0595
+La boule a dip  FAIL
+
+02:18:23
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.17    Vitesse turn : 0.65    Vitesse tight turn : 0.085
+La boule a dip  FAIL
+
+02:18:24
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.17    Vitesse turn : 0.8    Vitesse tight turn : 0.0255
+La boule a dip  FAIL
+
+02:18:24
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.17    Vitesse turn : 0.8    Vitesse tight turn : 0.0595
+La boule a dip  FAIL
+
+02:18:25
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.17    Vitesse turn : 0.8    Vitesse tight turn : 0.085
+La boule a dip  FAIL
+
+02:18:25
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.175    Vitesse turn : 0.5    Vitesse tight turn : 0.02625
+La boule a dip  FAIL
+
+02:18:26
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.175    Vitesse turn : 0.5    Vitesse tight turn : 0.06125
+La boule a dip  FAIL
+
+02:18:26
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.175    Vitesse turn : 0.5    Vitesse tight turn : 0.0875
+La boule a dip  FAIL
+
+02:18:26
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.175    Vitesse turn : 0.65    Vitesse tight turn : 0.02625
+La boule a dip  FAIL
+
+02:18:27
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.175    Vitesse turn : 0.65    Vitesse tight turn : 0.06125
+La boule a dip  FAIL
+
+02:18:27
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.175    Vitesse turn : 0.65    Vitesse tight turn : 0.0875
+La boule a dip  FAIL
+
+02:18:27
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.175    Vitesse turn : 0.8    Vitesse tight turn : 0.02625
+La boule a dip  FAIL
+
+02:18:28
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.175    Vitesse turn : 0.8    Vitesse tight turn : 0.06125
+La boule a dip  FAIL
+
+02:18:28
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.175    Vitesse turn : 0.8    Vitesse tight turn : 0.0875
+La boule a dip  FAIL
+
+02:18:28
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.18    Vitesse turn : 0.5    Vitesse tight turn : 0.027
+La boule a dip  FAIL
+
+02:18:28
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.18    Vitesse turn : 0.5    Vitesse tight turn : 0.063
+La boule a dip  FAIL
+
+02:18:29
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.18    Vitesse turn : 0.5    Vitesse tight turn : 0.09
+La boule a dip  FAIL
+
+02:18:29
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.18    Vitesse turn : 0.65    Vitesse tight turn : 0.027
+La boule a dip  FAIL
+
+02:18:29
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.18    Vitesse turn : 0.65    Vitesse tight turn : 0.063
+La boule a dip  FAIL
+
+02:18:30
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.18    Vitesse turn : 0.65    Vitesse tight turn : 0.09
+La boule a dip  FAIL
+
+02:18:30
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.18    Vitesse turn : 0.8    Vitesse tight turn : 0.027
+La boule a dip  FAIL
+
+02:18:31
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.18    Vitesse turn : 0.8    Vitesse tight turn : 0.063
+La boule a dip  FAIL
+
+02:18:31
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.18    Vitesse turn : 0.8    Vitesse tight turn : 0.09
+La boule a dip  FAIL
+
+02:18:31
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.185    Vitesse turn : 0.5    Vitesse tight turn : 0.02775
+La boule a dip  FAIL
+
+02:18:32
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.185    Vitesse turn : 0.5    Vitesse tight turn : 0.06475
+La boule a dip  FAIL
+
+02:18:32
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.185    Vitesse turn : 0.5    Vitesse tight turn : 0.0925
+La boule a dip  FAIL
+
+02:18:33
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.185    Vitesse turn : 0.65    Vitesse tight turn : 0.02775
+La boule a dip  FAIL
+
+02:18:33
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.185    Vitesse turn : 0.65    Vitesse tight turn : 0.06475
+La boule a dip  FAIL
+
+02:18:33
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.185    Vitesse turn : 0.65    Vitesse tight turn : 0.0925
+La boule a dip  FAIL
+
+02:18:34
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.185    Vitesse turn : 0.8    Vitesse tight turn : 0.02775
+La boule a dip  FAIL
+
+02:18:34
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.185    Vitesse turn : 0.8    Vitesse tight turn : 0.06475
+La boule a dip  FAIL
+
+02:18:34
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.185    Vitesse turn : 0.8    Vitesse tight turn : 0.0925
+La boule a dip  FAIL
+
+02:18:35
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.19    Vitesse turn : 0.5    Vitesse tight turn : 0.0285
+La boule a dip  FAIL
+
+02:18:35
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.19    Vitesse turn : 0.5    Vitesse tight turn : 0.0665
+La boule a dip  FAIL
+
+02:18:35
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.19    Vitesse turn : 0.5    Vitesse tight turn : 0.095
+La boule a dip  FAIL
+
+02:18:36
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.19    Vitesse turn : 0.65    Vitesse tight turn : 0.0285
+La boule a dip  FAIL
+
+02:18:36
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.19    Vitesse turn : 0.65    Vitesse tight turn : 0.0665
+La boule a dip  FAIL
+
+02:18:36
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.19    Vitesse turn : 0.65    Vitesse tight turn : 0.095
+La boule a dip  FAIL
+
+02:18:37
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.19    Vitesse turn : 0.8    Vitesse tight turn : 0.0285
+La boule a dip  FAIL
+
+02:18:37
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.19    Vitesse turn : 0.8    Vitesse tight turn : 0.0665
+La boule a dip  FAIL
+
+02:18:37
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.19    Vitesse turn : 0.8    Vitesse tight turn : 0.095
+La boule a dip  FAIL
+
+02:18:37
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.2    Vitesse turn : 0.5    Vitesse tight turn : 0.03
+La boule a dip  FAIL
+
+02:18:38
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.2    Vitesse turn : 0.5    Vitesse tight turn : 0.07
+La boule a dip  FAIL
+
+02:18:38
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.2    Vitesse turn : 0.5    Vitesse tight turn : 0.1
+La boule a dip  FAIL
+
+02:18:39
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.2    Vitesse turn : 0.65    Vitesse tight turn : 0.03
+La boule a dip  FAIL
+
+02:18:39
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.2    Vitesse turn : 0.65    Vitesse tight turn : 0.07
+La boule a dip  FAIL
+
+02:18:39
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.2    Vitesse turn : 0.65    Vitesse tight turn : 0.1
+La boule a dip  FAIL
+
+02:18:40
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.2    Vitesse turn : 0.8    Vitesse tight turn : 0.03
+La boule a dip  FAIL
+
+02:18:40
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.2    Vitesse turn : 0.8    Vitesse tight turn : 0.07
+La boule a dip  FAIL
+
+02:18:40
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.2    Vitesse turn : 0.8    Vitesse tight turn : 0.1
+La boule a dip  FAIL
+
+02:18:41
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.22    Vitesse turn : 0.5    Vitesse tight turn : 0.033
+La boule a dip  FAIL
+
+02:18:41
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.22    Vitesse turn : 0.5    Vitesse tight turn : 0.077
+La boule a dip  FAIL
+
+02:18:41
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.22    Vitesse turn : 0.5    Vitesse tight turn : 0.11
+La boule a dip  FAIL
+
+02:18:42
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.22    Vitesse turn : 0.65    Vitesse tight turn : 0.033
+La boule a dip  FAIL
+
+02:18:42
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.22    Vitesse turn : 0.65    Vitesse tight turn : 0.077
+La boule a dip  FAIL
+
+02:18:42
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.22    Vitesse turn : 0.65    Vitesse tight turn : 0.11
+La boule a dip  FAIL
+
+02:18:43
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.22    Vitesse turn : 0.8    Vitesse tight turn : 0.033
+La boule a dip  FAIL
+
+02:18:43
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.22    Vitesse turn : 0.8    Vitesse tight turn : 0.077
+La boule a dip  FAIL
+
+02:18:43
+Valeurs du parcours:
+Acceleration : 0.75    Vmax : 0.22    Vitesse turn : 0.8    Vitesse tight turn : 0.11
+La boule a dip  FAIL
+
+02:20:00
+Valeurs du parcours:
+Acceleration : 0.09    Vmax : 0.14    Vitesse turn : 0.5    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+02:21:14
+Valeurs du parcours:
+Acceleration : 0.09    Vmax : 0.14    Vitesse turn : 0.65    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+02:22:30
+Valeurs du parcours:
+Acceleration : 0.09    Vmax : 0.14    Vitesse turn : 0.8    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+
+02:23:41
+Valeurs du parcours:
+Acceleration : 0.09    Vmax : 0.15    Vitesse turn : 0.5    Vitesse tight turn : 0.5
+Le suiveur de ligne suit pus les lignes  FAIL
+

@@ -5,7 +5,7 @@ const State = Enums.State
 var Movement = load("res://scripts/classes/Movement.gd")
 var MovementArray = load("res://scripts/classes/Movement_Array.gd")
 var stuff = 1
-
+signal test_completed
 """ EXPLICATION ACCÉLÉRATION
 En théorie, l'accélération est sensée être g*h/x où h est la profondeur de la
 plaquette et x est le rayon. Cela nous donnerait une accel max de 7.35 m/s^2, 
@@ -64,8 +64,8 @@ func _ready():
 	capteurs_SL = [false, false, false, false, false]
 	ACCELERATION = Settings.acceleration
 	V_MAX = Settings.v_max
-	V_TURN = Settings.v_turn
-	V_TIGHT_TURN = Settings.v_tight_turn
+	V_TURN = Settings.v_turn * V_MAX
+	V_TIGHT_TURN = Settings.v_tight_turn * V_MAX
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -103,9 +103,10 @@ func _physics_process(delta):
 			update_state_label()	
 			if !line_detected():
 				write_to_log("Valeurs du parcours:\n" + "Acceleration : " + str(ACCELERATION) + "    Vmax : " + str(V_MAX) 
-				+ "    Vitesse turn : " + str(V_TURN) + "    Vitesse tight turn : " + str(V_TIGHT_TURN)
-				+ "\nLe suiveur de ligne suit pus les lignes   FAIL")
-				get_tree().quit()
+				+ "    Vitesse turn : " + str(Settings.v_turn) + "    Vitesse tight turn : " + str(Settings.v_tight_turn)
+				+ "\nLe suiveur de ligne suit pus les lignes   FAIL", "fail")
+				#get_tree().quit()
+				emit_signal("test_completed")
 			
 		State.turning_right:
 			tick_counter += 1
@@ -118,9 +119,10 @@ func _physics_process(delta):
 			update_state_label()
 			if !line_detected():
 				write_to_log("Valeurs du parcours:\n" + "Acceleration : " + str(ACCELERATION) + "    Vmax : " + str(V_MAX) 
-				+ "    Vitesse turn : " + str(V_TURN) + "    Vitesse tight turn : " + str(V_TIGHT_TURN)
-				+ "\nLe suiveur de ligne suit pus les lignes   FAIL")
-				get_tree().quit()
+				+ "    Vitesse turn : " + str(Settings.v_turn) + "    Vitesse tight turn : " + str(Settings.v_tight_turn)
+				+ "\nLe suiveur de ligne suit pus les lignes   FAIL", "fail")
+				#get_tree().quit()
+				emit_signal("test_completed")
 			
 		State.manual_control:
 			if Input.is_key_pressed(KEY_W):
@@ -218,9 +220,10 @@ func suivre_ligne(delta, speed, use_90deg_turns=false):
 			new_speed -= ACCELERATION * delta
 		#new_state = State.manual_control
 		write_to_log("Valeurs du parcours:\n" + "Acceleration : " + str(ACCELERATION) + "    Vmax : " + str(V_MAX) 
-		+ "    Vitesse turn : " + str(V_TURN) + "    Vitesse tight turn : " + str(V_TIGHT_TURN)
-		+ "\nLe suiveur de ligne suit pus les lignes  FAIL")
-		get_tree().quit()
+		+ "    Vitesse turn : " + str(Settings.v_turn) + "    Vitesse tight turn : " + str(Settings.v_tight_turn)
+		+ "\nLe suiveur de ligne suit pus les lignes  FAIL", "fail")
+		emit_signal("test_completed")
+		#get_tree().quit()
 		
 	elif capteurs_SL == [false, false, true, false, false]:
 		if speed < V_MAX:
@@ -395,13 +398,13 @@ func _on_capteur_fin_area_entered(area):
 		var end_time = Time.get_ticks_msec()
 		var elapsed_time = (end_time - start_time) / 1000.0
 		write_to_log("Valeurs du parcours:\n" + "Acceleration : " + str(ACCELERATION) + "    Vmax : " + str(V_MAX) 
-		+ "    Vitesse turn : " + str(V_TURN) + "    Vitesse tight turn : " + str(V_TIGHT_TURN) 
+		+ "    Vitesse turn : " + str(Settings.v_turn) + "    Vitesse tight turn : " + str(Settings.v_tight_turn) 
 		+ "\nTime taken: " + str(elapsed_time) + " seconds")
-		get_tree().quit()
+		emit_signal("test_completed")
 		
-func write_to_log(message: String):
+func write_to_log(message: String, filename="success"):
 	var today_date = Time.get_date_string_from_system()  # Format: "YYYY-MM-DD"
-	var path = "res://log/" + today_date + ".txt"
+	var path = "res://log/" + filename + "_" + today_date + ".txt"
 
 	# Check if the file exists, and create it if it doesn't
 	if !FileAccess.file_exists(path):
@@ -419,12 +422,11 @@ func write_to_log(message: String):
 	
 	
 
-
-
 func _on_boule_fell_capteur_body_entered(body):
 	if body.name == "Boule":  # Replace with the actual name of your ball node
 		write_to_log("Valeurs du parcours:\n" + "Acceleration : " + str(ACCELERATION) + "    Vmax : " + str(V_MAX) 
-		+ "    Vitesse turn : " + str(V_TURN) + "    Vitesse tight turn : " + str(V_TIGHT_TURN)
-		+ "\nLa boule a dip  FAIL")
-		get_tree().quit()
+		+ "    Vitesse turn : " + str(Settings.v_turn) + "    Vitesse tight turn : " + str(V_TIGHT_TURN)
+		+ "\nLa boule a dip  FAIL", "fail")
+		#get_tree().quit()
+		emit_signal("test_completed")
 		# Handle the fall, such as resetting the ball position or ending the simulation

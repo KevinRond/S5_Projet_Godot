@@ -81,7 +81,7 @@ shape = SubResource("ConcavePolygonShape3D_mh38x")
 transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="parcours/Parcours Picar/Finish"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.698, 1.23102, 18.8702)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.01978, 0.969061, 6.14485)
 shape = SubResource("BoxShape3D_vrqu0")
 
 [node name="Label_Bouton" parent="." instance=ExtResource("10_87wma")]

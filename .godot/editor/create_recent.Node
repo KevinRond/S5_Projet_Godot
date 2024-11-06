@@ -1,3 +1,4 @@
+Node2D
 CSGCylinder3D
 PathFollow3D
 Path3D
@@ -12,4 +13,3 @@ Button
 Area3D
 RayCast3D
 Node
-WorldEnvironment

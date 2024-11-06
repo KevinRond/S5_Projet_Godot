@@ -1,0 +1,825 @@
+00:44:42
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.14    Vitesse turn : 0.5    Vitesse tight turn : 0.15
+Time taken: 38.596 seconds
+
+00:45:10
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.14    Vitesse turn : 0.5    Vitesse tight turn : 0.35
+Time taken: 28.404 seconds
+
+00:45:54
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.14    Vitesse turn : 0.65    Vitesse tight turn : 0.15
+Time taken: 37.989 seconds
+
+00:46:22
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.14    Vitesse turn : 0.65    Vitesse tight turn : 0.35
+Time taken: 28.427 seconds
+
+00:47:05
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.14    Vitesse turn : 0.8    Vitesse tight turn : 0.15
+Time taken: 37.563 seconds
+
+00:47:34
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.14    Vitesse turn : 0.8    Vitesse tight turn : 0.35
+Time taken: 28.127 seconds
+
+00:48:16
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.15    Vitesse turn : 0.5    Vitesse tight turn : 0.15
+Time taken: 36.889 seconds
+
+00:48:43
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.15    Vitesse turn : 0.5    Vitesse tight turn : 0.35
+Time taken: 26.807 seconds
+
+00:49:25
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.15    Vitesse turn : 0.65    Vitesse tight turn : 0.15
+Time taken: 36.413 seconds
+
+00:49:52
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.15    Vitesse turn : 0.65    Vitesse tight turn : 0.35
+Time taken: 27.54 seconds
+
+00:50:33
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.15    Vitesse turn : 0.8    Vitesse tight turn : 0.15
+Time taken: 35.85 seconds
+
+00:51:00
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.15    Vitesse turn : 0.8    Vitesse tight turn : 0.35
+Time taken: 26.914 seconds
+
+00:51:41
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.16    Vitesse turn : 0.5    Vitesse tight turn : 0.15
+Time taken: 35.551 seconds
+
+00:52:07
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.16    Vitesse turn : 0.5    Vitesse tight turn : 0.35
+Time taken: 25.506 seconds
+
+00:52:47
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.16    Vitesse turn : 0.65    Vitesse tight turn : 0.15
+Time taken: 35.045 seconds
+
+00:53:12
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.16    Vitesse turn : 0.65    Vitesse tight turn : 0.35
+Time taken: 25.364 seconds
+
+00:53:52
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.16    Vitesse turn : 0.8    Vitesse tight turn : 0.15
+Time taken: 34.113 seconds
+
+00:54:18
+Valeurs du parcours:
+Acceleration : 0.04    Vmax : 0.16    Vitesse turn : 0.8    Vitesse tight turn : 0.35
+Time taken: 25.758 seconds
+
+00:59:17
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.14    Vitesse turn : 0.5    Vitesse tight turn : 0.15
+Time taken: 39.434 seconds
+
+00:59:45
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.14    Vitesse turn : 0.5    Vitesse tight turn : 0.35
+Time taken: 28.219 seconds
+
+01:00:30
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.14    Vitesse turn : 0.65    Vitesse tight turn : 0.15
+Time taken: 39.269 seconds
+
+01:00:59
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.14    Vitesse turn : 0.65    Vitesse tight turn : 0.35
+Time taken: 28.441 seconds
+
+01:01:43
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.14    Vitesse turn : 0.8    Vitesse tight turn : 0.15
+Time taken: 38.475 seconds
+
+01:02:11
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.14    Vitesse turn : 0.8    Vitesse tight turn : 0.35
+Time taken: 28.1 seconds
+
+01:02:55
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.15    Vitesse turn : 0.5    Vitesse tight turn : 0.15
+Time taken: 37.816 seconds
+
+01:03:22
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.15    Vitesse turn : 0.5    Vitesse tight turn : 0.35
+Time taken: 26.981 seconds
+
+01:04:04
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.15    Vitesse turn : 0.65    Vitesse tight turn : 0.15
+Time taken: 37.227 seconds
+
+01:04:31
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.15    Vitesse turn : 0.65    Vitesse tight turn : 0.35
+Time taken: 26.923 seconds
+
+01:05:13
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.15    Vitesse turn : 0.8    Vitesse tight turn : 0.15
+Time taken: 37.204 seconds
+
+01:05:40
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.15    Vitesse turn : 0.8    Vitesse tight turn : 0.35
+Time taken: 26.455 seconds
+
+01:06:22
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.16    Vitesse turn : 0.5    Vitesse tight turn : 0.15
+Time taken: 36.796 seconds
+
+01:06:48
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.16    Vitesse turn : 0.5    Vitesse tight turn : 0.35
+Time taken: 25.387 seconds
+
+01:07:29
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.16    Vitesse turn : 0.65    Vitesse tight turn : 0.15
+Time taken: 36.749 seconds
+
+01:07:55
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.16    Vitesse turn : 0.65    Vitesse tight turn : 0.35
+Time taken: 25.478 seconds
+
+01:08:35
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.16    Vitesse turn : 0.8    Vitesse tight turn : 0.15
+Time taken: 35.605 seconds
+
+01:09:01
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.16    Vitesse turn : 0.8    Vitesse tight turn : 0.35
+Time taken: 25.206 seconds
+
+01:09:41
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.17    Vitesse turn : 0.5    Vitesse tight turn : 0.15
+Time taken: 35.275 seconds
+
+01:10:05
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.17    Vitesse turn : 0.5    Vitesse tight turn : 0.35
+Time taken: 24.029 seconds
+
+01:10:45
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.17    Vitesse turn : 0.65    Vitesse tight turn : 0.15
+Time taken: 35.077 seconds
+
+01:11:09
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.17    Vitesse turn : 0.65    Vitesse tight turn : 0.35
+Time taken: 24.043 seconds
+
+01:11:48
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.17    Vitesse turn : 0.8    Vitesse tight turn : 0.15
+Time taken: 33.858 seconds
+
+01:12:12
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.17    Vitesse turn : 0.8    Vitesse tight turn : 0.35
+Time taken: 24.009 seconds
+
+01:12:51
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.175    Vitesse turn : 0.5    Vitesse tight turn : 0.15
+Time taken: 34.582 seconds
+
+01:13:15
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.175    Vitesse turn : 0.5    Vitesse tight turn : 0.35
+Time taken: 23.474 seconds
+
+01:13:54
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.175    Vitesse turn : 0.65    Vitesse tight turn : 0.15
+Time taken: 34.265 seconds
+
+01:14:18
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.175    Vitesse turn : 0.65    Vitesse tight turn : 0.35
+Time taken: 23.434 seconds
+
+01:14:56
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.175    Vitesse turn : 0.8    Vitesse tight turn : 0.15
+Time taken: 33.552 seconds
+
+01:15:19
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.175    Vitesse turn : 0.8    Vitesse tight turn : 0.35
+Time taken: 23.69 seconds
+
+01:15:58
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.18    Vitesse turn : 0.5    Vitesse tight turn : 0.15
+Time taken: 33.87 seconds
+
+01:16:22
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.18    Vitesse turn : 0.5    Vitesse tight turn : 0.35
+Time taken: 23.793 seconds
+
+01:16:59
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.18    Vitesse turn : 0.65    Vitesse tight turn : 0.15
+Time taken: 33.186 seconds
+
+01:17:22
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.18    Vitesse turn : 0.65    Vitesse tight turn : 0.35
+Time taken: 22.78 seconds
+
+01:17:59
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.18    Vitesse turn : 0.8    Vitesse tight turn : 0.15
+Time taken: 32.429 seconds
+
+01:18:22
+Valeurs du parcours:
+Acceleration : 0.05    Vmax : 0.18    Vitesse turn : 0.8    Vitesse tight turn : 0.35
+Time taken: 22.835 seconds
+
+01:22:00
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.14    Vitesse turn : 0.5    Vitesse tight turn : 0.35
+Time taken: 28.351 seconds
+
+01:22:46
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.14    Vitesse turn : 0.65    Vitesse tight turn : 0.15
+Time taken: 40 seconds
+
+01:23:14
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.14    Vitesse turn : 0.65    Vitesse tight turn : 0.35
+Time taken: 28.438 seconds
+
+01:23:59
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.14    Vitesse turn : 0.8    Vitesse tight turn : 0.15
+Time taken: 39.514 seconds
+
+01:24:28
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.14    Vitesse turn : 0.8    Vitesse tight turn : 0.35
+Time taken: 28.254 seconds
+
+01:25:11
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.15    Vitesse turn : 0.5    Vitesse tight turn : 0.15
+Time taken: 38.154 seconds
+
+01:25:38
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.15    Vitesse turn : 0.5    Vitesse tight turn : 0.35
+Time taken: 27.046 seconds
+
+01:26:21
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.15    Vitesse turn : 0.65    Vitesse tight turn : 0.15
+Time taken: 37.87 seconds
+
+01:26:48
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.15    Vitesse turn : 0.65    Vitesse tight turn : 0.35
+Time taken: 26.744 seconds
+
+01:27:31
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.15    Vitesse turn : 0.8    Vitesse tight turn : 0.15
+Time taken: 37.543 seconds
+
+01:27:58
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.15    Vitesse turn : 0.8    Vitesse tight turn : 0.35
+Time taken: 27.073 seconds
+
+01:28:41
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.16    Vitesse turn : 0.5    Vitesse tight turn : 0.15
+Time taken: 36.939 seconds
+
+01:29:07
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.16    Vitesse turn : 0.5    Vitesse tight turn : 0.35
+Time taken: 25.796 seconds
+
+01:29:48
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.16    Vitesse turn : 0.65    Vitesse tight turn : 0.15
+Time taken: 36.517 seconds
+
+01:30:13
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.16    Vitesse turn : 0.65    Vitesse tight turn : 0.35
+Time taken: 25.283 seconds
+
+01:30:54
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.16    Vitesse turn : 0.8    Vitesse tight turn : 0.15
+Time taken: 36.328 seconds
+
+01:31:20
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.16    Vitesse turn : 0.8    Vitesse tight turn : 0.35
+Time taken: 25.679 seconds
+
+01:32:01
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.17    Vitesse turn : 0.5    Vitesse tight turn : 0.15
+Time taken: 35.712 seconds
+
+01:32:25
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.17    Vitesse turn : 0.5    Vitesse tight turn : 0.35
+Time taken: 24.242 seconds
+
+01:33:05
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.17    Vitesse turn : 0.65    Vitesse tight turn : 0.15
+Time taken: 34.986 seconds
+
+01:33:29
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.17    Vitesse turn : 0.65    Vitesse tight turn : 0.35
+Time taken: 24.02 seconds
+
+01:34:08
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.17    Vitesse turn : 0.8    Vitesse tight turn : 0.15
+Time taken: 34.484 seconds
+
+01:34:33
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.17    Vitesse turn : 0.8    Vitesse tight turn : 0.35
+Time taken: 24.114 seconds
+
+01:35:13
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.175    Vitesse turn : 0.5    Vitesse tight turn : 0.15
+Time taken: 35.328 seconds
+
+01:35:37
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.175    Vitesse turn : 0.5    Vitesse tight turn : 0.35
+Time taken: 23.65 seconds
+
+01:36:16
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.175    Vitesse turn : 0.65    Vitesse tight turn : 0.15
+Time taken: 34.86 seconds
+
+01:36:40
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.175    Vitesse turn : 0.65    Vitesse tight turn : 0.35
+Time taken: 23.494 seconds
+
+01:37:18
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.175    Vitesse turn : 0.8    Vitesse tight turn : 0.15
+Time taken: 34.159 seconds
+
+01:37:42
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.175    Vitesse turn : 0.8    Vitesse tight turn : 0.35
+Time taken: 23.395 seconds
+
+01:38:21
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.18    Vitesse turn : 0.5    Vitesse tight turn : 0.15
+Time taken: 34.646 seconds
+
+01:38:44
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.18    Vitesse turn : 0.5    Vitesse tight turn : 0.35
+Time taken: 23.057 seconds
+
+01:39:23
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.18    Vitesse turn : 0.65    Vitesse tight turn : 0.15
+Time taken: 34.267 seconds
+
+01:39:46
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.18    Vitesse turn : 0.65    Vitesse tight turn : 0.35
+Time taken: 22.954 seconds
+
+01:40:24
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.18    Vitesse turn : 0.8    Vitesse tight turn : 0.15
+Time taken: 33.57 seconds
+
+01:40:47
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.18    Vitesse turn : 0.8    Vitesse tight turn : 0.35
+Time taken: 23.058 seconds
+
+01:41:26
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.185    Vitesse turn : 0.5    Vitesse tight turn : 0.15
+Time taken: 34.17 seconds
+
+01:41:49
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.185    Vitesse turn : 0.5    Vitesse tight turn : 0.35
+Time taken: 22.57 seconds
+
+01:42:27
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.185    Vitesse turn : 0.65    Vitesse tight turn : 0.15
+Time taken: 33.545 seconds
+
+01:42:49
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.185    Vitesse turn : 0.65    Vitesse tight turn : 0.35
+Time taken: 22.359 seconds
+
+01:43:26
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.185    Vitesse turn : 0.8    Vitesse tight turn : 0.15
+Time taken: 33.124 seconds
+
+01:43:49
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.185    Vitesse turn : 0.8    Vitesse tight turn : 0.35
+Time taken: 22.481 seconds
+
+01:44:27
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.19    Vitesse turn : 0.5    Vitesse tight turn : 0.15
+Time taken: 33.389 seconds
+
+01:44:49
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.19    Vitesse turn : 0.5    Vitesse tight turn : 0.35
+Time taken: 21.996 seconds
+
+01:45:27
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.19    Vitesse turn : 0.65    Vitesse tight turn : 0.15
+Time taken: 33.284 seconds
+
+01:45:49
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.19    Vitesse turn : 0.65    Vitesse tight turn : 0.35
+Time taken: 21.838 seconds
+
+01:46:25
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.19    Vitesse turn : 0.8    Vitesse tight turn : 0.15
+Time taken: 31.983 seconds
+
+01:46:47
+Valeurs du parcours:
+Acceleration : 0.06    Vmax : 0.19    Vitesse turn : 0.8    Vitesse tight turn : 0.35
+Time taken: 21.845 seconds
+
+01:49:08
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.14    Vitesse turn : 0.5    Vitesse tight turn : 0.15
+Time taken: 40.046 seconds
+
+01:49:36
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.14    Vitesse turn : 0.5    Vitesse tight turn : 0.35
+Time taken: 28.183 seconds
+
+01:50:22
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.14    Vitesse turn : 0.65    Vitesse tight turn : 0.15
+Time taken: 39.727 seconds
+
+01:50:50
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.14    Vitesse turn : 0.65    Vitesse tight turn : 0.35
+Time taken: 28.42 seconds
+
+01:51:35
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.14    Vitesse turn : 0.8    Vitesse tight turn : 0.15
+Time taken: 39.672 seconds
+
+01:52:04
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.14    Vitesse turn : 0.8    Vitesse tight turn : 0.35
+Time taken: 28.458 seconds
+
+01:52:48
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.15    Vitesse turn : 0.5    Vitesse tight turn : 0.15
+Time taken: 38.116 seconds
+
+01:53:15
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.15    Vitesse turn : 0.5    Vitesse tight turn : 0.35
+Time taken: 26.733 seconds
+
+01:53:57
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.15    Vitesse turn : 0.65    Vitesse tight turn : 0.15
+Time taken: 37.683 seconds
+
+01:54:24
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.15    Vitesse turn : 0.65    Vitesse tight turn : 0.35
+Time taken: 26.684 seconds
+
+01:55:07
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.15    Vitesse turn : 0.8    Vitesse tight turn : 0.15
+Time taken: 37.473 seconds
+
+01:55:34
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.15    Vitesse turn : 0.8    Vitesse tight turn : 0.35
+Time taken: 27.03 seconds
+
+01:56:16
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.16    Vitesse turn : 0.5    Vitesse tight turn : 0.15
+Time taken: 37.51 seconds
+
+01:56:42
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.16    Vitesse turn : 0.5    Vitesse tight turn : 0.35
+Time taken: 25.698 seconds
+
+01:57:24
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.16    Vitesse turn : 0.65    Vitesse tight turn : 0.15
+Time taken: 36.756 seconds
+
+01:57:50
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.16    Vitesse turn : 0.65    Vitesse tight turn : 0.35
+Time taken: 25.693 seconds
+
+01:58:37
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.16    Vitesse turn : 0.8    Vitesse tight turn : 0.15
+Time taken: 36.868 seconds
+
+01:59:04
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.16    Vitesse turn : 0.8    Vitesse tight turn : 0.35
+Time taken: 26.008 seconds
+
+01:59:50
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.17    Vitesse turn : 0.5    Vitesse tight turn : 0.15
+Time taken: 39.437 seconds
+
+02:00:15
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.17    Vitesse turn : 0.5    Vitesse tight turn : 0.35
+Time taken: 24.322 seconds
+
+02:00:55
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.17    Vitesse turn : 0.65    Vitesse tight turn : 0.15
+Time taken: 36.003 seconds
+
+02:01:20
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.17    Vitesse turn : 0.65    Vitesse tight turn : 0.35
+Time taken: 24.42 seconds
+
+02:02:00
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.17    Vitesse turn : 0.8    Vitesse tight turn : 0.15
+Time taken: 35.586 seconds
+
+02:02:24
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.17    Vitesse turn : 0.8    Vitesse tight turn : 0.35
+Time taken: 23.893 seconds
+
+02:03:04
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.175    Vitesse turn : 0.5    Vitesse tight turn : 0.15
+Time taken: 35.329 seconds
+
+02:03:27
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.175    Vitesse turn : 0.5    Vitesse tight turn : 0.35
+Time taken: 23.271 seconds
+
+02:04:07
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.175    Vitesse turn : 0.65    Vitesse tight turn : 0.15
+Time taken: 35.171 seconds
+
+02:04:31
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.175    Vitesse turn : 0.65    Vitesse tight turn : 0.35
+Time taken: 23.745 seconds
+
+02:05:10
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.175    Vitesse turn : 0.8    Vitesse tight turn : 0.15
+Time taken: 34.575 seconds
+
+02:05:34
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.175    Vitesse turn : 0.8    Vitesse tight turn : 0.35
+Time taken: 23.324 seconds
+
+02:06:13
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.18    Vitesse turn : 0.5    Vitesse tight turn : 0.15
+Time taken: 35.083 seconds
+
+02:06:37
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.18    Vitesse turn : 0.5    Vitesse tight turn : 0.35
+Time taken: 23.278 seconds
+
+02:07:15
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.18    Vitesse turn : 0.65    Vitesse tight turn : 0.15
+Time taken: 34.454 seconds
+
+02:07:39
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.18    Vitesse turn : 0.65    Vitesse tight turn : 0.35
+Time taken: 23.469 seconds
+
+02:08:17
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.18    Vitesse turn : 0.8    Vitesse tight turn : 0.15
+Time taken: 34.132 seconds
+
+02:08:40
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.18    Vitesse turn : 0.8    Vitesse tight turn : 0.35
+Time taken: 22.84 seconds
+
+02:09:19
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.185    Vitesse turn : 0.5    Vitesse tight turn : 0.15
+Time taken: 34.387 seconds
+
+02:09:42
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.185    Vitesse turn : 0.5    Vitesse tight turn : 0.35
+Time taken: 22.379 seconds
+
+02:10:20
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.185    Vitesse turn : 0.65    Vitesse tight turn : 0.15
+Time taken: 34.135 seconds
+
+02:10:43
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.185    Vitesse turn : 0.65    Vitesse tight turn : 0.35
+Time taken: 22.381 seconds
+
+02:11:21
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.185    Vitesse turn : 0.8    Vitesse tight turn : 0.15
+Time taken: 33.661 seconds
+
+02:11:44
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.185    Vitesse turn : 0.8    Vitesse tight turn : 0.35
+Time taken: 22.43 seconds
+
+02:12:22
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.19    Vitesse turn : 0.5    Vitesse tight turn : 0.15
+Time taken: 33.938 seconds
+
+02:12:44
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.19    Vitesse turn : 0.5    Vitesse tight turn : 0.35
+Time taken: 21.897 seconds
+
+02:13:22
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.19    Vitesse turn : 0.65    Vitesse tight turn : 0.15
+Time taken: 33.861 seconds
+
+02:13:44
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.19    Vitesse turn : 0.65    Vitesse tight turn : 0.35
+Time taken: 21.819 seconds
+
+02:14:21
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.19    Vitesse turn : 0.8    Vitesse tight turn : 0.15
+Time taken: 33.261 seconds
+
+02:14:43
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.19    Vitesse turn : 0.8    Vitesse tight turn : 0.35
+Time taken: 22.034 seconds
+
+02:15:22
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.2    Vitesse turn : 0.5    Vitesse tight turn : 0.15
+Time taken: 34.112 seconds
+
+02:15:43
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.2    Vitesse turn : 0.5    Vitesse tight turn : 0.35
+Time taken: 21.047 seconds
+
+02:16:20
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.2    Vitesse turn : 0.65    Vitesse tight turn : 0.15
+Time taken: 32.639 seconds
+
+02:16:41
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.2    Vitesse turn : 0.65    Vitesse tight turn : 0.35
+Time taken: 20.986 seconds
+
+02:17:17
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.2    Vitesse turn : 0.8    Vitesse tight turn : 0.15
+Time taken: 31.838 seconds
+
+02:17:38
+Valeurs du parcours:
+Acceleration : 0.07    Vmax : 0.2    Vitesse turn : 0.8    Vitesse tight turn : 0.35
+Time taken: 20.868 seconds
+
+02:19:25
+Valeurs du parcours:
+Acceleration : 0.09    Vmax : 0.14    Vitesse turn : 0.5    Vitesse tight turn : 0.15
+Time taken: 41.747 seconds
+
+02:19:54
+Valeurs du parcours:
+Acceleration : 0.09    Vmax : 0.14    Vitesse turn : 0.5    Vitesse tight turn : 0.35
+Time taken: 29.021 seconds
+
+02:20:41
+Valeurs du parcours:
+Acceleration : 0.09    Vmax : 0.14    Vitesse turn : 0.65    Vitesse tight turn : 0.15
+Time taken: 40.984 seconds
+
+02:21:09
+Valeurs du parcours:
+Acceleration : 0.09    Vmax : 0.14    Vitesse turn : 0.65    Vitesse tight turn : 0.35
+Time taken: 28.241 seconds
+
+02:21:56
+Valeurs du parcours:
+Acceleration : 0.09    Vmax : 0.14    Vitesse turn : 0.8    Vitesse tight turn : 0.15
+Time taken: 41.172 seconds
+
+02:22:24
+Valeurs du parcours:
+Acceleration : 0.09    Vmax : 0.14    Vitesse turn : 0.8    Vitesse tight turn : 0.35
+Time taken: 28.183 seconds
+
+02:23:09
+Valeurs du parcours:
+Acceleration : 0.09    Vmax : 0.15    Vitesse turn : 0.5    Vitesse tight turn : 0.15
+Time taken: 39.071 seconds
+
+02:23:36
+Valeurs du parcours:
+Acceleration : 0.09    Vmax : 0.15    Vitesse turn : 0.5    Vitesse tight turn : 0.35
+Time taken: 26.73 seconds
+
+02:24:20
+Valeurs du parcours:
+Acceleration : 0.09    Vmax : 0.15    Vitesse turn : 0.65    Vitesse tight turn : 0.15
+Time taken: 38.723 seconds
+
+02:24:47
+Valeurs du parcours:
+Acceleration : 0.09    Vmax : 0.15    Vitesse turn : 0.65    Vitesse tight turn : 0.35
+Time taken: 27.026 seconds
+
