@@ -17,14 +17,14 @@ func add_move(movement: Movement):
 	else:
 		while (total_distance + movement.displacement) > MAX_DISPLACEMENT:
 			if array.size() > 0: # this condition shouldnt be possible but wtv
-				array[0].print_movement()
+				# array[0].print_movement()
 				total_distance -= array[0].displacement
 				array.pop_front()
 			
 		array.append(movement)
 		total_distance += movement.displacement
 		
-	movement.print_movement()
+	# movement.print_movement()
 	
 func get_last_move():
 	var move = array.back()
