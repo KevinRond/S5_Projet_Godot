@@ -1,11 +1,14 @@
 extends Node2D
 
+var track_scene_path = Globals.scene_path
+
 @onready var acceleration_spinbox = $AccelerationSpinBox
 @onready var vmax_spinbox = $VmaxSpinBox
 @onready var vturn_spinbox = $VturnSpinBox
 @onready var vtight_turn_spinbox = $VtightTurnSpinBox
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	print(track_scene_path)
 	#Set spin boxes
 	acceleration_spinbox.min_value = 0.0000001
 	acceleration_spinbox.max_value = 1000
@@ -32,7 +35,8 @@ func _ready():
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if Input.is_key_pressed(KEY_ESCAPE):
+		get_tree().change_scene_to_file("res://main.tscn")
 
 
 func _on_start_button_pressed():
@@ -40,4 +44,8 @@ func _on_start_button_pressed():
 	Settings.v_max = vmax_spinbox.value
 	Settings.v_turn = vturn_spinbox.value
 	Settings.v_tight_turn = vtight_turn_spinbox.value
-	get_tree().change_scene_to_file("res://scenes/parcours/Parcours_Reel/parcours_reel.tscn")
+	get_tree().change_scene_to_file(track_scene_path)
+
+
+func _on_run_tests_button_pressed():
+	get_tree().change_scene_to_file("res://scenes/Test_Runner/test_runner.tscn")
