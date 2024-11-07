@@ -8,6 +8,9 @@ var ACCELERATION = 0.08 #((9.8*0.0018)/0.002)/1500 # 0.0049 m/s^2
 var V_MAX = 0.15
 var state = State.manual_control
 var tick_counter = 0
+var start_time = 0
+var log_done = false
+var utils = load("res://scenes/Pi_car/scripts/utils.gd").new()
 
 enum State { manual_control, following_line, turning_left, turning_right, tight_left_turn, tight_right_turn, no_line, line_end }
 
@@ -16,9 +19,12 @@ enum State { manual_control, following_line, turning_left, turning_right, tight_
 @onready var indicateur_capt3 = $Indicateur_Capteur3
 @onready var indicateur_capt4 = $Indicateur_Capteur4
 @onready var indicateur_capt5 = $Indicateur_Capteur5
+@onready var state_label = $Label_State
+@onready var speed_label = $Label_Speed
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	start_time = Time.get_ticks_msec()
 	nfsm = $"../NetworkFSM"
 	capteurs_SL = [false, false, false, false, false]
 	print(indicateur_capt1)
@@ -113,6 +119,8 @@ func _process(delta):
 			if speed > 0:
 				speed -= ACCELERATION * delta
 			state = State.line_end
+			if !(log_done):
+				log_end()
 		
 		State.manual_control:
 			if Input.is_key_pressed(KEY_W):
@@ -134,6 +142,8 @@ func _process(delta):
 				state = State.following_line
 			
 	translate(Vector3(-delta * speed, 0, 0))
+	update_speed_label()
+	update_state_label()
 
 	# print("Vitesse courante: %f" % speed)
 	
@@ -335,4 +345,37 @@ func _on_capteur_5_area_exited(area):
 func _on_capteur_fin_area_entered(area):
 	if area.name.begins_with("Finish"):
 		get_tree().quit()
+		
+		
+func update_speed_label():
+	speed_label.text = "Vitesse: %.3f m/s" % speed
 
+	
+func update_state_label():
+	state_label.text = utils.set_state_text(state)
+
+func write_to_log(message: String, filename="success"):
+	var today_date = Time.get_date_string_from_system()  # Format: "YYYY-MM-DD"
+	var path = "res://log/" + filename + "_" + today_date + ".txt"
+
+	# Check if the file exists, and create it if it doesn't
+	if !FileAccess.file_exists(path):
+		var file = FileAccess.open(path, FileAccess.WRITE)
+		file.close()
+
+	var file = FileAccess.open(path, FileAccess.READ_WRITE)
+	file.seek_end()  # Move to the end for appending
+
+	var dt = Time.get_time_string_from_system()
+	file.store_string(dt + "\n" + message + "\n\n")
+
+	file = null
+	
+	
+func log_end():
+	var end_time = Time.get_ticks_msec()
+	var elapsed_time = (end_time - start_time) / 1000.0
+	write_to_log("Valeurs du parcours:\n" + "Acceleration : " + str(ACCELERATION) + "    Vmax : " + str(V_MAX) 
+	+ "    Vitesse turn : " + str(turn_speed)
+	+ "\nTime taken: " + str(elapsed_time) + " seconds")
+	log_done = true
