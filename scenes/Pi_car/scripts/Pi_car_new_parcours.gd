@@ -34,9 +34,14 @@ func _process(delta):
 
 	match state:
 		State.following_line:
-			var result = suivre_ligne(delta, speed)
-			speed = result[0]
-			state = result[1]
+			if capteurs_SL == [true, true, true, true, true]:
+				if speed > 0:
+					speed -= ACCELERATION * delta
+					state = State.line_end
+			else :
+				var result = suivre_ligne(delta, speed)
+				speed = result[0]
+				state = result[1]
 		State.turning_left:
 			tick_counter += 1
 			if speed > 0:
