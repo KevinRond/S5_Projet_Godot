@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhmqmy0nbt1xp"]
+
+[ext_resource type="ArrayMesh" uid="uid://cfehj32l5wql1" path="res://assets/blend/parcoursAlexis.obj" id="1_4xohm"]
+
+[node name="ParcoursAlexis" type="MeshInstance3D"]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -4.10925, 0, -14.5767)
+mesh = ExtResource("1_4xohm")
