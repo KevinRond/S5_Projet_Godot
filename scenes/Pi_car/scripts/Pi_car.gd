@@ -49,6 +49,7 @@ var tick_counter = 0
 var movement_array: MovementArray = MovementArray.new()
 
 var start_time = 0
+var previous_error = 0
 
 
 @onready var indicateur_capt1 = $Indicateur_Capteur1
@@ -239,9 +240,20 @@ func read_line(sensors):
 	return avg / sum if sum > 0 else 0
 
 func robot_control(sensors):
-	pass
+	var position = read_line(sensors)
+	var error = 2000 - position
+	var rotation = 0
+	
+	while !line_detected():
+		if previous_error > 0:
+			rotation = -deg_to_rad(10)
+		else:
+			rotation = deg_to_rad(10)
+		position = read_line(sensors)
+		
+	PID_Linefollow(error)
 
-func PID_Linefollow(erreur):
+func PID_Linefollow(error):
 	pass
 
 
