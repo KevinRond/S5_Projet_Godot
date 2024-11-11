@@ -217,8 +217,34 @@ func _physics_process(delta):
 		
 	# print("Vitesse courante: %f" % speed)
 	
-
+func read_line(sensors):
+	var on_line: bool = false
+	var avg: float = 0
+	var sum: int = 0
 	
+	for i in range(len(sensors)):
+		if sensors[i] == true:
+			on_line = true
+			avg += i * 1000
+			sum += 1
+			
+	var last_position = avg / sum
+	
+	if not on_line:
+		if last_position < (len(sensors) - 1) * 1000 / 2:
+			return 0
+		else:
+			return (len(sensors) - 1) * 1000
+	
+	return avg / sum if sum > 0 else 0
+
+func robot_control(sensors):
+	pass
+
+func PID_Linefollow(erreur):
+	pass
+
+
 func update_speed_label():
 	speed_label.text = "Vitesse: %.3f m/s" % speed
 
