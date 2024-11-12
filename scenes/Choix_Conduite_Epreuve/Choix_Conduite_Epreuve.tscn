@@ -1,0 +1,80 @@
+[gd_scene load_steps=4 format=3 uid="uid://vxbqlwfc0s81"]
+
+[ext_resource type="Theme" uid="uid://dr1p05vgqcplh" path="res://scenes/custom_bouton_theme.tres" id="1_1m66n"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_usqdw"]
+bg_color = Color(0.842687, 0, 0.00884624, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t2m12"]
+bg_color = Color(1, 0.168627, 0.184314, 1)
+
+[node name="ChoixConduiteEpreuve" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.901961, 0.901961, 0.901961, 1)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 404.0
+offset_top = 134.0
+offset_right = 1434.0
+offset_bottom = 189.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Test Selection"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Parcours_SL_Button" type="Button" parent="."]
+offset_left = 736.0
+offset_top = 250.0
+offset_right = 1111.0
+offset_bottom = 338.0
+size_flags_horizontal = 4
+theme = ExtResource("1_1m66n")
+theme_override_font_sizes/font_size = 25
+text = "Parcours test arret"
+
+[node name="Parcours_Reel_Button" type="Button" parent="."]
+offset_left = 736.0
+offset_top = 400.0
+offset_right = 1114.0
+offset_bottom = 492.0
+size_flags_horizontal = 0
+theme = ExtResource("1_1m66n")
+theme_override_font_sizes/font_size = 25
+text = "Parcours Reel"
+
+[node name="Parcours_US_Button" type="Button" parent="."]
+offset_left = 733.0
+offset_top = 559.0
+offset_right = 1115.0
+offset_bottom = 653.0
+theme = ExtResource("1_1m66n")
+theme_override_font_sizes/font_size = 25
+text = "Parcours Ultrason"
+
+[node name="Parcours_Conduite_Epreuve" type="Button" parent="."]
+offset_left = 733.0
+offset_top = 704.0
+offset_right = 1115.0
+offset_bottom = 798.0
+theme = ExtResource("1_1m66n")
+theme_override_font_sizes/font_size = 25
+text = "Parcours Conduite Épreuve"
+
+[node name="Quit_Button" type="Button" parent="."]
+offset_left = 818.0
+offset_top = 855.0
+offset_right = 1030.0
+offset_bottom = 936.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_usqdw")
+theme_override_styles/hover = SubResource("StyleBoxFlat_t2m12")
+text = "Quit"

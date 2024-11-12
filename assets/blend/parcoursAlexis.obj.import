@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://b022uy31dwdfy"
+path="res://.godot/imported/parcoursAlexis.obj-512c91fe0e45880813e220dcd83159d1.mesh"
+
+[deps]
+
+files=["res://.godot/imported/parcoursAlexis.obj-512c91fe0e45880813e220dcd83159d1.mesh"]
+
+source_file="res://assets/blend/parcoursAlexis.obj"
+dest_files=["res://.godot/imported/parcoursAlexis.obj-512c91fe0e45880813e220dcd83159d1.mesh", "res://.godot/imported/parcoursAlexis.obj-512c91fe0e45880813e220dcd83159d1.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

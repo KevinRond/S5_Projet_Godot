@@ -17,3 +17,8 @@ func _on_parcours_us_button_pressed():
 
 func _on_quit_button_pressed():
 	get_tree().quit()
+
+
+func _on_parcours_conduite_epreuve_pressed():
+	get_tree().change_scene_to_file("res://scenes/Choix_Conduite_Epreuve/Choix_Conduite_Epreuve.tscn")
+	pass # Replace with function body.
