@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://cad123fawsfp7"]
+[gd_scene load_steps=8 format=3 uid="uid://cad123fawsfp7"]
 
 [ext_resource type="PackedScene" uid="uid://cwtn8ob7bli" path="res://scenes/Pi_car/Pi_car.tscn" id="2_km36t"]
-[ext_resource type="Script" path="res://scenes/Pi_car/scripts/Pi_car_new_parcours.gd" id="3_sxbfe"]
 [ext_resource type="PackedScene" uid="uid://bjabyq4k71lco" path="res://scenes/Boule/Boule.tscn" id="4_m1dss"]
 [ext_resource type="ArrayMesh" uid="uid://ddjrkd5f5jw4n" path="res://assets/blend/parcours2AlexisV3.obj" id="4_uwxej"]
 
@@ -25,7 +24,6 @@ data = PackedVector3Array(-8.9581, 0.0335, -2.6196, -8.3898, 0.0335, -2.7945, -8
 
 [node name="PiCar" parent="." instance=ExtResource("2_km36t")]
 transform = Transform3D(-0.843374, 0, -0.537327, 0, 1, 0, 0.537327, 0, -0.843374, -23, 0, -3.2)
-script = ExtResource("3_sxbfe")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_0hra7")
