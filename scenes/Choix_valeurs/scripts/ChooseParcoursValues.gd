@@ -6,6 +6,9 @@ var track_scene_path = Globals.scene_path
 @onready var vmax_spinbox = $VmaxSpinBox
 @onready var vturn_spinbox = $VturnSpinBox
 @onready var vtight_turn_spinbox = $VtightTurnSpinBox
+@onready var kp_spinbox = $KpLabelTurnSpinBox
+@onready var ki_spinbox = $KiLabelTurnSpinBox
+@onready var kd_spinbox = $KdLabelTurnSpinBox
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print(track_scene_path)
@@ -30,7 +33,14 @@ func _ready():
 	vtight_turn_spinbox.step = 0.005
 	vtight_turn_spinbox.value = Settings.v_tight_turn
 	
+	kp_spinbox.min_value = 0
+	kp_spinbox.value = Settings.kp
 	
+	ki_spinbox.min_value = 0
+	ki_spinbox.value = Settings.ki
+	
+	kd_spinbox.min_value = 0
+	kd_spinbox.value = Settings.kd
 	
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -44,6 +54,9 @@ func _on_start_button_pressed():
 	Settings.v_max = vmax_spinbox.value
 	Settings.v_turn = vturn_spinbox.value
 	Settings.v_tight_turn = vtight_turn_spinbox.value
+	Settings.kp = kp_spinbox.value
+	Settings.ki = ki_spinbox.value
+	Settings.kd = kd_spinbox.value
 	get_tree().change_scene_to_file(track_scene_path)
 
 

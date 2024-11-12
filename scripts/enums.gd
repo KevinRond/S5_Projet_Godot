@@ -10,6 +10,7 @@ enum State {
 	reverse,
 	blocked,
 	avoiding,
-	recovering
+	recovering,
+	finished
 }
 
