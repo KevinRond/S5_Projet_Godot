@@ -50,6 +50,16 @@ var movement_array: MovementArray = MovementArray.new()
 
 var start_time = 0
 var previous_error = 0
+var P = 0
+var I = 0
+var D = 0
+var Pvalue = 0
+var Ivalue = 0
+var Dvalue = 0
+
+var KP = 1
+var KI = 1
+var KD = 1
 
 
 @onready var indicateur_capt1 = $Indicateur_Capteur1
@@ -254,7 +264,20 @@ func robot_control(sensors):
 	PID_Linefollow(error)
 
 func PID_Linefollow(error):
-	pass
+	P = error
+	I = I + error
+	D = error - previous_error
+	
+	Pvalue = KP*P
+	Ivalue = KI*I
+	Dvalue = KD*D
+	
+	var PID_value = Pvalue + Ivalue + Dvalue
+	previous_error = error
+	
+	PID_value = clamp(PID_value, -deg_to_rad(45), deg_to_rad(45))
+	
+	return PID_value
 
 
 func update_speed_label():
@@ -274,76 +297,102 @@ func line_detected():
 		return true
 	else:
 		return false
+		
+func suivre_ligne(delta, speed):
+	var position = read_line(capteurs_SL)
+	var error = 2000 - position  # Example error based on center (2000)
+	var PID_output = PID_Linefollow(error)  # Use PID output to adjust rotation
 
-
-func suivre_ligne(delta, speed, use_90deg_turns=false):
-	
 	var new_speed = speed
 	var new_state = State.following_line
-	var new_rotation = 0
+	var new_rotation = PID_output  # Apply PID to control turning speed
+	
+	
+
 	if capteurs_SL == [false, false, false, false, false]:
 		if speed > 0:
 			new_speed -= ACCELERATION * delta
-		#new_state = State.manual_control
-		write_to_log("Valeurs du parcours:\n" + "Acceleration : " + str(ACCELERATION) + "    Vmax : " + str(V_MAX) 
-		+ "    Vitesse turn : " + str(Settings.v_turn) + "    Vitesse tight turn : " + str(Settings.v_tight_turn)
-		+ "\nLe suiveur de ligne suit pus les lignes  FAIL", "fail")
-		emit_signal("test_completed")
-		#get_tree().quit()
-		
-	elif capteurs_SL == [false, false, true, false, false]:
+			write_to_log("Error: Line lost")
+			emit_signal("test_completed")
+	else:
 		if speed < V_MAX:
 			new_speed += ACCELERATION * delta
-	elif capteurs_SL == [false, false, true, true, false]:
-		new_rotation = -deg_to_rad(3)
-		if speed > V_TURN:
-			new_speed -= ACCELERATION/2 * delta
-	elif capteurs_SL == [false, true, true, false, false]:
-		new_rotation = deg_to_rad(3)
-		if speed > V_TURN:
-			new_speed -= ACCELERATION/2 * delta
-	elif capteurs_SL == [false, false, false, true, false]:
-		new_rotation = -deg_to_rad(10)
-		if speed > V_TURN:
-			new_speed -= ACCELERATION * delta
-	elif capteurs_SL == [false, true, false, false, false]:
-		new_rotation = deg_to_rad(10)
-		if speed > V_TURN:
-			new_speed -= ACCELERATION * delta
-	elif capteurs_SL == [false, false, false, true, true]:
-		new_rotation = -deg_to_rad(30)
-		if speed > V_TIGHT_TURN:
-			new_speed -= ACCELERATION * delta
-	elif capteurs_SL == [true, true, false, false, false]:
-		new_rotation = deg_to_rad(30)
-		if speed > V_TIGHT_TURN:
-			new_speed -= ACCELERATION * delta
-	elif capteurs_SL == [false, false, false, false, true]:
-		new_rotation = -deg_to_rad(45)
-		if speed > V_TIGHT_TURN:
-			new_speed -= ACCELERATION * delta
-	elif capteurs_SL == [true, false, false, false, false]:
-		new_rotation = deg_to_rad(45)
-		if speed > V_TIGHT_TURN:
-			new_speed -= ACCELERATION * delta
-	elif use_90deg_turns == true:
-		if capteurs_SL == [false, false, true, true, true] or capteurs_SL == [false, true, true, true, true] or capteurs_SL == [false, true, false, true, true]:
-			new_rotation = -5  # Left turn
-			if speed > 0:
-				new_speed -= ACCELERATION * delta
-			new_state = State.turning_left
-		elif capteurs_SL == [true, true, true, false, false] or capteurs_SL == [true, true, true, true, false] or capteurs_SL == [true, true, false, true, false]:
-			new_rotation = 5  # Right turn
+		if PID_output > 0:
+			new_rotation = min(PID_output * delta, deg_to_rad(45))
+		else:
+			new_rotation = max(PID_output * delta, -deg_to_rad(45))
 
-			if speed > 0:
-				new_speed -= ACCELERATION * delta
-			new_state = State.turning_right
-	elif capteurs_SL == [true, true, true, true, true]:
-		if speed > 0:
-			new_speed -= ACCELERATION * delta
-		new_state = State.manual_control
+	return [new_speed, new_state, new_rotation]
 
-	return [new_speed, new_state, new_rotation] 
+
+#func suivre_ligne(delta, speed, use_90deg_turns=false):
+	#
+	#var new_speed = speed
+	#var new_state = State.following_line
+	#var new_rotation = 0
+	#if capteurs_SL == [false, false, false, false, false]:
+		#if speed > 0:
+			#new_speed -= ACCELERATION * delta
+		##new_state = State.manual_control
+		#write_to_log("Valeurs du parcours:\n" + "Acceleration : " + str(ACCELERATION) + "    Vmax : " + str(V_MAX) 
+		#+ "    Vitesse turn : " + str(Settings.v_turn) + "    Vitesse tight turn : " + str(Settings.v_tight_turn)
+		#+ "\nLe suiveur de ligne suit pus les lignes  FAIL", "fail")
+		#emit_signal("test_completed")
+		##get_tree().quit()
+		#
+	#elif capteurs_SL == [false, false, true, false, false]:
+		#if speed < V_MAX:
+			#new_speed += ACCELERATION * delta
+	#elif capteurs_SL == [false, false, true, true, false]:
+		#new_rotation = -deg_to_rad(3)
+		#if speed > V_TURN:
+			#new_speed -= ACCELERATION/2 * delta
+	#elif capteurs_SL == [false, true, true, false, false]:
+		#new_rotation = deg_to_rad(3)
+		#if speed > V_TURN:
+			#new_speed -= ACCELERATION/2 * delta
+	#elif capteurs_SL == [false, false, false, true, false]:
+		#new_rotation = -deg_to_rad(10)
+		#if speed > V_TURN:
+			#new_speed -= ACCELERATION * delta
+	#elif capteurs_SL == [false, true, false, false, false]:
+		#new_rotation = deg_to_rad(10)
+		#if speed > V_TURN:
+			#new_speed -= ACCELERATION * delta
+	#elif capteurs_SL == [false, false, false, true, true]:
+		#new_rotation = -deg_to_rad(30)
+		#if speed > V_TIGHT_TURN:
+			#new_speed -= ACCELERATION * delta
+	#elif capteurs_SL == [true, true, false, false, false]:
+		#new_rotation = deg_to_rad(30)
+		#if speed > V_TIGHT_TURN:
+			#new_speed -= ACCELERATION * delta
+	#elif capteurs_SL == [false, false, false, false, true]:
+		#new_rotation = -deg_to_rad(45)
+		#if speed > V_TIGHT_TURN:
+			#new_speed -= ACCELERATION * delta
+	#elif capteurs_SL == [true, false, false, false, false]:
+		#new_rotation = deg_to_rad(45)
+		#if speed > V_TIGHT_TURN:
+			#new_speed -= ACCELERATION * delta
+	#elif use_90deg_turns == true:
+		#if capteurs_SL == [false, false, true, true, true] or capteurs_SL == [false, true, true, true, true] or capteurs_SL == [false, true, false, true, true]:
+			#new_rotation = -5  # Left turn
+			#if speed > 0:
+				#new_speed -= ACCELERATION * delta
+			#new_state = State.turning_left
+		#elif capteurs_SL == [true, true, true, false, false] or capteurs_SL == [true, true, true, true, false] or capteurs_SL == [true, true, false, true, false]:
+			#new_rotation = 5  # Right turn
+#
+			#if speed > 0:
+				#new_speed -= ACCELERATION * delta
+			#new_state = State.turning_right
+	#elif capteurs_SL == [true, true, true, true, true]:
+		#if speed > 0:
+			#new_speed -= ACCELERATION * delta
+		#new_state = State.manual_control
+#
+	#return [new_speed, new_state, new_rotation] 
 	
 
 func change_color(index, detected, too_far=false):
