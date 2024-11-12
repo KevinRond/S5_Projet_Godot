@@ -1,0 +1,25 @@
+17:37:34
+Valeurs du parcours:
+Acceleration : 0.7350001    Vmax : 0.18    Vitesse turn : 0.12    Vitesse tight turn : 0.065
+La boule a dip  FAIL
+
+17:56:11
+Valeurs du parcours:
+Acceleration : 0.7350001    Vmax : 0.18    Vitesse turn : 0.12    Vitesse tight turn : 0.065
+La boule a dip  FAIL
+
+18:16:16
+Valeurs du parcours:
+Acceleration : 0.0735001    Vmax : 0.18    Vitesse turn : 0.12    Vitesse tight turn : 0.065
+Time taken: 24.092 seconds
+
+18:26:03
+Valeurs du parcours:
+Acceleration : 0.7350001    Vmax : 0.18    Vitesse turn : 0.12    Vitesse tight turn : 0.065
+La boule a dip  FAIL
+
+18:30:53
+Valeurs du parcours:
+Acceleration : 0.7350001    Vmax : 0.18    Vitesse turn : 0.12    Vitesse tight turn : 0.065
+La boule a dip  FAIL
+

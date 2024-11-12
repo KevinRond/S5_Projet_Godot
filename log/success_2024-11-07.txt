@@ -1,0 +1,5 @@
+00:11:24
+Valeurs du parcours:
+Acceleration : 0.08    Vmax : 0.15    Vitesse turn : 1
+Time taken: 69.221 seconds
+

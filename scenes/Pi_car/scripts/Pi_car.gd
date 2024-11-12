@@ -557,7 +557,7 @@ func write_to_log(message: String, filename="success"):
 	
 
 func _on_boule_fell_capteur_body_entered(body):
-	if body.name == "Boule":  # Replace with the actual name of your ball node
+	if body.name == "Boule":
 		write_to_log("Valeurs du parcours:\n" + "Acceleration : " + str(ACCELERATION) + "    Vmax : " + str(V_MAX) 
 		+ "    Vitesse turn : " + str(Settings.v_turn) + "    Vitesse tight turn : " + str(V_TIGHT_TURN)
 		+ "\nLa boule a dip  FAIL", "fail")

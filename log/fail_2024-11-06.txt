@@ -1,0 +1,5 @@
+20:04:28
+Valeurs du parcours:
+Acceleration : 0.7350001    Vmax : 0.18    Vitesse turn : 0.12    Vitesse tight turn : 0.0117
+La boule a dip  FAIL
+
