@@ -20,7 +20,7 @@ que si on relance le test avec "r", la boule tombe toujours.
 SI L'ACCÉLÉRATION EST MODIFIÉE, LA VITESSE MAX ET LES VITESSES DE TOURNAGE 
 DOIVENT ÊTRE RETESTÉES
 """ 
-var ACCELERATION = ((9.8*0.0015)/0.02) # 0.0049 m/s^2
+var ACCELERATION = ((9.8*0.0015)/0.02)/2 # 0.0049 m/s^2
 """ EXPLICATION V_MAX
 La vitesse maximale fut trouvée en vérifiant si le robot pouvait arrêter avec 
 l'incertitude de 30mm selon l'accélération trouvée
@@ -36,7 +36,7 @@ SI ON MODIFIE CES VALEURS, ON DOIT S'ASSURER DE VÉRIFIER LES RÉSULTATS DANS LE
 PARCOURS RÉEL
 """ 
 var V_TURN = 0.12
-var V_TIGHT_TURN = 0.066
+var V_TIGHT_TURN = 0.1
 const MAX_DISPLACEMENT = 0.2
 const ULTRASON_RANGE = 0.1
 const BRAKE_RANGE = 0.06
@@ -59,7 +59,7 @@ var Dvalue = 0
 
 var KP = 1
 var KI = 0.001
-var KD = 1
+var KD = 0.015
 
 
 @onready var indicateur_capt1 = $Indicateur_Capteur1
@@ -81,6 +81,9 @@ func _ready():
 	V_MAX = Settings.v_max
 	V_TURN = Settings.v_turn * V_MAX
 	V_TIGHT_TURN = Settings.v_tight_turn * V_MAX
+	KP = Settings.kp
+	KI = Settings.ki
+	KD = Settings.kd
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -301,14 +304,14 @@ func line_detected():
 		
 func suivre_ligne(delta, speed):
 	var position = read_line(capteurs_SL)
-	var error = 50 - position  # Example error based on center (2000)
-	var PID_output = PID_Linefollow(error)  # Use PID output to adjust rotation
+	var error = 50 - position
+	var PID_output = PID_Linefollow(error)
 	print("error: %d" % error)
 	print("PID output: %f" % PID_output)
 
 	var new_speed = speed
 	var new_state = State.following_line
-	var new_rotation = PID_output  # Apply PID to control turning speed
+	var new_rotation = PID_output
 	
 	
 
@@ -324,19 +327,20 @@ func suivre_ligne(delta, speed):
 			new_rotation = min(PID_output, deg_to_rad(45))
 			if PID_output > deg_to_rad(10):
 				if speed > V_TURN:
-					new_speed -= ACCELERATION * delta
+					new_speed -= ACCELERATION/1.5 * delta
 			if PID_output > deg_to_rad(30):
 				if speed > V_TIGHT_TURN:
-					new_speed -= ACCELERATION * delta
+					new_speed -= ACCELERATION/1.5 * delta
 		else:
 			new_rotation = max(PID_output, -deg_to_rad(45))
 			if PID_output < -deg_to_rad(10):
 				if speed > V_TURN:
-					new_speed -= ACCELERATION * delta
+					new_speed -= ACCELERATION/1.5 * delta
 			if PID_output < -deg_to_rad(30):
 				if speed > V_TIGHT_TURN:
-					new_speed -= ACCELERATION * delta
+					new_speed -= ACCELERATION/1.5 * delta
 
+	print("New speed: %f, new rotation: %f" % [new_speed, rad_to_deg(new_rotation)])
 	return [new_speed, new_state, new_rotation]
 
 
