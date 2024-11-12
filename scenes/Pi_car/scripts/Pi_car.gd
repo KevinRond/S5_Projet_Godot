@@ -58,7 +58,7 @@ var Ivalue = 0
 var Dvalue = 0
 
 var KP = 1
-var KI = 1
+var KI = 0.001
 var KD = 1
 
 
@@ -227,6 +227,7 @@ func _physics_process(delta):
 			movement_array.add_move(movement)
 		
 	# print("Vitesse courante: %f" % speed)
+	print("Rotation courante: %f" % rotation)
 	
 func read_line(sensors):
 	var on_line: bool = false
@@ -236,16 +237,16 @@ func read_line(sensors):
 	for i in range(len(sensors)):
 		if sensors[i] == true:
 			on_line = true
-			avg += i * 1000
+			avg += i * 25
 			sum += 1
 			
 	var last_position = avg / sum
 	
 	if not on_line:
-		if last_position < (len(sensors) - 1) * 1000 / 2:
+		if last_position < (len(sensors) - 1) * 25 / 2:
 			return 0
 		else:
-			return (len(sensors) - 1) * 1000
+			return (len(sensors) - 1) * 25
 	
 	return avg / sum if sum > 0 else 0
 
@@ -274,7 +275,7 @@ func PID_Linefollow(error):
 	
 	var PID_value = Pvalue + Ivalue + Dvalue
 	previous_error = error
-	
+	PID_value = deg_to_rad(PID_value)
 	PID_value = clamp(PID_value, -deg_to_rad(45), deg_to_rad(45))
 	
 	return PID_value
@@ -300,8 +301,10 @@ func line_detected():
 		
 func suivre_ligne(delta, speed):
 	var position = read_line(capteurs_SL)
-	var error = 2000 - position  # Example error based on center (2000)
+	var error = 50 - position  # Example error based on center (2000)
 	var PID_output = PID_Linefollow(error)  # Use PID output to adjust rotation
+	print("error: %d" % error)
+	print("PID output: %f" % PID_output)
 
 	var new_speed = speed
 	var new_state = State.following_line
@@ -318,9 +321,21 @@ func suivre_ligne(delta, speed):
 		if speed < V_MAX:
 			new_speed += ACCELERATION * delta
 		if PID_output > 0:
-			new_rotation = min(PID_output * delta, deg_to_rad(45))
+			new_rotation = min(PID_output, deg_to_rad(45))
+			if PID_output > deg_to_rad(10):
+				if speed > V_TURN:
+					new_speed -= ACCELERATION * delta
+			if PID_output > deg_to_rad(30):
+				if speed > V_TIGHT_TURN:
+					new_speed -= ACCELERATION * delta
 		else:
-			new_rotation = max(PID_output * delta, -deg_to_rad(45))
+			new_rotation = max(PID_output, -deg_to_rad(45))
+			if PID_output < -deg_to_rad(10):
+				if speed > V_TURN:
+					new_speed -= ACCELERATION * delta
+			if PID_output < -deg_to_rad(30):
+				if speed > V_TIGHT_TURN:
+					new_speed -= ACCELERATION * delta
 
 	return [new_speed, new_state, new_rotation]
 
