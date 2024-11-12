@@ -54,6 +54,7 @@ func _ready() -> void:
 	if is_instance_valid(current_state):
 		current_state.on_enter()
 		current_state.state_entered.emit()
+	
 
 
 # Called every frame.
