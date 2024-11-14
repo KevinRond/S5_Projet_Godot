@@ -726,6 +726,15 @@ offset_bottom = 72.0
 text = "Vitesse"
 vertical_alignment = 1
 
+[node name="Label_Time" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
+offset_left = 344.0
+offset_top = 72.0
+offset_right = 472.0
+offset_bottom = 95.0
+text = "Time"
+vertical_alignment = 1
+
 [node name="CapteurFin" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CapteurFin"]
