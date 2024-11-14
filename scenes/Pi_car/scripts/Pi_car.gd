@@ -89,8 +89,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	elapsed_time += delta
-	time_label.text = "Time: %.2f secondes" % elapsed_time
 	pass
 	
 
@@ -240,6 +238,12 @@ func _physics_process(delta):
 		
 	# print("Vitesse courante: %f" % speed)
 	print("Rotation courante: %f" % rotation)
+	
+	if state == State.finished:
+		time_label.text = "Final time: %.2f secondes" % elapsed_time
+	else:
+		elapsed_time += delta
+		time_label.text = "Time: %.2f secondes" % elapsed_time
 	
 func read_line(sensors):
 	var on_line: bool = false
