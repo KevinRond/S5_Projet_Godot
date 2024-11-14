@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://chx08pd8f7gch"]
+[gd_scene load_steps=3 format=3 uid="uid://bfahiigjpsu8u"]
 
 [ext_resource type="Script" path="res://scenes/Choix_Valeurs/scripts/ChooseParcoursValues.gd" id="1_i7c12"]
 [ext_resource type="Theme" uid="uid://dr1p05vgqcplh" path="res://scenes/custom_bouton_theme.tres" id="2_3uefs"]
@@ -7,7 +7,6 @@
 script = ExtResource("1_i7c12")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-visible = false
 offset_right = 1920.0
 offset_bottom = 1080.0
 size_flags_horizontal = 3

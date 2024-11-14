@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://vxbqlwfc0s81"]
+[gd_scene load_steps=5 format=3 uid="uid://vxbqlwfc0s81"]
 
 [ext_resource type="Theme" uid="uid://dr1p05vgqcplh" path="res://scenes/custom_bouton_theme.tres" id="1_1m66n"]
+[ext_resource type="Script" path="res://scenes/Choix_Conduite_Epreuve/scripts/Choix_Conduite_Epreuve.gd" id="1_gqww3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_usqdw"]
 bg_color = Color(0.842687, 0, 0.00884624, 1)
@@ -9,72 +10,78 @@ bg_color = Color(0.842687, 0, 0.00884624, 1)
 bg_color = Color(1, 0.168627, 0.184314, 1)
 
 [node name="ChoixConduiteEpreuve" type="Node2D"]
+script = ExtResource("1_gqww3")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="ColorRect1" type="ColorRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+size_flags_horizontal = 3
 color = Color(0.901961, 0.901961, 0.901961, 1)
 
 [node name="Label" type="Label" parent="."]
-offset_left = 404.0
-offset_top = 134.0
-offset_right = 1434.0
-offset_bottom = 189.0
+offset_left = 384.0
+offset_top = 128.0
+offset_right = 1472.0
+offset_bottom = 192.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
-text = "Test Selection"
+text = "Choix conduite épreuve"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Parcours_SL_Button" type="Button" parent="."]
+[node name="Parcours_Arret" type="Button" parent="."]
 offset_left = 736.0
-offset_top = 250.0
-offset_right = 1111.0
-offset_bottom = 338.0
+offset_top = 232.0
+offset_right = 1120.0
+offset_bottom = 328.0
 size_flags_horizontal = 4
 theme = ExtResource("1_1m66n")
 theme_override_font_sizes/font_size = 25
-text = "Parcours test arret"
+text = "Parcours Arret"
 
-[node name="Parcours_Reel_Button" type="Button" parent="."]
+[node name="Parcours_obstacle" type="Button" parent="."]
 offset_left = 736.0
-offset_top = 400.0
-offset_right = 1114.0
-offset_bottom = 492.0
+offset_top = 360.0
+offset_right = 1120.0
+offset_bottom = 456.0
 size_flags_horizontal = 0
 theme = ExtResource("1_1m66n")
 theme_override_font_sizes/font_size = 25
-text = "Parcours Reel"
+text = "Parcours Obstacle"
 
-[node name="Parcours_US_Button" type="Button" parent="."]
-offset_left = 733.0
-offset_top = 559.0
-offset_right = 1115.0
-offset_bottom = 653.0
+[node name="Parcours_reculons" type="Button" parent="."]
+offset_left = 736.0
+offset_top = 488.0
+offset_right = 1120.0
+offset_bottom = 584.0
 theme = ExtResource("1_1m66n")
 theme_override_font_sizes/font_size = 25
-text = "Parcours Ultrason"
+text = "Parcours Reculons"
 
-[node name="Parcours_Conduite_Epreuve" type="Button" parent="."]
-offset_left = 733.0
-offset_top = 704.0
-offset_right = 1115.0
-offset_bottom = 798.0
+[node name="Parcours_virage" type="Button" parent="."]
+offset_left = 736.0
+offset_top = 616.0
+offset_right = 1120.0
+offset_bottom = 712.0
 theme = ExtResource("1_1m66n")
 theme_override_font_sizes/font_size = 25
-text = "Parcours Conduite Épreuve"
+text = "Parcours Virage"
 
-[node name="Quit_Button" type="Button" parent="."]
-offset_left = 818.0
-offset_top = 855.0
-offset_right = 1030.0
-offset_bottom = 936.0
+[node name="Retourner_acceuil" type="Button" parent="."]
+offset_left = 784.0
+offset_top = 760.0
+offset_right = 1072.0
+offset_bottom = 840.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxFlat_usqdw")
 theme_override_styles/hover = SubResource("StyleBoxFlat_t2m12")
-text = "Quit"
+text = "Retourner au menu
+principal"
+
+[connection signal="pressed" from="Parcours_Arret" to="." method="_on_parcours_arret_pressed"]
+[connection signal="pressed" from="Parcours_obstacle" to="." method="_on_parcours_obstacle_pressed"]
+[connection signal="pressed" from="Parcours_reculons" to="." method="_on_parcours_reculons_pressed"]
+[connection signal="pressed" from="Parcours_virage" to="." method="_on_parcours_virage_pressed"]
+[connection signal="pressed" from="Retourner_acceuil" to="." method="_on_retourner_acceuil_pressed"]
