@@ -35,8 +35,8 @@ virages du parcours réel
 SI ON MODIFIE CES VALEURS, ON DOIT S'ASSURER DE VÉRIFIER LES RÉSULTATS DANS LE 
 PARCOURS RÉEL
 """ 
-var V_TURN = 0.12
-var V_TIGHT_TURN = 0.1
+var V_TURN = 0.4
+var V_TIGHT_TURN = 0.3
 const MAX_DISPLACEMENT = 0.2
 const ULTRASON_RANGE = 0.1
 const BRAKE_RANGE = 0.06
@@ -59,7 +59,7 @@ var Dvalue = 0
 
 var KP = 1
 var KI = 0.001
-var KD = 0.015
+var KD = 0.005
 var elapsed_time = 0.0  # Variable pour stocker le temps écoulé
 
 @onready var indicateur_capt1 = $Indicateur_Capteur1
@@ -236,8 +236,6 @@ func _physics_process(delta):
 			var movement = Movement.new(speed, (delta * speed), MovementType.rotation, rotation)
 			movement_array.add_move(movement)
 		
-	# print("Vitesse courante: %f" % speed)
-	print("Rotation courante: %f" % rotation)
 	
 	if state == State.finished:
 		time_label.text = "Final time: %.2f secondes" % elapsed_time
@@ -265,20 +263,6 @@ func read_line(sensors):
 			return (len(sensors) - 1) * 25
 	
 	return avg / sum if sum > 0 else 0
-
-func robot_control(sensors):
-	var position = read_line(sensors)
-	var error = 2000 - position
-	var rotation = 0
-	
-	while !line_detected():
-		if previous_error > 0:
-			rotation = -deg_to_rad(10)
-		else:
-			rotation = deg_to_rad(10)
-		position = read_line(sensors)
-		
-	PID_Linefollow(error)
 
 func PID_Linefollow(error):
 	P = error
@@ -319,8 +303,6 @@ func suivre_ligne(delta, speed):
 	var position = read_line(capteurs_SL)
 	var error = 50 - position
 	var PID_output = PID_Linefollow(error)
-	print("error: %d" % error)
-	print("PID output: %f" % PID_output)
 
 	var new_speed = speed
 	var new_state = State.following_line
@@ -335,7 +317,9 @@ func suivre_ligne(delta, speed):
 	if capteurs_SL == [false, false, false, false, false]:
 		if speed > 0:
 			new_speed -= ACCELERATION * delta
-			write_to_log("Error: Line lost")
+			write_to_log("Valeurs du parcours:\n" + "Acceleration : " + str(ACCELERATION) + "    Vmax : " + str(V_MAX) 
+				+ "    Vitesse turn : " + str(Settings.v_turn) + "    Vitesse tight turn : " + str(Settings.v_tight_turn)
+				+ "\nLe suiveur de ligne suit pus les lignes  FAIL", "fail")
 			emit_signal("test_completed")
 	else:
 		if speed < V_MAX:
@@ -357,7 +341,6 @@ func suivre_ligne(delta, speed):
 				if speed > V_TIGHT_TURN:
 					new_speed -= ACCELERATION/1.5 * delta
 
-	print("New speed: %f, new rotation: %f" % [new_speed, rad_to_deg(new_rotation)])
 	return [new_speed, new_state, new_rotation]
 
 
@@ -474,7 +457,6 @@ func _on_capteur_5_area_exited(area):
 		
 func _on_capteur_fin_area_entered(area):
 	if area.name.begins_with("Finish"):
-		print("entered the right tings")
 		
 		var end_time = Time.get_ticks_msec()
 		var elapsed_time = (end_time - start_time) / 1000.0

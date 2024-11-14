@@ -24,12 +24,12 @@ func _ready():
 	vmax_spinbox.value = Settings.v_max
 	
 	vturn_spinbox.min_value = 0.1
-	vturn_spinbox.max_value = 0.5
+	vturn_spinbox.max_value = 1
 	vturn_spinbox.step = 0.01
 	vturn_spinbox.value = Settings.v_turn
 	
 	vtight_turn_spinbox.min_value = 0.06
-	vtight_turn_spinbox.max_value = 0.3
+	vtight_turn_spinbox.max_value = 1
 	vtight_turn_spinbox.step = 0.005
 	vtight_turn_spinbox.value = Settings.v_tight_turn
 	
