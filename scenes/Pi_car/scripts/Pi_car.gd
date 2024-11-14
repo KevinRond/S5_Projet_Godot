@@ -40,7 +40,6 @@ var V_TIGHT_TURN = 0.1
 const MAX_DISPLACEMENT = 0.2
 const ULTRASON_RANGE = 0.1
 const BRAKE_RANGE = 0.06
-const TOP_CAMERA = true
 # 1 -> Évitement à gauche ; -1 -> Évitement à droite
 const AVOID_SIDE = 1
 
@@ -93,10 +92,6 @@ func _ready():
 	KI = Settings.ki
 	KD = Settings.kd
 	
-	if TOP_CAMERA:
-		$Camera3D.position.x = -0.1
-		$Camera3D.position.y = 1
-		$Camera3D.rotation.x = -PI/2
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -127,6 +122,9 @@ func _physics_process(delta):
 				if US_distance < ULTRASON_RANGE + BRAKE_RANGE:
 					rotation_value = 0
 					initial_rotation = rotation_value
+					$Camera3D.position.x = -0.1
+					$Camera3D.position.y = 1
+					$Camera3D.rotation.x = -PI/2
 					state = State.blocked
 			update_state_label()
 			
@@ -224,6 +222,9 @@ func _physics_process(delta):
 					state = State.blocked
 			elif capteurs_SL[0] or capteurs_SL[1] or capteurs_SL[2] or capteurs_SL[3] or capteurs_SL[4]:
 				distance_multiplier = 2
+				$Camera3D.position.x = 0.472
+				$Camera3D.position.y = 0.225
+				$Camera3D.rotation.x = -PI/6
 				state = State.recovering
 			elif AVOID_SIDE*rotation_value <= 0 && AVOID_SIDE*rotation_value > -PI/4:
 				rotation = -AVOID_SIDE*0.75
