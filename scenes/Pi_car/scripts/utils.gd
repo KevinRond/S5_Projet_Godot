@@ -19,6 +19,8 @@ func set_state_text(state):
 			state_text = "Avoiding"
 		State.recovering:
 			state_text = "Recovering"
+		State.finished:
+			state_text = "Finished"
 		_:
 			state_text = "Unknown State"
 	
