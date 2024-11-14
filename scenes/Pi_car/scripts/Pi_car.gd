@@ -40,6 +40,8 @@ var V_TIGHT_TURN = 0.3
 const MAX_DISPLACEMENT = 0.2
 const ULTRASON_RANGE = 0.1
 const BRAKE_RANGE = 0.06
+# 1 -> Évitement à gauche ; -1 -> Évitement à droite
+const AVOID_SIDE = 1
 
 var nfsm = 0
 var speed = 0
@@ -47,6 +49,9 @@ var capteurs_SL = []
 var state = State.manual_control
 var tick_counter = 0
 var movement_array: MovementArray = MovementArray.new()
+var rotation_value = 0
+var initial_rotation = 0
+var distance_multiplier = 2
 
 var start_time = 0
 var previous_error = 0
@@ -86,6 +91,7 @@ func _ready():
 	KP = Settings.kp
 	KI = Settings.ki
 	KD = Settings.kd
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -112,9 +118,13 @@ func _physics_process(delta):
 			if Input.is_key_pressed(KEY_SPACE):
 				state = State.reverse
 			if $RayCast3D.is_colliding():
-				var CollideObject = $RayCast3D.get_collider().get_parent()
-				US_distance = (CollideObject.position - Vector3(self.position.x + $RayCast3D.position.x, CollideObject.position.y, self.position.z)).length()
+				US_distance = Vector3(self.position.x, self.position.y, self.position.z).distance_to($RayCast3D.get_collision_point()) + $RayCast3D.position.x
 				if US_distance < ULTRASON_RANGE + BRAKE_RANGE:
+					rotation_value = 0
+					initial_rotation = rotation_value
+					$Camera3D.position.x = -0.1
+					$Camera3D.position.y = 1
+					$Camera3D.rotation.x = -PI/2
 					state = State.blocked
 			update_state_label()
 			
@@ -186,35 +196,46 @@ func _physics_process(delta):
 			update_state_label()
 		State.blocked:
 			if $RayCast3D.is_colliding():
-				var CollideObject = $RayCast3D.get_collider().get_parent()
-				US_distance = (CollideObject.position - Vector3(self.position.x + $RayCast3D.position.x, CollideObject.position.y, self.position.z)).length()
+				US_distance = Vector3(self.position.x, self.position.y, self.position.z).distance_to($RayCast3D.get_collision_point()) + $RayCast3D.position.x
 			else:
-				US_distance = 2*ULTRASON_RANGE
-			if US_distance < 2*ULTRASON_RANGE:
+				US_distance = distance_multiplier*ULTRASON_RANGE
+			if US_distance < distance_multiplier*ULTRASON_RANGE:
 				if speed > -V_MAX:
-					speed -= ACCELERATION
+					speed -= 0.5*ACCELERATION * delta
 			else:
 				if speed < V_MAX:
-					speed += ACCELERATION
-				if self.rotation.y < PI/2:
-					rotation = 0.75
+					speed += ACCELERATION * delta
+				if abs(rotation_value) < abs(initial_rotation) + 3*PI/8:
+					rotation = AVOID_SIDE*0.75
 				else:
-					
+					distance_multiplier = 3
 					state = State.avoiding
 			update_state_label()
 			
 		State.avoiding:
-			rotation = -0.75
+			rotation = -AVOID_SIDE*0.5
 			if $RayCast3D.is_colliding():
-				var CollideObject = $RayCast3D.get_collider().get_parent()
-				US_distance = (CollideObject.position - Vector3(self.position.x + $RayCast3D.position.x, CollideObject.position.y, self.position.z)).length()
-				if US_distance < ULTRASON_RANGE + BRAKE_RANGE:
+				US_distance = Vector3(self.position.x, self.position.y, self.position.z).distance_to($RayCast3D.get_collision_point()) + $RayCast3D.position.x
+				if US_distance < distance_multiplier*ULTRASON_RANGE:
+					rotation = 0
+					initial_rotation = rotation_value
 					state = State.blocked
-			elif self.rotation.y < -PI/4:
+			elif capteurs_SL[0] or capteurs_SL[1] or capteurs_SL[2] or capteurs_SL[3] or capteurs_SL[4]:
+				distance_multiplier = 2
+				$Camera3D.position.x = 0.472
+				$Camera3D.position.y = 0.225
+				$Camera3D.rotation.x = -PI/6
 				state = State.recovering
+			elif AVOID_SIDE*rotation_value <= 0 && AVOID_SIDE*rotation_value > -PI/4:
+				rotation = -AVOID_SIDE*0.75
+			elif AVOID_SIDE*rotation_value <= -PI/4:
+				rotation = 0
 			update_state_label()
 		State.recovering:
-			if capteurs_SL[0] or capteurs_SL[1] or capteurs_SL[2] or capteurs_SL[3] or capteurs_SL[4]:
+			rotation = AVOID_SIDE*0.3
+			if (AVOID_SIDE*rotation_value <= 0 && AVOID_SIDE*rotation_value > -PI/8 and 
+			(capteurs_SL == [false, true, true, false, false] or capteurs_SL == [false, false, true, true, false])):
+				rotation = 0
 				state = State.following_line
 			update_state_label()
 			
@@ -223,7 +244,7 @@ func _physics_process(delta):
 				speed -= ACCELERATION * delta
 			update_state_label()
 
-
+	rotation_value += rotation * delta
 	rotate_y(rotation * delta)
 	translate(Vector3(-delta * speed, 0, 0))
 	update_speed_label()
