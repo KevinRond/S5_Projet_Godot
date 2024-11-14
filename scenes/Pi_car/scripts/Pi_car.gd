@@ -60,7 +60,7 @@ var Dvalue = 0
 var KP = 1
 var KI = 0.001
 var KD = 0.015
-
+var elapsed_time = 0.0  # Variable pour stocker le temps écoulé
 
 @onready var indicateur_capt1 = $Indicateur_Capteur1
 @onready var indicateur_capt2 = $Indicateur_Capteur2
@@ -69,6 +69,8 @@ var KD = 0.015
 @onready var indicateur_capt5 = $Indicateur_Capteur5
 @onready var state_label = $Label_State
 @onready var speed_label = $Label_Speed
+@onready var time_label = $Label_Time
+
 
 
 
@@ -87,6 +89,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	elapsed_time += delta
+	time_label.text = "Time: %.2f secondes" % elapsed_time
 	pass
 	
 
