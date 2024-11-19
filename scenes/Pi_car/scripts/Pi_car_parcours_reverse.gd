@@ -67,6 +67,7 @@ var KD = 0.005
 var elapsed_time = 0.0
 var backing_up_counter = 0.0
 var last_direction = 0
+var line_count = 0
 
 @onready var indicateur_capt1 = $Indicateur_Capteur1
 @onready var indicateur_capt2 = $Indicateur_Capteur2
@@ -187,13 +188,15 @@ func _physics_process(delta):
 			else:
 				var old_move = movement_array.get_last_move()
 				if old_move != null:
-					speed = -old_move[0]
+					speed = -old_move[0]/1.5
 					rotation = -old_move[1]
 				else:
 					if speed < 0:
 						speed += ACCELERATION * delta
-
+			if utils.finish_line_detected(capteurs_SL) and elapsed_time > 8:
+				state = State.finished
 			update_state_label()
+			
 		State.blocked:
 			if $RayCast3D.is_colliding():
 				US_distance = Vector3(self.position.x, self.position.y, self.position.z).distance_to($RayCast3D.get_collision_point()) + $RayCast3D.position.x
@@ -242,6 +245,8 @@ func _physics_process(delta):
 		State.finished:
 			if speed > 0:
 				speed -= ACCELERATION * delta
+			elif speed < 0:
+				speed += ACCELERATION * delta
 			update_state_label()
 			
 		State.find_line:
@@ -254,6 +259,7 @@ func _physics_process(delta):
 				speed -= ACCELERATION/3 * delta
 			backing_up_counter += delta
 			update_state_label()
+	
 	
 	rotation_value += rotation * delta
 	rotate_y(rotation * delta)
@@ -335,10 +341,9 @@ func suivre_ligne(delta, speed):
 	var new_state = State.following_line
 	var new_rotation = PID_output
 	
-	if utils.finish_line_detected(capteurs_SL):
-		if speed > 0:
-			new_speed -= ACCELERATION * delta
-		new_state = State.finished
+	if utils.finish_line_detected(capteurs_SL) and elapsed_time > 3:
+		new_state = State.reverse
+
 	
 
 	if !utils.line_detected(capteurs_SL):
