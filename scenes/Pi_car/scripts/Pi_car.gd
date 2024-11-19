@@ -139,10 +139,11 @@ func _physics_process(delta):
 				state = State.following_line
 				tick_counter = 0
 			update_state_label()	
-			if !utils.line_detected(capteurs_SL):
+			if !line_detected():
 				write_to_log("Valeurs du parcours:\n" + "Acceleration : " + str(ACCELERATION) + "    Vmax : " + str(V_MAX) 
 				+ "    Vitesse turn : " + str(Settings.v_turn) + "    Vitesse tight turn : " + str(Settings.v_tight_turn)
 				+ "\nLe suiveur de ligne suit pus les lignes   FAIL", "fail")
+				#get_tree().quit()
 				emit_signal("test_completed")
 			
 		State.turning_right:
@@ -154,10 +155,11 @@ func _physics_process(delta):
 				state = State.following_line
 				tick_counter = 0
 			update_state_label()
-			if !utils.line_detected(capteurs_SL):
+			if !line_detected():
 				write_to_log("Valeurs du parcours:\n" + "Acceleration : " + str(ACCELERATION) + "    Vmax : " + str(V_MAX) 
 				+ "    Vitesse turn : " + str(Settings.v_turn) + "    Vitesse tight turn : " + str(Settings.v_tight_turn)
 				+ "\nLe suiveur de ligne suit pus les lignes   FAIL", "fail")
+				#get_tree().quit()
 				emit_signal("test_completed")
 			
 		State.manual_control:
@@ -178,7 +180,7 @@ func _physics_process(delta):
 				state = State.reverse
 				
 			update_state_label()
-			if utils.line_detected(capteurs_SL):
+			if line_detected():
 				state = State.following_line
 			
 		State.reverse:
@@ -245,7 +247,7 @@ func _physics_process(delta):
 			update_state_label()
 			
 		State.find_line:
-			if utils.line_detected(capteurs_SL) and backing_up_counter > 1:
+			if line_detected() and backing_up_counter > 1:
 				backing_up_counter = 0
 				state = State.following_line
 
@@ -324,8 +326,13 @@ func update_state_label():
 func calculate_actual_speed(translation, delta):
 	return translation/delta
 	
-
 	
+func line_detected():
+	if capteurs_SL != [false, false, false, false, false]:
+		return true
+	else:
+		return false
+		
 func suivre_ligne(delta, speed):
 	var position = read_line(capteurs_SL)
 	var error = 50 - position
@@ -335,13 +342,13 @@ func suivre_ligne(delta, speed):
 	var new_state = State.following_line
 	var new_rotation = PID_output
 	
-	if utils.finish_line_detected(capteurs_SL):
+	if capteurs_SL == [true, true, true, true, true]:
 		if speed > 0:
 			new_speed -= ACCELERATION * delta
 		new_state = State.finished
 	
 
-	if !utils.line_detected(capteurs_SL):
+	if capteurs_SL == [false, false, false, false, false]:
 		if speed > 0:
 			new_speed -= ACCELERATION * delta
 			write_to_log("Valeurs du parcours:\n" + "Acceleration : " + str(ACCELERATION) + "    Vmax : " + str(V_MAX) 
@@ -519,5 +526,6 @@ func _on_boule_fell_capteur_body_entered(body):
 		write_to_log("Valeurs du parcours:\n" + "Acceleration : " + str(ACCELERATION) + "    Vmax : " + str(V_MAX) 
 		+ "    Vitesse turn : " + str(Settings.v_turn) + "    Vitesse tight turn : " + str(V_TIGHT_TURN)
 		+ "\nLa boule a dip  FAIL", "fail")
+		#get_tree().quit()
 		emit_signal("test_completed")
-
+		# Handle the fall, such as resetting the ball position or ending the simulation

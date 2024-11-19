@@ -28,8 +28,3 @@ func set_state_text(state):
 	
 	return "Current PiCar State: %s" % state_text  # Converts the state enum to string
 	
-func line_detected(sensor_array):
-	return sensor_array != [false, false, false, false, false]
-		
-func finish_line_detected(sensor_array):
-	return sensor_array == [true, true, true, true, true]

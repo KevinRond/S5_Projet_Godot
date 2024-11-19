@@ -1,9 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://dlnmfg53iu6on"]
+[gd_scene load_steps=10 format=3 uid="uid://dlnmfg53iu6on"]
 
 [ext_resource type="Script" path="res://scenes/parcours/Parcours_ce_reculons/scripts/Parcours_conduite_epreuve.gd" id="1_ifwq6"]
 [ext_resource type="ArrayMesh" uid="uid://d4p13iho7uic" path="res://scenes/parcours/Parcours_ce_virage/ConduiteEpreuve.obj" id="1_rwc3p"]
 [ext_resource type="PackedScene" uid="uid://cwtn8ob7bli" path="res://scenes/Pi_car/Pi_car.tscn" id="2_00hrh"]
-[ext_resource type="Script" path="res://scenes/Pi_car/scripts/Pi_car_parcours_reverse.gd" id="4_e7l3k"]
 [ext_resource type="PackedScene" uid="uid://bjabyq4k71lco" path="res://scenes/Boule/Boule.tscn" id="4_nr8ex"]
 [ext_resource type="PackedScene" uid="uid://d3e1fl8cheal0" path="res://scenes/Label_Bouton/label_bouton.tscn" id="5_m04m5"]
 
@@ -42,7 +41,6 @@ shape = SubResource("ConcavePolygonShape3D_yxh43")
 
 [node name="PiCar" parent="." instance=ExtResource("2_00hrh")]
 transform = Transform3D(0.0436195, 0, -0.999048, 0, 1, 0, 0.999048, 0, 0.0436195, 0, 0, 4.5)
-script = ExtResource("4_e7l3k")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_41xim")
