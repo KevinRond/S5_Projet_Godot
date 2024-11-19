@@ -21,6 +21,8 @@ func set_state_text(state):
 			state_text = "Recovering"
 		State.finished:
 			state_text = "Finished"
+		State.find_line:
+			state_text = "Finding Line"
 		_:
 			state_text = "Unknown State"
 	

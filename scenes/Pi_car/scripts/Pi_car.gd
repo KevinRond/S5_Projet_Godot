@@ -6,7 +6,6 @@ var Movement = load("res://scripts/classes/Movement.gd")
 var MovementArray = load("res://scripts/classes/Movement_Array.gd")
 var utils = load("res://scenes/Pi_car/scripts/utils.gd").new()
 
-var stuff = 1
 signal test_completed
 """ EXPLICATION ACCÉLÉRATION
 En théorie, l'accélération est sensée être g*h/x où h est la profondeur de la
@@ -65,7 +64,9 @@ var Dvalue = 0
 var KP = 1
 var KI = 0.001
 var KD = 0.005
-var elapsed_time = 0.0  # Variable pour stocker le temps écoulé
+var elapsed_time = 0.0
+var backing_up_counter = 0.0
+var last_direction = 0
 
 @onready var indicateur_capt1 = $Indicateur_Capteur1
 @onready var indicateur_capt2 = $Indicateur_Capteur2
@@ -107,6 +108,7 @@ func _physics_process(delta):
 
 	var rotation = 0
 	var US_distance = 0
+	
 
 	match state:
 		State.following_line:
@@ -243,7 +245,18 @@ func _physics_process(delta):
 			if speed > 0:
 				speed -= ACCELERATION * delta
 			update_state_label()
+			
+		State.find_line:
+			if line_detected() and backing_up_counter > 1:
+				backing_up_counter = 0
+				state = State.following_line
 
+			rotation = last_direction	
+			if speed > -V_MAX:
+				speed -= ACCELERATION/3 * delta
+			backing_up_counter += delta
+			update_state_label()
+	
 	rotation_value += rotation * delta
 	rotate_y(rotation * delta)
 	translate(Vector3(-delta * speed, 0, 0))
@@ -342,6 +355,8 @@ func suivre_ligne(delta, speed):
 				+ "    Vitesse turn : " + str(Settings.v_turn) + "    Vitesse tight turn : " + str(Settings.v_tight_turn)
 				+ "\nLe suiveur de ligne suit pus les lignes  FAIL", "fail")
 			emit_signal("test_completed")
+		last_direction = movement_array.check_last_rotation()
+		new_state = State.find_line
 	else:
 		if speed < V_MAX:
 			new_speed += ACCELERATION * delta

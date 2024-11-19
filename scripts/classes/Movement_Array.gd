@@ -5,7 +5,7 @@ class_name MovementArray
 var Movement = load("res://scripts/classes/Movement.gd")
 
 # Changer cette const pour sauvegarder plus de mouvements et reculer plus loin
-const MAX_DISPLACEMENT: float = 0.2
+const MAX_DISPLACEMENT: float = 1
 
 var array: Array[Movement] = []
 var total_distance: float = 0
@@ -31,6 +31,9 @@ func get_last_move():
 	if move != null:
 		array.pop_back()
 		return [move.speed, move.rotation]
+		
+func check_last_rotation():
+	return array.back().rotation
 	
 func print_movement_array():
 	for move in array:

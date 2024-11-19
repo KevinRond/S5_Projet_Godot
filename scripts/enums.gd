@@ -11,6 +11,7 @@ enum State {
 	blocked,
 	avoiding,
 	recovering,
-	finished
+	finished,
+	find_line
 }
 
