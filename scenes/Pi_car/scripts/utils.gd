@@ -33,3 +33,23 @@ func line_detected(sensor_array):
 		
 func finish_line_detected(sensor_array):
 	return sensor_array == [true, true, true, true, true]
+	
+func make_fake_sensor_data():
+	var SL = []
+	for i in range(5):
+		SL.append(randi() % 2 == 0)
+	var distance = randf() * 150
+	
+	var data = {
+		"lt_status": SL,
+		"us_output": distance,
+	}
+	return JSON.stringify(data)
+	
+func make_json_instructions(new_speed, new_rotation):
+	var json = {
+		"speed": new_speed,
+		"rotation": new_rotation,
+	}
+
+	return JSON.stringify(json)

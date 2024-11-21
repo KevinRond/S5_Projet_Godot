@@ -108,6 +108,12 @@ func _physics_process(delta):
 
 	var rotation = 0
 	var US_distance = 0
+	var json_string = utils.make_fake_sensor_data()
+	var robot_message = JSON.parse_string(json_string)
+	print("Message du robot: ")
+	print(robot_message)
+	# capteurs_SL = robot_message["lt_status"]
+	# US_distance = robot_message["us_output"]
 	
 
 	match state:
@@ -258,6 +264,11 @@ func _physics_process(delta):
 	rotation_value += rotation * delta
 	rotate_y(rotation * delta)
 	translate(Vector3(-delta * speed, 0, 0))
+	
+	var robot_instruction = utils.make_json_instructions(speed, rotation)
+	print("Instruction du robot: ")
+	print(robot_instruction)
+	
 	update_speed_label()
 	
 	if state != State.reverse && speed > 0:
