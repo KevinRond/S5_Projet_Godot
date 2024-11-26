@@ -209,21 +209,26 @@ func treat_info(delta, capteurs, distance):
 						#speed += ACCELERATION * delta
 
 		State.blocked:
-			if distance < WALL_STOP + BRAKE_RANGE and distance > 0:
+			if distance < WALL_STOP + BRAKE_RANGE and distance > 0 and avoid_timer == 0:
 				if speed > -V_MAX:
 					speed -= 2*ACCELERATION * delta
-			elif distance > WALL_STOP:
+			else:
 				avoid_timer += delta
-				if speed < V_MAX:
-					speed += 3*ACCELERATION * delta
-					
-				if avoid_timer < 60*AVOID_TIME:
-					rotation = GAUCHE
-				else:
-					avoid_timer = 0
+				if avoid_timer > 60*AVOID_TIME:
 					state = State.avoiding
-			
+				
 		State.avoiding:
+			avoid_timer += delta
+			if speed < V_MAX:
+				speed += 3*ACCELERATION * delta
+				
+			if avoid_timer < 60*AVOID_TIME:
+				rotation = GAUCHE
+			else:
+				avoid_timer = 0
+				state = State.recovering
+		
+		State.recovering:
 			avoid_timer += delta
 			if avoid_timer < 60*AVOID_TIME:
 				rotation = DROITE
@@ -232,7 +237,7 @@ func treat_info(delta, capteurs, distance):
 			
 			if capteurs_SL[0] or capteurs_SL[1] or capteurs_SL[2] or capteurs_SL[3] or capteurs_SL[4]:
 				state = State.following_line
-	
+				
 	var deg_rotation = rotation
 	print("Rotation envoyee %f" % deg_rotation)
 	var message_to_robot = {
@@ -242,7 +247,6 @@ func treat_info(delta, capteurs, distance):
 	}
 	print("V_MAX is : ", V_MAX)
 	print("state is ", state)
-	print(State.following_line)
 	return message_to_robot
 
 	
