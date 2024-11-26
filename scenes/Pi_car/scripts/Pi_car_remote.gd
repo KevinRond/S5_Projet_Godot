@@ -283,7 +283,7 @@ func PID_Linefollow(error):
 	var PID_value = Pvalue + Ivalue + Dvalue
 	previous_error = error
 	PID_value = deg_to_rad(PID_value)
-	PID_value = clamp(PID_value, -deg_to_rad(45), deg_to_rad(45))
+	PID_value = clamp(PID_value, -deg_to_rad(10), deg_to_rad(10))
 	
 	return PID_value
 		
