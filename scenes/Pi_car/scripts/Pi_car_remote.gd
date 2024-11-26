@@ -225,6 +225,7 @@ func treat_info(delta, capteurs, distance):
 					
 				if avoid_timer > WAIT_TIME:
 					noteMaxime = "C'est reparti"
+					avoid_timer = 0
 					state = State.avoiding
 				
 		State.avoiding:
@@ -247,7 +248,7 @@ func treat_info(delta, capteurs, distance):
 			else:
 				rotation = CENTRE
 			
-			if capteurs_SL[0] or capteurs_SL[1] or capteurs_SL[2] or capteurs_SL[3] or capteurs_SL[4]:
+			if capteurs[0] or capteurs[1] or capteurs[2] or capteurs[3] or capteurs[4]:
 				state = State.following_line
 				
 	var deg_rotation = rotation
