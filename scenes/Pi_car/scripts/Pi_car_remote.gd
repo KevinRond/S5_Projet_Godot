@@ -154,6 +154,7 @@ func suivre_ligne_comm(delta, speed, capteurs, distance, use_90deg_turns=false):
 	return [new_speed, new_state, new_rotation]
 	
 func treat_info(delta, capteurs, distance):
+	print(distance)
 	var rotation = 0
 	var US_distance = 0
 
@@ -206,11 +207,11 @@ func treat_info(delta, capteurs, distance):
 			if distance < BRAKE_RANGE:
 				avoid_timer = 0
 				if speed > -V_MAX:
-					speed -= 0.5*ACCELERATION * delta
+					speed -= 2*ACCELERATION * delta
 			else:
 				avoid_timer += delta
 				if speed < V_MAX:
-					speed += ACCELERATION * delta
+					speed += 3*ACCELERATION * delta
 				if avoid_timer < 60*AVOID_TIME:
 					rotation = GAUCHE
 				else:
