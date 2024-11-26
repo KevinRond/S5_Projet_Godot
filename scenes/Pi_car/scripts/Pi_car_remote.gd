@@ -49,6 +49,7 @@ var tick_counter = 0
 var movement_array: MovementArray = MovementArray.new()
 
 var start_time = 0
+var elapsed_time = 0
 var previous_error = 0
 var P = 0
 var I = 0
@@ -61,6 +62,7 @@ var KP = 0.75
 var KI = 0.005
 var KD = 0.1
 var last_direction = 0
+var parcours_reverse = false
 
 
 @onready var indicateur_capt1 = $Indicateur_Capteur1
@@ -85,7 +87,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	elapsed_time += delta
 	
 
 func _physics_process(delta):
@@ -308,11 +310,20 @@ func suivre_ligne(delta, speed, capteurs):
 	var new_state = State.following_line
 	var new_rotation = PID_output
 	
-	if utils.finish_line_detected(capteurs):
+	if utils.finish_line_detected(capteurs) and !parcours_reverse:
 		if speed > 0:
 			new_speed -= ACCELERATION * delta
 		new_rotation = 0 
 		new_state = State.stopping
+	
+	if utils.finish_line_detected(capteurs) and elapsed_time > 10 and parcours_reverse:
+		if speed > 0:
+			new_speed -= ACCELERATION * delta
+		new_rotation = 0 
+		new_state = State.stopping
+		
+	if utils.finish_line_detected(capteurs_SL) and elapsed_time > 3 and parcours_reverse:
+		new_state = State.reverse
 	
 
 	if !utils.line_detected(capteurs):
@@ -413,17 +424,19 @@ func treat_info(delta, capteurs):
 				speed -= ACCELERATION * delta
 			rotation = 0
 			
-		#State.reverse:
-			#if speed > 0:
-				#speed -= ACCELERATION * delta
-			#else:
-				#var old_move = movement_array.get_last_move()
-				#if old_move != null:
-					#speed = -old_move[0]
-					#rotation = -old_move[1]
-				#else:
-					#if speed < 0:
-						#speed += ACCELERATION * delta
+		State.reverse:
+			if speed > 0:
+				speed -= ACCELERATION * delta
+			else:
+				var old_move = movement_array.get_last_move()
+				if old_move != null:
+					speed = -old_move[0]/1.5
+					rotation = -old_move[1]
+				else:
+					if speed < 0:
+						speed += ACCELERATION * delta
+			if utils.finish_line_detected(capteurs) and elapsed_time > 8:
+				state = State.following_line
 
 		#State.blocked:
 			#if $RayCast3D.is_colliding():
@@ -458,6 +471,13 @@ func treat_info(delta, capteurs):
 			if capteurs[0] or capteurs[1] or capteurs[2] or capteurs[3] or capteurs[4]:
 				state = State.following_line
 
+	if state != State.reverse && speed > 0:
+		if rotation == 0:
+			var movement = Movement.new(speed, (delta * speed), MovementType.translation, rotation)
+			movement_array.add_move(movement)
+		else:
+			var movement = Movement.new(speed, (delta * speed), MovementType.rotation, rotation)
+			movement_array.add_move(movement)
 
 	#rotate_y(rotation * delta)
 	#translate(Vector3(-delta * speed, 0, 0))
