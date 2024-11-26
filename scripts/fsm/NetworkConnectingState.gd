@@ -1,7 +1,7 @@
 class_name NetworkFSMConnectingState
 extends StateMachineState
 
-var piCar_class = preload("res://scenes/Pi_car/scripts/Pi_car.gd")
+var piCar_class = preload("res://scenes/Pi_car/scripts/Pi_car_remote.gd")
 var piCar = piCar_class.new()
 
 var highestTime = 0
