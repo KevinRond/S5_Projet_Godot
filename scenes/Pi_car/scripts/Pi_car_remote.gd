@@ -287,8 +287,8 @@ func PID_Linefollow(error):
 	print("Previous error %f" % previous_error)
 	var PID_value = Pvalue + Ivalue + Dvalue
 	previous_error = error
-	PID_value = deg_to_rad(PID_value)
-	PID_value = clamp(PID_value, -deg_to_rad(10), deg_to_rad(10))
+	# PID_value = deg_to_rad(PID_value)
+	PID_value = clamp(PID_value, -45, 45)
 	print("PID_value: %f" % PID_value)
 	return PID_value
 		
@@ -321,19 +321,19 @@ func suivre_ligne(delta, speed, capteurs):
 		if speed < V_MAX:
 			new_speed += ACCELERATION * delta
 		if PID_output > 0:
-			new_rotation = min(PID_output, -deg_to_rad(45))
-			if PID_output < deg_to_rad(10):
+			new_rotation = min(PID_output, -45)
+			if PID_output < 10:
 				if speed > V_TURN:
 					new_speed -= ACCELERATION * delta
-			if PID_output < deg_to_rad(30):
+			if PID_output < 30:
 				if speed > V_TIGHT_TURN:
 					new_speed -= ACCELERATION * delta
 		else:
-			new_rotation = max(PID_output, deg_to_rad(45))
-			if PID_output > -deg_to_rad(10):
+			new_rotation = max(PID_output, 45)
+			if PID_output > -10:
 				if speed > V_TURN:
 					new_speed -= ACCELERATION * delta
-			if PID_output > -deg_to_rad(30):
+			if PID_output > -30:
 				if speed > V_TIGHT_TURN:
 					new_speed -= ACCELERATION * delta
 
@@ -508,7 +508,7 @@ func treat_info(delta, capteurs):
 	#rotate_y(rotation * delta)
 	#translate(Vector3(-delta * speed, 0, 0))
 	#update_speed_label()
-	var deg_rotation = rad_to_deg(rotation)
+	var deg_rotation = rotation
 	print("Rotation envoyee %f" % deg_rotation)
 	var message_to_robot = {
 		
