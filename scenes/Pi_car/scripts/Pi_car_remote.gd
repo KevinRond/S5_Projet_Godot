@@ -300,7 +300,7 @@ func suivre_ligne(delta, speed, capteurs):
 	if utils.finish_line_detected(capteurs):
 		if speed > 0:
 			new_speed -= ACCELERATION * delta
-		new_state = State.finished
+		# new_state = State.finished
 	
 
 	if !utils.line_detected(capteurs):
@@ -311,24 +311,24 @@ func suivre_ligne(delta, speed, capteurs):
 				+ "\nLe suiveur de ligne suit pus les lignes  FAIL", "fail")
 			emit_signal("test_completed")
 		last_direction = movement_array.check_last_rotation()
-		new_state = State.find_line
+		# new_state = State.find_line
 	else:
 		if speed < V_MAX:
 			new_speed += ACCELERATION * delta
 		if PID_output > 0:
-			new_rotation = min(PID_output, deg_to_rad(45))
-			if PID_output > deg_to_rad(10):
+			new_rotation = min(PID_output, -deg_to_rad(45))
+			if PID_output < deg_to_rad(10):
 				if speed > V_TURN:
 					new_speed -= ACCELERATION/1.5 * delta
-			if PID_output > deg_to_rad(30):
+			if PID_output < deg_to_rad(30):
 				if speed > V_TIGHT_TURN:
 					new_speed -= ACCELERATION/1.5 * delta
 		else:
-			new_rotation = max(PID_output, -deg_to_rad(45))
-			if PID_output < -deg_to_rad(10):
+			new_rotation = max(PID_output, deg_to_rad(45))
+			if PID_output > -deg_to_rad(10):
 				if speed > V_TURN:
 					new_speed -= ACCELERATION/1.5 * delta
-			if PID_output < -deg_to_rad(30):
+			if PID_output > -deg_to_rad(30):
 				if speed > V_TIGHT_TURN:
 					new_speed -= ACCELERATION/1.5 * delta
 
