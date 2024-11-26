@@ -39,12 +39,13 @@ var V_TURN = 0.12
 var V_TIGHT_TURN = 0.066
 const MAX_DISPLACEMENT = 0.2
 const WALL_STOP = 10
-const BRAKE_RANGE = 20
+const BRAKE_RANGE = 5
+const REVERSE_RANGE = 20
 const CENTRE = 90
-const GAUCHE = 45
-const DROITE = 135
-const AVOID_TIME = 2
-const WAIT_TIME = 3
+const GAUCHE = 60
+const DROITE = 120
+const AVOID_TIME = 1
+const WAIT_TIME = 0.5
 
 var noteMaxime = "Salut :)"
 
@@ -159,7 +160,6 @@ func suivre_ligne_comm(delta, speed, capteurs, distance, use_90deg_turns=false):
 func treat_info(delta, capteurs, distance):
 	print(distance)
 	var rotation = 0
-	var US_distance = 0
 
 	match state:
 		State.manual_control:
@@ -172,13 +172,13 @@ func treat_info(delta, capteurs, distance):
 			state = result[1]
 			rotation = result[2]
 			
-			if distance < WALL_STOP and distance > 0:
-				avoid_timer = 0
-				speed = 0
-				state = State.blocked
-			#elif distance < WALL_STOP + BRAKE_RANGE and distance > 0:
-				#if speed > V_MAX / 2:
-					#speed -= 2*ACCELERATION * delta
+			if distance < WALL_STOP + BRAKE_RANGE and distance > 0:
+				if speed > 0:
+					speed -= ACCELERATION * delta
+				if distance < WALL_STOP:	
+					avoid_timer = 0
+					speed = 0
+					state = State.blocked
 				
 			
 		State.turning_left:
@@ -236,17 +236,19 @@ func treat_info(delta, capteurs, distance):
 				
 			if avoid_timer < AVOID_TIME:
 				rotation = GAUCHE
+				noteMaxime = "Je tourne, timer = " + str(avoid_timer)
 			else:
 				avoid_timer = 0
 				state = State.recovering
 		
 		State.recovering:
 			avoid_timer += delta * 10
-			noteMaxime = "VROOM a la vitesse " + str(speed)
 			if avoid_timer < AVOID_TIME:
 				rotation = DROITE
+				noteMaxime = "Je reviens, timer = " + str(avoid_timer)
 			else:
 				rotation = CENTRE
+				noteMaxime = "Je cherche la ligne :D"
 			
 			if capteurs[0] or capteurs[1] or capteurs[2] or capteurs[3] or capteurs[4]:
 				state = State.following_line
