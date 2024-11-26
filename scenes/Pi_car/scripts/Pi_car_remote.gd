@@ -44,7 +44,7 @@ const CENTRE = 90
 const GAUCHE = 45
 const DROITE = 135
 const AVOID_TIME = 2
-const WAIT_TIME = 5
+const WAIT_TIME = 3
 
 var noteMaxime = "Salut :)"
 
@@ -218,7 +218,7 @@ func treat_info(delta, capteurs, distance):
 					noteMaxime = "Je deccelere !"
 					speed -= ACCELERATION * delta
 			else:
-				avoid_timer += delta
+				avoid_timer += delta * 10
 				noteMaxime = "J'attend devant le mur, timer = " + str(avoid_timer)
 				if speed < 0:
 					speed += 2*ACCELERATION * delta
@@ -228,7 +228,7 @@ func treat_info(delta, capteurs, distance):
 					state = State.avoiding
 				
 		State.avoiding:
-			avoid_timer += delta
+			avoid_timer += delta * 10
 			if speed < V_MAX:
 				speed += 3*ACCELERATION * delta
 				noteMaxime = "VROOM !"
@@ -240,7 +240,7 @@ func treat_info(delta, capteurs, distance):
 				state = State.recovering
 		
 		State.recovering:
-			avoid_timer += delta
+			avoid_timer += delta * 10
 			noteMaxime = "VROOM a la vitesse " + str(speed)
 			if avoid_timer < AVOID_TIME:
 				rotation = DROITE
