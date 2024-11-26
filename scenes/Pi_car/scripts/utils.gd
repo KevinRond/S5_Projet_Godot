@@ -34,7 +34,7 @@ func line_detected(sensor_array):
 	return sensor_array != [false, false, false, false, false]
 		
 func finish_line_detected(sensor_array):
-	return sensor_array == [true, true, true, true, true]
+	return sensor_array.sum()==4
 	
 func make_fake_sensor_data():
 	var SL = []
