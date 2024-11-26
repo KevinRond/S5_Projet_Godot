@@ -279,6 +279,10 @@ func PID_Linefollow(error):
 	Pvalue = KP*P
 	Ivalue = KI*I
 	Dvalue = KD*D
+	print("Pvalue %f" % Pvalue)
+	print("Ivalue %f" % Ivalue)
+	print("Dvalue %f" % Dvalue)
+	
 	print("error %f" % error)
 	print("Previous error %f" % previous_error)
 	var PID_value = Pvalue + Ivalue + Dvalue
