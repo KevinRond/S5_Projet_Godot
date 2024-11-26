@@ -57,7 +57,7 @@ var Pvalue = 0
 var Ivalue = 0
 var Dvalue = 0
 
-var KP = 0.001
+var KP = 1
 var KI = 1
 var KD = 1
 var last_direction = 0
@@ -283,7 +283,7 @@ func PID_Linefollow(error):
 	var PID_value = Pvalue + Ivalue + Dvalue
 	previous_error = error
 	PID_value = deg_to_rad(PID_value)
-	PID_value = clamp(PID_value, -deg_to_rad(10), deg_to_rad(10))
+	PID_value = clamp(PID_value, -deg_to_rad(45), deg_to_rad(45))
 	
 	return PID_value
 		
@@ -316,7 +316,7 @@ func suivre_ligne(delta, speed, capteurs):
 		if speed < V_MAX:
 			new_speed += ACCELERATION * delta
 		if PID_output > 0:
-			new_rotation = min(PID_output, -deg_to_rad(10))
+			new_rotation = min(PID_output, -deg_to_rad(45))
 			if PID_output < deg_to_rad(10):
 				if speed > V_TURN:
 					new_speed -= ACCELERATION * delta
@@ -324,7 +324,7 @@ func suivre_ligne(delta, speed, capteurs):
 				if speed > V_TIGHT_TURN:
 					new_speed -= ACCELERATION * delta
 		else:
-			new_rotation = max(PID_output, deg_to_rad(10))
+			new_rotation = max(PID_output, deg_to_rad(45))
 			if PID_output > -deg_to_rad(10):
 				if speed > V_TURN:
 					new_speed -= ACCELERATION * delta
