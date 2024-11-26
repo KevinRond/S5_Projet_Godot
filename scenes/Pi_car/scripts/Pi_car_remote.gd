@@ -509,7 +509,7 @@ func treat_info(delta, capteurs):
 	#translate(Vector3(-delta * speed, 0, 0))
 	#update_speed_label()
 	var deg_rotation = rad_to_deg(rotation)
-	print(deg_rotation)
+	print("Rotation envoyee %f" % deg_rotation)
 	var message_to_robot = {
 		
 		"rotation": int(deg_rotation),
