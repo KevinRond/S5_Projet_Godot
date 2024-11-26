@@ -27,7 +27,7 @@ l'incertitude de 30mm selon l'accélération trouvée
 
 SI ON MODIFIE CETTE VALEUR, ON DOIT S'ASSURER DE REFAIRE LE TEST D'ARRÊT
 """ 
-var V_MAX = 0.1 # m/s
+var V_MAX = 0.09 # m/s
 """ EXPLICATION V_TURN ET V_TIGHT_TURN
 Ces vitesses ont été trouvées en vérifiant si le robot pouvait faire les 
 virages du parcours réel
