@@ -181,7 +181,7 @@ func treat_info(delta, capteurs, distance):
 				else:
 					speed = V_MIN
 					
-				if distance < WALL_STOP:
+				if distance < WALL_STOP and distance > 0:
 					avoid_timer = 0
 					speed = 0
 					state = State.blocked
@@ -243,7 +243,7 @@ func treat_info(delta, capteurs, distance):
 		
 		State.recovering:
 			avoid_timer += delta * 10
-			if avoid_timer < AVOID_TIME:
+			if avoid_timer < AVOID_TIME / 2:
 				rotation = AVOID_SIDE*DROITE
 			else:
 				rotation = CENTRE
