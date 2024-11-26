@@ -169,7 +169,7 @@ func treat_info(delta, capteurs, distance):
 			state = result[1]
 			rotation = result[2]
 			
-			if distance < BRAKE_RANGE:
+			if distance < BRAKE_RANGE and distance > 0:
 				state = State.blocked
 			
 		State.turning_left:
@@ -204,7 +204,7 @@ func treat_info(delta, capteurs, distance):
 						#speed += ACCELERATION * delta
 
 		State.blocked:
-			if distance < BRAKE_RANGE:
+			if distance < BRAKE_RANGE and distance > 0:
 				avoid_timer = 0
 				if speed > -V_MAX:
 					speed -= 2*ACCELERATION * delta
