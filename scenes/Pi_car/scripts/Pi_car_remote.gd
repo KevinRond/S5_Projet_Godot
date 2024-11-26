@@ -328,7 +328,8 @@ func suivre_ligne(delta, speed, capteurs):
 
 	if !utils.line_detected(capteurs):
 		if speed > 0:
-			new_speed -= ACCELERATION * delta
+			new_speed -= 0.08
+			new_rotation = new_rotation
 			write_to_log("Valeurs du parcours:\n" + "Acceleration : " + str(ACCELERATION) + "    Vmax : " + str(V_MAX) 
 				+ "    Vitesse turn : " + str(Settings.v_turn) + "    Vitesse tight turn : " + str(Settings.v_tight_turn)
 				+ "\nLe suiveur de ligne suit pus les lignes  FAIL", "fail")
