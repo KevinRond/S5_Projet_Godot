@@ -62,7 +62,7 @@ var KP = 0.75
 var KI = 0.005
 var KD = 0.1
 var last_direction = 0
-var parcours_reverse = false
+var parcours_reverse = true
 
 
 @onready var indicateur_capt1 = $Indicateur_Capteur1
