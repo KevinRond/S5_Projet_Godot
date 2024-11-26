@@ -288,7 +288,11 @@ func PID_Linefollow(error):
 	var PID_value = Pvalue + Ivalue + Dvalue
 	previous_error = error
 	# PID_value = deg_to_rad(PID_value)
-	PID_value = clamp(PID_value, -45, 45)
+	# PID_value = clamp(PID_value, -45, 45)
+	if PID_value < 0:
+		PID_value = min(PID_value, -45)
+	else:
+		PID_value = max(PID_value, 45)
 	print("PID_value: %f" % PID_value)
 	return PID_value
 		
