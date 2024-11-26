@@ -49,6 +49,18 @@ var tick_counter = 0
 var movement_array: MovementArray = MovementArray.new()
 
 var start_time = 0
+var previous_error = 0
+var P = 0
+var I = 0
+var D = 0
+var Pvalue = 0
+var Ivalue = 0
+var Dvalue = 0
+
+var KP = 1
+var KI = 0.001
+var KD = 0.005
+var last_direction = 0
 
 
 @onready var indicateur_capt1 = $Indicateur_Capteur1
@@ -82,140 +94,7 @@ func _physics_process(delta):
 	#if nfsm.current_state == $"../NetworkFSM/NetworkProcessState" :
 		## Do something here
 		#pass
-
-	var rotation = 0
-	var US_distance = 0
-
-	match state:
-		State.following_line:
-			var result = suivre_ligne(delta, speed)
-			speed = result[0]
-			state = result[1]
-			rotation = result[2]
-			
-			if Input.is_key_pressed(KEY_SPACE):
-				state = State.reverse
-			if $RayCast3D.is_colliding():
-				var CollideObject = $RayCast3D.get_collider().get_parent()
-				US_distance = (CollideObject.position - Vector3(self.position.x + $RayCast3D.position.x, CollideObject.position.y, self.position.z)).length()
-				if US_distance < ULTRASON_RANGE + BRAKE_RANGE:
-					state = State.blocked
-			update_state_label()
-			
-		State.turning_left:
-			tick_counter += 1
-			if speed > 0.025:
-				speed -= ACCELERATION/500 * delta
-			rotate_y(-0.30 * delta)
-			if tick_counter >= 3000:
-				state = State.following_line
-				tick_counter = 0
-			update_state_label()	
-			if !line_detected():
-				write_to_log("Valeurs du parcours:\n" + "Acceleration : " + str(ACCELERATION) + "    Vmax : " + str(V_MAX) 
-				+ "    Vitesse turn : " + str(Settings.v_turn) + "    Vitesse tight turn : " + str(Settings.v_tight_turn)
-				+ "\nLe suiveur de ligne suit pus les lignes   FAIL", "fail")
-				#get_tree().quit()
-				emit_signal("test_completed")
-			
-		State.turning_right:
-			tick_counter += 1
-			if speed > 0.025:
-				speed -= ACCELERATION/500 * delta
-			rotate_y(0.30 * delta)
-			if tick_counter >= 3000:
-				state = State.following_line
-				tick_counter = 0
-			update_state_label()
-			if !line_detected():
-				write_to_log("Valeurs du parcours:\n" + "Acceleration : " + str(ACCELERATION) + "    Vmax : " + str(V_MAX) 
-				+ "    Vitesse turn : " + str(Settings.v_turn) + "    Vitesse tight turn : " + str(Settings.v_tight_turn)
-				+ "\nLe suiveur de ligne suit pus les lignes   FAIL", "fail")
-				#get_tree().quit()
-				emit_signal("test_completed")
-			
-		State.manual_control:
-			if Input.is_key_pressed(KEY_W):
-				if speed < V_MAX:
-					speed += ACCELERATION
-			if !Input.is_key_pressed(KEY_W):
-				if speed > 0:
-					speed -= ACCELERATION
-			if Input.is_key_pressed(KEY_S):
-				speed = 0
-			# Rotate left/right
-			if Input.is_key_pressed(KEY_A):
-				rotate_y(0.30 * delta)
-			if Input.is_key_pressed(KEY_D):
-				rotate_y(-0.30 * delta) 
-			if Input.is_key_pressed(KEY_SPACE):
-				state = State.reverse
-				
-			update_state_label()
-			if line_detected():
-				state = State.following_line
-			
-		State.reverse:
-			if speed > 0:
-				speed -= ACCELERATION * delta
-			else:
-				var old_move = movement_array.get_last_move()
-				if old_move != null:
-					speed = -old_move[0]
-					rotation = -old_move[1]
-				else:
-					if speed < 0:
-						speed += ACCELERATION * delta
-
-			update_state_label()
-		State.blocked:
-			if $RayCast3D.is_colliding():
-				var CollideObject = $RayCast3D.get_collider().get_parent()
-				US_distance = (CollideObject.position - Vector3(self.position.x + $RayCast3D.position.x, CollideObject.position.y, self.position.z)).length()
-			else:
-				US_distance = 2*ULTRASON_RANGE
-			if US_distance < 2*ULTRASON_RANGE:
-				if speed > -V_MAX:
-					speed -= ACCELERATION
-			else:
-				if speed < V_MAX:
-					speed += ACCELERATION
-				if self.rotation.y < PI/2:
-					rotation = 0.75
-				else:
-					
-					state = State.avoiding
-			update_state_label()
-			
-		State.avoiding:
-			rotation = -0.75
-			if $RayCast3D.is_colliding():
-				var CollideObject = $RayCast3D.get_collider().get_parent()
-				US_distance = (CollideObject.position - Vector3(self.position.x + $RayCast3D.position.x, CollideObject.position.y, self.position.z)).length()
-				if US_distance < ULTRASON_RANGE + BRAKE_RANGE:
-					state = State.blocked
-			elif self.rotation.y < -PI/4:
-				state = State.recovering
-			update_state_label()
-		State.recovering:
-			if capteurs_SL[0] or capteurs_SL[1] or capteurs_SL[2] or capteurs_SL[3] or capteurs_SL[4]:
-				state = State.following_line
-			update_state_label()
-
-
-	rotate_y(rotation * delta)
-	translate(Vector3(-delta * speed, 0, 0))
-	update_speed_label()
-	
-	if state != State.reverse && speed > 0:
-		if rotation == 0:
-			var movement = Movement.new(speed, (delta * speed), MovementType.translation, rotation)
-			movement_array.add_move(movement)
-		else:
-			var movement = Movement.new(speed, (delta * speed), MovementType.rotation, rotation)
-			movement_array.add_move(movement)
-		
-	# print("Vitesse courante: %f" % speed)
+	pass
 	
 
 	
@@ -230,88 +109,6 @@ func update_state_label():
 func calculate_actual_speed(translation, delta):
 	return translation/delta
 	
-	
-func line_detected_comm(capteurs):
-	if capteurs != [false, false, false, false, false]:
-		return true
-	else:
-		return false
-
-func line_detected():
-	if capteurs_SL != [false, false, false, false, false]:
-		return true
-	else:
-		return false
-
-
-func suivre_ligne(delta, speed, use_90deg_turns=false):
-	
-	var new_speed = speed
-	var new_state = State.following_line
-	var new_rotation = 0
-	if capteurs_SL == [false, false, false, false, false]:
-		if speed > 0:
-			new_speed -= ACCELERATION * delta
-		#new_state = State.manual_control
-		write_to_log("Valeurs du parcours:\n" + "Acceleration : " + str(ACCELERATION) + "    Vmax : " + str(V_MAX) 
-		+ "    Vitesse turn : " + str(Settings.v_turn) + "    Vitesse tight turn : " + str(Settings.v_tight_turn)
-		+ "\nLe suiveur de ligne suit pus les lignes  FAIL", "fail")
-		emit_signal("test_completed")
-		#get_tree().quit()
-		
-	elif capteurs_SL == [false, false, true, false, false]:
-		if speed < V_MAX:
-			new_speed += ACCELERATION * delta
-	elif capteurs_SL == [false, false, true, true, false]:
-		new_rotation = -deg_to_rad(3)
-		if speed > V_TURN:
-			new_speed -= ACCELERATION/2 * delta
-	elif capteurs_SL == [false, true, true, false, false]:
-		new_rotation = deg_to_rad(3)
-		if speed > V_TURN:
-			new_speed -= ACCELERATION/2 * delta
-	elif capteurs_SL == [false, false, false, true, false]:
-		new_rotation = -deg_to_rad(10)
-		if speed > V_TURN:
-			new_speed -= ACCELERATION * delta
-	elif capteurs_SL == [false, true, false, false, false]:
-		new_rotation = deg_to_rad(10)
-		if speed > V_TURN:
-			new_speed -= ACCELERATION * delta
-	elif capteurs_SL == [false, false, false, true, true]:
-		new_rotation = -deg_to_rad(30)
-		if speed > V_TIGHT_TURN:
-			new_speed -= ACCELERATION * delta
-	elif capteurs_SL == [true, true, false, false, false]:
-		new_rotation = deg_to_rad(30)
-		if speed > V_TIGHT_TURN:
-			new_speed -= ACCELERATION * delta
-	elif capteurs_SL == [false, false, false, false, true]:
-		new_rotation = -deg_to_rad(45)
-		if speed > V_TIGHT_TURN:
-			new_speed -= ACCELERATION * delta
-	elif capteurs_SL == [true, false, false, false, false]:
-		new_rotation = deg_to_rad(45)
-		if speed > V_TIGHT_TURN:
-			new_speed -= ACCELERATION * delta
-	elif use_90deg_turns == true:
-		if capteurs_SL == [false, false, true, true, true] or capteurs_SL == [false, true, true, true, true] or capteurs_SL == [false, true, false, true, true]:
-			new_rotation = -5  # Left turn
-			if speed > 0:
-				new_speed -= ACCELERATION * delta
-			new_state = State.turning_left
-		elif capteurs_SL == [true, true, true, false, false] or capteurs_SL == [true, true, true, true, false] or capteurs_SL == [true, true, false, true, false]:
-			new_rotation = 5  # Right turn
-
-			if speed > 0:
-				new_speed -= ACCELERATION * delta
-			new_state = State.turning_right
-	elif capteurs_SL == [true, true, true, true, true]:
-		if speed > 0:
-			new_speed -= ACCELERATION * delta
-		new_state = State.manual_control
-
-	return [new_speed, new_state, new_rotation] 
 	
 
 func change_color(index, detected, too_far=false):
@@ -452,8 +249,90 @@ func write_to_log(message: String, filename="success"):
 	file.store_string(dt + "\n" + message + "\n\n")
 
 	file = null
-		
 	
+func read_line(sensors):
+	var on_line: bool = false
+	var avg: float = 0
+	var sum: int = 0
+	
+	for i in range(len(sensors)):
+		if sensors[i] == true:
+			on_line = true
+			avg += i * 25
+			sum += 1
+			
+	var last_position = avg / sum
+	
+	if not on_line:
+		if last_position < (len(sensors) - 1) * 25 / 2:
+			return 0
+		else:
+			return (len(sensors) - 1) * 25
+	
+	return avg / sum if sum > 0 else 0
+
+func PID_Linefollow(error):
+	P = error
+	I = I + error
+	D = error - previous_error
+	
+	Pvalue = KP*P
+	Ivalue = KI*I
+	Dvalue = KD*D
+	
+	var PID_value = Pvalue + Ivalue + Dvalue
+	previous_error = error
+	PID_value = deg_to_rad(PID_value)
+	PID_value = clamp(PID_value, -deg_to_rad(45), deg_to_rad(45))
+	
+	return PID_value
+		
+
+func suivre_ligne(delta, speed, capteurs):
+	var position = read_line(capteurs)
+	var error = 50 - position
+	var PID_output = PID_Linefollow(error)
+
+	var new_speed = speed
+	var new_state = State.following_line
+	var new_rotation = PID_output
+	
+	if utils.finish_line_detected(capteurs):
+		if speed > 0:
+			new_speed -= ACCELERATION * delta
+		new_state = State.finished
+	
+
+	if !utils.line_detected(capteurs):
+		if speed > 0:
+			new_speed -= ACCELERATION * delta
+			write_to_log("Valeurs du parcours:\n" + "Acceleration : " + str(ACCELERATION) + "    Vmax : " + str(V_MAX) 
+				+ "    Vitesse turn : " + str(Settings.v_turn) + "    Vitesse tight turn : " + str(Settings.v_tight_turn)
+				+ "\nLe suiveur de ligne suit pus les lignes  FAIL", "fail")
+			emit_signal("test_completed")
+		last_direction = movement_array.check_last_rotation()
+		new_state = State.find_line
+	else:
+		if speed < V_MAX:
+			new_speed += ACCELERATION * delta
+		if PID_output > 0:
+			new_rotation = min(PID_output, deg_to_rad(45))
+			if PID_output > deg_to_rad(10):
+				if speed > V_TURN:
+					new_speed -= ACCELERATION/1.5 * delta
+			if PID_output > deg_to_rad(30):
+				if speed > V_TIGHT_TURN:
+					new_speed -= ACCELERATION/1.5 * delta
+		else:
+			new_rotation = max(PID_output, -deg_to_rad(45))
+			if PID_output < -deg_to_rad(10):
+				if speed > V_TURN:
+					new_speed -= ACCELERATION/1.5 * delta
+			if PID_output < -deg_to_rad(30):
+				if speed > V_TIGHT_TURN:
+					new_speed -= ACCELERATION/1.5 * delta
+
+	return [new_speed, new_state, new_rotation]
 	
 
 func _on_boule_fell_capteur_body_entered(body):
@@ -538,11 +417,11 @@ func treat_info(delta, capteurs):
 	match state:
 		
 		State.manual_control:
-			if line_detected_comm(capteurs):
+			if utils.line_detected(capteurs):
 				state = State.following_line
 
 		State.following_line:
-			var result = suivre_ligne_comm(delta, speed, capteurs)
+			var result = suivre_ligne(delta, speed, capteurs)
 			speed = result[0]
 			state = result[1]
 			rotation = result[2]
