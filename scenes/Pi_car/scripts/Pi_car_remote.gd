@@ -35,8 +35,8 @@ virages du parcours réel
 SI ON MODIFIE CES VALEURS, ON DOIT S'ASSURER DE VÉRIFIER LES RÉSULTATS DANS LE 
 PARCOURS RÉEL
 """ 
-var V_TURN = 0.5*V_MAX
-var V_TIGHT_TURN = 0.3*V_MAX
+var V_TURN = 0.75*V_MAX
+var V_TIGHT_TURN = 0.5*V_MAX
 const MAX_DISPLACEMENT = 0.2
 const ULTRASON_RANGE = 0.1
 const BRAKE_RANGE = 0.06
@@ -57,7 +57,7 @@ var Pvalue = 0
 var Ivalue = 0
 var Dvalue = 0
 
-var KP = 0.8
+var KP = 0.7
 var KI = 0.01
 var KD = 0.1
 var last_direction = 0
