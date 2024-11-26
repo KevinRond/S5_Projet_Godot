@@ -43,7 +43,8 @@ const BRAKE_RANGE = 20
 const CENTRE = 90
 const GAUCHE = 45
 const DROITE = 135
-const AVOID_TIME = 5
+const AVOID_TIME = 2
+const WAIT_TIME = 5
 
 var noteMaxime = "Salut :)"
 
@@ -215,13 +216,15 @@ func treat_info(delta, capteurs, distance):
 			if distance < WALL_STOP + BRAKE_RANGE and distance > 0 and avoid_timer == 0:
 				if speed > -V_MAX:
 					noteMaxime = "Je deccelere !"
-					speed -= 2*ACCELERATION * delta
+					speed -= ACCELERATION * delta
 			else:
 				avoid_timer += delta
-				noteMaxime = "J'attend devant le mur"
+				noteMaxime = "J'attend devant le mur, timer = " + str(avoid_timer)
 				if speed < 0:
 					speed += 2*ACCELERATION * delta
-				if avoid_timer > 60*AVOID_TIME:
+					
+				if avoid_timer > 60*WAIT_TIME:
+					noteMaxime = "C'est reparti"
 					state = State.avoiding
 				
 		State.avoiding:
