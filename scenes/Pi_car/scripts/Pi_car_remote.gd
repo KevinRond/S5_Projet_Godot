@@ -27,7 +27,7 @@ l'incertitude de 30mm selon l'accélération trouvée
 
 SI ON MODIFIE CETTE VALEUR, ON DOIT S'ASSURER DE REFAIRE LE TEST D'ARRÊT
 """ 
-var V_MAX = 0.10 # m/s
+var V_MAX = 0.08 # m/s
 """ EXPLICATION V_TURN ET V_TIGHT_TURN
 Ces vitesses ont été trouvées en vérifiant si le robot pouvait faire les 
 virages du parcours réel
@@ -358,70 +358,7 @@ func _on_boule_fell_capteur_body_entered(body):
 		# Handle the fall, such as resetting the ball position or ending the simulation
 		
 		
-func suivre_ligne_comm(delta, speed, capteurs, use_90deg_turns=false):
-	var new_speed = speed
-	var new_state = State.following_line
-	var new_rotation = 0
-	print("capteurs array is for suivre ligne comm is ", capteurs)
-	if capteurs == [false, false, false, false, false]:
-		if speed > 0.06666:
-			print("decreasing speed right neow")
-			new_speed -= ACCELERATION/2 * delta
-		
-	elif capteurs == [false, false, true, false, false]:
-		if speed < V_MAX:
-			new_speed += ACCELERATION/2 * delta
-	elif capteurs == [false, false, true, true, false]:
-		new_rotation = 3
-		if speed > V_TURN:
-			new_speed -= ACCELERATION/5 * delta
-	elif capteurs == [false, true, true, false, false]:
-		new_rotation = -3
-		if speed > V_TURN:
-			new_speed -= ACCELERATION/5 * delta
-	elif capteurs == [false, false, false, true, false]:
-		new_rotation = 10
-		if speed > V_TURN:
-			new_speed -= ACCELERATION/2 * delta
-	elif capteurs == [false, true, false, false, false]:
-		new_rotation = -10
-		if speed > V_TURN:
-			new_speed -= ACCELERATION/2 * delta
-	elif capteurs == [false, false, false, true, true]:
-		new_rotation = 30
-		if speed > V_TIGHT_TURN:
-			new_speed -= ACCELERATION/2 * delta
-	elif capteurs == [true, true, false, false, false]:
-		new_rotation = -30
-		if speed > V_TIGHT_TURN:
-			new_speed -= ACCELERATION/2 * delta
-	elif capteurs == [false, false, false, false, true]:
-		new_rotation = 45
-		print(new_speed)
-		if speed > V_TIGHT_TURN:
-			new_speed -= ACCELERATION/2 * delta
-	elif capteurs == [true, false, false, false, false]:
-		new_rotation = -45
-		if speed > V_TIGHT_TURN:
-			new_speed -= ACCELERATION/2 * delta
-	elif use_90deg_turns == true:
-		if capteurs == [false, false, true, true, true] or capteurs == [false, true, true, true, true] or capteurs_SL == [false, true, false, true, true]:
-			new_rotation = 5  # Left turn
-			if speed > 0:
-				new_speed -= ACCELERATION/2 * delta
-			new_state = State.turning_left
-		elif capteurs == [true, true, true, false, false] or capteurs == [true, true, true, true, false] or capteurs_SL == [true, true, false, true, false]:
-			new_rotation = 5  # Right turn
 
-			if speed > 0:
-				new_speed -= ACCELERATION/2 * delta
-			new_state = State.turning_right
-	elif capteurs == [true, true, true, true, true]:
-		if speed > 0:
-			new_speed -= ACCELERATION * delta
-		new_state = State.stopping
-
-	return [new_speed, new_state, new_rotation]
 	
 func treat_info(delta, capteurs):
 	var rotation = 0
