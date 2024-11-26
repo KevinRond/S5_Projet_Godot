@@ -50,7 +50,7 @@ const GAUCHE = -30
 const DROITE = 30
 
 const AVOID_TIME = 1
-const WAIT_TIME = 0.5
+const RETURN_TIME = 0.75
 
 var nfsm = 0
 var speed = 0
@@ -243,7 +243,9 @@ func treat_info(delta, capteurs, distance):
 		
 		State.recovering:
 			avoid_timer += delta * 10
-			if avoid_timer < AVOID_TIME / 2:
+			if speed > V_MAX / 2:
+				speed -= ACCELERATION * delta
+			if avoid_timer < AVOID_TIME:
 				rotation = AVOID_SIDE*DROITE
 			else:
 				rotation = CENTRE
