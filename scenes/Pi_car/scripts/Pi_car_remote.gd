@@ -245,7 +245,7 @@ func treat_info(delta, capteurs, distance):
 			avoid_timer += delta * 10
 			if speed > V_MAX / 2:
 				speed -= ACCELERATION * delta
-			if avoid_timer < AVOID_TIME:
+			if avoid_timer < RETURN_TIME:
 				rotation = AVOID_SIDE*DROITE
 			else:
 				rotation = CENTRE
