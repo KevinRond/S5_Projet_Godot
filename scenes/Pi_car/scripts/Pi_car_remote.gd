@@ -280,7 +280,7 @@ func PID_Linefollow(error):
 	
 	Pvalue = KP*P
 	Ivalue = KI*I
-	Ivalue = clamp(Ivalue, -10, 10)
+	Ivalue = clamp(Ivalue, -5, 5)
 	Dvalue = KD*D
 	print("Pvalue %f" % Pvalue)
 	print("Ivalue %f" % Ivalue)
@@ -465,6 +465,7 @@ func treat_info(delta, capteurs):
 		State.stopping:
 			if speed > 0:
 				speed -= ACCELERATION * delta
+			rotation = 0
 			
 		#State.reverse:
 			#if speed > 0:
