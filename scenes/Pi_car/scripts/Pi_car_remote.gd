@@ -57,7 +57,7 @@ var Pvalue = 0
 var Ivalue = 0
 var Dvalue = 0
 
-var KP = 0.8
+var KP = 0.6
 var KI = 0.01
 var KD = 0.1
 var last_direction = 0
@@ -280,7 +280,7 @@ func PID_Linefollow(error):
 	
 	Pvalue = KP*P
 	Ivalue = KI*I
-	Ivalue = clamp(Ivalue, -5, 5)
+	Ivalue = clamp(Ivalue, -7.5, 7.5)
 	Dvalue = KD*D
 	print("Pvalue %f" % Pvalue)
 	print("Ivalue %f" % Ivalue)
