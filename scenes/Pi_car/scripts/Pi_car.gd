@@ -39,8 +39,11 @@ var V_TIGHT_TURN = 0.3
 const MAX_DISPLACEMENT = 0.2
 const ULTRASON_RANGE = 0.1
 const BRAKE_RANGE = 0.06
-# 1 -> Évitement à gauche ; -1 -> Évitement à droite
-const AVOID_SIDE = 1
+const CENTRE = 90
+const GAUCHE = 45
+const DROITE = 135
+const AVOID_TIME = 2
+
 
 var nfsm = 0
 var speed = 0
@@ -48,9 +51,7 @@ var capteurs_SL = []
 var state = State.manual_control
 var tick_counter = 0
 var movement_array: MovementArray = MovementArray.new()
-var rotation_value = 0
-var initial_rotation = 0
-var distance_multiplier = 2
+var avoid_timer = 0
 
 var start_time = 0
 var previous_error = 0
@@ -128,8 +129,6 @@ func _physics_process(delta):
 			if $RayCast3D.is_colliding():
 				US_distance = Vector3(self.position.x, self.position.y, self.position.z).distance_to($RayCast3D.get_collision_point()) + $RayCast3D.position.x
 				if US_distance < ULTRASON_RANGE + BRAKE_RANGE:
-					rotation_value = 0
-					initial_rotation = rotation_value
 					$Camera3D.position.x = -0.1
 					$Camera3D.position.y = 1
 					$Camera3D.rotation.x = -PI/2
@@ -204,45 +203,39 @@ func _physics_process(delta):
 			if $RayCast3D.is_colliding():
 				US_distance = Vector3(self.position.x, self.position.y, self.position.z).distance_to($RayCast3D.get_collision_point()) + $RayCast3D.position.x
 			else:
-				US_distance = distance_multiplier*ULTRASON_RANGE
-			if US_distance < distance_multiplier*ULTRASON_RANGE:
+				US_distance = ULTRASON_RANGE
+			if US_distance < ULTRASON_RANGE:
 				if speed > -V_MAX:
 					speed -= 0.5*ACCELERATION * delta
 			else:
+				avoid_timer += delta
 				if speed < V_MAX:
 					speed += ACCELERATION * delta
-				if abs(rotation_value) < abs(initial_rotation) + 3*PI/8:
-					rotation = AVOID_SIDE*0.75
+				if avoid_timer < 60*AVOID_TIME:
+					rotation = GAUCHE
 				else:
-					distance_multiplier = 3
+					avoid_timer = 0
 					state = State.avoiding
 			update_state_label()
 			
 		State.avoiding:
-			rotation = -AVOID_SIDE*0.5
+			rotation = DROITE
+			avoid_timer += delta
 			if $RayCast3D.is_colliding():
 				US_distance = Vector3(self.position.x, self.position.y, self.position.z).distance_to($RayCast3D.get_collision_point()) + $RayCast3D.position.x
-				if US_distance < distance_multiplier*ULTRASON_RANGE:
-					rotation = 0
-					initial_rotation = rotation_value
+				if US_distance < ULTRASON_RANGE:
+					rotation = CENTRE
 					state = State.blocked
 			elif capteurs_SL[0] or capteurs_SL[1] or capteurs_SL[2] or capteurs_SL[3] or capteurs_SL[4]:
-				distance_multiplier = 2
 				$Camera3D.position.x = 0.472
 				$Camera3D.position.y = 0.225
 				$Camera3D.rotation.x = -PI/6
 				state = State.recovering
-			elif AVOID_SIDE*rotation_value <= 0 && AVOID_SIDE*rotation_value > -PI/4:
-				rotation = -AVOID_SIDE*0.75
-			elif AVOID_SIDE*rotation_value <= -PI/4:
-				rotation = 0
+			elif avoid_timer > AVOID_TIME:
+				rotation = CENTRE
 			update_state_label()
 		State.recovering:
-			rotation = AVOID_SIDE*0.3
-			if (AVOID_SIDE*rotation_value <= 0 && AVOID_SIDE*rotation_value > -PI/8 and 
-			(capteurs_SL == [false, true, true, false, false] or capteurs_SL == [false, false, true, true, false])):
-				rotation = 0
-				state = State.following_line
+			state = State.following_line
 			update_state_label()
 			
 		State.finished:
@@ -261,7 +254,6 @@ func _physics_process(delta):
 			backing_up_counter += delta
 			update_state_label()
 	
-	rotation_value += rotation * delta
 	rotate_y(rotation * delta)
 	translate(Vector3(-delta * speed, 0, 0))
 	
