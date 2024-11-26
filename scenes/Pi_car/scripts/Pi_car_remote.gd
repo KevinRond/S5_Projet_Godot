@@ -57,7 +57,7 @@ var Pvalue = 0
 var Ivalue = 0
 var Dvalue = 0
 
-var KP = 0.9
+var KP = 0.85
 var KI = 0.01
 var KD = 0.1
 var last_direction = 0
@@ -334,7 +334,7 @@ func suivre_ligne(delta, speed, capteurs):
 					new_speed -= ACCELERATION * delta
 			if PID_output > 30:
 				if speed > V_TIGHT_TURN and speed > 0.075:
-					new_speed -= ACCELERATION*1.5 * delta
+					new_speed -= ACCELERATION * delta
 		else:
 			new_rotation = -min(PID_output, 45)
 			if PID_output < -10:
@@ -342,7 +342,7 @@ func suivre_ligne(delta, speed, capteurs):
 					new_speed -= ACCELERATION * delta
 			if PID_output < -30:
 				if speed > V_TIGHT_TURN and speed > 0.075:
-					new_speed -= ACCELERATION*1.5 * delta
+					new_speed -= ACCELERATION * delta
 
 	print("new_rotation %f" % new_rotation)
 	return [new_speed, new_state, new_rotation]
