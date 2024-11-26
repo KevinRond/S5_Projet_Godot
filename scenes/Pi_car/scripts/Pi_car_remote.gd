@@ -279,12 +279,13 @@ func PID_Linefollow(error):
 	Pvalue = KP*P
 	Ivalue = KI*I
 	Dvalue = KD*D
-	
+	print("error %f" % error)
+	print("Previous error %f" % previous_error)
 	var PID_value = Pvalue + Ivalue + Dvalue
 	previous_error = error
 	PID_value = deg_to_rad(PID_value)
 	PID_value = clamp(PID_value, -deg_to_rad(10), deg_to_rad(10))
-	
+	print("PID_value: %f" % PID_value)
 	return PID_value
 		
 
