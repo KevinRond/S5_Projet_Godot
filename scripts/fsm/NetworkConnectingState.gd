@@ -36,8 +36,9 @@ func on_process(delta: float) -> void:
 		print("receiving info now : ", starttimer)
 		
 		print("Polling received data: ", msg)  # Print the received message
-		var sensors = string_to_boolean_array(msg, 5)
-		var message = piCar.treat_info(delta, sensors)
+		var sensors = extract_sensors(msg, 5)
+		var distance = extract_distance(msg)
+		var message = piCar.treat_info(delta, sensors, distance)
 		
 		message = JSON.stringify(message)
 		print("sending this data to the robot ", message)
@@ -83,7 +84,7 @@ func on_exit() -> void:
 	print("Network Connecting State left")
 	
 	
-func string_to_boolean_array(input_string: String, array_size: int) -> Array:
+func extract_sensors(input_string: String, array_size: int) -> Array:
 	var cleaned_string = input_string.strip_edges().replace("[", "").replace("]", "")
 	cleaned_string = cleaned_string.replace(" ", "")
 	var string_array = cleaned_string.split(",")
@@ -97,3 +98,10 @@ func string_to_boolean_array(input_string: String, array_size: int) -> Array:
 	else:
 		push_error("The array size does not match the expected size. size is", boolean_array.size())
 		return []
+		
+func extract_distance(input_string: String) -> float:
+	var cleaned_string = input_string.strip_edges().replace("[", "").replace("]", "")
+	cleaned_string = cleaned_string.replace(" ", "")
+	var string_array = cleaned_string.split(",")
+	return float(string_array[5])
+	
