@@ -57,9 +57,9 @@ var Pvalue = 0
 var Ivalue = 0
 var Dvalue = 0
 
-var KP = 0.0000001
-var KI = 0.0000001
-var KD = 1
+var KP = 0.0001
+var KI = 0.0001
+var KD = 0.0001
 var last_direction = 0
 
 
@@ -275,6 +275,8 @@ func PID_Linefollow(error):
 	P = error
 	I = I + error
 	D = error - previous_error
+	print("error %f" % error)
+	print("Previous error %f" % previous_error)
 	
 	Pvalue = KP*P
 	Ivalue = KI*I
@@ -283,8 +285,6 @@ func PID_Linefollow(error):
 	print("Ivalue %f" % Ivalue)
 	print("Dvalue %f" % Dvalue)
 	
-	print("error %f" % error)
-	print("Previous error %f" % previous_error)
 	var PID_value = Pvalue + Ivalue + Dvalue
 	previous_error = error
 	# PID_value = deg_to_rad(PID_value)
