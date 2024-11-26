@@ -39,15 +39,13 @@ var V_TURN = 0.12
 var V_TIGHT_TURN = 0.066
 const MAX_DISPLACEMENT = 0.2
 const WALL_STOP = 10
-const BRAKE_RANGE = 5
+const BRAKE_RANGE = 10
 const REVERSE_RANGE = 20
-const CENTRE = 90
-const GAUCHE = 60
-const DROITE = 120
-const AVOID_TIME = 1
+const CENTRE = 0
+const GAUCHE = -30
+const DROITE = 30
+const AVOID_TIME = 0.7
 const WAIT_TIME = 0.5
-
-var noteMaxime = "Salut :)"
 
 var nfsm = 0
 var speed = 0
@@ -173,9 +171,9 @@ func treat_info(delta, capteurs, distance):
 			rotation = result[2]
 			
 			if distance < WALL_STOP + BRAKE_RANGE and distance > 0:
-				if speed > 0:
-					speed -= ACCELERATION * delta
-				if distance < WALL_STOP:	
+				if speed > V_MAX / 4:
+					speed -= 2*ACCELERATION * delta
+				if distance < WALL_STOP:
 					avoid_timer = 0
 					speed = 0
 					state = State.blocked
@@ -215,28 +213,23 @@ func treat_info(delta, capteurs, distance):
 		State.blocked:
 			if distance < WALL_STOP + BRAKE_RANGE and distance > 0 and avoid_timer == 0:
 				if speed > -V_MAX:
-					noteMaxime = "Je deccelere !"
 					speed -= ACCELERATION * delta
 			else:
 				avoid_timer += delta * 10
-				noteMaxime = "J'attend devant le mur, timer = " + str(avoid_timer)
 				if speed < 0:
-					speed += 2*ACCELERATION * delta
+					speed += ACCELERATION * delta
 					
 				if avoid_timer > WAIT_TIME:
-					noteMaxime = "C'est reparti"
 					avoid_timer = 0
 					state = State.avoiding
 				
 		State.avoiding:
 			avoid_timer += delta * 10
 			if speed < V_MAX:
-				speed += 3*ACCELERATION * delta
-				noteMaxime = "VROOM !"
+				speed += ACCELERATION * delta
 				
 			if avoid_timer < AVOID_TIME:
 				rotation = GAUCHE
-				noteMaxime = "Je tourne, timer = " + str(avoid_timer)
 			else:
 				avoid_timer = 0
 				state = State.recovering
@@ -245,10 +238,8 @@ func treat_info(delta, capteurs, distance):
 			avoid_timer += delta * 10
 			if avoid_timer < AVOID_TIME:
 				rotation = DROITE
-				noteMaxime = "Je reviens, timer = " + str(avoid_timer)
 			else:
 				rotation = CENTRE
-				noteMaxime = "Je cherche la ligne :D"
 			
 			if capteurs[0] or capteurs[1] or capteurs[2] or capteurs[3] or capteurs[4]:
 				state = State.following_line
@@ -259,10 +250,10 @@ func treat_info(delta, capteurs, distance):
 		"rotation": int(deg_rotation),
 		"speed": speed
 	}
-	print("Phase de test de Maxime:\n" +
+	print("Valeurs de godot:\n" +
 	"State: " + str(state) + "\n" +
 	"Vitesse: " + str(speed) + "\n" +
-	"Note de code: " + noteMaxime)
+	"Timer: " + str(avoid_timer) + "\n")
 	#print("V_MAX is : ", V_MAX)
 	#print("state is ", state)
 	return message_to_robot
