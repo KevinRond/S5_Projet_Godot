@@ -18,24 +18,27 @@ func on_enter() -> void:
 		print("Failed to connect to web sock 0_0")
 	else:
 		print("oh no not diddy did he")
+
 	# You should connect to the websocket server here. With the socket variable of NetworkFSM
-	
+	#get_parent().socket.connect("connection_closed", self, "_on_connection_closed")
+	#get_parent().socket.connect("connection_error", self, "_on_connection_error")
+	#get_parent().socket.connect("data_received", self, "_on_data_received")
 
 # Called every frame when this state is active.
 func on_process(delta: float) -> void:
 	get_parent().socket.poll()
-
+	
 	while get_parent().socket.get_available_packet_count():
 		var msg = get_parent().socket.get_packet().get_string_from_utf8()
 		commTime = Time.get_ticks_msec() - startCommTime
 		print("cum time ahah: ", commTime)
 		var starttimer = Time.get_ticks_msec()
 		print("receiving info now : ", starttimer)
-
+		
 		print("Polling received data: ", msg)  # Print the received message
 		var sensors = string_to_boolean_array(msg, 5)
 		var message = piCar.treat_info(delta, sensors)
-
+		
 		message = JSON.stringify(message)
 		print("sending this data to the robot ", message)
 		var packet = message.to_utf8_buffer()
@@ -49,18 +52,19 @@ func on_process(delta: float) -> void:
 		print("sending info now :", endTime)
 		var miaw = get_parent().socket.put_packet(packet)
 		startCommTime = Time.get_ticks_msec()
-
 	var state = get_parent().socket.get_ready_state()
-	if state == WebSocketPeer.STATE_CONNECTING:
-		# Could be nice to have a blinker showing thats it's trying to connect?
-		pass
-	elif state == WebSocketPeer.STATE_OPEN:
-		# Do stuff here
-		pass
+
 	
-	elif state == WebSocketPeer.STATE_CLOSED || state == WebSocketPeer.STATE_CLOSING:
-		# Do stuff here
-		pass
+	#if state == WebSocketPeer.STATE_CONNECTING:
+		## Could be nice to have a blinker showing thats it's trying to connect?
+		#pass
+	#elif state == WebSocketPeer.STATE_OPEN:
+		## Do stuff here
+		#pass
+	#
+	#elif state == WebSocketPeer.STATE_CLOSED || state == WebSocketPeer.STATE_CLOSING:
+		## Do stuff here
+		#pass
 		
 
 
@@ -77,7 +81,8 @@ func on_input(event: InputEvent) -> void:
 # Called when the state machine exits this state.
 func on_exit() -> void:
 	print("Network Connecting State left")
-
+	
+	
 func string_to_boolean_array(input_string: String, array_size: int) -> Array:
 	var cleaned_string = input_string.strip_edges().replace("[", "").replace("]", "")
 	cleaned_string = cleaned_string.replace(" ", "")
@@ -86,7 +91,7 @@ func string_to_boolean_array(input_string: String, array_size: int) -> Array:
 	var boolean_array = []
 	for s in new_array:
 		boolean_array.append(s.strip_edges(true, true) == "1")
-
+	
 	if boolean_array.size() == array_size:
 		return boolean_array
 	else:
