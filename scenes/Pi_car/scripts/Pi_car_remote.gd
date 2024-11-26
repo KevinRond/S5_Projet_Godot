@@ -49,7 +49,7 @@ const CENTRE = 0
 const GAUCHE = -30
 const DROITE = 30
 
-const AVOID_TIME = 2
+const AVOID_TIME = 1
 const WAIT_TIME = 0.5
 
 var nfsm = 0
@@ -176,10 +176,11 @@ func treat_info(delta, capteurs, distance):
 			rotation = result[2]
 			
 			if distance < WALL_STOP + REVERSE_RANGE and distance > 0:
-				print("RALENTI !!!")
 				if speed > V_MIN:
+					print("RALENTI !!! " + str(distance))
 					speed -= 2*ACCELERATION * delta
 				else:
+					print("LENT !!!"  + str(distance))
 					speed = V_MIN
 					
 				if distance < WALL_STOP:
@@ -220,16 +221,15 @@ func treat_info(delta, capteurs, distance):
 						#speed += ACCELERATION * delta
 
 		State.blocked:
-			var stop = false
-			if distance < WALL_STOP + REVERSE_RANGE and distance > 0 and !stop:
+			if distance < WALL_STOP + REVERSE_RANGE and distance > 0 and avoid_timer == 0:
 				if speed > -V_MAX:
 					speed -= ACCELERATION * delta
 			else:
-				print("ARRETE !!!")
-				stop = true
+				avoid_timer = 1
 				if speed < 0:
 					speed += ACCELERATION * delta
 				else:
+					avoid_timer = 0
 					state = State.avoiding
 				
 		State.avoiding:
