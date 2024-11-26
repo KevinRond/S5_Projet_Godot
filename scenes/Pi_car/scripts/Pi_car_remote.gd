@@ -49,7 +49,7 @@ const CENTRE = 0
 const GAUCHE = -30
 const DROITE = 30
 
-const AVOID_TIME = 0.7
+const AVOID_TIME = 2
 const WAIT_TIME = 0.5
 
 var nfsm = 0
@@ -219,10 +219,12 @@ func treat_info(delta, capteurs, distance):
 						#speed += ACCELERATION * delta
 
 		State.blocked:
-			if distance < WALL_STOP + REVERSE_RANGE and distance > 0 and avoid_timer == 0:
+			var stop = false
+			if distance < WALL_STOP + REVERSE_RANGE and distance > 0 and !stop:
 				if speed > -V_MAX:
 					speed -= ACCELERATION * delta
 			else:
+				stop = true
 				if speed < 0:
 					speed += ACCELERATION * delta
 				else:
