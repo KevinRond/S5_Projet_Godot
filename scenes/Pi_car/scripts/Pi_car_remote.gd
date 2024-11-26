@@ -58,8 +58,8 @@ var Ivalue = 0
 var Dvalue = 0
 
 var KP = 1
-var KI = 0.001
-var KD = 0.005
+var KI = 1
+var KD = 1
 var last_direction = 0
 
 
@@ -310,7 +310,7 @@ func suivre_ligne(delta, speed, capteurs):
 				+ "    Vitesse turn : " + str(Settings.v_turn) + "    Vitesse tight turn : " + str(Settings.v_tight_turn)
 				+ "\nLe suiveur de ligne suit pus les lignes  FAIL", "fail")
 			emit_signal("test_completed")
-		last_direction = movement_array.check_last_rotation()
+		# last_direction = movement_array.check_last_rotation()
 		# new_state = State.find_line
 	else:
 		if speed < V_MAX:
@@ -319,18 +319,18 @@ func suivre_ligne(delta, speed, capteurs):
 			new_rotation = min(PID_output, -deg_to_rad(45))
 			if PID_output < deg_to_rad(10):
 				if speed > V_TURN:
-					new_speed -= ACCELERATION/1.5 * delta
+					new_speed -= ACCELERATION * delta
 			if PID_output < deg_to_rad(30):
 				if speed > V_TIGHT_TURN:
-					new_speed -= ACCELERATION/1.5 * delta
+					new_speed -= ACCELERATION * delta
 		else:
 			new_rotation = max(PID_output, deg_to_rad(45))
 			if PID_output > -deg_to_rad(10):
 				if speed > V_TURN:
-					new_speed -= ACCELERATION/1.5 * delta
+					new_speed -= ACCELERATION * delta
 			if PID_output > -deg_to_rad(30):
 				if speed > V_TIGHT_TURN:
-					new_speed -= ACCELERATION/1.5 * delta
+					new_speed -= ACCELERATION * delta
 
 	return [new_speed, new_state, new_rotation]
 	
