@@ -176,8 +176,9 @@ func treat_info(delta, capteurs, distance):
 			rotation = result[2]
 			
 			if distance < WALL_STOP + REVERSE_RANGE and distance > 0:
+				print("RALENTI !!!")
 				if speed > V_MIN:
-					speed -= ACCELERATION * delta
+					speed -= 2*ACCELERATION * delta
 				else:
 					speed = V_MIN
 					
@@ -224,6 +225,7 @@ func treat_info(delta, capteurs, distance):
 				if speed > -V_MAX:
 					speed -= ACCELERATION * delta
 			else:
+				print("ARRETE !!!")
 				stop = true
 				if speed < 0:
 					speed += ACCELERATION * delta
