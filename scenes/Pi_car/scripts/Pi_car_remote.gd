@@ -325,20 +325,20 @@ func suivre_ligne(delta, speed, capteurs):
 	else:
 		if speed < V_MAX:
 			new_speed += ACCELERATION * delta
-		if PID_output > 0:
+		if PID_output < 0:
 			new_rotation = max(PID_output, -45)
-			if PID_output < 10:
+			if PID_output > 10:
 				if speed > V_TURN:
 					new_speed -= ACCELERATION * delta
-			if PID_output < 30:
+			if PID_output > 30:
 				if speed > V_TIGHT_TURN:
 					new_speed -= ACCELERATION * delta
 		else:
 			new_rotation = min(PID_output, 45)
-			if PID_output > -10:
+			if PID_output < -10:
 				if speed > V_TURN:
 					new_speed -= ACCELERATION * delta
-			if PID_output > -30:
+			if PID_output < -30:
 				if speed > V_TIGHT_TURN:
 					new_speed -= ACCELERATION * delta
 
