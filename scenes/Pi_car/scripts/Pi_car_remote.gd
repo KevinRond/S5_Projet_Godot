@@ -337,6 +337,7 @@ func suivre_ligne(delta, speed, capteurs):
 				if speed > V_TIGHT_TURN:
 					new_speed -= ACCELERATION * delta
 
+	print("new_rotation %f" % new_rotation)
 	return [new_speed, new_state, new_rotation]
 	
 
