@@ -503,8 +503,10 @@ func treat_info(delta, capteurs):
 	#rotate_y(rotation * delta)
 	#translate(Vector3(-delta * speed, 0, 0))
 	#update_speed_label()
+	var deg_rotation = rad_to_deg(rotation)
 	var message_to_robot = {
-		"rotation": int(rotation),
+		
+		"rotation": int(deg_rotation),
 		"speed": speed
 	}
 	print("V_MAX is : ", V_MAX)
