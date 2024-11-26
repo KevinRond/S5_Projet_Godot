@@ -38,12 +38,12 @@ PARCOURS RÉEL
 var V_TURN = 0.12
 var V_TIGHT_TURN = 0.066
 const MAX_DISPLACEMENT = 0.2
-const ULTRASON_RANGE = 9.983647382675849283658
-const BRAKE_RANGE = 30.732873486283282
+const WALL_STOP = 10
+const BRAKE_RANGE = 20
 const CENTRE = 90
 const GAUCHE = 45
 const DROITE = 135
-const AVOID_TIME = 2
+const AVOID_TIME = 5
 
 var nfsm = 0
 var speed = 0
@@ -169,8 +169,13 @@ func treat_info(delta, capteurs, distance):
 			state = result[1]
 			rotation = result[2]
 			
-			if distance < BRAKE_RANGE and distance > 0:
+			if distance < WALL_STOP and distance > 0:
+				avoid_timer = 0
 				state = State.blocked
+			elif distance < WALL_STOP + BRAKE_RANGE and distance > 0:
+				if speed > V_MAX / 2:
+					speed -= 2*ACCELERATION * delta
+				
 			
 		State.turning_left:
 			tick_counter += 1
@@ -204,14 +209,14 @@ func treat_info(delta, capteurs, distance):
 						#speed += ACCELERATION * delta
 
 		State.blocked:
-			if distance < BRAKE_RANGE and distance > 0:
-				avoid_timer = 0
+			if distance < WALL_STOP + BRAKE_RANGE and distance > 0:
 				if speed > -V_MAX:
 					speed -= 2*ACCELERATION * delta
-			else:
+			elif distance > WALL_STOP:
 				avoid_timer += delta
 				if speed < V_MAX:
 					speed += 3*ACCELERATION * delta
+					
 				if avoid_timer < 60*AVOID_TIME:
 					rotation = GAUCHE
 				else:
@@ -219,15 +224,14 @@ func treat_info(delta, capteurs, distance):
 					state = State.avoiding
 			
 		State.avoiding:
-			rotation = DROITE
 			avoid_timer += delta
-			#if US_distance < ULTRASON_RANGE:
-				#rotation = CENTRE
-				#state = State.blocked
+			if avoid_timer < 60*AVOID_TIME:
+				rotation = DROITE
+			else:
+				rotation = CENTRE
+			
 			if capteurs_SL[0] or capteurs_SL[1] or capteurs_SL[2] or capteurs_SL[3] or capteurs_SL[4]:
 				state = State.following_line
-			elif avoid_timer > 60*AVOID_TIME:
-				rotation = CENTRE
 	
 	var deg_rotation = rotation
 	print("Rotation envoyee %f" % deg_rotation)
