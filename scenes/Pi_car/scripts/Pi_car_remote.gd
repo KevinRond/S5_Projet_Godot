@@ -258,16 +258,16 @@ func read_line(sensors):
 	for i in range(len(sensors)):
 		if sensors[i] == true:
 			on_line = true
-			avg += i * 25
+			avg += i * 22.5
 			sum += 1
 			
 	var last_position = avg / sum
 	
 	if not on_line:
-		if last_position < (len(sensors) - 1) * 25 / 2:
+		if last_position < (len(sensors) - 1) * 22.5 / 2:
 			return 0
 		else:
-			return (len(sensors) - 1) * 25
+			return (len(sensors) - 1) * 22.5
 	
 	return avg / sum if sum > 0 else 0
 
@@ -301,7 +301,7 @@ func PID_Linefollow(error):
 
 func suivre_ligne(delta, speed, capteurs):
 	var position = read_line(capteurs)
-	var error = 50 - position
+	var error = 45 - position
 	var PID_output = PID_Linefollow(error)
 
 	var new_speed = speed
