@@ -311,7 +311,7 @@ func suivre_ligne(delta, speed, capteurs):
 	if utils.finish_line_detected(capteurs):
 		if speed > 0:
 			new_speed -= ACCELERATION * delta
-		# new_state = State.finished
+		new_state = State.stopping
 	
 
 	if !utils.line_detected(capteurs):
