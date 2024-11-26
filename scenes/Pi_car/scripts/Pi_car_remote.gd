@@ -59,7 +59,7 @@ var Dvalue = 0
 
 var KP = 1
 var KI = 0.0001
-var KD = 0.1
+var KD = 0.9
 var last_direction = 0
 
 
