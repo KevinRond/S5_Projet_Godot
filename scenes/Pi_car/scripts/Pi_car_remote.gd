@@ -45,6 +45,8 @@ const GAUCHE = 45
 const DROITE = 135
 const AVOID_TIME = 5
 
+var noteMaxime = "Salut :)"
+
 var nfsm = 0
 var speed = 0
 var capteurs_SL = []
@@ -171,10 +173,11 @@ func treat_info(delta, capteurs, distance):
 			
 			if distance < WALL_STOP and distance > 0:
 				avoid_timer = 0
+				speed = 0
 				state = State.blocked
-			elif distance < WALL_STOP + BRAKE_RANGE and distance > 0:
-				if speed > V_MAX / 2:
-					speed -= 2*ACCELERATION * delta
+			#elif distance < WALL_STOP + BRAKE_RANGE and distance > 0:
+				#if speed > V_MAX / 2:
+					#speed -= 2*ACCELERATION * delta
 				
 			
 		State.turning_left:
@@ -211,9 +214,13 @@ func treat_info(delta, capteurs, distance):
 		State.blocked:
 			if distance < WALL_STOP + BRAKE_RANGE and distance > 0 and avoid_timer == 0:
 				if speed > -V_MAX:
+					noteMaxime = "Je deccelere !"
 					speed -= 2*ACCELERATION * delta
 			else:
 				avoid_timer += delta
+				noteMaxime = "J'attend devant le mur"
+				if speed < 0:
+					speed += 2*ACCELERATION * delta
 				if avoid_timer > 60*AVOID_TIME:
 					state = State.avoiding
 				
@@ -221,6 +228,7 @@ func treat_info(delta, capteurs, distance):
 			avoid_timer += delta
 			if speed < V_MAX:
 				speed += 3*ACCELERATION * delta
+				noteMaxime = "VROOM !"
 				
 			if avoid_timer < 60*AVOID_TIME:
 				rotation = GAUCHE
@@ -230,6 +238,7 @@ func treat_info(delta, capteurs, distance):
 		
 		State.recovering:
 			avoid_timer += delta
+			noteMaxime = "VROOM a la vitesse " + str(speed)
 			if avoid_timer < 60*AVOID_TIME:
 				rotation = DROITE
 			else:
@@ -239,14 +248,17 @@ func treat_info(delta, capteurs, distance):
 				state = State.following_line
 				
 	var deg_rotation = rotation
-	print("Rotation envoyee %f" % deg_rotation)
 	var message_to_robot = {
 		
 		"rotation": int(deg_rotation),
 		"speed": speed
 	}
-	print("V_MAX is : ", V_MAX)
-	print("state is ", state)
+	print("Phase de test de Maxime:\n" +
+	"State: " + str(state) + "\n" +
+	"Vitesse: " + str(speed) + "\n" +
+	"Note de code: " + noteMaxime)
+	#print("V_MAX is : ", V_MAX)
+	#print("state is ", state)
 	return message_to_robot
 
 	
