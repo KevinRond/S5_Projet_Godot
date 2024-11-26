@@ -223,7 +223,7 @@ func treat_info(delta, capteurs, distance):
 				if speed < 0:
 					speed += 2*ACCELERATION * delta
 					
-				if avoid_timer > 60*WAIT_TIME:
+				if avoid_timer > WAIT_TIME:
 					noteMaxime = "C'est reparti"
 					state = State.avoiding
 				
@@ -233,7 +233,7 @@ func treat_info(delta, capteurs, distance):
 				speed += 3*ACCELERATION * delta
 				noteMaxime = "VROOM !"
 				
-			if avoid_timer < 60*AVOID_TIME:
+			if avoid_timer < AVOID_TIME:
 				rotation = GAUCHE
 			else:
 				avoid_timer = 0
@@ -242,7 +242,7 @@ func treat_info(delta, capteurs, distance):
 		State.recovering:
 			avoid_timer += delta
 			noteMaxime = "VROOM a la vitesse " + str(speed)
-			if avoid_timer < 60*AVOID_TIME:
+			if avoid_timer < AVOID_TIME:
 				rotation = DROITE
 			else:
 				rotation = CENTRE
