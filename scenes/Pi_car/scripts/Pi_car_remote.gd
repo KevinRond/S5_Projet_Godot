@@ -177,10 +177,8 @@ func treat_info(delta, capteurs, distance):
 			
 			if distance < WALL_STOP + REVERSE_RANGE and distance > 0:
 				if speed > V_MIN:
-					print("RALENTI !!! " + str(distance))
 					speed -= 2*ACCELERATION * delta
 				else:
-					print("LENT !!!"  + str(distance))
 					speed = V_MIN
 					
 				if distance < WALL_STOP:
@@ -221,13 +219,13 @@ func treat_info(delta, capteurs, distance):
 						#speed += ACCELERATION * delta
 
 		State.blocked:
-			if distance < WALL_STOP + REVERSE_RANGE and distance > 0 and avoid_timer == 0:
+			if distance < WALL_STOP + REVERSE_RANGE and avoid_timer == 0:
 				if speed > -V_MAX:
-					speed -= ACCELERATION * delta
+					speed -= 0.5*ACCELERATION * delta
 			else:
 				avoid_timer = 1
 				if speed < 0:
-					speed += ACCELERATION * delta
+					speed += 2*ACCELERATION * delta
 				else:
 					avoid_timer = 0
 					state = State.avoiding
