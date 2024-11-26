@@ -50,7 +50,7 @@ const GAUCHE = -30
 const DROITE = 30
 
 const AVOID_TIME = 1
-const RETURN_TIME = 0.65
+const RETURN_TIME = 0.75
 
 var nfsm = 0
 var speed = 0
