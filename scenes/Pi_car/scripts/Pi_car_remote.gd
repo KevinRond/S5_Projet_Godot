@@ -57,9 +57,9 @@ var Pvalue = 0
 var Ivalue = 0
 var Dvalue = 0
 
-var KP = 0.01
-var KI = 0.01
-var KD = 0.01
+var KP = 0.1
+var KI = 0.1
+var KD = 0.1
 var last_direction = 0
 
 
