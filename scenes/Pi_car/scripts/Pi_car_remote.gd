@@ -286,6 +286,7 @@ func PID_Linefollow(error):
 	print("Dvalue %f" % Dvalue)
 	
 	var PID_value = Pvalue + Ivalue + Dvalue
+	print("PID_value avant le round up: %f" % PID_value)
 	previous_error = error
 	# PID_value = deg_to_rad(PID_value)
 	# PID_value = clamp(PID_value, -45, 45)
