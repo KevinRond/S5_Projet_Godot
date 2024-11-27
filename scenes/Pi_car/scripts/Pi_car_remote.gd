@@ -436,13 +436,12 @@ func treat_info(delta, capteurs):
 				state = State.following_line
 
 		State.find_line:
-			if utils.line_detected(capteurs) and backing_up_counter > 2:
-				backing_up_counter = 0
+			if utils.line_detected(capteurs):
 				state = State.following_line
 
-			rotation = last_direction	
+			rotation = -last_direction	
 			if speed > -V_MAX:
-				speed -= ACCELERATION * delta
+				speed -= ACCELERATION *2 * delta
 			backing_up_counter += delta
 			
 		#State.blocked:
