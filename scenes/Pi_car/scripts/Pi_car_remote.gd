@@ -55,7 +55,7 @@ const AIDE_COURBURE = 10
 const AVOID_TIME = 1.00
 const RETURN_TIME = 0.5
 
-const AVOID_TIME_SEC = 3.4
+const AVOID_TIME_SEC = 4.0
 const RETURN_TIME_SEC = 1.7
 
 var nfsm = 0
@@ -321,7 +321,7 @@ func treat_info(delta, capteurs, distance):
 			if speed > V_MIN:
 					speed -= ACCELERATION * delta
 			var elapsed_time_recov = Time.get_ticks_msec()/1000 - start_time_sec
-			if elapsed_time_recov < RETURN_TIME_SEC / 2:
+			if elapsed_time_recov < RETURN_TIME_SEC:
 				#if avoid_timer < RETURN_TIME / 2:
 					#rotation = AVOID_SIDE*DROITE / 3
 				#else:
