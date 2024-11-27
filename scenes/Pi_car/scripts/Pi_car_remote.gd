@@ -48,7 +48,7 @@ const AVOID_SIDE = -1
 const CENTRE = 0
 const GAUCHE = -30
 const DROITE = 30
-const AIDE_COURBURE = 10
+const AIDE_COURBURE = 15
 
 const AVOID_TIME = 1
 const RETURN_TIME = 0.6
