@@ -193,7 +193,8 @@ func suivre_ligne(delta, speed, capteurs):
 		new_rotation = 0 
 		new_state = State.stopping
 
-	if utils.finish_line_detected(capteurs_SL) and line_passed < 2 and parcours_reverse:
+	if utils.finish_line_detected(capteurs) and line_passed < 2 and parcours_reverse:
+		print("Rentre dans la condition")
 		new_state = State.waiting
 		line_passed += 1
 	
