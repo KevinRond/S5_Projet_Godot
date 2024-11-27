@@ -293,10 +293,10 @@ func PID_Linefollow(error):
 	previous_error = error
 	# PID_value = deg_to_rad(PID_value)
 	# PID_value = clamp(PID_value, -45, 45)
-	if PID_value < -45:
-		PID_value = -45
-	if PID_value > 45:
-		PID_value = 45
+	if PID_value < -40:
+		PID_value = -40
+	if PID_value > 40:
+		PID_value = 40
 	print("PID_value: %f" % PID_value)
 	return PID_value
 		
@@ -340,7 +340,7 @@ func suivre_ligne(delta, speed, capteurs):
 		if speed < V_MAX:
 			new_speed += ACCELERATION * delta
 		if PID_output < 0:
-			new_rotation = -max(PID_output, -45)
+			new_rotation = -max(PID_output, -40)
 			if PID_output > 10:
 				if speed > V_TURN and speed > 0.08:
 					new_speed -= ACCELERATION * delta
@@ -352,7 +352,7 @@ func suivre_ligne(delta, speed, capteurs):
 					if new_speed > 0.08:
 						new_speed = 0.08
 		else:
-			new_rotation = -min(PID_output, 45)
+			new_rotation = -min(PID_output, 40)
 			if PID_output < -10:
 				if speed > V_TURN and speed > 0.08:
 					new_speed -= ACCELERATION * delta
