@@ -37,6 +37,8 @@ PARCOURS RÉEL
 """ 
 var V_TURN = 0.55*V_MAX
 var V_TIGHT_TURN = 0.35*V_MAX
+var start_time_sec = 0
+
 
 const V_MIN = 0.08
 const WALL_STOP = 10
@@ -52,6 +54,9 @@ const AIDE_COURBURE = 10
 
 const AVOID_TIME = 1.00
 const RETURN_TIME = 0.5
+
+const AVOID_TIME_SEC = 3.4
+const RETURN_TIME_SEC = 1.7
 
 var nfsm = 0
 var speed = 0
@@ -293,27 +298,30 @@ func treat_info(delta, capteurs, distance):
 				if speed < 0:
 					speed += 2 * ACCELERATION * delta
 				else:
-					avoid_timer = 0
+					#avoid_timer = 0
+					start_time_sec = Time.get_ticks_msec()/1000
 					state = State.avoiding
 				
 		State.avoiding:
-			avoid_timer += delta * 10
+			#avoid_timer += delta * 10
 			if speed < 0.18:
 				print("avoiding")
 				speed += 2 * ACCELERATION * delta
-				
-			if avoid_timer < AVOID_TIME:
+			var elapsed_time_avoiding = Time.get_ticks_msec()/1000 - start_time_sec
+			#if avoid_timer < AVOID_TIME:
+				#rotation = AVOID_SIDE*GAUCHE
+			if elapsed_time_avoiding < AVOID_TIME_SEC:
 				rotation = AVOID_SIDE*GAUCHE
 			else:
-				avoid_timer = 0
+				start_time_sec = Time.get_ticks_msec()/1000
 				state = State.recovering
 		
 		State.recovering:
-			avoid_timer += delta * 10
+			#avoid_timer += delta * 10
 			if speed > V_MIN:
 					speed -= ACCELERATION * delta
-				
-			if avoid_timer < RETURN_TIME:
+			var elapsed_time_recov = Time.get_ticks_msec()/1000 - start_time_sec
+			if elapsed_time_recov < RETURN_TIME_SEC / 2:
 				#if avoid_timer < RETURN_TIME / 2:
 					#rotation = AVOID_SIDE*DROITE / 3
 				#else:
