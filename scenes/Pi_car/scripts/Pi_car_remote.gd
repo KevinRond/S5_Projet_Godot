@@ -6,8 +6,8 @@ var Movement = load("res://scripts/classes/Movement.gd")
 var MovementArray = load("res://scripts/classes/Movement_Array.gd")
 var utils = load("res://scenes/Pi_car/scripts/utils.gd").new()
 
-var stuff = 1
 signal test_completed
+
 """ EXPLICATION ACCÉLÉRATION
 En théorie, l'accélération est sensée être g*h/x où h est la profondeur de la
 plaquette et x est le rayon. Cela nous donnerait une accel max de 7.35 m/s^2, 
@@ -37,21 +37,34 @@ PARCOURS RÉEL
 """ 
 var V_TURN = 0.55*V_MAX
 var V_TIGHT_TURN = 0.35*V_MAX
-const MAX_DISPLACEMENT = 0.2
-const ULTRASON_RANGE = 0.1
-const BRAKE_RANGE = 0.06
+
+const V_MIN = 0.08
+const WALL_STOP = 10
+const REVERSE_RANGE = 15
+const US_ERROR = 10
+
+# Côté de l'évitement: 1 -> Gauche, -1 -> Droite
+const AVOID_SIDE = -1
+const CENTRE = 0
+const GAUCHE = -30
+const DROITE = 30
+const AIDE_COURBURE = 10
+
+const AVOID_TIME = 0.95
+const RETURN_TIME = 0.5
 
 var nfsm = 0
 var speed = 0
-var capteurs_SL = []
 var state = State.manual_control
 var tick_counter = 0
 var movement_array: MovementArray = MovementArray.new()
+var avoid_timer = 0
 var backing_up_counter = 0.0
 var last_direction = 0
 
 var start_time = 0
 var previous_error = 0
+
 var P = 0
 var I = 0
 var D = 0
@@ -80,7 +93,6 @@ var line_passed = 0
 func _ready():
 	start_time = Time.get_ticks_msec()
 	nfsm = $"../NetworkFSM"
-	capteurs_SL = [false, false, false, false, false]
 	ACCELERATION = Settings.acceleration
 	V_MAX = Settings.v_max
 	V_TURN = Settings.v_turn * V_MAX
@@ -92,41 +104,13 @@ func _process(delta):
 	
 
 func _physics_process(delta):
-	# Process data received here from simulation and RPiCar
-	# If websocket connection
-	#if nfsm.current_state == $"../NetworkFSM/NetworkProcessState" :
-		## Do something here
-		#pass
 	pass
 	
 
-	
-func update_speed_label():
-	speed_label.text = "Vitesse: %.3f m/s" % speed
-
-	
-func update_state_label():
-	state_label.text = utils.set_state_text(state)
 
 
 
 		
-func write_to_log(message: String, filename="success"):
-	var today_date = Time.get_date_string_from_system()  # Format: "YYYY-MM-DD"
-	var path = "res://log/" + filename + "_" + today_date + ".txt"
-
-	# Check if the file exists, and create it if it doesn't
-	if !FileAccess.file_exists(path):
-		var file = FileAccess.open(path, FileAccess.WRITE)
-		file.close()
-
-	var file = FileAccess.open(path, FileAccess.READ_WRITE)
-	file.seek_end()  # Move to the end for appending
-
-	var dt = Time.get_time_string_from_system()
-	file.store_string(dt + "\n" + message + "\n\n")
-
-	file = null
 	
 func read_line(sensors):
 	var on_line: bool = false
@@ -232,24 +216,15 @@ func suivre_ligne(delta, speed, capteurs):
 	return [new_speed, new_state, new_rotation]
 	
 
-func _on_boule_fell_capteur_body_entered(body):
-	if body.name == "Boule":
-		write_to_log("Valeurs du parcours:\n" + "Acceleration : " + str(ACCELERATION) + "    Vmax : " + str(V_MAX) 
-		+ "    Vitesse turn : " + str(Settings.v_turn) + "    Vitesse tight turn : " + str(V_TIGHT_TURN)
-		+ "\nLa boule a dip  FAIL", "fail")
-		#get_tree().quit()
-		emit_signal("test_completed")
-		# Handle the fall, such as resetting the ball position or ending the simulation
-		
+
 		
 
 	
-func treat_info(delta, capteurs):
+func treat_info(delta, capteurs, distance):
+	print(distance)
 	var rotation = 0
-	var US_distance = 0
 
 	match state:
-		
 		State.manual_control:
 			if utils.line_detected(capteurs):
 				state = State.following_line
@@ -260,6 +235,18 @@ func treat_info(delta, capteurs):
 			state = result[1]
 			rotation = result[2]
 			
+			if distance < WALL_STOP + REVERSE_RANGE + US_ERROR and distance > 0:
+				if speed > V_MIN:
+					speed -= ACCELERATION * delta
+				else:
+					speed = V_MIN
+					
+				if distance < WALL_STOP + US_ERROR and distance > 0:
+					avoid_timer = 0
+					speed = 0
+					state = State.blocked
+				
+		
 		State.stopping:
 			if speed > 0:
 				speed -= ACCELERATION * delta
@@ -297,9 +284,46 @@ func treat_info(delta, capteurs):
 			if speed < 0:
 				rotation = -last_direction*0.8	
 			
+		State.blocked:
+			if distance < WALL_STOP + REVERSE_RANGE and avoid_timer == 0:
+				if speed > -V_MAX:
+					speed -= 0.5*ACCELERATION * delta
+			else:
+				avoid_timer = 1
+				if speed < 0:
+					speed += 2 * ACCELERATION * delta
+				else:
+					avoid_timer = 0
+					state = State.avoiding
+				
+		State.avoiding:
+			avoid_timer += delta * 10
+			if speed < 0.18:
+				print("avoiding")
+				speed += 2 * ACCELERATION * delta
+				
+			if avoid_timer < AVOID_TIME:
+				rotation = AVOID_SIDE*GAUCHE
+			else:
+				avoid_timer = 0
+				state = State.recovering
 		
 		State.recovering:
+			avoid_timer += delta * 10
+			if speed > V_MIN:
+					speed -= ACCELERATION * delta
+				
+			if avoid_timer < RETURN_TIME:
+				#if avoid_timer < RETURN_TIME / 2:
+					#rotation = AVOID_SIDE*DROITE / 3
+				#else:
+					rotation = AVOID_SIDE*DROITE
+			else:
+				rotation = CENTRE - AVOID_SIDE*AIDE_COURBURE
+			
 			if capteurs[0] or capteurs[1] or capteurs[2] or capteurs[3] or capteurs[4]:
+				if speed < V_MAX: 
+					speed = 0.08
 				state = State.following_line
 				
 		State.waiting:
@@ -329,7 +353,6 @@ func treat_info(delta, capteurs):
 		"rotation": int(deg_rotation),
 		"speed": speed
 	}
-	print("Line counter: ", line_passed)
 	print(utils.set_state_text(state))
 	return message_to_robot
 
