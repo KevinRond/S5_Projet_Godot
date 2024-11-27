@@ -33,7 +33,8 @@ func on_process(delta: float) -> void:
 		commTime = Time.get_ticks_msec() - startCommTime
 		var starttimer = Time.get_ticks_msec()
 		var sensors = string_to_boolean_array(msg, 5)
-		var message = piCar.treat_info(delta, sensors)
+		var distance = extract_distance(msg)
+		var message = piCar.treat_info(delta, sensors, distance)
 		
 		message = JSON.stringify(message)
 		var packet = message.to_utf8_buffer()
@@ -96,3 +97,17 @@ func extract_distance(input_string: String) -> float:
 	var string_array = cleaned_string.split(",")
 	return float(string_array[5])
 	
+func string_to_boolean_array(input_string: String, array_size: int) -> Array:
+	var cleaned_string = input_string.strip_edges().replace("[", "").replace("]", "")
+	cleaned_string = cleaned_string.replace(" ", "")
+	var string_array = cleaned_string.split(",")
+	var new_array = [string_array[0], string_array[1], string_array[2], string_array[3], string_array[4]]
+	var boolean_array = []
+	for s in new_array:
+		boolean_array.append(s.strip_edges(true, true) == "1")
+	
+	if boolean_array.size() == array_size:
+		return boolean_array
+	else:
+		push_error("The array size does not match the expected size. size is", boolean_array.size())
+		return []
