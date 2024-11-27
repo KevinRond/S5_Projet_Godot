@@ -6,8 +6,8 @@ var Movement = load("res://scripts/classes/Movement.gd")
 var MovementArray = load("res://scripts/classes/Movement_Array.gd")
 var utils = load("res://scenes/Pi_car/scripts/utils.gd").new()
 
-var stuff = 1
 signal test_completed
+
 """ EXPLICATION ACCÉLÉRATION
 En théorie, l'accélération est sensée être g*h/x où h est la profondeur de la
 plaquette et x est le rayon. Cela nous donnerait une accel max de 7.35 m/s^2, 
@@ -37,10 +37,10 @@ PARCOURS RÉEL
 """ 
 var V_TURN = 0.12
 var V_TIGHT_TURN = 0.066
-const MAX_DISPLACEMENT = 0.2
 
 const V_MIN = 0.08
 const WALL_STOP = 10
+const US_ERROR = 5
 const REVERSE_RANGE = 20
 
 # Côté de l'évitement: 1 -> Gauche, -1 -> Droite
@@ -54,14 +54,12 @@ const RETURN_TIME = 0.6
 
 var nfsm = 0
 var speed = 0
-var capteurs_SL = []
 var state = State.manual_control
 var tick_counter = 0
 var movement_array: MovementArray = MovementArray.new()
 var avoid_timer = 0
 
 var start_time = 0
-var previous_error = 0
 var P = 0
 var I = 0
 var D = 0
@@ -72,13 +70,11 @@ var Dvalue = 0
 var KP = 0.0001
 var KI = 0.0001
 var KD = 0.0001
-var last_direction = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	start_time = Time.get_ticks_msec()
 	nfsm = $"../NetworkFSM"
-	capteurs_SL = [false, false, false, false, false]
 	ACCELERATION = Settings.acceleration
 	V_MAX = Settings.v_max
 	V_TURN = Settings.v_turn * V_MAX
@@ -102,7 +98,6 @@ func suivre_ligne_comm(delta, speed, capteurs, distance, use_90deg_turns=false):
 	print("capteurs array is for suivre ligne comm is ", capteurs)
 	if capteurs == [false, false, false, false, false]:
 		if speed > 0.06666:
-			print("decreasing speed right neow")
 			new_speed -= ACCELERATION/2 * delta
 		
 	elif capteurs == [false, false, true, false, false]:
@@ -142,12 +137,12 @@ func suivre_ligne_comm(delta, speed, capteurs, distance, use_90deg_turns=false):
 		if speed > V_TIGHT_TURN:
 			new_speed -= ACCELERATION/2 * delta
 	elif use_90deg_turns == true:
-		if capteurs == [false, false, true, true, true] or capteurs == [false, true, true, true, true] or capteurs_SL == [false, true, false, true, true]:
+		if capteurs == [false, false, true, true, true] or capteurs == [false, true, true, true, true] or capteurs == [false, true, false, true, true]:
 			new_rotation = 5  # Left turn
 			if speed > 0:
 				new_speed -= ACCELERATION/2 * delta
 			new_state = State.turning_left
-		elif capteurs == [true, true, true, false, false] or capteurs == [true, true, true, true, false] or capteurs_SL == [true, true, false, true, false]:
+		elif capteurs == [true, true, true, false, false] or capteurs == [true, true, true, true, false] or capteurs == [true, true, false, true, false]:
 			new_rotation = 5  # Right turn
 
 			if speed > 0:
@@ -175,13 +170,13 @@ func treat_info(delta, capteurs, distance):
 			state = result[1]
 			rotation = result[2]
 			
-			if distance < WALL_STOP + REVERSE_RANGE and distance > 0:
+			if distance < WALL_STOP + REVERSE_RANGE + US_ERROR and distance > 0:
 				if speed > V_MIN:
-					speed -= 2*ACCELERATION * delta
+					speed -= ACCELERATION * delta
 				else:
 					speed = V_MIN
 					
-				if distance < WALL_STOP and distance > 0:
+				if distance < WALL_STOP + US_ERROR and distance > 0:
 					avoid_timer = 0
 					speed = 0
 					state = State.blocked
@@ -233,7 +228,7 @@ func treat_info(delta, capteurs, distance):
 		State.avoiding:
 			avoid_timer += delta * 10
 			if speed < V_MAX:
-				speed += 2*ACCELERATION * delta
+				speed += ACCELERATION * delta
 				
 			if avoid_timer < AVOID_TIME:
 				rotation = AVOID_SIDE*GAUCHE
@@ -243,11 +238,15 @@ func treat_info(delta, capteurs, distance):
 		
 		State.recovering:
 			avoid_timer += delta * 10
-			if speed > V_MAX / 2:
-				speed -= ACCELERATION * delta
+				
 			if avoid_timer < RETURN_TIME:
+				if speed > V_MAX / 2:
+					speed -= ACCELERATION * delta
 				rotation = AVOID_SIDE*DROITE
+				
 			else:
+				if speed > V_MAX / 3:
+					speed -= ACCELERATION * delta
 				rotation = CENTRE
 			
 			if capteurs[0] or capteurs[1] or capteurs[2] or capteurs[3] or capteurs[4]:
@@ -262,9 +261,9 @@ func treat_info(delta, capteurs, distance):
 	print("Valeurs de godot:\n" +
 	"State: " + str(state) + "\n" +
 	"Vitesse: " + str(speed) + "\n" +
+	"Rotation: " + str(deg_rotation) + "\n" +
 	"Timer: " + str(avoid_timer) + "\n")
-	#print("V_MAX is : ", V_MAX)
-	#print("state is ", state)
+	
 	return message_to_robot
 
 	
