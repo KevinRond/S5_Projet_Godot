@@ -276,7 +276,10 @@ func treat_info(delta, capteurs):
 				else:
 					if speed < 0:
 						speed += ACCELERATION * delta
-			if utils.finish_line_detected(capteurs) and line_passed >= 2:
+						
+			if utils.finish_line_detected(capteurs):
+				line_passed += 1
+			if utils.finish_line_detected(capteurs) and line_passed > 3:
 				print("RETOURNE DANS FOLL")
 				state = State.following_line
 
