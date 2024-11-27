@@ -47,6 +47,8 @@ var capteurs_SL = []
 var state = State.manual_control
 var tick_counter = 0
 var movement_array: MovementArray = MovementArray.new()
+var backing_up_counter = 0.0
+var last_direction = 0
 
 var start_time = 0
 var previous_error = 0
@@ -57,10 +59,9 @@ var Pvalue = 0
 var Ivalue = 0
 var Dvalue = 0
 
-var KP = 0.75
-var KI = 0.005
+var KP = 0.875
+var KI = 0.1
 var KD = 0.1
-var last_direction = 0
 var parcours_reverse = false
 var line_passed = 0
 
@@ -155,17 +156,18 @@ func PID_Linefollow(error):
 	
 	Pvalue = KP*P
 	Ivalue = KI*I
-	Ivalue = clamp(Ivalue, -2.5, 2.5)
+	Ivalue = clamp(Ivalue, -5, 5)
 	Dvalue = KD*D
 	
 	var PID_value = Pvalue + Ivalue + Dvalue
 
 	previous_error = error
 
-	if PID_value < -45:
-		PID_value = -45
-	if PID_value > 45:
-		PID_value = 45
+	if PID_value < -40:
+		PID_value = -40
+	if PID_value > 40:
+		PID_value = 40
+
 	return PID_value
 		
 
@@ -197,40 +199,35 @@ func suivre_ligne(delta, speed, capteurs):
 	if !utils.line_detected(capteurs):
 		if speed > 0:
 			new_speed = 0.08
-			new_rotation = new_rotation
-			write_to_log("Valeurs du parcours:\n" + "Acceleration : " + str(ACCELERATION) + "    Vmax : " + str(V_MAX) 
-				+ "    Vitesse turn : " + str(Settings.v_turn) + "    Vitesse tight turn : " + str(Settings.v_tight_turn)
-				+ "\nLe suiveur de ligne suit pus les lignes  FAIL", "fail")
-			emit_signal("test_completed")
-		# last_direction = movement_array.check_last_rotation()
-		# new_state = State.find_line
+		last_direction = movement_array.check_last_rotation()
+		new_state = State.find_line
 	else:
 		if speed < V_MAX:
 			new_speed += ACCELERATION * delta
 		if PID_output < 0:
-			new_rotation = -max(PID_output, -45)
+			new_rotation = -max(PID_output, -40)
 			if PID_output > 10:
-				if speed > V_TURN and speed > 0.08:
+				if speed > V_TURN and speed > 0.07:
 					new_speed -= ACCELERATION * delta
-					if new_speed > 0.08:
-						new_speed = 0.08
+					if new_speed > 0.07:
+						new_speed = 0.07
 			if PID_output > 30:
-				if speed > V_TIGHT_TURN and speed > 0.08:
+				if speed > V_TIGHT_TURN and speed > 0.07:
 					new_speed -= ACCELERATION * delta
-					if new_speed > 0.08:
-						new_speed = 0.08
+					if new_speed > 0.07:
+						new_speed = 0.07
 		else:
-			new_rotation = -min(PID_output, 45)
+			new_rotation = -min(PID_output, 40)
 			if PID_output < -10:
-				if speed > V_TURN and speed > 0.08:
+				if speed > V_TURN and speed > 0.07:
 					new_speed -= ACCELERATION * delta
-					if new_speed > 0.08:
-						new_speed = 0.08
+					if new_speed > 0.07:
+						new_speed = 0.07
 			if PID_output < -30:
-				if speed > V_TIGHT_TURN and speed > 0.075:
+				if speed > V_TIGHT_TURN and speed > 0.07:
 					new_speed -= ACCELERATION * delta
-					if new_speed > 0.08:
-						new_speed = 0.08
+					if new_speed > 0.07:
+						new_speed = 0.07
 
 
 	return [new_speed, new_state, new_rotation]
@@ -289,6 +286,19 @@ func treat_info(delta, capteurs):
 				state = State.waiting
 
 
+		State.find_line:
+			if utils.line_detected(capteurs):
+				if speed < V_MAX:
+					speed =0.00
+				state = State.following_line
+
+			if speed > -V_MAX:
+				speed -= ACCELERATION *2 * delta
+			backing_up_counter += delta
+			if speed < 0:
+				rotation = -last_direction*0.8	
+			
+		
 		State.recovering:
 			if capteurs[0] or capteurs[1] or capteurs[2] or capteurs[3] or capteurs[4]:
 				state = State.following_line
@@ -320,4 +330,3 @@ func treat_info(delta, capteurs):
 	print(State.following_line)
 	return message_to_robot
 
-	
