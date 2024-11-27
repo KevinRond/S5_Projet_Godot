@@ -282,7 +282,7 @@ func PID_Linefollow(error):
 	
 	Pvalue = KP*P
 	Ivalue = KI*I
-	Ivalue = clamp(Ivalue, -2.5, 2.5)
+	Ivalue = clamp(Ivalue, -5, 5)
 	Dvalue = KD*D
 	print("Pvalue %f" % Pvalue)
 	print("Ivalue %f" % Ivalue)
