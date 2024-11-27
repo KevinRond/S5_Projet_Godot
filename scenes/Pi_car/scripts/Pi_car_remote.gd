@@ -41,6 +41,7 @@ var V_TIGHT_TURN = 0.066
 const V_MIN = 0.08
 const WALL_STOP = 10
 const REVERSE_RANGE = 20
+const US_ERROR = 5
 
 # Côté de l'évitement: 1 -> Gauche, -1 -> Droite
 const AVOID_SIDE = -1
@@ -170,13 +171,13 @@ func treat_info(delta, capteurs, distance):
 			state = result[1]
 			rotation = result[2]
 			
-			if distance < WALL_STOP + REVERSE_RANGE and distance > 0:
+			if distance < WALL_STOP + REVERSE_RANGE + US_ERROR and distance > 0:
 				if speed > V_MIN:
 					speed -= ACCELERATION * delta
 				else:
 					speed = V_MIN
 					
-				if distance < WALL_STOP and distance > 0:
+				if distance < WALL_STOP + US_ERROR and distance > 0:
 					avoid_timer = 0
 					speed = 0
 					state = State.blocked
@@ -214,7 +215,7 @@ func treat_info(delta, capteurs, distance):
 						#speed += ACCELERATION * delta
 
 		State.blocked:
-			if distance < WALL_STOP + REVERSE_RANGE and avoid_timer == 0:
+			if distance < WALL_STOP + REVERSE_RANGE - US_ERROR and avoid_timer == 0:
 				if speed > -V_MAX:
 					speed -= 0.5*ACCELERATION * delta
 			else:
@@ -242,10 +243,10 @@ func treat_info(delta, capteurs, distance):
 					speed -= ACCELERATION * delta
 				
 			if avoid_timer < RETURN_TIME:
-				if avoid_timer < RETURN_TIME / 2:
-					rotation = AVOID_SIDE*DROITE / 3
-				else:
-					rotation = AVOID_SIDE*DROITE	
+				#if avoid_timer < RETURN_TIME / 2:
+					#rotation = AVOID_SIDE*DROITE / 3
+				#else:
+					rotation = AVOID_SIDE*DROITE
 			else:
 				rotation = CENTRE - AVOID_SIDE*AIDE_COURBURE
 			
