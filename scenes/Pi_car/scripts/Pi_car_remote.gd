@@ -300,12 +300,11 @@ func treat_info(delta, capteurs):
 				state = State.following_line
 				
 		State.waiting:
-			if !(utils.finish_line_detected(capteurs)) and line_passed < 2:
+			if !(utils.finish_line_detected(capteurs)) and line_passed < 2 or line_passed > 2:
 				state = State.following_line
 				
-			elif !(utils.finish_line_detected(capteurs)) and line_passed > 2:
-				state = State.following_line
-			
+			elif !(utils.finish_line_detected(capteurs)) and line_passed == 2:
+				state = State.reverse
 			else:
 				state = State.waiting
 			
