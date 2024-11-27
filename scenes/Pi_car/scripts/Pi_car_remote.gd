@@ -62,7 +62,7 @@ var Dvalue = 0
 var KP = 0.875
 var KI = 0.1
 var KD = 0.1
-var parcours_reverse = true
+var parcours_reverse = false
 var line_passed = 0
 
 
