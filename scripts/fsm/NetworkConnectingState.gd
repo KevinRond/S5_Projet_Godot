@@ -31,26 +31,17 @@ func on_process(delta: float) -> void:
 	while get_parent().socket.get_available_packet_count():
 		var msg = get_parent().socket.get_packet().get_string_from_utf8()
 		commTime = Time.get_ticks_msec() - startCommTime
-		print("cum time ahah: ", commTime)
 		var starttimer = Time.get_ticks_msec()
-		print("receiving info now : ", starttimer)
-		
-		print("Polling received data: ", msg)  # Print the received message
-		var sensors = extract_sensors(msg, 5)
-		var distance = extract_distance(msg)
-		var message = piCar.treat_info(delta, sensors, distance)
+		var sensors = string_to_boolean_array(msg, 5)
+		var message = piCar.treat_info(delta, sensors)
 		
 		message = JSON.stringify(message)
-		print("sending this data to the robot ", message)
 		var packet = message.to_utf8_buffer()
 		var endTime = Time.get_ticks_msec() - starttimer
 		if endTime > highestTime:
 			highestTime = endTime
 		if commTime > highestCommTime:
 			highestCommTime = commTime
-		print("highest comm time is : ", highestCommTime)
-		print("highest time is : ", highestTime)
-		print("sending info now :", endTime)
 		var miaw = get_parent().socket.put_packet(packet)
 		startCommTime = Time.get_ticks_msec()
 	var state = get_parent().socket.get_ready_state()
