@@ -195,6 +195,7 @@ func suivre_ligne(delta, speed, capteurs):
 
 	if utils.finish_line_detected(capteurs_SL) and line_passed < 2 and parcours_reverse:
 		new_state = State.waiting
+		line_passed += 1
 	
 
 	if !utils.line_detected(capteurs):
@@ -307,8 +308,13 @@ func treat_info(delta, capteurs):
 		State.waiting:
 			if !(utils.finish_line_detected(capteurs)) and line_passed < 2:
 				state = State.following_line
-			if !(utils.finish_line_detected(capteurs)) and line_passed == 2:
+				
+			elif !(utils.finish_line_detected(capteurs)) and line_passed == 2:
 				state = State.reverse
+			
+			else:
+				state = State.waiting
+			
 
 	if state != State.reverse && speed > 0:
 		if rotation == 0:
@@ -329,6 +335,5 @@ func treat_info(delta, capteurs):
 	}
 	print("Line counter: ", line_passed)
 	print(utils.set_state_text(state))
-	print(State.following_line)
 	return message_to_robot
 
