@@ -322,6 +322,8 @@ func treat_info(delta, capteurs, distance):
 				rotation = CENTRE - AVOID_SIDE*AIDE_COURBURE
 			
 			if capteurs[0] or capteurs[1] or capteurs[2] or capteurs[3] or capteurs[4]:
+				if speed < V_MAX: 
+					speed = 0.08
 				state = State.following_line
 				
 		State.waiting:
