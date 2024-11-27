@@ -271,12 +271,12 @@ func treat_info(delta, capteurs):
 			
 		State.reverse:
 			if speed > 0:
-				speed -= ACCELERATION * delta
+				speed -= ACCELERATION * 2 * delta
 			else:
 				var old_move = movement_array.get_last_move()
 				if old_move != null:
-					speed = -old_move[0]/1.5
-					rotation = -old_move[1]
+					speed = -old_move[0]
+					rotation = old_move[1]
 				else:
 					if speed < 0:
 						speed += ACCELERATION * delta
