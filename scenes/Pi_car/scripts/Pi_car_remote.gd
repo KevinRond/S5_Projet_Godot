@@ -440,7 +440,7 @@ func treat_info(delta, capteurs):
 				speed = 0.7
 				state = State.following_line
 
-			if speed > -V_MAX/2:
+			if speed > -V_MAX:
 				speed -= ACCELERATION *2 * delta
 			backing_up_counter += delta
 			if speed < 0:
