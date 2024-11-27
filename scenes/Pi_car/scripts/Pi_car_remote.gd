@@ -50,8 +50,8 @@ const GAUCHE = -30
 const DROITE = 30
 const AIDE_COURBURE = 15
 
-const AVOID_TIME = 1.5
-const RETURN_TIME = 0.5
+const AVOID_TIME = 3
+const RETURN_TIME = 2
 
 var nfsm = 0
 var speed = 0
