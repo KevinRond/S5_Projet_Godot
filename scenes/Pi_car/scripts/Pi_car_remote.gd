@@ -187,11 +187,7 @@ func suivre_ligne(delta, speed, capteurs):
 		new_rotation = 0 
 		new_state = State.stopping
 		
-	if utils.finish_line_detected(capteurs) and line_passed > 2 and parcours_reverse:
-		if speed > 0:
-			new_speed -= ACCELERATION * delta
-		new_rotation = 0 
-		new_state = State.stopping
+
 
 	if utils.finish_line_detected(capteurs) and line_passed < 2 and parcours_reverse:
 		print("Rentre dans la condition")
@@ -271,7 +267,7 @@ func treat_info(delta, capteurs):
 			
 		State.reverse:
 			if speed > 0:
-				speed -= ACCELERATION * 2 * delta
+				speed -= ACCELERATION * 4 * delta
 			else:
 				var old_move = movement_array.get_last_move()
 				if old_move != null:
@@ -280,9 +276,9 @@ func treat_info(delta, capteurs):
 				else:
 					if speed < 0:
 						speed += ACCELERATION * delta
-			if utils.finish_line_detected(capteurs) and line_passed > 2:
+			if utils.finish_line_detected(capteurs) and line_passed >= 2:
 				print("RETOURNE DANS FOLL")
-				state = State.stopping
+				state = State.following_line
 
 
 
@@ -307,8 +303,8 @@ func treat_info(delta, capteurs):
 			if !(utils.finish_line_detected(capteurs)) and line_passed < 2:
 				state = State.following_line
 				
-			elif !(utils.finish_line_detected(capteurs)) and line_passed == 2:
-				state = State.reverse
+			elif !(utils.finish_line_detected(capteurs)) and line_passed > 2:
+				state = State.following_line
 			
 			else:
 				state = State.waiting
