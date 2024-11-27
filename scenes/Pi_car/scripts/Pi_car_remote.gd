@@ -300,7 +300,7 @@ func treat_info(delta, capteurs, distance):
 			avoid_timer += delta * 10
 			if speed < 0.18:
 				print("avoiding")
-				speed += 4 * ACCELERATION * delta
+				speed += 2 * ACCELERATION * delta
 				
 			if avoid_timer < AVOID_TIME:
 				rotation = AVOID_SIDE*GAUCHE
