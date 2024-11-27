@@ -436,13 +436,13 @@ func treat_info(delta, capteurs):
 				state = State.following_line
 
 		State.find_line:
-			if utils.line_detected(capteurs) and backing_up_counter > 1:
+			if utils.line_detected(capteurs) and backing_up_counter > 2:
 				backing_up_counter = 0
 				state = State.following_line
 
 			rotation = last_direction	
 			if speed > -V_MAX:
-				speed -= ACCELERATION/3 * delta
+				speed -= ACCELERATION * delta
 			backing_up_counter += delta
 			
 		#State.blocked:
@@ -497,8 +497,7 @@ func treat_info(delta, capteurs):
 		"speed": speed
 	}
 	print("V_MAX is : ", V_MAX)
-	print("state is ", state)
+	print(utils.set_state_text(state))
 	print(State.following_line)
 	return message_to_robot
 
-	
