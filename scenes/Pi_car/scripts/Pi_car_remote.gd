@@ -63,6 +63,8 @@ var backing_up_counter = 0.0
 var last_direction = 0
 
 var start_time = 0
+var previous_error = 0
+
 var P = 0
 var I = 0
 var D = 0
@@ -214,15 +216,7 @@ func suivre_ligne(delta, speed, capteurs):
 	return [new_speed, new_state, new_rotation]
 	
 
-func _on_boule_fell_capteur_body_entered(body):
-	if body.name == "Boule":
-		write_to_log("Valeurs du parcours:\n" + "Acceleration : " + str(ACCELERATION) + "    Vmax : " + str(V_MAX) 
-		+ "    Vitesse turn : " + str(Settings.v_turn) + "    Vitesse tight turn : " + str(V_TIGHT_TURN)
-		+ "\nLa boule a dip  FAIL", "fail")
-		#get_tree().quit()
-		emit_signal("test_completed")
-		# Handle the fall, such as resetting the ball position or ending the simulation
-		
+
 		
 
 	
@@ -236,7 +230,7 @@ func treat_info(delta, capteurs, distance):
 				state = State.following_line
 
 		State.following_line:
-			var result = suivre_ligne_comm(delta, speed, capteurs, distance)
+			var result = suivre_ligne(delta, speed, capteurs)
 			speed = result[0]
 			state = result[1]
 			rotation = result[2]
