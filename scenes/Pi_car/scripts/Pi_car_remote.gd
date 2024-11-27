@@ -334,7 +334,7 @@ func suivre_ligne(delta, speed, capteurs):
 		new_state = State.find_line
 	else:
 		if speed < V_MAX:
-			new_speed += ACCELERATION * 1.5 * delta
+			new_speed += ACCELERATION * delta
 		if PID_output < 0:
 			new_rotation = -max(PID_output, -40)
 			if PID_output > 10:
@@ -438,7 +438,7 @@ func treat_info(delta, capteurs):
 		State.find_line:
 			if utils.line_detected(capteurs):
 				if speed < V_MAX:
-					speed += ACCELERATION *2 * delta
+					speed =0.00
 				state = State.following_line
 
 			if speed > -V_MAX:
