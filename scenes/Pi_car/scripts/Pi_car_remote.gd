@@ -51,7 +51,7 @@ const DROITE = 30
 const AIDE_COURBURE = 15
 
 const AVOID_TIME = 1.05
-const RETURN_TIME = 0.8
+const RETURN_TIME = 0.6
 
 var nfsm = 0
 var speed = 0
