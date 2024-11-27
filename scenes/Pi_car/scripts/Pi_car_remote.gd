@@ -48,7 +48,7 @@ const AVOID_SIDE = -1
 const CENTRE = 0
 const GAUCHE = -30
 const DROITE = 30
-const AIDE_COURBURE = 5
+const AIDE_COURBURE = 10
 
 const AVOID_TIME = 1
 const RETURN_TIME = 0.6
@@ -248,7 +248,7 @@ func treat_info(delta, capteurs, distance):
 			else:
 				if speed > V_MAX / 3:
 					speed -= ACCELERATION * delta
-				rotation = CENTRE + AVOID_SIDE*AIDE_COURBURE
+				rotation = CENTRE - AVOID_SIDE*AIDE_COURBURE
 			
 			if capteurs[0] or capteurs[1] or capteurs[2] or capteurs[3] or capteurs[4]:
 				state = State.following_line
