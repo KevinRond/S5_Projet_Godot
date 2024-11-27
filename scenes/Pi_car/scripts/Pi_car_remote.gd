@@ -259,7 +259,7 @@ func treat_info(delta, capteurs, distance):
 		"speed": speed
 	}
 	print("Valeurs de godot:\n" +
-	"State: " + str(state) + "\n" +
+	utils.set_state_text(state) + "\n" +
 	"Vitesse: " + str(speed) + "\n" +
 	"Rotation: " + str(deg_rotation) + "\n" +
 	"Timer: " + str(avoid_timer) + "\n")
