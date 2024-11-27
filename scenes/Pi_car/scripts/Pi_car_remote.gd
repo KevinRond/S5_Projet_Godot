@@ -291,7 +291,7 @@ func treat_info(delta, capteurs, distance):
 			else:
 				avoid_timer = 1
 				if speed < 0:
-					speed += 5 * ACCELERATION * delta
+					speed += 2 * ACCELERATION * delta
 				else:
 					avoid_timer = 0
 					state = State.avoiding
@@ -299,7 +299,7 @@ func treat_info(delta, capteurs, distance):
 		State.avoiding:
 			avoid_timer += delta * 10
 			if speed < V_MAX:
-				speed += 2*ACCELERATION * delta
+				speed += 4 * ACCELERATION * delta
 				
 			if avoid_timer < AVOID_TIME:
 				rotation = AVOID_SIDE*GAUCHE
