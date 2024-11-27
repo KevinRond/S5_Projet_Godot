@@ -19,9 +19,10 @@ func on_enter() -> void:
 	else:
 		print("oh no not diddy did he")
 		var start= Time.get_ticks_msec()
-		while Time.get_ticks_msec() - start < 15000:
-			var barette = "cave"
-		
+		var elapsedTime = 0
+		while elapsedTime < 15000:
+			elapsedTime = Time.get_ticks_msec() - start
+			print(elapsedTime)
 
 	# You should connect to the websocket server here. With the socket variable of NetworkFSM
 	#get_parent().socket.connect("connection_closed", self, "_on_connection_closed")
