@@ -58,8 +58,8 @@ var Pvalue = 0
 var Ivalue = 0
 var Dvalue = 0
 
-var KP = 0.835
-var KI = 0.005
+var KP = 0.8
+var KI = 0.01
 var KD = 0.1
 var last_direction = 0
 var parcours_reverse = false
