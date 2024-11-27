@@ -55,7 +55,7 @@ const AIDE_COURBURE = 10
 const AVOID_TIME = 1.00
 const RETURN_TIME = 0.5
 
-const AVOID_TIME_SEC = 4.0
+const AVOID_TIME_SEC = 3.5
 const RETURN_TIME_SEC = 1.7
 
 var nfsm = 0
@@ -318,7 +318,7 @@ func treat_info(delta, capteurs, distance):
 		
 		State.recovering:
 			#avoid_timer += delta * 10
-			if speed > V_MIN:
+			if speed > V_MIN - 0.02:
 					speed -= ACCELERATION * delta
 			var elapsed_time_recov = Time.get_ticks_msec()/1000 - start_time_sec
 			if elapsed_time_recov < RETURN_TIME_SEC:
