@@ -291,7 +291,7 @@ func treat_info(delta, capteurs, distance):
 			else:
 				avoid_timer = 1
 				if speed < 0:
-					speed += 3 * ACCELERATION * delta
+					speed += 5 * ACCELERATION * delta
 				else:
 					avoid_timer = 0
 					state = State.avoiding
