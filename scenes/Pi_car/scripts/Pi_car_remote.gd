@@ -437,12 +437,14 @@ func treat_info(delta, capteurs):
 
 		State.find_line:
 			if utils.line_detected(capteurs):
+				speed = 0.7
 				state = State.following_line
 
-			rotation = -last_direction	
-			if speed > -V_MAX:
+			if speed > -V_MAX/2:
 				speed -= ACCELERATION *2 * delta
 			backing_up_counter += delta
+			if speed < 0:
+				rotation = -last_direction	
 			
 		#State.blocked:
 			#if $RayCast3D.is_colliding():
