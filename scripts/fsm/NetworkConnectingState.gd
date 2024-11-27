@@ -18,6 +18,10 @@ func on_enter() -> void:
 		print("Failed to connect to web sock 0_0")
 	else:
 		print("oh no not diddy did he")
+		var start= Time.get_ticks_msec()
+		while Time.get_ticks_msec() - start < 15000:
+			var barette = "cave"
+		
 
 	# You should connect to the websocket server here. With the socket variable of NetworkFSM
 	#get_parent().socket.connect("connection_closed", self, "_on_connection_closed")
