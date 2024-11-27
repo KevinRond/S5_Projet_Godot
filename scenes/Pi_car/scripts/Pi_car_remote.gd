@@ -47,6 +47,8 @@ var capteurs_SL = []
 var state = State.manual_control
 var tick_counter = 0
 var movement_array: MovementArray = MovementArray.new()
+var backing_up_counter = 0.0
+var last_direction = 0
 
 var start_time = 0
 var elapsed_time = 0
@@ -61,7 +63,6 @@ var Dvalue = 0
 var KP = 0.875
 var KI = 0.1
 var KD = 0.1
-var last_direction = 0
 var parcours_reverse = false
 
 
@@ -329,13 +330,8 @@ func suivre_ligne(delta, speed, capteurs):
 	if !utils.line_detected(capteurs):
 		if speed > 0:
 			new_speed = 0.08
-			new_rotation = new_rotation
-			write_to_log("Valeurs du parcours:\n" + "Acceleration : " + str(ACCELERATION) + "    Vmax : " + str(V_MAX) 
-				+ "    Vitesse turn : " + str(Settings.v_turn) + "    Vitesse tight turn : " + str(Settings.v_tight_turn)
-				+ "\nLe suiveur de ligne suit pus les lignes  FAIL", "fail")
-			emit_signal("test_completed")
-		# last_direction = movement_array.check_last_rotation()
-		# new_state = State.find_line
+		last_direction = movement_array.check_last_rotation()
+		new_state = State.find_line
 	else:
 		if speed < V_MAX:
 			new_speed += ACCELERATION * delta
@@ -439,6 +435,16 @@ func treat_info(delta, capteurs):
 			if utils.finish_line_detected(capteurs) and elapsed_time > 8:
 				state = State.following_line
 
+		State.find_line:
+			if utils.line_detected(capteurs) and backing_up_counter > 1:
+				backing_up_counter = 0
+				state = State.following_line
+
+			rotation = last_direction	
+			if speed > -V_MAX:
+				speed -= ACCELERATION/3 * delta
+			backing_up_counter += delta
+			
 		#State.blocked:
 			#if $RayCast3D.is_colliding():
 				#var CollideObject = $RayCast3D.get_collider().get_parent()
