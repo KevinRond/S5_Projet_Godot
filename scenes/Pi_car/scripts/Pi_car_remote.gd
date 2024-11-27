@@ -172,6 +172,7 @@ func PID_Linefollow(error):
 		
 
 func suivre_ligne(delta, speed, capteurs):
+	print("Capteurs: ", capteurs)
 	var position = read_line(capteurs)
 	var error = 50 - position
 	var PID_output = PID_Linefollow(error)
@@ -326,6 +327,7 @@ func treat_info(delta, capteurs):
 		"rotation": int(deg_rotation),
 		"speed": speed
 	}
+	print("Line counter: ", line_passed)
 	print(utils.set_state_text(state))
 	print(State.following_line)
 	return message_to_robot
