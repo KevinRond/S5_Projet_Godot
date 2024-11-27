@@ -32,7 +32,7 @@ func on_process(delta: float) -> void:
 		var msg = get_parent().socket.get_packet().get_string_from_utf8()
 		commTime = Time.get_ticks_msec() - startCommTime
 		var starttimer = Time.get_ticks_msec()
-		var sensors = string_to_boolean_array(msg, 5)
+		var sensors = extract_sensors(msg, 5)
 		var distance = extract_distance(msg)
 		var message = piCar.treat_info(delta, sensors, distance)
 		
