@@ -55,6 +55,7 @@ func _ready() -> void:
 		current_state.on_enter()
 		current_state.state_entered.emit()
 	
+	
 
 
 # Called every frame.

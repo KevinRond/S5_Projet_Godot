@@ -23,6 +23,8 @@ func set_state_text(state):
 			state_text = "Finished"
 		State.find_line:
 			state_text = "Finding Line"
+		State.stopping:
+			state_text = "Stopping"
 		_:
 			state_text = "Unknown State"
 	
@@ -32,7 +34,11 @@ func line_detected(sensor_array):
 	return sensor_array != [false, false, false, false, false]
 		
 func finish_line_detected(sensor_array):
-	return sensor_array == [true, true, true, true, true]
+	var sum = 0
+	for sensor in sensor_array:
+		if sensor:
+			sum += 1
+	return sum >= 3
 	
 func make_fake_sensor_data():
 	var SL = []
