@@ -438,7 +438,7 @@ func treat_info(delta, capteurs):
 		State.find_line:
 			if utils.line_detected(capteurs):
 				if speed < V_MAX:
-					speed += ACCELERATION *4 * delta
+					speed = 0.08
 				state = State.following_line
 
 			if speed > -V_MAX:
