@@ -215,7 +215,7 @@ func treat_info(delta, capteurs, distance):
 						#speed += ACCELERATION * delta
 
 		State.blocked:
-			if distance < WALL_STOP + REVERSE_RANGE and avoid_timer == 0:
+			if distance < WALL_STOP + REVERSE_RANGE - US_ERROR and avoid_timer == 0:
 				if speed > -V_MAX:
 					speed -= 0.5*ACCELERATION * delta
 			else:
