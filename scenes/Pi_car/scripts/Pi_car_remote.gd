@@ -50,7 +50,7 @@ const GAUCHE = -30
 const DROITE = 30
 const AIDE_COURBURE = 15
 
-const AVOID_TIME = 0.7
+const AVOID_TIME = 1
 const RETURN_TIME = 0.7
 
 var nfsm = 0
@@ -299,7 +299,7 @@ func treat_info(delta, capteurs, distance):
 		State.avoiding:
 			avoid_timer += delta * 10
 			if speed < V_MAX:
-				speed += 3 * ACCELERATION * delta
+				speed += 4 * ACCELERATION * delta
 				
 			if avoid_timer < AVOID_TIME:
 				rotation = AVOID_SIDE*GAUCHE
