@@ -248,6 +248,7 @@ func treat_info(delta, capteurs, distance):
 					if rotation < DROITE:
 						rotation += 1
 				else:
+					print(rotation)
 					if rotation > GAUCHE:
 						rotation -= 1
 				
