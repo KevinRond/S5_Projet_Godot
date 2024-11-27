@@ -246,11 +246,11 @@ func treat_info(delta, capteurs, distance):
 				
 				if AVOID_SIDE == 1:
 					if rotation < DROITE:
-						rotation += 1
+						rotation += 10
 				else:
-					print(rotation)
+					print("\nMAXIME IS HERE: " + str(rotation) + "\nGAUCHE = " + str(GAUCHE) + "\n")
 					if rotation > GAUCHE:
-						rotation -= 1
+						rotation -= 10
 				
 			else:
 				if speed > V_MAX / 3:
