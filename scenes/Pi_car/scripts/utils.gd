@@ -25,6 +25,8 @@ func set_state_text(state):
 			state_text = "Finding Line"
 		State.stopping:
 			state_text = "Stopping"
+		State.waiting:
+			state_text = "Waiting"
 		_:
 			state_text = "Unknown State"
 	

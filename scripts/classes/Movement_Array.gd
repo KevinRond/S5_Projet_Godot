@@ -5,7 +5,7 @@ class_name MovementArray
 var Movement = load("res://scripts/classes/Movement.gd")
 
 # Changer cette const pour sauvegarder plus de mouvements et reculer plus loin
-const MAX_DISPLACEMENT: float = 1
+const MAX_DISPLACEMENT: float = 3
 
 var array: Array[Movement] = []
 var total_distance: float = 0
