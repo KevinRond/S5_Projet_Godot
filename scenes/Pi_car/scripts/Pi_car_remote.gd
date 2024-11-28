@@ -96,7 +96,7 @@ var line_passed = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	start_time = Time.get_ticks_msec()
+	start_time = get_tree().get_time_secs()
 	nfsm = $"../NetworkFSM"
 	ACCELERATION = Settings.acceleration
 	V_MAX = Settings.v_max
@@ -299,7 +299,7 @@ func treat_info(delta, capteurs, distance):
 					speed += 2 * ACCELERATION * delta
 				else:
 					#avoid_timer = 0
-					start_time_sec = Time.get_ticks_msec()/1000
+					start_time_sec = get_tree().get_time_secs()
 					state = State.avoiding
 				
 		State.avoiding:
@@ -307,7 +307,7 @@ func treat_info(delta, capteurs, distance):
 			if speed < V_MAX:
 				print("avoiding")
 				speed += 2 * ACCELERATION * delta
-			var elapsed_time_avoiding = Time.get_ticks_msec()/1000 - start_time_sec
+			var elapsed_time_avoiding = get_tree().get_time_secs() - start_time_sec
 			#if avoid_timer < AVOID_TIME:
 				#rotation = AVOID_SIDE*GAUCHE
 			if elapsed_time_avoiding < AVOID_TIME_SEC:
@@ -315,14 +315,14 @@ func treat_info(delta, capteurs, distance):
 			elif elapsed_time_avoiding < 2*AVOID_TIME_SEC:
 				rotation = GAUCHE + 15
 			else:
-				start_time_sec = Time.get_ticks_msec()/1000
+				start_time_sec = get_tree().get_time_secs()
 				state = State.recovering
 		
 		State.recovering:
 			#avoid_timer += delta * 10
 			if speed > V_MIN:
 					speed -= ACCELERATION * delta
-			var elapsed_time_recov = Time.get_ticks_msec()/1000 - start_time_sec
+			var elapsed_time_recov = get_tree().get_time_secs() - start_time_sec
 			if elapsed_time_recov < RETURN_TIME_SEC:
 				#if avoid_timer < RETURN_TIME / 2:
 					#rotation = AVOID_SIDE*DROITE / 3
