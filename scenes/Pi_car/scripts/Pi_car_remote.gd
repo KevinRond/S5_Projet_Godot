@@ -176,6 +176,7 @@ func suivre_ligne(delta, speed, capteurs):
 
 	if utils.finish_line_detected(capteurs) and line_passed < 2 and parcours_reverse:
 		new_state = State.waiting
+		print("detected line")
 		line_passed += 1
 	
 
@@ -264,7 +265,9 @@ func treat_info(delta, capteurs, distance):
 					if speed < 0:
 						speed += ACCELERATION * delta
 						
+						
 			if utils.finish_line_detected(capteurs):
+				print("detected line")
 				line_passed += 1
 			if utils.finish_line_detected(capteurs) and line_passed >= 3:
 				print("RETOURNE DANS FOLL")
