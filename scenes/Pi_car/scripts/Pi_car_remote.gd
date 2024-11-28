@@ -251,6 +251,9 @@ func treat_info(delta, capteurs, distance):
 		State.stopping:
 			if speed > 0:
 				speed -= ACCELERATION * 2 * delta
+			rotation = 0
+			
+		State.reverse_stopping:
 			if speed < 0 and parcours_reverse:
 				speed += ACCELERATION * 10 * delta
 			rotation = 0
@@ -273,7 +276,7 @@ func treat_info(delta, capteurs, distance):
 				line_passed += 1
 			if utils.finish_line_detected(capteurs) and line_passed > 3:
 				print("RETOURNE DANS FOLL")
-				state = State.stopping
+				state = State.reverse_stopping
 
 
 
