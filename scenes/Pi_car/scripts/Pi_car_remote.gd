@@ -312,6 +312,8 @@ func treat_info(delta, capteurs, distance):
 				#rotation = AVOID_SIDE*GAUCHE
 			if elapsed_time_avoiding < AVOID_TIME_SEC:
 				rotation = AVOID_SIDE*GAUCHE
+			elif elapsed_time_avoiding < 2*AVOID_TIME_SEC:
+				rotation = CENTRE
 			else:
 				start_time_sec = Time.get_ticks_msec()/1000
 				state = State.recovering
