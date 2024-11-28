@@ -266,7 +266,7 @@ func treat_info(delta, capteurs, distance):
 						
 			if utils.finish_line_detected(capteurs):
 				line_passed += 1
-			if utils.finish_line_detected(capteurs) and line_passed > 3:
+			if utils.finish_line_detected(capteurs) and line_passed >= 3:
 				print("RETOURNE DANS FOLL")
 				state = State.stopping
 
