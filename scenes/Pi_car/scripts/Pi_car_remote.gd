@@ -103,6 +103,8 @@ func _ready():
 	V_MAX = Settings.v_max
 	V_TURN = Settings.v_turn * V_MAX
 	V_TIGHT_TURN = Settings.v_tight_turn * V_MAX
+	if parcours_reverse:
+		state = State.reverse
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
