@@ -304,7 +304,7 @@ func treat_info(delta, capteurs, distance):
 				
 		State.avoiding:
 			#avoid_timer += delta * 10
-			if speed < 0.18:
+			if speed < V_MAX:
 				print("avoiding")
 				speed += 2 * ACCELERATION * delta
 			var elapsed_time_avoiding = Time.get_ticks_msec()/1000 - start_time_sec
