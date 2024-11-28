@@ -80,7 +80,7 @@ var Dvalue = 0
 var KP = 0.875
 var KI = 0.1
 var KD = 0.1
-var parcours_reverse = true
+var parcours_reverse = false
 var line_passed = 0
 
 
@@ -290,7 +290,7 @@ func treat_info(delta, capteurs, distance):
 				rotation = -last_direction*0.8	
 			
 		State.blocked:
-			if distance < WALL_STOP + REVERSE_RANGE or distance < 0:
+			if (distance < WALL_STOP + REVERSE_RANGE or distance < 0) and avoid_timer == 0:
 				if speed > -V_MAX:
 					speed -= 0.5*ACCELERATION * delta
 			else:
