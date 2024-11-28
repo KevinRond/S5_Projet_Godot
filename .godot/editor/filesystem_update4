@@ -1,11 +1,4 @@
-res://main.tscn
-res://scenes/custom_bouton_theme.tres
-res://scenes/Pi_car/scripts/Pi_car.gd
-res://scripts/fsm/NetworkConnectingState.gd
-res://scenes/Boule/Boule.tscn
-res://scripts/enums.gd
-res://scenes/Pi_car/scripts/utils.gd
-res://scenes/parcours/Parcours_Reel/parcours_reel.tscn
-res://scenes/Pi_car/scripts/Pi_car_new_parcours.gd
 res://scenes/parcours/Parcours_SL/parcours_SL.tscn
+res://scenes/custom_bouton_theme.tres
+res://scripts/fsm/NetworkConnectingState.gd
 res://scenes/Pi_car/scripts/Pi_car_remote.gd

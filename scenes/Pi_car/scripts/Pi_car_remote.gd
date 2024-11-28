@@ -37,6 +37,8 @@ PARCOURS RÉEL
 """ 
 var V_TURN = 0.55*V_MAX
 var V_TIGHT_TURN = 0.35*V_MAX
+var start_time_sec = 0
+
 
 const V_MIN = 0.08
 const WALL_STOP = 10
@@ -50,8 +52,11 @@ const GAUCHE = -30
 const DROITE = 30
 const AIDE_COURBURE = 10
 
-const AVOID_TIME = 0.95
+const AVOID_TIME = 1.00
 const RETURN_TIME = 0.5
+
+const AVOID_TIME_SEC = 3.8
+const RETURN_TIME_SEC = 1.7
 
 var nfsm = 0
 var speed = 0
@@ -75,7 +80,7 @@ var Dvalue = 0
 var KP = 0.875
 var KI = 0.1
 var KD = 0.1
-var parcours_reverse = false
+var parcours_reverse = true
 var line_passed = 0
 
 
@@ -106,10 +111,6 @@ func _process(delta):
 func _physics_process(delta):
 	pass
 	
-
-
-
-
 		
 	
 func read_line(sensors):
@@ -174,8 +175,8 @@ func suivre_ligne(delta, speed, capteurs):
 
 
 	if utils.finish_line_detected(capteurs) and line_passed < 2 and parcours_reverse:
-		print("Rentre dans la condition")
 		new_state = State.waiting
+		print("detected line")
 		line_passed += 1
 	
 
@@ -249,7 +250,12 @@ func treat_info(delta, capteurs, distance):
 		
 		State.stopping:
 			if speed > 0:
-				speed -= ACCELERATION * delta
+				speed -= ACCELERATION * 2 * delta
+			rotation = 0
+			
+		State.reverse_stopping:
+			if speed < 0 and parcours_reverse:
+				speed += ACCELERATION * 10 * delta
 			rotation = 0
 			
 		State.reverse:
@@ -264,11 +270,13 @@ func treat_info(delta, capteurs, distance):
 					if speed < 0:
 						speed += ACCELERATION * delta
 						
+						
 			if utils.finish_line_detected(capteurs):
+				print("detected line")
 				line_passed += 1
 			if utils.finish_line_detected(capteurs) and line_passed > 3:
 				print("RETOURNE DANS FOLL")
-				state = State.following_line
+				state = State.reverse_stopping
 
 
 
@@ -285,7 +293,7 @@ func treat_info(delta, capteurs, distance):
 				rotation = -last_direction*0.8	
 			
 		State.blocked:
-			if distance < WALL_STOP + REVERSE_RANGE and avoid_timer == 0:
+			if (distance < WALL_STOP + REVERSE_RANGE or distance < 0) and avoid_timer == 0:
 				if speed > -V_MAX:
 					speed -= 0.5*ACCELERATION * delta
 			else:
@@ -293,27 +301,32 @@ func treat_info(delta, capteurs, distance):
 				if speed < 0:
 					speed += 2 * ACCELERATION * delta
 				else:
-					avoid_timer = 0
+					#avoid_timer = 0
+					start_time_sec = Time.get_ticks_msec()/1000
 					state = State.avoiding
 				
 		State.avoiding:
-			avoid_timer += delta * 10
-			if speed < 0.18:
+			#avoid_timer += delta * 10
+			if speed < V_MAX:
 				print("avoiding")
 				speed += 2 * ACCELERATION * delta
-				
-			if avoid_timer < AVOID_TIME:
+			var elapsed_time_avoiding = Time.get_ticks_msec()/1000 - start_time_sec
+			#if avoid_timer < AVOID_TIME:
+				#rotation = AVOID_SIDE*GAUCHE
+			if elapsed_time_avoiding < AVOID_TIME_SEC:
 				rotation = AVOID_SIDE*GAUCHE
+			elif elapsed_time_avoiding < 2*AVOID_TIME_SEC:
+				rotation = GAUCHE + 15
 			else:
-				avoid_timer = 0
+				start_time_sec = Time.get_ticks_msec()/1000
 				state = State.recovering
 		
 		State.recovering:
-			avoid_timer += delta * 10
+			#avoid_timer += delta * 10
 			if speed > V_MIN:
 					speed -= ACCELERATION * delta
-				
-			if avoid_timer < RETURN_TIME:
+			var elapsed_time_recov = Time.get_ticks_msec()/1000 - start_time_sec
+			if elapsed_time_recov < RETURN_TIME_SEC:
 				#if avoid_timer < RETURN_TIME / 2:
 					#rotation = AVOID_SIDE*DROITE / 3
 				#else:
@@ -322,14 +335,13 @@ func treat_info(delta, capteurs, distance):
 				rotation = CENTRE - AVOID_SIDE*AIDE_COURBURE
 			
 			if capteurs[0] or capteurs[1] or capteurs[2] or capteurs[3] or capteurs[4]:
-				if speed < V_MAX: 
-					speed = 0.08
+				#if speed < V_MAX: 
+					#speed = 0.04
 				state = State.following_line
 				
 		State.waiting:
-			if !(utils.finish_line_detected(capteurs)) and line_passed < 2 or line_passed > 2:
+			if !(utils.finish_line_detected(capteurs)) and line_passed < 2:
 				state = State.following_line
-				
 			elif !(utils.finish_line_detected(capteurs)) and line_passed == 2:
 				state = State.reverse
 			else:
@@ -344,9 +356,7 @@ func treat_info(delta, capteurs, distance):
 			var movement = Movement.new(speed, (delta * speed), MovementType.rotation, rotation)
 			movement_array.add_move(movement)
 
-	#rotate_y(rotation * delta)
-	#translate(Vector3(-delta * speed, 0, 0))
-	#update_speed_label()
+	print("line counter: ", line_passed)
 	var deg_rotation = rotation
 	var message_to_robot = {
 		

@@ -15,5 +15,6 @@ enum State {
 	finished,
 	find_line,
 	waiting,
+	reverse_stopping,
 }
 
