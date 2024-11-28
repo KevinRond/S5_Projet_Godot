@@ -50,12 +50,12 @@ const AVOID_SIDE = -1
 const CENTRE = 0
 const GAUCHE = -30
 const DROITE = 30
-const AIDE_COURBURE = 15
+const AIDE_COURBURE = 10
 
 const AVOID_TIME = 1.00
 const RETURN_TIME = 0.5
 
-const AVOID_TIME_SEC = 4.02
+const AVOID_TIME_SEC = 4
 const RETURN_TIME_SEC = 1.7
 
 var nfsm = 0
@@ -329,7 +329,7 @@ func treat_info(delta, capteurs, distance):
 				#else:
 					rotation = AVOID_SIDE*DROITE
 			else:
-				rotation = CENTRE - AVOID_SIDE*AIDE_COURBURE
+				rotation = CENTRE - AIDE_COURBURE
 			
 			if capteurs[0] or capteurs[1] or capteurs[2] or capteurs[3] or capteurs[4]:
 				#if speed < V_MAX: 
