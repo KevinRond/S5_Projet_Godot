@@ -260,23 +260,11 @@ func treat_info(delta, capteurs, distance):
 			rotation = 0
 			
 		State.reverse:
-			if speed > 0:
-				speed -= ACCELERATION * 4 * delta
-			else:
-				var old_move = movement_array.get_last_move()
-				if old_move != null:
-					speed = -old_move[0]
-					rotation = old_move[1]
-				else:
-					if speed < 0:
-						speed += ACCELERATION * delta
-						
+			if speed > -V_MAX:
+				speed -= ACCELERATION * delta
 						
 			if utils.finish_line_detected(capteurs):
 				print("detected line")
-				line_passed += 1
-			if utils.finish_line_detected(capteurs) and line_passed > 3:
-				print("RETOURNE DANS FOLL")
 				state = State.reverse_stopping
 
 
