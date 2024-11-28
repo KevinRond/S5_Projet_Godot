@@ -313,14 +313,14 @@ func treat_info(delta, capteurs, distance):
 			if elapsed_time_avoiding < AVOID_TIME_SEC:
 				rotation = AVOID_SIDE*GAUCHE
 			elif elapsed_time_avoiding < 2*AVOID_TIME_SEC:
-				rotation = DROITE - 10
+				rotation = GAUCHE + 15
 			else:
 				start_time_sec = Time.get_ticks_msec()/1000
 				state = State.recovering
 		
 		State.recovering:
 			#avoid_timer += delta * 10
-			if speed > V_MIN - 0.02:
+			if speed > V_MIN:
 					speed -= ACCELERATION * delta
 			var elapsed_time_recov = Time.get_ticks_msec()/1000 - start_time_sec
 			if elapsed_time_recov < RETURN_TIME_SEC:
