@@ -82,6 +82,7 @@ var KI = 0.1
 var KD = 0.1
 var parcours_reverse = false
 var line_passed = 0
+var last_distance = 0
 
 
 @onready var indicateur_capt1 = $Indicateur_Capteur1
@@ -240,13 +241,13 @@ func treat_info(delta, capteurs, distance):
 			state = result[1]
 			rotation = result[2]
 			
-			if distance < WALL_STOP + REVERSE_RANGE + US_ERROR and distance > 0:
+			if (distance < WALL_STOP + REVERSE_RANGE + US_ERROR and distance > 0) and (last_distance < WALL_STOP + REVERSE_RANGE + US_ERROR and last_distance > 0):
 				if speed > V_MIN:
 					speed -= ACCELERATION * delta
 				else:
 					speed = V_MIN
 					
-				if distance < WALL_STOP + US_ERROR and distance > 0:
+				if (distance < WALL_STOP + US_ERROR and distance > 0) and (last_distance < WALL_STOP + US_ERROR and last_distance > 0):
 					avoid_timer = 0
 					speed = 0
 					state = State.blocked
@@ -290,7 +291,7 @@ func treat_info(delta, capteurs, distance):
 				rotation = -last_direction*0.8	
 			
 		State.blocked:
-			if (distance < WALL_STOP + REVERSE_RANGE or distance < 0) and avoid_timer == 0:
+			if (distance < WALL_STOP + REVERSE_RANGE or distance < 0) and avoid_timer == 0 and (last_distance < WALL_STOP + REVERSE_RANGE or last_distance < 0 ):
 				if speed > -V_MAX:
 					speed -= 0.5*ACCELERATION * delta
 			else:
@@ -365,5 +366,6 @@ func treat_info(delta, capteurs, distance):
 		"speed": speed
 	}
 	print(utils.set_state_text(state))
+	last_distance = distance
 	return message_to_robot
 
