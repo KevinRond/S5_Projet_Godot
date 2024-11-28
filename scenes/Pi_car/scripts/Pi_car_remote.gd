@@ -308,6 +308,7 @@ func treat_info(delta, capteurs, distance):
 				print("avoiding")
 				speed += 2 * ACCELERATION * delta
 			var elapsed_time_avoiding = get_tree().get_time_secs() - start_time_sec
+			print(elapsed_time_avoiding)
 			#if avoid_timer < AVOID_TIME:
 				#rotation = AVOID_SIDE*GAUCHE
 			if elapsed_time_avoiding < AVOID_TIME_SEC:
