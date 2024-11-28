@@ -55,7 +55,7 @@ const AIDE_COURBURE = 10
 const AVOID_TIME = 1.00
 const RETURN_TIME = 0.5
 
-const AVOID_TIME_SEC = 3.5
+const AVOID_TIME_SEC = 3.8
 const RETURN_TIME_SEC = 1.7
 
 var nfsm = 0
