@@ -348,7 +348,7 @@ func treat_info(delta, capteurs, distance):
 			var movement = Movement.new(speed, (delta * speed), MovementType.rotation, rotation)
 			movement_array.add_move(movement)
 
-
+	print("line counter: ", line_passed)
 	var deg_rotation = rotation
 	var message_to_robot = {
 		
