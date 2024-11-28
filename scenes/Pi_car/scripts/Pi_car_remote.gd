@@ -43,7 +43,7 @@ var start_time_sec = 0
 const V_MIN = 0.08
 const WALL_STOP = 10
 const REVERSE_RANGE = 15
-const US_ERROR = 12
+const US_ERROR = 11
 
 # Côté de l'évitement: 1 -> Gauche, -1 -> Droite
 const AVOID_SIDE = -1
