@@ -50,12 +50,12 @@ const AVOID_SIDE = -1
 const CENTRE = 0
 const GAUCHE = -30
 const DROITE = 30
-const AIDE_COURBURE = 10
+const AIDE_COURBURE = 15
 
 const AVOID_TIME = 1.00
 const RETURN_TIME = 0.5
 
-const AVOID_TIME_SEC = 4.05
+const AVOID_TIME_SEC = 4.02
 const RETURN_TIME_SEC = 1.7
 
 var nfsm = 0
