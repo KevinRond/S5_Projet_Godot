@@ -14,11 +14,6 @@ var root: Node
 # Called when the state machine enters this state.
 func on_enter() -> void:
 	print("Network Connecting State entered")
-	# Initialize the minimal root node to ensure the scene tree is active
-	#if get_tree() == null:
-		#root = Node.new()  # Create a new minimal node
-		#get_tree().root.add_child(root)  # Add it to the scene tree
-		#print("Minimal root node added to initialize the scene tree")
 	var err = get_parent().socket.connect_to_url("ws://127.0.0.1:8765")
 	if err != OK:
 		print("Failed to connect to web sock 0_0")
