@@ -80,7 +80,7 @@ var Dvalue = 0
 var KP = 0.875
 var KI = 0.1
 var KD = 0.1
-var parcours_reverse = false
+var parcours_reverse = true
 var line_passed = 0
 var last_distance = 0
 
@@ -112,10 +112,6 @@ func _process(delta):
 func _physics_process(delta):
 	pass
 	
-
-
-
-
 		
 	
 func read_line(sensors):
@@ -180,8 +176,8 @@ func suivre_ligne(delta, speed, capteurs):
 
 
 	if utils.finish_line_detected(capteurs) and line_passed < 2 and parcours_reverse:
-		print("Rentre dans la condition")
 		new_state = State.waiting
+		print("detected line")
 		line_passed += 1
 	
 
@@ -255,7 +251,12 @@ func treat_info(delta, capteurs, distance):
 		
 		State.stopping:
 			if speed > 0:
-				speed -= ACCELERATION * delta
+				speed -= ACCELERATION * 2 * delta
+			rotation = 0
+			
+		State.reverse_stopping:
+			if speed < 0 and parcours_reverse:
+				speed += ACCELERATION * 10 * delta
 			rotation = 0
 			
 		State.reverse:
@@ -270,11 +271,13 @@ func treat_info(delta, capteurs, distance):
 					if speed < 0:
 						speed += ACCELERATION * delta
 						
+						
 			if utils.finish_line_detected(capteurs):
+				print("detected line")
 				line_passed += 1
 			if utils.finish_line_detected(capteurs) and line_passed > 3:
 				print("RETOURNE DANS FOLL")
-				state = State.following_line
+				state = State.reverse_stopping
 
 
 
@@ -339,9 +342,8 @@ func treat_info(delta, capteurs, distance):
 				state = State.following_line
 				
 		State.waiting:
-			if !(utils.finish_line_detected(capteurs)) and line_passed < 2 or line_passed > 2:
+			if !(utils.finish_line_detected(capteurs)) and line_passed < 2:
 				state = State.following_line
-				
 			elif !(utils.finish_line_detected(capteurs)) and line_passed == 2:
 				state = State.reverse
 			else:
@@ -356,9 +358,7 @@ func treat_info(delta, capteurs, distance):
 			var movement = Movement.new(speed, (delta * speed), MovementType.rotation, rotation)
 			movement_array.add_move(movement)
 
-	#rotate_y(rotation * delta)
-	#translate(Vector3(-delta * speed, 0, 0))
-	#update_speed_label()
+	print("line counter: ", line_passed)
 	var deg_rotation = rotation
 	var message_to_robot = {
 		
