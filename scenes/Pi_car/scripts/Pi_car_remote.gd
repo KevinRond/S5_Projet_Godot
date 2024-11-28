@@ -313,6 +313,7 @@ func treat_info(delta, capteurs, distance):
 			if elapsed_time_avoiding < AVOID_TIME_SEC:
 				rotation = AVOID_SIDE*GAUCHE
 			elif elapsed_time_avoiding < 2*AVOID_TIME_SEC:
+				print("AIDE ROTATIONNENENNEN AJKBNJAFBJABCJKBCA CAK CAN AC")
 				rotation = GAUCHE + 15
 			else:
 				start_time_sec = Time.get_ticks_msec()/1000
