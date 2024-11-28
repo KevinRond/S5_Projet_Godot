@@ -251,6 +251,8 @@ func treat_info(delta, capteurs, distance):
 		State.stopping:
 			if speed > 0:
 				speed -= ACCELERATION * 2 * delta
+			if speed < 0:
+				speed += ACCELERATION * 2 * delta
 			rotation = 0
 			
 		State.reverse:
