@@ -40,7 +40,7 @@ var V_TIGHT_TURN = 0.35*V_MAX
 var start_time_sec = 0
 
 
-const V_MIN = 0.07
+const V_MIN = 0.08
 const WALL_STOP = 10
 const REVERSE_RANGE = 15
 const US_ERROR = 11
@@ -332,8 +332,8 @@ func treat_info(delta, capteurs, robot_state):
 		
 		State.recovering:
 			#avoid_timer += delta * 10
-			if speed > V_MIN:
-					speed -= ACCELERATION * delta
+			#if speed > V_MIN:
+					#speed -= ACCELERATION * delta
 			if robot_state_string=="end_of_evitement":
 				#if avoid_timer < RETURN_TIME / 2:
 					#rotation = AVOID_SIDE*DROITE / 3
