@@ -40,7 +40,7 @@ var V_TIGHT_TURN = 0.35*V_MAX
 var start_time_sec = 0
 
 
-const V_MIN = 0.08
+const V_MIN = 0.06
 const WALL_STOP = 10
 const REVERSE_RANGE = 15
 const US_ERROR = 11
@@ -254,10 +254,10 @@ func treat_info(delta, capteurs, robot_state):
 				else:
 					speed = V_MIN
 					
-				if robot_state_string == "reverse_to_30cm":
-					avoid_timer = 0
-					speed = 0
-					state = State.blocked
+			if robot_state_string == "reverse_to_30cm":
+				avoid_timer = 0
+				speed = 0
+				state = State.blocked
 				
 		
 		State.stopping:
