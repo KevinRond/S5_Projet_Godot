@@ -38,6 +38,7 @@ func on_process(delta: float) -> void:
 		
 		message = JSON.stringify(message)
 		var packet = message.to_utf8_buffer()
+		var miaw = get_parent().socket.put_packet(packet)
 	var state = get_parent().socket.get_ready_state()
 
 	
