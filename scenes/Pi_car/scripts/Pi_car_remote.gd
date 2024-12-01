@@ -327,6 +327,7 @@ func treat_info(delta, capteurs, robot_state):
 			elif robot_state_string =="middle_of_evitement":
 				rotation = GAUCHE + 15
 			elif robot_state_string=="end_of_evitement":
+				rotation = AVOID_SIDE*DROITE
 				state = State.recovering
 		
 		State.recovering:
