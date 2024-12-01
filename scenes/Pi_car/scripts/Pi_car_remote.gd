@@ -83,6 +83,15 @@ var KD = 0.1
 var parcours_reverse = false
 var line_passed = 0
 var last_distance = 0
+var states_robot = {
+	1: "nothing_in_front",
+	2: "initial_detection",
+	3: "reverse_to_30cm",
+	4: "start_of_evitement",
+	5: "middle_of_evitement",
+	6: "end_of_evitement",
+	7: "catching_line"
+}
 
 
 @onready var indicateur_capt1 = $Indicateur_Capteur1
@@ -222,8 +231,9 @@ func suivre_ligne(delta, speed, capteurs):
 		
 
 	
-func treat_info(delta, capteurs, distance):
-	print(distance)
+func treat_info(delta, capteurs, robot_state):
+	var robot_state_string = states_robot[robot_state]
+	print(robot_state_string)
 	var rotation = 0
 
 	match state:
@@ -237,13 +247,13 @@ func treat_info(delta, capteurs, distance):
 			state = result[1]
 			rotation = result[2]
 			
-			if (distance < WALL_STOP + REVERSE_RANGE + US_ERROR and distance > 0) and (last_distance < WALL_STOP + REVERSE_RANGE + US_ERROR and last_distance > 0):
+			if robot_state_string == "initial_detection":
 				if speed > V_MIN:
 					speed -= ACCELERATION * delta
 				else:
 					speed = V_MIN
 					
-				if (distance < WALL_STOP + US_ERROR and distance > 0) and (last_distance < WALL_STOP + US_ERROR and last_distance > 0):
+				if robot_state_string == "reverse_to_30cm":
 					avoid_timer = 0
 					speed = 0
 					state = State.blocked
@@ -294,49 +304,41 @@ func treat_info(delta, capteurs, distance):
 				rotation = -last_direction*0.8	
 			
 		State.blocked:
-			if (distance < WALL_STOP + REVERSE_RANGE or distance < 0) and avoid_timer == 0 and (last_distance < WALL_STOP + REVERSE_RANGE or last_distance < 0 ):
+			if robot_state_string == "reverse_to_30cm":
 				if speed > -V_MAX:
 					speed -= 0.5*ACCELERATION * delta
-			else:
-				avoid_timer = 1
-				if speed < 0:
-					speed += 2 * ACCELERATION * delta
-				else:
-					#avoid_timer = 0
-					start_time_sec = Time.get_ticks_msec()/1000
-					state = State.avoiding
+			elif robot_state_string == "start_of_evitement":
+				speed=0
+				state = State.avoiding
 				
 		State.avoiding:
 			#avoid_timer += delta * 10
 			if speed < V_MAX:
 				print("avoiding")
 				speed += 2 * ACCELERATION * delta
-			var elapsed_time_avoiding = Time.get_ticks_msec()/1000 - start_time_sec
 			#if avoid_timer < AVOID_TIME:
 				#rotation = AVOID_SIDE*GAUCHE
-			if elapsed_time_avoiding < AVOID_TIME_SEC:
+			if robot_state_string=="start_of_evitement":
 				rotation = AVOID_SIDE*GAUCHE
-			elif elapsed_time_avoiding < 2*AVOID_TIME_SEC:
+			elif robot_state_string =="middle_of_evitement":
 				rotation = GAUCHE + 15
-			else:
-				start_time_sec = Time.get_ticks_msec()/1000
+			elif robot_state_string=="end_of_evitement":
 				state = State.recovering
 		
 		State.recovering:
 			#avoid_timer += delta * 10
 			if speed > V_MIN:
 					speed -= ACCELERATION * delta
-			var elapsed_time_recov = Time.get_ticks_msec()/1000 - start_time_sec
-			if elapsed_time_recov < RETURN_TIME_SEC:
+			if robot_state_string=="end_of_evitement":
 				#if avoid_timer < RETURN_TIME / 2:
 					#rotation = AVOID_SIDE*DROITE / 3
 				#else:
 					rotation = AVOID_SIDE*DROITE
-			else:
+			elif robot_state_string=="catching_line":
 				print("AIDE ROTATIONNENENNEN AJKBNJAFBJABCJKBCA CAK CAN AC")
 				rotation = CENTRE - AIDE_COURBURE
 			
-			if capteurs[0] or capteurs[1] or capteurs[2] or capteurs[3] or capteurs[4]:
+			if robot_state_string=="nothing_in_front":
 				#if speed < V_MAX: 
 					#speed = 0.04
 				state = State.following_line
@@ -366,6 +368,5 @@ func treat_info(delta, capteurs, distance):
 		"speed": speed
 	}
 	print(utils.set_state_text(state))
-	last_distance = distance
 	return message_to_robot
 

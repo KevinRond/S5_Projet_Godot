@@ -4,10 +4,7 @@ extends StateMachineState
 var piCar_class = preload("res://scenes/Pi_car/scripts/Pi_car_remote.gd")
 var piCar = piCar_class.new()
 
-var highestTime = 0
-var commTime = 0
-var startCommTime = 0
-var highestCommTime = 0
+
 var root: Node
 
 
@@ -35,21 +32,12 @@ func on_process(delta: float) -> void:
 	
 	while get_parent().socket.get_available_packet_count():
 		var msg = get_parent().socket.get_packet().get_string_from_utf8()
-		commTime = Time.get_ticks_msec() - startCommTime
-		var starttimer = Time.get_ticks_msec()
 		var sensors = extract_sensors(msg, 5)
-		var distance = extract_distance(msg)
-		var message = piCar.treat_info(delta, sensors, distance)
+		var robot_state = extract_state(msg)
+		var message = piCar.treat_info(delta, sensors, robot_state)
 		
 		message = JSON.stringify(message)
 		var packet = message.to_utf8_buffer()
-		var endTime = Time.get_ticks_msec() - starttimer
-		if endTime > highestTime:
-			highestTime = endTime
-		if commTime > highestCommTime:
-			highestCommTime = commTime
-		var miaw = get_parent().socket.put_packet(packet)
-		startCommTime = Time.get_ticks_msec()
 	var state = get_parent().socket.get_ready_state()
 
 	
@@ -96,7 +84,8 @@ func extract_sensors(input_string: String, array_size: int) -> Array:
 		push_error("The array size does not match the expected size. size is", boolean_array.size())
 		return []
 		
-func extract_distance(input_string: String) -> float:
+	
+func extract_state(input_string: String) -> float:
 	var cleaned_string = input_string.strip_edges().replace("[", "").replace("]", "")
 	cleaned_string = cleaned_string.replace(" ", "")
 	var string_array = cleaned_string.split(",")
