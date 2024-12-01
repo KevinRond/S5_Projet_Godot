@@ -232,7 +232,8 @@ func suivre_ligne(delta, speed, capteurs):
 
 	
 func treat_info(delta, capteurs, robot_state):
-	var robot_state_string = states_robot[robot_state]
+	print(robot_state)
+	var robot_state_string = states_robot[int(robot_state)]
 	print(robot_state_string)
 	var rotation = 0
 
