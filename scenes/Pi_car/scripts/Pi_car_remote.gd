@@ -250,7 +250,7 @@ func treat_info(delta, capteurs, robot_state):
 			
 			if robot_state_string == "initial_detection":
 				if speed > V_MIN:
-					speed -= ACCELERATION * delta
+					speed -= 4*ACCELERATION * delta
 				else:
 					speed = V_MIN
 					
@@ -307,7 +307,7 @@ func treat_info(delta, capteurs, robot_state):
 		State.blocked:
 			if robot_state_string == "reverse_to_30cm":
 				if speed > -V_MAX:
-					speed -= 0.5*ACCELERATION * delta
+					speed -= 2*ACCELERATION * delta
 			elif robot_state_string == "start_of_evitement":
 				speed=0
 				state = State.avoiding
