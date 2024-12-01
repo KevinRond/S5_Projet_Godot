@@ -40,7 +40,7 @@ var V_TIGHT_TURN = 0.35*V_MAX
 var start_time_sec = 0
 
 
-const V_MIN = 0.06
+const V_MIN = 0.07
 const WALL_STOP = 10
 const REVERSE_RANGE = 15
 const US_ERROR = 11
