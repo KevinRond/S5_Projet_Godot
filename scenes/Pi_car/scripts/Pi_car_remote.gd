@@ -265,7 +265,7 @@ func treat_info(delta, capteurs, robot_state):
 				speed -= ACCELERATION * 2 * delta
 			#pour les test
 			if capteurs == [false,false,true,false,false]:
-				state = state.following_line
+				state = State.following_line
 			rotation = 0
 			
 		State.reverse_stopping:
