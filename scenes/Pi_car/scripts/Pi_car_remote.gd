@@ -53,7 +53,7 @@ var Pvalue = 0
 var Ivalue = 0
 var Dvalue = 0
 
-var KP = 0.875
+var KP = 0.75
 var KI = 0
 var KD = 0
 var parcours_reverse = false
