@@ -442,6 +442,8 @@ func treat_info(delta, capteurs, robot_state):
 					speed -= ACCELERATION *2 * delta
 				else:
 					speed=-REAL_VITESSE_0
+				if speed < 0:
+					rotation = -65
 			else:
 				if speed > TIGHT_TURN_SPEED:
 					speed -= ACCELERATION * delta
