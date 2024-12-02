@@ -9,7 +9,7 @@ var utils = load("res://scenes/Pi_car/scripts/utils.gd").new()
 signal test_completed
 
 var ACCELERATION = ((9.8*0.0015)/0.02) # 0.0049 m/s^2
-var V_MAX = 0.1 # m/s
+var V_MAX = 0.15 # m/s
 const V_MIN = 0.08
 
 var V_TURN = 0.55*V_MAX
@@ -299,7 +299,7 @@ func treat_info(delta, capteurs, robot_state):
 		State.blocked:
 			if robot_state_string == "reverse_to_30cm":
 				if speed > -V_MIN:
-					speed -= 2*ACCELERATION * delta
+					speed -= 2 * ACCELERATION * delta
 			elif robot_state_string == "start_of_evitement":
 				speed=0
 				state = State.avoiding
