@@ -331,7 +331,7 @@ func treat_info(delta, capteurs, robot_state):
 			if robot_state_string=="start_of_evitement":
 				rotation = AVOID_SIDE*GAUCHE
 			elif robot_state_string =="middle_of_evitement":
-				rotation = GAUCHE + 15
+				rotation = GAUCHE + 10
 			elif robot_state_string=="end_of_evitement":
 				rotation = AVOID_SIDE*DROITE
 				state = State.recovering
@@ -372,7 +372,7 @@ func treat_info(delta, capteurs, robot_state):
 			movement_array.add_move(movement)
 
 	print("line counter: ", line_passed)
-	print("timer retrouver ligne", timer_retrouver_ligne)
+	print("timer retrouver ligne: ", timer_retrouver_ligne)
 	var deg_rotation = rotation
 	var message_to_robot = {
 		
