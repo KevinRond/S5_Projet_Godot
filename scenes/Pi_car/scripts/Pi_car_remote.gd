@@ -406,23 +406,19 @@ func treat_info(delta, capteurs, robot_state):
 			if capteurs[3] or capteurs[4]:
 				canDetectLineMiddleWhileFindingLine = false
 				state = State.following_line
-			if speed > TIGHT_TURN_SPEED:
-				speed -= ACCELERATION * delta
-			elif speed>0 and speed<REAL_VITESSE_0:
-				speed = REAL_VITESSE_0
-			else:
-				speed += ACCELERATION * delta
-			if !utils.line_detected(capteurs):
+			if !utils.line_detected(capteurs) or ((capteurs[0] or capteurs[1]) and canDetectLineMiddleWhileFindingLine):
 				canDetectLineMiddleWhileFindingLine = true
 				if speed > -V_MAX:
 					speed -= ACCELERATION *2 * delta
 				if speed < 0:
 					rotation = 65
-			if (capteurs[0] or capteurs[1]) and canDetectLineMiddleWhileFindingLine:
-				if speed > -V_MAX:
-					speed -= ACCELERATION *2 * delta
-				if speed < 0:
-					rotation = 65
+			else:
+				if speed > TIGHT_TURN_SPEED:
+					speed -= ACCELERATION * delta
+				elif speed>0 and speed<REAL_VITESSE_0:
+					speed = REAL_VITESSE_0
+				else:
+					speed += ACCELERATION * delta
 			
 				
 		State.tight_left_turn:
@@ -430,23 +426,20 @@ func treat_info(delta, capteurs, robot_state):
 			if capteurs[0] or capteurs[1]:
 				canDetectLineMiddleWhileFindingLine = false
 				state = State.following_line
-			if speed > TIGHT_TURN_SPEED:
-				speed -= ACCELERATION * delta
-			elif speed>0 and speed<REAL_VITESSE_0:
-				speed = REAL_VITESSE_0
-			else:
-				speed += ACCELERATION * delta
-			if !utils.line_detected(capteurs):
+			if !utils.line_detected(capteurs) or ((capteurs[3] or capteurs[4]) and canDetectLineMiddleWhileFindingLine):
 				canDetectLineMiddleWhileFindingLine = true
 				if speed > -V_MAX:
 					speed -= ACCELERATION *2 * delta
 				if speed < 0:
 					rotation = -65
-			if (capteurs[3] or capteurs[4]) and canDetectLineMiddleWhileFindingLine:
-				if speed > -V_MAX:
-					speed -= ACCELERATION *2 * delta
-				if speed < 0:
-					rotation = 65
+			else:
+				if speed > TIGHT_TURN_SPEED:
+					speed -= ACCELERATION * delta
+				elif speed>0 and speed<REAL_VITESSE_0:
+					speed = REAL_VITESSE_0
+				else:
+					speed += ACCELERATION * delta
+			
 			#if capteurs == [false, false, false, false, false]:
 				#speed-= ACCELERATION * delta
 				#rotation=-45
