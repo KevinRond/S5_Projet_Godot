@@ -54,8 +54,8 @@ var Ivalue = 0
 var Dvalue = 0
 
 var KP = 0.6
-var KI = 0.1
-var KD = 0
+var KI = 0.05
+var KD = KI/8
 var parcours_reverse = false
 var line_passed = 0
 var last_distance = 0
