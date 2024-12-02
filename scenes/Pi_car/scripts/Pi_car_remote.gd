@@ -300,8 +300,11 @@ func treat_info(delta, capteurs, robot_state):
 					speed =0.00
 				state = State.following_line
 
-			if speed > -V_MAX:
+			if speed > -V_MAX and speed > 0:
 				speed -= ACCELERATION * delta
+				
+			if speed > -V_MAX and speed <= 0:
+				speed -= ACCELERATION * 2 * delta
 			
 			if speed > 0:
 				rotation = last_direction
