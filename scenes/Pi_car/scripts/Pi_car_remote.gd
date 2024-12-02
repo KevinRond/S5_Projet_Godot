@@ -54,7 +54,7 @@ var Ivalue = 0
 var Dvalue = 0
 
 var KP = 0.65
-var KI = 0.15
+var KI = 0.05
 var KD = KI/8
 var parcours_reverse = false
 var line_passed = 0
@@ -127,7 +127,7 @@ func PID_Linefollow(error):
 	
 	Pvalue = KP*P
 	Ivalue = KI*I
-	Ivalue = clamp(Ivalue, -7.5, 7)
+	Ivalue = clamp(Ivalue, -5, 5)
 	Dvalue = KD*D
 	
 	var PID_value = Pvalue + Ivalue + Dvalue
