@@ -99,7 +99,7 @@ var states_robot = {
 	6: "end_of_evitement",
 	7: "catching_line"
 }
-const TIGHT_TURN_SPEED=0.08
+const TIGHT_TURN_SPEED=0.085
 var rotation_picar = 0
 
 @onready var indicateur_capt1 = $Indicateur_Capteur1
@@ -201,12 +201,12 @@ func suivre_ligne_emile(delta, speed, capteurs):
 			if speed < V_MAX:
 				new_speed += 0.5*ACCELERATION * delta
 		elif capteurs == [true, false, false, false, false]: #Extremite droite seule voit ligne, rentre dans tight left turn
-			new_rotation = -35
+			new_rotation = -60
 			if speed > 0:
 				new_speed -= ACCELERATION * delta
 			new_state=State.tight_right_turn
 		elif capteurs == [false, false, false, false, true]: #extremite gauche seule voit ligne, tight left turn
-			new_rotation = 35
+			new_rotation = 60
 			if speed > 0:
 				new_speed -= ACCELERATION * delta
 			new_state=State.tight_left_turn
@@ -400,7 +400,7 @@ func treat_info(delta, capteurs, robot_state):
 			else:
 				state = State.waiting
 		State.tight_right_turn:
-			rotation=-55
+			rotation=-65
 			if capteurs[2] or capteurs[3] or capteurs[4]:
 				state = State.following_line
 			if speed > TIGHT_TURN_SPEED:
@@ -410,7 +410,7 @@ func treat_info(delta, capteurs, robot_state):
 			
 				
 		State.tight_left_turn:
-			rotation=55
+			rotation=65
 			if capteurs[0] or capteurs[1] or capteurs[2]:
 				state = State.following_line
 			if speed > TIGHT_TURN_SPEED:
