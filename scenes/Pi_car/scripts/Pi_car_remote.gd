@@ -404,12 +404,19 @@ func treat_info(delta, capteurs, robot_state):
 		State.tight_right_turn:
 			rotation=-65
 			if capteurs[2] or capteurs[3] or capteurs[4]:
+				canDetectLineMiddleWhileFindingLine = false
 				state = State.following_line
 			if speed > TIGHT_TURN_SPEED:
 				speed -= ACCELERATION * delta
 			else:
 				speed += ACCELERATION * delta
 			if !utils.line_detected(capteurs):
+				canDetectLineMiddleWhileFindingLine = true
+				if speed > -V_MAX:
+					speed -= ACCELERATION *2 * delta
+				if speed < 0:
+					rotation = 65
+			if (capteurs[0] or capteurs[1]) and canDetectLineMiddleWhileFindingLine:
 				if speed > -V_MAX:
 					speed -= ACCELERATION *2 * delta
 				if speed < 0:
@@ -419,16 +426,23 @@ func treat_info(delta, capteurs, robot_state):
 		State.tight_left_turn:
 			rotation=65
 			if capteurs[0] or capteurs[1] or capteurs[2]:
+				canDetectLineMiddleWhileFindingLine = false
 				state = State.following_line
 			if speed > TIGHT_TURN_SPEED:
 				speed -= ACCELERATION * delta
 			else:
 				speed += ACCELERATION * delta
 			if !utils.line_detected(capteurs):
+				canDetectLineMiddleWhileFindingLine = true
 				if speed > -V_MAX:
 					speed -= ACCELERATION *2 * delta
 				if speed < 0:
 					rotation = -65
+			if (capteurs[0] or capteurs[1]) and canDetectLineMiddleWhileFindingLine:
+				if speed > -V_MAX:
+					speed -= ACCELERATION *2 * delta
+				if speed < 0:
+					rotation = 65
 			#if capteurs == [false, false, false, false, false]:
 				#speed-= ACCELERATION * delta
 				#rotation=-45
