@@ -401,7 +401,7 @@ func treat_info(delta, capteurs, robot_state):
 				state = State.waiting
 		State.tight_right_turn:
 			rotation=-45
-			if utils.line_detected(capteurs):
+			if capteurs[1] or capteurs[2] or capteurs[3] or capteurs[4]:
 				state = State.following_line
 			if speed > TIGHT_TURN_SPEED:
 				speed -= ACCELERATION * delta
@@ -409,7 +409,7 @@ func treat_info(delta, capteurs, robot_state):
 				
 		State.tight_left_turn:
 			rotation=45
-			if utils.line_detected(capteurs):
+			if capteurs[0] or capteurs[1] or capteurs[2] or capteurs[3]:
 				state = State.following_line
 			if speed > TIGHT_TURN_SPEED:
 				speed -= ACCELERATION * delta
