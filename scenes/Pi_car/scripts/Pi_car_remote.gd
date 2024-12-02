@@ -53,8 +53,8 @@ var Pvalue = 0
 var Ivalue = 0
 var Dvalue = 0
 
-var KP = 0.75
-var KI = 0
+var KP = 0.6
+var KI = 0.05
 var KD = 0
 var parcours_reverse = false
 var line_passed = 0
