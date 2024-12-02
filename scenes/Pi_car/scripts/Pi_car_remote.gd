@@ -190,8 +190,8 @@ func suivre_ligne(delta, speed, capteurs):
 	
 
 	if !utils.line_detected(capteurs):
-		timer_retrouver_ligne += delta
-		if timer_retrouver_ligne >= 2:
+		timer_retrouver_ligne += delta * 10
+		if timer_retrouver_ligne >= 1.5:
 			if !utils.line_detected(capteurs):
 				last_direction = movement_array.check_last_rotation()
 				new_state = State.find_line
