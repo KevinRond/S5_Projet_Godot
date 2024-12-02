@@ -172,6 +172,8 @@ func suivre_ligne(delta, speed, capteurs):
 		timer_retrouver_ligne += delta * 10
 		last_direction = movement_array.check_last_rotation()
 		new_rotation = last_direction
+		if speed > V_MIN:
+			speed -= ACCELERATION * 2 * delta
 		if last_direction > 0 and timer_retrouver_ligne > 0.3:
 			new_rotation = 41
 		if last_direction < 0 and timer_retrouver_ligne > 0.3:
