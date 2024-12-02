@@ -64,7 +64,6 @@ var state = State.manual_control
 var tick_counter = 0
 var movement_array: MovementArray = MovementArray.new()
 var avoid_timer = 0
-var backing_up_counter = 0.0
 var last_direction = 0
 
 var start_time = 0
@@ -302,10 +301,13 @@ func treat_info(delta, capteurs, robot_state):
 				state = State.following_line
 
 			if speed > -V_MAX:
-				speed -= ACCELERATION *2 * delta
-			backing_up_counter += delta
+				speed -= ACCELERATION * 2 * delta
+			
+			if speed > 0:
+				rotation = last_direction
+			
 			if speed < 0:
-				rotation = -last_direction*0.8	
+				rotation = -last_direction * 0.8
 			
 		State.blocked:
 			if robot_state_string == "reverse_to_30cm":
