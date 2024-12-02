@@ -100,6 +100,7 @@ var states_robot = {
 	7: "catching_line"
 }
 const TIGHT_TURN_SPEED=0.0666
+var rotation_picar = 0
 
 @onready var indicateur_capt1 = $Indicateur_Capteur1
 @onready var indicateur_capt2 = $Indicateur_Capteur2
@@ -176,7 +177,7 @@ func PID_Linefollow(error):
 func suivre_ligne_emile(delta, speed, capteurs):
 	var new_speed = speed
 	var new_state = State.following_line
-	var new_rotation = rotation
+	var new_rotation=0
 	if utils.finish_line_detected(capteurs) and !parcours_reverse:
 		if speed > 0:
 			new_speed -= ACCELERATION * delta
