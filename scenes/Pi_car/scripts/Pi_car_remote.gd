@@ -372,6 +372,7 @@ func treat_info(delta, capteurs, robot_state):
 			movement_array.add_move(movement)
 
 	print("line counter: ", line_passed)
+	print("timer retrouver ligne", timer_retrouver_ligne)
 	var deg_rotation = rotation
 	var message_to_robot = {
 		
