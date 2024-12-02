@@ -101,7 +101,7 @@ var states_robot = {
 }
 const TIGHT_TURN_SPEED=0.085
 var rotation_picar = 0
-const REAL_VITESSE_0 = 0.067
+const REAL_VITESSE_0 = 0.07
 var canDetectLineMiddleWhileFindingLine = false
 
 @onready var indicateur_capt1 = $Indicateur_Capteur1
@@ -403,11 +403,13 @@ func treat_info(delta, capteurs, robot_state):
 				state = State.waiting
 		State.tight_right_turn:
 			rotation=-65
-			if capteurs[2] or capteurs[3] or capteurs[4]:
+			if capteurs[3] or capteurs[4]:
 				canDetectLineMiddleWhileFindingLine = false
 				state = State.following_line
 			if speed > TIGHT_TURN_SPEED:
 				speed -= ACCELERATION * delta
+			elif speed>0 and speed<REAL_VITESSE_0:
+				speed = REAL_VITESSE_0
 			else:
 				speed += ACCELERATION * delta
 			if !utils.line_detected(capteurs):
@@ -425,11 +427,13 @@ func treat_info(delta, capteurs, robot_state):
 				
 		State.tight_left_turn:
 			rotation=65
-			if capteurs[0] or capteurs[1] or capteurs[2]:
+			if capteurs[0] or capteurs[1]:
 				canDetectLineMiddleWhileFindingLine = false
 				state = State.following_line
 			if speed > TIGHT_TURN_SPEED:
 				speed -= ACCELERATION * delta
+			elif speed>0 and speed<REAL_VITESSE_0:
+				speed = REAL_VITESSE_0
 			else:
 				speed += ACCELERATION * delta
 			if !utils.line_detected(capteurs):
@@ -438,7 +442,7 @@ func treat_info(delta, capteurs, robot_state):
 					speed -= ACCELERATION *2 * delta
 				if speed < 0:
 					rotation = -65
-			if (capteurs[0] or capteurs[1]) and canDetectLineMiddleWhileFindingLine:
+			if (capteurs[3] or capteurs[4]) and canDetectLineMiddleWhileFindingLine:
 				if speed > -V_MAX:
 					speed -= ACCELERATION *2 * delta
 				if speed < 0:
