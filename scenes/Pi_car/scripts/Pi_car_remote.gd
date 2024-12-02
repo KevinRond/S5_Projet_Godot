@@ -28,6 +28,7 @@ l'incertitude de 30mm selon l'accélération trouvée
 SI ON MODIFIE CETTE VALEUR, ON DOIT S'ASSURER DE REFAIRE LE TEST D'ARRÊT
 """ 
 var V_MAX = 0.1 # m/s
+var V_MAX_REVERSE = -0.085
 """ EXPLICATION V_TURN ET V_TIGHT_TURN
 Ces vitesses ont été trouvées en vérifiant si le robot pouvait faire les 
 virages du parcours réel
@@ -192,16 +193,22 @@ func suivre_ligne_emile(delta, speed, capteurs):
 		new_state = State.find_line
 	else:
 		if capteurs[2] == true: #Juste milieu (accelere)
-			if speed < V_MAX:
+			if (speed < V_MAX and speed>=REAL_VITESSE_0) or speed<0:
 				new_speed += ACCELERATION * delta
+			else:
+				new_speed = REAL_VITESSE_0
 		elif capteurs[1] == true: #Milieu droit voit ligne, tite rotation vers la droite
 			new_rotation = -20
-			if speed < V_MAX:
+			if (speed < V_MAX and speed>=REAL_VITESSE_0) or speed<0:
 				new_speed += 0.5*ACCELERATION * delta
+			else:
+				new_speed = REAL_VITESSE_0
 		elif capteurs[3] == true: #Milieu gauche voit ligne, tite rotation a gauche
 			new_rotation = 20
-			if speed < V_MAX:
+			if (speed < V_MAX and speed>=REAL_VITESSE_0) or speed<0:
 				new_speed += 0.5*ACCELERATION * delta
+			else:
+				new_speed = REAL_VITESSE_0
 		elif capteurs == [true, false, false, false, false]: #Extremite droite seule voit ligne, rentre dans tight left turn
 			new_rotation = -60
 			if speed > 0:
@@ -408,8 +415,10 @@ func treat_info(delta, capteurs, robot_state):
 				state = State.following_line
 			if !utils.line_detected(capteurs) or ((capteurs[0] or capteurs[1]) and canDetectLineMiddleWhileFindingLine):
 				canDetectLineMiddleWhileFindingLine = true
-				if speed > -V_MAX:
+				if speed > 0 or (speed<=-REAL_VITESSE_0 and speed>V_MAX_REVERSE):
 					speed -= ACCELERATION *2 * delta
+				else:
+					speed=-REAL_VITESSE_0
 				if speed < 0:
 					rotation = 65
 			else:
@@ -429,10 +438,10 @@ func treat_info(delta, capteurs, robot_state):
 			if !utils.line_detected(capteurs) or ((capteurs[3] or capteurs[4]) and canDetectLineMiddleWhileFindingLine):
 				canDetectLineMiddleWhileFindingLine = true
 				
-				if speed > -V_MAX:
+				if speed > 0 or (speed<=-REAL_VITESSE_0 and speed>V_MAX_REVERSE):
 					speed -= ACCELERATION *2 * delta
-				if speed < 0:
-					rotation = -65
+				else:
+					speed=-REAL_VITESSE_0
 			else:
 				if speed > TIGHT_TURN_SPEED:
 					speed -= ACCELERATION * delta
