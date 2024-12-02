@@ -8,39 +8,16 @@ var utils = load("res://scenes/Pi_car/scripts/utils.gd").new()
 
 signal test_completed
 
-""" EXPLICATION ACCÉLÉRATION
-En théorie, l'accélération est sensée être g*h/x où h est la profondeur de la
-plaquette et x est le rayon. Cela nous donnerait une accel max de 7.35 m/s^2, 
-ce qui est évidemment beaucoup trop. En testant, un facteur de 1/1200 semblait
-donné la meilleure valeur d'acceleration.
-
-Il est possible que la boule tombe lors du premier essai d'un parcours, vérifier
-que si on relance le test avec "r", la boule tombe toujours.
-
-SI L'ACCÉLÉRATION EST MODIFIÉE, LA VITESSE MAX ET LES VITESSES DE TOURNAGE 
-DOIVENT ÊTRE RETESTÉES
-""" 
 var ACCELERATION = ((9.8*0.0015)/0.02) # 0.0049 m/s^2
-""" EXPLICATION V_MAX
-La vitesse maximale fut trouvée en vérifiant si le robot pouvait arrêter avec 
-l'incertitude de 30mm selon l'accélération trouvée
-
-SI ON MODIFIE CETTE VALEUR, ON DOIT S'ASSURER DE REFAIRE LE TEST D'ARRÊT
-""" 
 var V_MAX = 0.08 # m/s
-""" EXPLICATION V_TURN ET V_TIGHT_TURN
-Ces vitesses ont été trouvées en vérifiant si le robot pouvait faire les 
-virages du parcours réel
+const V_MIN = 0.08
 
-SI ON MODIFIE CES VALEURS, ON DOIT S'ASSURER DE VÉRIFIER LES RÉSULTATS DANS LE 
-PARCOURS RÉEL
-""" 
 var V_TURN = 0.55*V_MAX
 var V_TIGHT_TURN = 0.35*V_MAX
 var start_time_sec = 0
 var timer_retrouver_ligne = 0.0
 
-const V_MIN = 0.08
+
 const WALL_STOP = 10
 const REVERSE_RANGE = 15
 const US_ERROR = 11
@@ -331,7 +308,7 @@ func treat_info(delta, capteurs, robot_state):
 			if robot_state_string=="start_of_evitement":
 				rotation = AVOID_SIDE*GAUCHE
 			elif robot_state_string =="middle_of_evitement":
-				rotation = GAUCHE + 10
+				rotation = GAUCHE + 12.5
 			elif robot_state_string=="end_of_evitement":
 				rotation = AVOID_SIDE*DROITE
 				state = State.recovering
