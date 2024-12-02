@@ -38,7 +38,7 @@ PARCOURS RÉEL
 var V_TURN = 0.55*V_MAX
 var V_TIGHT_TURN = 0.35*V_MAX
 var start_time_sec = 0
-
+var timer_retrouver_ligne = 0.0
 
 const V_MIN = 0.08
 const WALL_STOP = 10
@@ -190,11 +190,14 @@ func suivre_ligne(delta, speed, capteurs):
 	
 
 	if !utils.line_detected(capteurs):
-		if speed > 0:
-			new_speed = 0.08
-		last_direction = movement_array.check_last_rotation()
-		new_state = State.find_line
+		timer_retrouver_ligne += delta
+		if timer_retrouver_ligne >= 2:
+			if !utils.line_detected(capteurs):
+				last_direction = movement_array.check_last_rotation()
+				new_state = State.find_line
+				timer_retrouver_ligne = 0
 	else:
+		timer_retrouver_ligne = 0
 		if speed < V_MAX:
 			new_speed += ACCELERATION * 2 * delta
 		if PID_output < 0:
@@ -299,11 +302,8 @@ func treat_info(delta, capteurs, robot_state):
 				if speed < V_MAX:
 					speed =0.00
 				state = State.following_line
-
-			if speed > -V_MAX and speed > 0:
-				speed -= ACCELERATION * delta
 				
-			if speed > -V_MAX and speed <= 0:
+			if speed > -V_MAX:
 				speed -= ACCELERATION * 2 * delta
 			
 			if speed > 0:
