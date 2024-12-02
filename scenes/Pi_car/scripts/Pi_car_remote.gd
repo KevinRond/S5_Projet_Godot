@@ -53,9 +53,9 @@ var Pvalue = 0
 var Ivalue = 0
 var Dvalue = 0
 
-var KP = 0.875
-var KI = 0.1
-var KD = 0.1
+var KP = 0.65
+var KI = 0.05
+var KD = KI/8
 var parcours_reverse = false
 var line_passed = 0
 var last_distance = 0
@@ -135,8 +135,10 @@ func PID_Linefollow(error):
 	previous_error = error
 
 	if PID_value < -40:
+		print("min pid value: ", PID_value)
 		PID_value = -40
 	if PID_value > 40:
+		print("max pid value: ", PID_value)
 		PID_value = 40
 
 	return PID_value
@@ -170,6 +172,13 @@ func suivre_ligne(delta, speed, capteurs):
 		timer_retrouver_ligne += delta * 10
 		last_direction = movement_array.check_last_rotation()
 		new_rotation = last_direction
+		if speed > V_MIN:
+			print("ok ralentit la")
+			speed -= ACCELERATION * 2 * delta
+		if last_direction > 0 and timer_retrouver_ligne > 0.3:
+			new_rotation = 41
+		if last_direction < 0 and timer_retrouver_ligne > 0.3:
+			new_rotation = -41
 		if timer_retrouver_ligne >= 1.25:
 			if !utils.line_detected(capteurs):
 				new_state = State.find_line
@@ -292,15 +301,15 @@ func treat_info(delta, capteurs, robot_state):
 			
 		State.blocked:
 			if robot_state_string == "reverse_to_30cm":
-				if speed > -V_MAX:
-					speed -= 2*ACCELERATION * delta
+				if speed > -V_MIN:
+					speed -= 2 * ACCELERATION * delta
 			elif robot_state_string == "start_of_evitement":
 				speed=0
 				state = State.avoiding
 				
 		State.avoiding:
 			#avoid_timer += delta * 10
-			if speed < V_MAX:
+			if speed < V_MIN:
 				print("avoiding")
 				speed += 2 * ACCELERATION * delta
 			#if avoid_timer < AVOID_TIME:
