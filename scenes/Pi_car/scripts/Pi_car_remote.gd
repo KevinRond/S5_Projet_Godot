@@ -23,7 +23,7 @@ const REVERSE_RANGE = 15
 const US_ERROR = 11
 
 # Côté de l'évitement: 1 -> Gauche, -1 -> Droite
-const AVOID_SIDE = 1
+const AVOID_SIDE = -1
 const CENTRE = 0
 const GAUCHE = -30
 const DROITE = 30
