@@ -27,6 +27,10 @@ func set_state_text(state):
 			state_text = "Stopping"
 		State.waiting:
 			state_text = "Waiting"
+		State.tight_right_turn:
+			state_text = "Tight Right Turn"
+		State.tight_left_turn:
+			state_text = "Tight Left Turn"
 		_:
 			state_text = "Unknown State"
 	

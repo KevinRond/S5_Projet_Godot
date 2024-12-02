@@ -27,7 +27,7 @@ l'incertitude de 30mm selon l'accélération trouvée
 
 SI ON MODIFIE CETTE VALEUR, ON DOIT S'ASSURER DE REFAIRE LE TEST D'ARRÊT
 """ 
-var V_MAX = 0.08 # m/s
+var V_MAX = 0.1 # m/s
 """ EXPLICATION V_TURN ET V_TIGHT_TURN
 Ces vitesses ont été trouvées en vérifiant si le robot pouvait faire les 
 virages du parcours réel
@@ -40,7 +40,7 @@ var V_TIGHT_TURN = 0.35*V_MAX
 var start_time_sec = 0
 
 
-const V_MIN = 0.08
+const V_MIN = 0.07
 const WALL_STOP = 10
 const REVERSE_RANGE = 15
 const US_ERROR = 11
@@ -51,6 +51,13 @@ const CENTRE = 0
 const GAUCHE = -30
 const DROITE = 30
 const AIDE_COURBURE = 10
+
+#turns pour l evitement
+const EVITEMENT_FIRST_TURN=30
+const EVITEMENT_MIDDLE_TURN=-15
+const EVITEMENT_RECOVERING_FIRST_TURN=-30
+const EVITEMENT_CATCHING_LINE_TURN=-10
+
 
 const AVOID_TIME = 1.00
 const RETURN_TIME = 0.5
@@ -92,7 +99,7 @@ var states_robot = {
 	6: "end_of_evitement",
 	7: "catching_line"
 }
-
+const TIGHT_TURN_SPEED=0.0666
 
 @onready var indicateur_capt1 = $Indicateur_Capteur1
 @onready var indicateur_capt2 = $Indicateur_Capteur2
@@ -165,6 +172,45 @@ func PID_Linefollow(error):
 
 	return PID_value
 		
+		
+func suivre_ligne_emile(delta, speed, capteurs):
+	var new_speed = speed
+	var new_state = State.following_line
+	var new_rotation = rotation
+	if utils.finish_line_detected(capteurs) and !parcours_reverse:
+		if speed > 0:
+			new_speed -= ACCELERATION * delta
+		new_rotation = 0 
+		new_state = State.stopping
+	if !utils.line_detected(capteurs):
+		if speed > 0:
+			new_speed = 0.07
+		last_direction = movement_array.check_last_rotation()
+		new_state = State.find_line
+	else:
+		if capteurs[2] == true: #Juste milieu (accelere)
+			if speed < V_MAX:
+				new_speed += ACCELERATION * delta
+		elif capteurs[1] == true: #Milieu droit voit ligne, tite rotation vers la droite
+			new_rotation = 20
+			if speed < V_MAX:
+				new_speed += 0.5*ACCELERATION * delta
+		elif capteurs[3] == true: #Milieu gauche voit ligne, tite rotation a gauche
+			new_rotation = 20
+			if speed < V_MAX:
+				new_speed += 0.5*ACCELERATION * delta
+		elif capteurs == [true, false, false, false, false]: #Extremite droite seule voit ligne, rentre dans tight left turn
+			new_rotation = 35
+			if speed > 0:
+				new_speed -= ACCELERATION * delta
+			new_state=State.tight_right_turn
+		elif capteurs == [false, false, false, false, true]: #extremite gauche seule voit ligne, tight left turn
+			new_rotation = -35
+			if speed > 0:
+				new_speed -= ACCELERATION * delta
+			new_state=State.tight_left_turn
+
+	return [new_speed, new_state]
 
 func suivre_ligne(delta, speed, capteurs):
 	print("Capteurs: ", capteurs)
@@ -243,7 +289,7 @@ func treat_info(delta, capteurs, robot_state):
 				state = State.following_line
 
 		State.following_line:
-			var result = suivre_ligne(delta, speed, capteurs)
+			var result = suivre_ligne_emile(delta, speed, capteurs)
 			speed = result[0]
 			state = result[1]
 			rotation = result[2]
@@ -309,8 +355,8 @@ func treat_info(delta, capteurs, robot_state):
 			
 		State.blocked:
 			if robot_state_string == "reverse_to_30cm":
-				if speed > -V_MAX:
-					speed -= 2*ACCELERATION * delta
+				if speed > -V_MAX and speed>-V_MIN:
+					speed -= 1.5*ACCELERATION * delta
 			elif robot_state_string == "start_of_evitement":
 				speed=0
 				state = State.avoiding
@@ -320,14 +366,12 @@ func treat_info(delta, capteurs, robot_state):
 			if speed < V_MAX:
 				print("avoiding")
 				speed += 2 * ACCELERATION * delta
-			#if avoid_timer < AVOID_TIME:
-				#rotation = AVOID_SIDE*GAUCHE
 			if robot_state_string=="start_of_evitement":
-				rotation = AVOID_SIDE*GAUCHE
+				rotation = EVITEMENT_FIRST_TURN
 			elif robot_state_string =="middle_of_evitement":
-				rotation = GAUCHE + 15
+				rotation = EVITEMENT_MIDDLE_TURN
 			elif robot_state_string=="end_of_evitement":
-				rotation = AVOID_SIDE*DROITE
+				rotation = EVITEMENT_RECOVERING_FIRST_TURN
 				state = State.recovering
 		
 		State.recovering:
@@ -338,10 +382,9 @@ func treat_info(delta, capteurs, robot_state):
 				#if avoid_timer < RETURN_TIME / 2:
 					#rotation = AVOID_SIDE*DROITE / 3
 				#else:
-					rotation = AVOID_SIDE*DROITE
+					rotation = EVITEMENT_RECOVERING_FIRST_TURN
 			elif robot_state_string=="catching_line":
-				print("AIDE ROTATIONNENENNEN AJKBNJAFBJABCJKBCA CAK CAN AC")
-				rotation = CENTRE - AIDE_COURBURE
+				rotation = EVITEMENT_CATCHING_LINE_TURN
 			
 			if robot_state_string=="nothing_in_front":
 				#if speed < V_MAX: 
@@ -355,6 +398,23 @@ func treat_info(delta, capteurs, robot_state):
 				state = State.reverse
 			else:
 				state = State.waiting
+		State.tight_right_turn:
+			rotation=45
+			if utils.line_detected(capteurs):
+				state = State.following_line
+			if speed > TIGHT_TURN_SPEED:
+				speed -= ACCELERATION * delta
+			
+				
+		State.tight_left_turn:
+			rotation=-45
+			if utils.line_detected(capteurs):
+				state = State.following_line
+			if speed > TIGHT_TURN_SPEED:
+				speed -= ACCELERATION * delta
+			#if capteurs == [false, false, false, false, false]:
+				#speed-= ACCELERATION * delta
+				#rotation=-45
 			
 
 	if state != State.reverse && speed > 0:

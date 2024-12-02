@@ -16,5 +16,7 @@ enum State {
 	find_line,
 	waiting,
 	reverse_stopping,
+	tight_right_turn,
+	tight_left_turn
 }
 
