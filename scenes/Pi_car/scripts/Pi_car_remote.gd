@@ -193,7 +193,7 @@ func suivre_ligne_emile(delta, speed, capteurs):
 			if speed < V_MAX:
 				new_speed += ACCELERATION * delta
 		elif capteurs[1] == true: #Milieu droit voit ligne, tite rotation vers la droite
-			new_rotation = 20
+			new_rotation = -20
 			if speed < V_MAX:
 				new_speed += 0.5*ACCELERATION * delta
 		elif capteurs[3] == true: #Milieu gauche voit ligne, tite rotation a gauche
@@ -201,12 +201,12 @@ func suivre_ligne_emile(delta, speed, capteurs):
 			if speed < V_MAX:
 				new_speed += 0.5*ACCELERATION * delta
 		elif capteurs == [true, false, false, false, false]: #Extremite droite seule voit ligne, rentre dans tight left turn
-			new_rotation = 35
+			new_rotation = -35
 			if speed > 0:
 				new_speed -= ACCELERATION * delta
 			new_state=State.tight_right_turn
 		elif capteurs == [false, false, false, false, true]: #extremite gauche seule voit ligne, tight left turn
-			new_rotation = -35
+			new_rotation = 35
 			if speed > 0:
 				new_speed -= ACCELERATION * delta
 			new_state=State.tight_left_turn
@@ -400,7 +400,7 @@ func treat_info(delta, capteurs, robot_state):
 			else:
 				state = State.waiting
 		State.tight_right_turn:
-			rotation=45
+			rotation=-45
 			if utils.line_detected(capteurs):
 				state = State.following_line
 			if speed > TIGHT_TURN_SPEED:
@@ -408,7 +408,7 @@ func treat_info(delta, capteurs, robot_state):
 			
 				
 		State.tight_left_turn:
-			rotation=-45
+			rotation=45
 			if utils.line_detected(capteurs):
 				state = State.following_line
 			if speed > TIGHT_TURN_SPEED:
