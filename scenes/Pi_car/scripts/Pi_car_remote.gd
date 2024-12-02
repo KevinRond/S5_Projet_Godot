@@ -284,7 +284,7 @@ func treat_info(delta, capteurs, robot_state):
 		State.find_line:
 			if utils.check_center_sensors(capteurs):
 				if speed < V_MAX:
-					speed += ACCELERATION * 2 * delta
+					speed =0.00
 				state = State.following_line
 				
 			if speed > -V_MAX:
@@ -314,7 +314,7 @@ func treat_info(delta, capteurs, robot_state):
 			if robot_state_string=="start_of_evitement":
 				rotation = AVOID_SIDE*GAUCHE
 			elif robot_state_string =="middle_of_evitement":
-				rotation = -AVOID_SIDE * (GAUCHE + 12.5)
+				rotation = GAUCHE + 12.5
 			elif robot_state_string=="end_of_evitement":
 				rotation = AVOID_SIDE*DROITE
 				state = State.recovering
