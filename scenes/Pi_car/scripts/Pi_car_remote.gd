@@ -210,7 +210,7 @@ func suivre_ligne_emile(delta, speed, capteurs):
 				new_speed -= ACCELERATION * delta
 			new_state=State.tight_left_turn
 
-	return [new_speed, new_state]
+	return [new_speed, new_state, new_rotation]
 
 func suivre_ligne(delta, speed, capteurs):
 	print("Capteurs: ", capteurs)
