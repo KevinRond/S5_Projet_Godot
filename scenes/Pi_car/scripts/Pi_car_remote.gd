@@ -101,6 +101,8 @@ var states_robot = {
 }
 const TIGHT_TURN_SPEED=0.085
 var rotation_picar = 0
+const REAL_VITESSE_0 = 0.067
+var canDetectLineMiddleWhileFindingLine = false
 
 @onready var indicateur_capt1 = $Indicateur_Capteur1
 @onready var indicateur_capt2 = $Indicateur_Capteur2
@@ -185,7 +187,7 @@ func suivre_ligne_emile(delta, speed, capteurs):
 		new_state = State.stopping
 	if !utils.line_detected(capteurs):
 		if speed > 0:
-			new_speed = 0.07
+			new_speed = 0.08
 		last_direction = movement_array.check_last_rotation()
 		new_state = State.find_line
 	else:
@@ -407,6 +409,11 @@ func treat_info(delta, capteurs, robot_state):
 				speed -= ACCELERATION * delta
 			else:
 				speed += ACCELERATION * delta
+			if !utils.line_detected(capteurs):
+				if speed > -V_MAX:
+					speed -= ACCELERATION *2 * delta
+				if speed < 0:
+					rotation = 65
 			
 				
 		State.tight_left_turn:
@@ -417,6 +424,11 @@ func treat_info(delta, capteurs, robot_state):
 				speed -= ACCELERATION * delta
 			else:
 				speed += ACCELERATION * delta
+			if !utils.line_detected(capteurs):
+				if speed > -V_MAX:
+					speed -= ACCELERATION *2 * delta
+				if speed < 0:
+					rotation = -65
 			#if capteurs == [false, false, false, false, false]:
 				#speed-= ACCELERATION * delta
 				#rotation=-45
@@ -429,6 +441,10 @@ func treat_info(delta, capteurs, robot_state):
 		else:
 			var movement = Movement.new(speed, (delta * speed), MovementType.rotation, rotation)
 			movement_array.add_move(movement)
+			
+	#if speed > - REAL_VITESSE_0 and speed<0:
+		#speed = -REAL_VITESSE_0
+	#elif speed>REAL_VITESSE_0 and speed>0:
 
 	print("line counter: ", line_passed)
 	var deg_rotation = rotation
