@@ -8,39 +8,16 @@ var utils = load("res://scenes/Pi_car/scripts/utils.gd").new()
 
 signal test_completed
 
-""" EXPLICATION ACCÉLÉRATION
-En théorie, l'accélération est sensée être g*h/x où h est la profondeur de la
-plaquette et x est le rayon. Cela nous donnerait une accel max de 7.35 m/s^2, 
-ce qui est évidemment beaucoup trop. En testant, un facteur de 1/1200 semblait
-donné la meilleure valeur d'acceleration.
-
-Il est possible que la boule tombe lors du premier essai d'un parcours, vérifier
-que si on relance le test avec "r", la boule tombe toujours.
-
-SI L'ACCÉLÉRATION EST MODIFIÉE, LA VITESSE MAX ET LES VITESSES DE TOURNAGE 
-DOIVENT ÊTRE RETESTÉES
-""" 
 var ACCELERATION = ((9.8*0.0015)/0.02) # 0.0049 m/s^2
-""" EXPLICATION V_MAX
-La vitesse maximale fut trouvée en vérifiant si le robot pouvait arrêter avec 
-l'incertitude de 30mm selon l'accélération trouvée
-
-SI ON MODIFIE CETTE VALEUR, ON DOIT S'ASSURER DE REFAIRE LE TEST D'ARRÊT
-""" 
 var V_MAX = 0.08 # m/s
-""" EXPLICATION V_TURN ET V_TIGHT_TURN
-Ces vitesses ont été trouvées en vérifiant si le robot pouvait faire les 
-virages du parcours réel
+const V_MIN = 0.08
 
-SI ON MODIFIE CES VALEURS, ON DOIT S'ASSURER DE VÉRIFIER LES RÉSULTATS DANS LE 
-PARCOURS RÉEL
-""" 
 var V_TURN = 0.55*V_MAX
 var V_TIGHT_TURN = 0.35*V_MAX
 var start_time_sec = 0
+var timer_retrouver_ligne = 0.0
 
 
-const V_MIN = 0.08
 const WALL_STOP = 10
 const REVERSE_RANGE = 15
 const US_ERROR = 11
@@ -64,7 +41,6 @@ var state = State.manual_control
 var tick_counter = 0
 var movement_array: MovementArray = MovementArray.new()
 var avoid_timer = 0
-var backing_up_counter = 0.0
 var last_direction = 0
 
 var start_time = 0
@@ -191,11 +167,15 @@ func suivre_ligne(delta, speed, capteurs):
 	
 
 	if !utils.line_detected(capteurs):
-		if speed > 0:
-			new_speed = 0.08
+		timer_retrouver_ligne += delta * 10
 		last_direction = movement_array.check_last_rotation()
-		new_state = State.find_line
+		new_rotation = last_direction
+		if timer_retrouver_ligne >= 1.25:
+			if !utils.line_detected(capteurs):
+				new_state = State.find_line
+				timer_retrouver_ligne = 0
 	else:
+		timer_retrouver_ligne = 0
 		if speed < V_MAX:
 			new_speed += ACCELERATION * 2 * delta
 		if PID_output < 0:
@@ -296,16 +276,19 @@ func treat_info(delta, capteurs, robot_state):
 
 
 		State.find_line:
-			if utils.line_detected(capteurs):
+			if utils.check_center_sensors(capteurs):
 				if speed < V_MAX:
 					speed =0.00
 				state = State.following_line
-
+				
 			if speed > -V_MAX:
-				speed -= ACCELERATION *2 * delta
-			backing_up_counter += delta
+				speed -= ACCELERATION * 2 * delta
+			
+			if speed > 0:
+				rotation = last_direction
+			
 			if speed < 0:
-				rotation = -last_direction*0.8	
+				rotation = -last_direction * 0.8
 			
 		State.blocked:
 			if robot_state_string == "reverse_to_30cm":
@@ -325,7 +308,7 @@ func treat_info(delta, capteurs, robot_state):
 			if robot_state_string=="start_of_evitement":
 				rotation = AVOID_SIDE*GAUCHE
 			elif robot_state_string =="middle_of_evitement":
-				rotation = GAUCHE + 15
+				rotation = GAUCHE + 12.5
 			elif robot_state_string=="end_of_evitement":
 				rotation = AVOID_SIDE*DROITE
 				state = State.recovering
@@ -366,6 +349,7 @@ func treat_info(delta, capteurs, robot_state):
 			movement_array.add_move(movement)
 
 	print("line counter: ", line_passed)
+	print("timer retrouver ligne: ", timer_retrouver_ligne)
 	var deg_rotation = rotation
 	var message_to_robot = {
 		
