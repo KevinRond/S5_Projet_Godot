@@ -99,7 +99,7 @@ var states_robot = {
 	6: "end_of_evitement",
 	7: "catching_line"
 }
-const TIGHT_TURN_SPEED=0.0666
+const TIGHT_TURN_SPEED=0.074
 var rotation_picar = 0
 
 @onready var indicateur_capt1 = $Indicateur_Capteur1
