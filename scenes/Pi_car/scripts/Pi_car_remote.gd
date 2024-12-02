@@ -99,7 +99,7 @@ var states_robot = {
 	6: "end_of_evitement",
 	7: "catching_line"
 }
-const TIGHT_TURN_SPEED=0.074
+const TIGHT_TURN_SPEED=0.08
 var rotation_picar = 0
 
 @onready var indicateur_capt1 = $Indicateur_Capteur1
@@ -400,19 +400,23 @@ func treat_info(delta, capteurs, robot_state):
 			else:
 				state = State.waiting
 		State.tight_right_turn:
-			rotation=-45
-			if capteurs[1] or capteurs[2] or capteurs[3] or capteurs[4]:
+			rotation=-55
+			if capteurs[2] or capteurs[3] or capteurs[4]:
 				state = State.following_line
 			if speed > TIGHT_TURN_SPEED:
 				speed -= ACCELERATION * delta
+			else:
+				speed += ACCELERATION * delta
 			
 				
 		State.tight_left_turn:
-			rotation=45
-			if capteurs[0] or capteurs[1] or capteurs[2] or capteurs[3]:
+			rotation=55
+			if capteurs[0] or capteurs[1] or capteurs[2]:
 				state = State.following_line
 			if speed > TIGHT_TURN_SPEED:
 				speed -= ACCELERATION * delta
+			else:
+				speed += ACCELERATION * delta
 			#if capteurs == [false, false, false, false, false]:
 				#speed-= ACCELERATION * delta
 				#rotation=-45
