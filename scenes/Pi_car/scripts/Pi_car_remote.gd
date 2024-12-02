@@ -37,7 +37,7 @@ const RETURN_TIME_SEC = 1.7
 
 var nfsm = 0
 var speed = 0
-var state = State.manual_control
+var state = State.following_line
 var tick_counter = 0
 var movement_array: MovementArray = MovementArray.new()
 var avoid_timer = 0
