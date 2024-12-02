@@ -296,7 +296,7 @@ func treat_info(delta, capteurs, robot_state):
 
 
 		State.find_line:
-			if utils.line_detected(capteurs):
+			if utils.check_center_sensors(capteurs):
 				if speed < V_MAX:
 					speed =0.00
 				state = State.following_line

@@ -61,3 +61,10 @@ func make_json_instructions(new_speed, new_rotation):
 	}
 
 	return JSON.stringify(json)
+
+func check_center_sensors(sensor_array):
+	var center_sensors = [sensor_array[1], sensor_array[2], sensor_array[3]]
+	for sensor in center_sensors:
+		if sensor == true:
+			return true
+	return false
