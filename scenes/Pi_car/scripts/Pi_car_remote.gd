@@ -9,7 +9,7 @@ var utils = load("res://scenes/Pi_car/scripts/utils.gd").new()
 signal test_completed
 
 var ACCELERATION = ((9.8*0.0015)/0.02) # 0.0049 m/s^2
-var V_MAX = 0.08 # m/s
+var V_MAX = 0.1 # m/s
 const V_MIN = 0.08
 
 var V_TURN = 0.55*V_MAX
@@ -68,6 +68,8 @@ var states_robot = {
 	6: "end_of_evitement",
 	7: "catching_line"
 }
+
+const REAL_V_MIN = 0.067
 
 
 @onready var indicateur_capt1 = $Indicateur_Capteur1
@@ -239,7 +241,7 @@ func treat_info(delta, capteurs, robot_state):
 			
 			if robot_state_string == "initial_detection":
 				if speed > V_MIN:
-					speed -= 4*ACCELERATION * delta
+					speed -= 2*ACCELERATION * delta
 				else:
 					speed = V_MIN
 					
