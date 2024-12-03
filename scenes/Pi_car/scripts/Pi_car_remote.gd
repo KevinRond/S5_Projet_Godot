@@ -17,7 +17,7 @@ var V_TIGHT_TURN = 0.35*V_MAX
 var start_time_sec = 0
 var timer_retrouver_ligne = 0.0
 var temps_retrouver_ligne = 0.5
-var temps_cramper_roues = 0.1
+var temps_cramper_roues = 0.15
 
 
 const WALL_STOP = 10
@@ -70,7 +70,9 @@ var states_robot = {
 	6: "start_of_evitement",
 	7: "middle_of_evitement",
 	8: "end_of_evitement",
-	9: "catching_line"
+	9: "catching_line",
+	18: "ok",
+	19: "la"
 }
 
 const REAL_V_MIN = 0.067
@@ -242,6 +244,9 @@ func treat_info(delta, capteurs, robot_state):
 			speed = result[0]
 			state = result[1]
 			rotation = result[2]
+			
+			if robot_state_string == "ok" or robot_state_string == "la":
+				print("ok la jattends")
 			
 			if robot_state_string == "initial_detection":
 				if speed > V_MIN:
