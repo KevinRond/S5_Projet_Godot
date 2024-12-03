@@ -360,6 +360,9 @@ func treat_info(delta, capteurs, robot_state):
 				#if speed < V_MAX: 
 					#speed = 0.04
 				state = State.following_line
+			
+			if utils.line_detected(capteurs):
+				state = State.following_line
 				
 		State.waiting:
 			if !(utils.finish_line_detected(capteurs)) and line_passed < 2:
