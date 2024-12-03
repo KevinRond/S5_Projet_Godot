@@ -16,6 +16,8 @@ var V_TURN = 0.55*V_MAX
 var V_TIGHT_TURN = 0.35*V_MAX
 var start_time_sec = 0
 var timer_retrouver_ligne = 0.0
+var temps_retrouver_ligne = 1
+var temps_cramper_roues = 0.3
 
 
 const WALL_STOP = 10
@@ -179,11 +181,11 @@ func suivre_ligne(delta, speed, capteurs):
 		if speed > V_MIN:
 			print("ok ralentit la")
 			speed -= ACCELERATION * 2 * delta
-		if last_direction > 0 and timer_retrouver_ligne > 0.3:
+		if last_direction > 0 and timer_retrouver_ligne > temps_cramper_roues:
 			new_rotation = 41
-		if last_direction < 0 and timer_retrouver_ligne > 0.3:
+		if last_direction < 0 and timer_retrouver_ligne > temps_cramper_roues:
 			new_rotation = -41
-		if timer_retrouver_ligne >= 1.25:
+		if timer_retrouver_ligne >= temps_retrouver_ligne:
 			if !utils.line_detected(capteurs):
 				new_state = State.find_line
 				timer_retrouver_ligne = 0
