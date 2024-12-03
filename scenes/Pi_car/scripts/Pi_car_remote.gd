@@ -9,7 +9,7 @@ var utils = load("res://scenes/Pi_car/scripts/utils.gd").new()
 signal test_completed
 
 var ACCELERATION = ((9.8*0.0015)/0.02) # 0.0049 m/s^2
-var V_MAX = 0.08 # m/s
+var V_MAX = 0.1 # m/s
 const V_MIN = 0.08
 
 var V_TURN = 0.55*V_MAX
@@ -62,12 +62,16 @@ var last_distance = 0
 var states_robot = {
 	1: "nothing_in_front",
 	2: "initial_detection",
-	3: "reverse_to_30cm",
-	4: "start_of_evitement",
-	5: "middle_of_evitement",
-	6: "end_of_evitement",
-	7: "catching_line"
+	3: "slowing_down_before_reverse",
+	4: "reverse_to_30cm",
+	5: "reaching_0_before_evitement",
+	6: "start_of_evitement",
+	7: "middle_of_evitement",
+	8: "end_of_evitement",
+	9: "catching_line"
 }
+
+const REAL_V_MIN = 0.067
 
 
 @onready var indicateur_capt1 = $Indicateur_Capteur1
@@ -239,12 +243,17 @@ func treat_info(delta, capteurs, robot_state):
 			
 			if robot_state_string == "initial_detection":
 				if speed > V_MIN:
-					speed -= 4*ACCELERATION * delta
+					speed -= 2*ACCELERATION * delta
 				else:
 					speed = V_MIN
-					
+			if robot_state_string == "slowing_down_before_reverse":
+				if speed > REAL_V_MIN:
+					speed = REAL_V_MIN
+				else:
+					speed = REAL_V_MIN
 			if robot_state_string == "reverse_to_30cm":
 				avoid_timer = 0
+				#Le speed = 0 est correct pcq il roulait a une vitesse tlm lente c aight
 				speed = 0
 				state = State.blocked
 				
@@ -303,15 +312,25 @@ func treat_info(delta, capteurs, robot_state):
 			if robot_state_string == "reverse_to_30cm":
 				if speed > -V_MIN:
 					speed -= 2 * ACCELERATION * delta
+				else:
+					speed = -V_MIN
+			#rajouter state d accel ici
+			elif robot_state_string == "reaching_0_before_evitement":
+				if speed > -REAL_V_MIN:
+					speed -= 2 * ACCELERATION * delta
+				else:
+					speed = -REAL_V_MIN
 			elif robot_state_string == "start_of_evitement":
 				speed=0
 				state = State.avoiding
 				
 		State.avoiding:
 			#avoid_timer += delta * 10
-			if speed < V_MIN:
+			if speed < V_MAX:
 				print("avoiding")
 				speed += 2 * ACCELERATION * delta
+			else:
+				speed = V_MAX
 			#if avoid_timer < AVOID_TIME:
 				#rotation = AVOID_SIDE*GAUCHE
 			if robot_state_string=="start_of_evitement":
@@ -323,9 +342,11 @@ func treat_info(delta, capteurs, robot_state):
 				state = State.recovering
 		
 		State.recovering:
-			#avoid_timer += delta * 10
-			#if speed > V_MIN:
-					#speed -= ACCELERATION * delta
+			if speed < V_MAX:
+				print("avoiding")
+				speed += 2 * ACCELERATION * delta
+			else:
+				speed = V_MAX
 			if robot_state_string=="end_of_evitement":
 				#if avoid_timer < RETURN_TIME / 2:
 					#rotation = AVOID_SIDE*DROITE / 3
@@ -338,6 +359,9 @@ func treat_info(delta, capteurs, robot_state):
 			if robot_state_string=="nothing_in_front":
 				#if speed < V_MAX: 
 					#speed = 0.04
+				state = State.following_line
+			
+			if utils.line_detected(capteurs):
 				state = State.following_line
 				
 		State.waiting:
