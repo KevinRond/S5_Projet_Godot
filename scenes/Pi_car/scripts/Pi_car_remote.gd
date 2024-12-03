@@ -62,11 +62,13 @@ var last_distance = 0
 var states_robot = {
 	1: "nothing_in_front",
 	2: "initial_detection",
-	3: "reverse_to_30cm",
-	4: "start_of_evitement",
-	5: "middle_of_evitement",
-	6: "end_of_evitement",
-	7: "catching_line"
+	3: "slowing_down_before_reverse",
+	4: "reverse_to_30cm",
+	5: "reaching_0_before_evitement",
+	6: "start_of_evitement",
+	7: "middle_of_evitement",
+	8: "end_of_evitement",
+	9: "catching_line"
 }
 
 const REAL_V_MIN = 0.067
@@ -244,9 +246,14 @@ func treat_info(delta, capteurs, robot_state):
 					speed -= 2*ACCELERATION * delta
 				else:
 					speed = V_MIN
-					
+			if robot_state_string == "slowing_down_before_reverse":
+				if speed > REAL_V_MIN:
+					speed = REAL_V_MIN
+				else:
+					speed = REAL_V_MIN
 			if robot_state_string == "reverse_to_30cm":
 				avoid_timer = 0
+				#Le speed = 0 est correct pcq il roulait a une vitesse tlm lente c aight
 				speed = 0
 				state = State.blocked
 				
@@ -305,6 +312,14 @@ func treat_info(delta, capteurs, robot_state):
 			if robot_state_string == "reverse_to_30cm":
 				if speed > -V_MIN:
 					speed -= 2 * ACCELERATION * delta
+				else:
+					speed = -V_MIN
+			#rajouter state d accel ici
+			elif robot_state_string == "reaching_0_before_evitement":
+				if speed > -REAL_V_MIN:
+					speed -= 2 * ACCELERATION * delta
+				else:
+					speed = -REAL_V_MIN
 			elif robot_state_string == "start_of_evitement":
 				speed=0
 				state = State.avoiding
@@ -314,6 +329,8 @@ func treat_info(delta, capteurs, robot_state):
 			if speed < V_MIN:
 				print("avoiding")
 				speed += 2 * ACCELERATION * delta
+			else:
+				speed = V_MIN
 			#if avoid_timer < AVOID_TIME:
 				#rotation = AVOID_SIDE*GAUCHE
 			if robot_state_string=="start_of_evitement":
