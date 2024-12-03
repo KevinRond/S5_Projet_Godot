@@ -326,11 +326,11 @@ func treat_info(delta, capteurs, robot_state):
 				
 		State.avoiding:
 			#avoid_timer += delta * 10
-			if speed < V_MIN:
+			if speed < V_MAX:
 				print("avoiding")
 				speed += 2 * ACCELERATION * delta
 			else:
-				speed = V_MIN
+				speed = V_MAX
 			#if avoid_timer < AVOID_TIME:
 				#rotation = AVOID_SIDE*GAUCHE
 			if robot_state_string=="start_of_evitement":
@@ -342,9 +342,11 @@ func treat_info(delta, capteurs, robot_state):
 				state = State.recovering
 		
 		State.recovering:
-			#avoid_timer += delta * 10
-			#if speed > V_MIN:
-					#speed -= ACCELERATION * delta
+			if speed < V_MAX:
+				print("avoiding")
+				speed += 2 * ACCELERATION * delta
+			else:
+				speed = V_MAX
 			if robot_state_string=="end_of_evitement":
 				#if avoid_timer < RETURN_TIME / 2:
 					#rotation = AVOID_SIDE*DROITE / 3
