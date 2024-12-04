@@ -393,8 +393,7 @@ func treat_info(delta, capteurs, robot_state):
 			elif robot_state_string=="catching_line":
 				print("AIDE ROTATIONNENENNEN AJKBNJAFBJABCJKBCA CAK CAN AC")
 				rotation = avoid_side_array[avoid_side_index] * EVITEMENT_CATCHING_LINE_TURN
-				if avoid_side_array[avoid_side_index] == -1:
-					rotation = ( avoid_side_array[avoid_side_index] * EVITEMENT_CATCHING_LINE_TURN ) + LEFT_SIDE_OFFSET
+
 				
 			
 			if robot_state_string=="nothing_in_front":
