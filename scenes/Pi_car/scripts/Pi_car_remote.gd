@@ -305,7 +305,7 @@ func treat_info(delta, capteurs, robot_state):
 					#state = State.following_line
 				state = State.following_line
 				
-			if speed > -0.7:
+			if speed > -REAL_V_MIN:
 				speed -= ACCELERATION * 2 * delta
 			
 			if speed > 0:
