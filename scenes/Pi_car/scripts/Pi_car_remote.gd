@@ -16,7 +16,7 @@ var V_TURN = 0.55*V_MAX
 var V_TIGHT_TURN = 0.35*V_MAX
 var start_time_sec = 0
 var timer_retrouver_ligne = 0.0
-var temps_retrouver_ligne = 0.75
+var temps_retrouver_ligne = 0.85
 var temps_cramper_roues = 0.2
 
 
@@ -89,7 +89,7 @@ const EVITEMENT_FIRST_TURN=25
 const EVITEMENT_MIDDLE_TURN=-15
 const EVITEMENT_RECOVERING_FIRST_TURN=-30
 const EVITEMENT_CATCHING_LINE_TURN=-5
-const LEFT_SIDE_OFFSET = 9
+const LEFT_SIDE_OFFSET = 5
 
 
 @onready var indicateur_capt1 = $Indicateur_Capteur1
