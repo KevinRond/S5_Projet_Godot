@@ -16,7 +16,7 @@ var V_TURN = 0.55*V_MAX
 var V_TIGHT_TURN = 0.35*V_MAX
 var start_time_sec = 0
 var timer_retrouver_ligne = 0.0
-var temps_retrouver_ligne = 0.95
+var temps_retrouver_ligne = 0.85
 var temps_cramper_roues = 0.2
 
 
@@ -91,9 +91,6 @@ const EVITEMENT_RECOVERING_FIRST_TURN=-30
 const EVITEMENT_CATCHING_LINE_TURN=-5
 const LEFT_SIDE_OFFSET = 5
 
-var sensor_detected = []
-var timer_sensors = 0.0
-
 
 @onready var indicateur_capt1 = $Indicateur_Capteur1
 @onready var indicateur_capt2 = $Indicateur_Capteur2
@@ -113,7 +110,6 @@ func _ready():
 	V_MAX = Settings.v_max
 	V_TURN = Settings.v_turn * V_MAX
 	V_TIGHT_TURN = Settings.v_tight_turn * V_MAX
-	sensor_detected = [false, false, false, false, false]
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -123,29 +119,7 @@ func _process(delta):
 func _physics_process(delta):
 	pass
 	
-func real_finish_line_detected(sensor_array, delta):
-	timer_sensors += delta  # Increment the timer
-
-	# Update sensor detection statuses
-	for i in range(sensor_array.size()):
-		if sensor_array[i]:  # If the sensor detects the line
-			sensor_detected[i] = true
-
-	# Check if all sensors have been detected
-	if sensor_detected == [true, true, true, true, true]:
-		# Reset for the next detection cycle
-		reset_detection()
-		return true
-
-	# If 1 second has passed and not all sensors were detected, reset
-	if timer_sensors >= 1.0:
-		reset_detection()
-
-	return false
-	
-func reset_detection():
-	timer_sensors = 0.0
-	sensor_detected.fill(false)  # Reset all sensor detections
+		
 	
 func read_line(sensors):
 	var on_line: bool = false
@@ -191,7 +165,6 @@ func PID_Linefollow(error):
 
 	return PID_value
 		
-	
 
 func suivre_ligne(delta, speed, capteurs):
 	delta = clamp(delta, DELTA_MIN, DELTA_MAX)
@@ -205,11 +178,12 @@ func suivre_ligne(delta, speed, capteurs):
 	var new_state = State.following_line
 	var new_rotation = PID_output
 	
-	if real_finish_line_detected(capteurs, delta) and !parcours_reverse:
+	if utils.finish_line_detected(capteurs) and !parcours_reverse:
 		if speed > 0:
 			new_speed -= ACCELERATION * delta
 		new_rotation = 0 
 		new_state = State.stopping
+		
 
 
 	if utils.finish_line_detected(capteurs) and line_passed < 2 and parcours_reverse:
