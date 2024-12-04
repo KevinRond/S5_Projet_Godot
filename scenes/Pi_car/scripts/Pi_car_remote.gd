@@ -242,7 +242,8 @@ func suivre_ligne(delta, speed, capteurs):
 func treat_info(delta, capteurs, robot_state):
 	delta_counter += 1
 	delta_sum += delta
-	print("avg delta %f" % delta_sum / delta_counter)
+	
+	print("avg delta: ", delta_sum / delta_counter)
 	print(robot_state)
 	var robot_state_string = states_robot[int(robot_state)]
 	print(robot_state_string)
