@@ -16,8 +16,8 @@ var V_TURN = 0.55*V_MAX
 var V_TIGHT_TURN = 0.35*V_MAX
 var start_time_sec = 0
 var timer_retrouver_ligne = 0.0
-var temps_retrouver_ligne = 0.5
-var temps_cramper_roues = 0.1
+var temps_retrouver_ligne = 1
+var temps_cramper_roues = 0.2
 
 
 const WALL_STOP = 10
@@ -76,7 +76,7 @@ var states_robot = {
 
 const REAL_V_MIN = 0.067
 
-var avoid_side_array = [1,1,1,1]
+var avoid_side_array = [1,-1,1,1]
 var avoid_side_index = 0
 
 #turns pour l evitement
