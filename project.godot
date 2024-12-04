@@ -13,6 +13,7 @@ config_version=5
 config/name="S5i_projet"
 run/main_scene="res://scenes/parcours/Parcours_Reel/parcours_reel.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
+run/max_fps=15
 config/icon="res://icon.svg"
 
 [autoload]
