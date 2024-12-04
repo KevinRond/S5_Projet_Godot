@@ -16,7 +16,7 @@ var V_TURN = 0.55*V_MAX
 var V_TIGHT_TURN = 0.35*V_MAX
 var start_time_sec = 0
 var timer_retrouver_ligne = 0.0
-var temps_retrouver_ligne = 1
+var temps_retrouver_ligne = 0.75
 var temps_cramper_roues = 0.2
 
 
@@ -365,7 +365,7 @@ func treat_info(delta, capteurs, robot_state):
 			if robot_state_string=="start_of_evitement":
 				rotation = avoid_side_array[avoid_side_index] * EVITEMENT_FIRST_TURN
 				if avoid_side_array[avoid_side_index] == -1:
-					rotation = avoid_side_array[avoid_side_index] * EVITEMENT_FIRST_TURN * 0.7
+					rotation = avoid_side_array[avoid_side_index] * EVITEMENT_FIRST_TURN
 			elif robot_state_string =="middle_of_evitement":
 				rotation = avoid_side_array[avoid_side_index] * EVITEMENT_MIDDLE_TURN
 			elif robot_state_string=="end_of_evitement":
