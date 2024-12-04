@@ -166,7 +166,8 @@ func PID_Linefollow(error):
 		
 
 func suivre_ligne(delta, speed, capteurs):
-	delta = clamp(delta, DELTA_MIN, DELTA_MAX)
+	# delta = clamp(delta, DELTA_MIN, DELTA_MAX)
+	
 	print("Capteurs: ", capteurs)
 	var position = read_line(capteurs)
 	var error = 50 - position
@@ -243,9 +244,13 @@ func suivre_ligne(delta, speed, capteurs):
 
 	
 func treat_info(delta, capteurs, robot_state):
-	delta = clamp(delta, DELTA_MIN, DELTA_MAX)
+	# delta = clamp(delta, DELTA_MIN, DELTA_MAX)
+	delta_counter += 1
+	delta_sum += delta
 	
+	print("avg delta: ", delta_sum / delta_counter)
 	print("delta: ", delta)
+	
 	print(robot_state)
 	var robot_state_string = states_robot[int(robot_state)]
 	print(robot_state_string)
