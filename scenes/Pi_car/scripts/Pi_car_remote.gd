@@ -297,15 +297,15 @@ func treat_info(delta, capteurs, robot_state):
 
 		State.find_line:
 			if utils.check_center_sensors(capteurs):
-				#if speed < V_MAX:
-					#speed =0.00
-				if speed < -REAL_V_MIN:
-					speed += 2*ACCELERATION*delta
-				else:
-					state = State.following_line
-				#state = State.following_line
+				if speed < V_MAX:
+					speed =0.00
+				#if speed < -REAL_V_MIN:
+					#speed += 2*ACCELERATION*delta
+				#else:
+					#state = State.following_line
+				state = State.following_line
 				
-			if speed > -V_MAX:
+			if speed > -0.7:
 				speed -= ACCELERATION * 2 * delta
 			
 			if speed > 0:
