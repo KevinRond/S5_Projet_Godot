@@ -75,6 +75,8 @@ var states_robot = {
 }
 
 const REAL_V_MIN = 0.067
+var delta_counter = 0
+var delta_sum = 0
 
 # Côté de l'évitement: -1 -> Gauche, 1 -> Droite
 var avoid_side_array = [1,-1,1,1]
@@ -238,6 +240,9 @@ func suivre_ligne(delta, speed, capteurs):
 
 	
 func treat_info(delta, capteurs, robot_state):
+	delta_counter += 1
+	delta_sum += delta
+	print("avg delta %f" % delta_sum / delta_counter)
 	print(robot_state)
 	var robot_state_string = states_robot[int(robot_state)]
 	print(robot_state_string)
