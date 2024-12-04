@@ -75,6 +75,9 @@ var states_robot = {
 
 const REAL_V_MIN = 0.067
 
+var avoid_side_array = [1,1,1,-1]
+var avoid_side_index = 0
+
 
 @onready var indicateur_capt1 = $Indicateur_Capteur1
 @onready var indicateur_capt2 = $Indicateur_Capteur2
@@ -305,7 +308,7 @@ func treat_info(delta, capteurs, robot_state):
 					#state = State.following_line
 				state = State.following_line
 				
-			if speed > -0.07:
+			if speed > -0.075:
 				speed -= ACCELERATION * 2 * delta
 			
 			if speed > 0:
@@ -340,9 +343,9 @@ func treat_info(delta, capteurs, robot_state):
 			#if avoid_timer < AVOID_TIME:
 				#rotation = AVOID_SIDE*GAUCHE
 			if robot_state_string=="start_of_evitement":
-				rotation = AVOID_SIDE*GAUCHE
+				rotation = avoid_side_array[avoid_side_index] * AVOID_SIDE*GAUCHE
 			elif robot_state_string =="middle_of_evitement":
-				rotation = GAUCHE + 12.5
+				rotation = avoid_side_array[avoid_side_index] * (GAUCHE + 12.5)
 			elif robot_state_string=="end_of_evitement":
 				rotation = AVOID_SIDE*DROITE
 				state = State.recovering
@@ -357,18 +360,19 @@ func treat_info(delta, capteurs, robot_state):
 				#if avoid_timer < RETURN_TIME / 2:
 					#rotation = AVOID_SIDE*DROITE / 3
 				#else:
-					rotation = AVOID_SIDE*DROITE
+					rotation = avoid_side_array[avoid_side_index] * AVOID_SIDE*DROITE
 			elif robot_state_string=="catching_line":
 				print("AIDE ROTATIONNENENNEN AJKBNJAFBJABCJKBCA CAK CAN AC")
-				rotation = CENTRE - AIDE_COURBURE
+				rotation = avoid_side_array[avoid_side_index] * CENTRE - AIDE_COURBURE
 			
 			if robot_state_string=="nothing_in_front":
 				#if speed < V_MAX: 
 					#speed = 0.04
 				state = State.following_line
-			
-			if utils.line_detected(capteurs):
+				avoid_side_index += 1
+			elif utils.line_detected(capteurs):
 				state = State.following_line
+				avoid_side_index += 1
 				
 		State.waiting:
 			if !(utils.finish_line_detected(capteurs)) and line_passed < 2:
