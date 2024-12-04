@@ -84,7 +84,7 @@ var avoid_side_index = 0
 const EVITEMENT_FIRST_TURN=30
 const EVITEMENT_MIDDLE_TURN=-15
 const EVITEMENT_RECOVERING_FIRST_TURN=-30
-const EVITEMENT_CATCHING_LINE_TURN=-12
+const EVITEMENT_CATCHING_LINE_TURN=-8
 
 
 @onready var indicateur_capt1 = $Indicateur_Capteur1
