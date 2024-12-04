@@ -70,7 +70,8 @@ var states_robot = {
 	6: "start_of_evitement",
 	7: "middle_of_evitement",
 	8: "end_of_evitement",
-	9: "catching_line"
+	9: "catching_line",
+	10: "2_sec_stop"
 }
 
 const REAL_V_MIN = 0.067
@@ -262,10 +263,12 @@ func treat_info(delta, capteurs, robot_state):
 					speed = REAL_V_MIN
 				else:
 					speed = REAL_V_MIN
+			if robot_state_string == "2_sec_stop":
+				speed = 0
 			if robot_state_string == "reverse_to_30cm":
 				avoid_timer = 0
-				#Le speed = 0 est correct pcq il roulait a une vitesse tlm lente c aight
-				speed = 0
+				#speed a -0.06 pcq de 0 a 0.06 robot bouge pas faque il va juste commencer a reculer plus vite
+				speed = -0.06
 				state = State.blocked
 				
 		
