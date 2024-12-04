@@ -75,7 +75,7 @@ var states_robot = {
 
 const REAL_V_MIN = 0.067
 
-var avoid_side_array = [-1,1,-1,1]
+var avoid_side_array = [1,1,1,1]
 var avoid_side_index = 0
 
 #turns pour l evitement
