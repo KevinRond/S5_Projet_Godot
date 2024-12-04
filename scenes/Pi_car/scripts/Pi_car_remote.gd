@@ -77,6 +77,8 @@ var states_robot = {
 const REAL_V_MIN = 0.067
 var delta_counter = 0
 var delta_sum = 0
+var DELTA_MIN = 0.0068
+var DELTA_MAX = 0.0078
 
 # Côté de l'évitement: -1 -> Gauche, 1 -> Droite
 var avoid_side_array = [1,-1,1,1]
@@ -164,6 +166,7 @@ func PID_Linefollow(error):
 		
 
 func suivre_ligne(delta, speed, capteurs):
+	delta = clamp(delta, DELTA_MIN, DELTA_MAX)
 	print("Capteurs: ", capteurs)
 	var position = read_line(capteurs)
 	var error = 50 - position
@@ -195,9 +198,9 @@ func suivre_ligne(delta, speed, capteurs):
 			print("ok ralentit la")
 			speed -= ACCELERATION * 2 * delta
 		if last_direction > 0 and timer_retrouver_ligne > temps_cramper_roues:
-			new_rotation = 41
+			new_rotation = 40
 		if last_direction < 0 and timer_retrouver_ligne > temps_cramper_roues:
-			new_rotation = -41
+			new_rotation = -40
 		if timer_retrouver_ligne >= temps_retrouver_ligne:
 			if !utils.line_detected(capteurs):
 				new_state = State.find_line
@@ -240,10 +243,9 @@ func suivre_ligne(delta, speed, capteurs):
 
 	
 func treat_info(delta, capteurs, robot_state):
-	delta_counter += 1
-	delta_sum += delta
+	delta = clamp(delta, DELTA_MIN, DELTA_MAX)
 	
-	print("avg delta: ", delta_sum / delta_counter)
+	print("delta: ", delta)
 	print(robot_state)
 	var robot_state_string = states_robot[int(robot_state)]
 	print(robot_state_string)
@@ -317,11 +319,8 @@ func treat_info(delta, capteurs, robot_state):
 		State.find_line:
 			if utils.check_center_sensors(capteurs):
 				if speed < V_MAX:
-					speed += 2*ACCELERATION*delta
-				#if speed < -REAL_V_MIN:
-					#speed += 2*ACCELERATION*delta
-				#else:
-					#state = State.following_line
+					# speed += 2*ACCELERATION*delta
+					speed = 0 
 				state = State.following_line
 				
 			if speed > -0.075:
