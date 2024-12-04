@@ -89,7 +89,7 @@ const EVITEMENT_FIRST_TURN=25
 const EVITEMENT_MIDDLE_TURN=-15
 const EVITEMENT_RECOVERING_FIRST_TURN=-30
 const EVITEMENT_CATCHING_LINE_TURN=-5
-const LEFT_SIDE_OFFSET = 8
+const LEFT_SIDE_OFFSET = 9
 
 
 @onready var indicateur_capt1 = $Indicateur_Capteur1
