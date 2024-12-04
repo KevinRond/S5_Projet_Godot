@@ -76,6 +76,7 @@ var states_robot = {
 
 const REAL_V_MIN = 0.067
 
+# Côté de l'évitement: -1 -> Gauche, 1 -> Droite
 var avoid_side_array = [1,-1,1,1]
 var avoid_side_index = 0
 
@@ -83,7 +84,7 @@ var avoid_side_index = 0
 const EVITEMENT_FIRST_TURN=30
 const EVITEMENT_MIDDLE_TURN=-15
 const EVITEMENT_RECOVERING_FIRST_TURN=-30
-const EVITEMENT_CATCHING_LINE_TURN=-10
+const EVITEMENT_CATCHING_LINE_TURN=-12
 
 
 @onready var indicateur_capt1 = $Indicateur_Capteur1
