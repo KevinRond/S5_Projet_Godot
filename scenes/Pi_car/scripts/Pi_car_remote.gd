@@ -75,7 +75,7 @@ var states_robot = {
 
 const REAL_V_MIN = 0.067
 
-var avoid_side_array = [-1,1,1,-1]
+var avoid_side_array = [-1,-1,-1,-1]
 var avoid_side_index = 0
 
 #turns pour l evitement
@@ -349,11 +349,11 @@ func treat_info(delta, capteurs, robot_state):
 			#if avoid_timer < AVOID_TIME:
 				#rotation = AVOID_SIDE*GAUCHE
 			if robot_state_string=="start_of_evitement":
-				rotation = avoid_side_array[avoid_side_index] * AVOID_SIDE*GAUCHE
+				rotation = avoid_side_array[avoid_side_index] * EVITEMENT_FIRST_TURN
 			elif robot_state_string =="middle_of_evitement":
-				rotation = avoid_side_array[avoid_side_index] * (GAUCHE + 12.5)
+				rotation = avoid_side_array[avoid_side_index] * EVITEMENT_MIDDLE_TURN
 			elif robot_state_string=="end_of_evitement":
-				rotation = avoid_side_array[avoid_side_index] * AVOID_SIDE*DROITE
+				rotation = avoid_side_array[avoid_side_index] * EVITEMENT_RECOVERING_FIRST_TURN
 				state = State.recovering
 		
 		State.recovering:
@@ -366,10 +366,10 @@ func treat_info(delta, capteurs, robot_state):
 				#if avoid_timer < RETURN_TIME / 2:
 					#rotation = AVOID_SIDE*DROITE / 3
 				#else:
-					rotation = avoid_side_array[avoid_side_index] * AVOID_SIDE*DROITE
+					rotation = avoid_side_array[avoid_side_index] * EVITEMENT_RECOVERING_FIRST_TURN
 			elif robot_state_string=="catching_line":
 				print("AIDE ROTATIONNENENNEN AJKBNJAFBJABCJKBCA CAK CAN AC")
-				rotation = avoid_side_array[avoid_side_index] * (CENTRE - AIDE_COURBURE)
+				rotation = avoid_side_array[avoid_side_index] * EVITEMENT_CATCHING_LINE_TURN
 			
 			if robot_state_string=="nothing_in_front":
 				#if speed < V_MAX: 
