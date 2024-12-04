@@ -364,8 +364,8 @@ func treat_info(delta, capteurs, robot_state):
 				#rotation = AVOID_SIDE*GAUCHE
 			if robot_state_string=="start_of_evitement":
 				rotation = avoid_side_array[avoid_side_index] * EVITEMENT_FIRST_TURN
-				if avoid_side_array[avoid_side_index] == -1:
-					rotation = avoid_side_array[avoid_side_index] * EVITEMENT_FIRST_TURN * 0.75
+				#if avoid_side_array[avoid_side_index] == -1:
+					#rotation = avoid_side_array[avoid_side_index] * EVITEMENT_FIRST_TURN * 0.75
 			elif robot_state_string =="middle_of_evitement":
 				rotation = avoid_side_array[avoid_side_index] * EVITEMENT_MIDDLE_TURN
 			elif robot_state_string=="end_of_evitement":
