@@ -81,7 +81,7 @@ var DELTA_MIN = 0.0068
 var DELTA_MAX = 0.0078
 
 # Côté de l'évitement: -1 -> Gauche, 1 -> Droite
-var avoid_side_array = [-1 ,-1 ,-1 , -1]
+var avoid_side_array = [1, 0, -1 , 1]
 var avoid_side_index = 0
 
 #turns pour l evitement
@@ -257,6 +257,9 @@ func treat_info(delta, capteurs, robot_state):
 	var robot_state_string = states_robot[int(robot_state)]
 	print(robot_state_string)
 	var rotation = 0
+	
+	if avoid_side_array[avoid_side_index] == 0:
+		avoid_side_index += 1
 	
 	print("array_fin: ", array_fin)
 	
