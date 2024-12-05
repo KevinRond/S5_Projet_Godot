@@ -9,7 +9,7 @@ var utils = load("res://scenes/Pi_car/scripts/utils.gd").new()
 signal test_completed
 
 #var ACCELERATION = ((9.8*0.0015)/0.02) # 0.735 m/s^2
-var ACCELERATION = 2
+var ACCELERATION = 4
 var V_MAX = 0.1 # m/s
 const V_MIN = 0.08
 
