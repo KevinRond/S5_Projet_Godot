@@ -90,6 +90,7 @@ const EVITEMENT_MIDDLE_TURN=-15
 const EVITEMENT_RECOVERING_FIRST_TURN=-35
 const EVITEMENT_CATCHING_LINE_TURN=7
 const LEFT_SIDE_OFFSET = 5
+var array_fin = [false, false, false, false, false]
 
 
 @onready var indicateur_capt1 = $Indicateur_Capteur1
@@ -178,7 +179,7 @@ func suivre_ligne(delta, speed, capteurs):
 	var new_state = State.following_line
 	var new_rotation = PID_output
 	
-	if utils.FIN_FINAL(capteurs) and avoid_side_index > 3:
+	if utils.finish_line_detected(capteurs) and !parcours_reverse:
 		if speed > 0:
 			new_speed -= ACCELERATION * delta
 		new_rotation = 0 
@@ -256,6 +257,17 @@ func treat_info(delta, capteurs, robot_state):
 	var robot_state_string = states_robot[int(robot_state)]
 	print(robot_state_string)
 	var rotation = 0
+	
+	print("array_fin: ", array_fin)
+	
+	if avoid_side_index > 3:
+		for i in range(capteurs.size()):
+			if capteurs[i] == true:
+				array_fin[i] = true
+				
+	if array_fin == [true, true, true, true, true]:
+		State.stopping
+			
 
 	match state:
 		State.manual_control:
