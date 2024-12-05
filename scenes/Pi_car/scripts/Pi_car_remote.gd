@@ -16,7 +16,7 @@ var V_TURN = 0.55*V_MAX
 var V_TIGHT_TURN = 0.35*V_MAX
 var start_time_sec = 0
 var timer_retrouver_ligne = 0.0
-var temps_retrouver_ligne = 0.95
+var temps_retrouver_ligne = 0.85
 var temps_cramper_roues = 0.2
 
 
@@ -81,7 +81,7 @@ var DELTA_MIN = 0.0068
 var DELTA_MAX = 0.0078
 
 # Côté de l'évitement: -1 -> Gauche, 1 -> Droite
-var avoid_side_array = [0, 1, -1 , 1, 1]
+var avoid_side_array = [1, 1, 1, 1, 1]
 var avoid_side_index = 0
 
 #turns pour l evitement
