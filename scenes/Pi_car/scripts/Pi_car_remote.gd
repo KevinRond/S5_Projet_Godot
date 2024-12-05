@@ -249,6 +249,8 @@ func treat_info(delta, capteurs, robot_state):
 			if speed < V_MAX:
 				speed += ACCELERATION * delta
 				rotation = 0
+			if utils.finish_line_detected(capteurs):
+				speed = 0
 		State.manual_control:
 			if utils.line_detected(capteurs):
 				state = State.following_line
