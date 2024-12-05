@@ -382,7 +382,7 @@ func treat_info(delta, capteurs, robot_state):
 				if avoid_side_index == 3:
 					rotation = avoid_side_array[avoid_side_index] * (EVITEMENT_RECOVERING_FIRST_TURN - 3) 
 					if avoid_side_array[avoid_side_index] == -1:
-						rotation = (avoid_side_array[avoid_side_index] * (EVITEMENT_RECOVERING_FIRST_TURN - 3)) + LEFT_SIDE_OFFSET
+						rotation = (avoid_side_array[avoid_side_index] * (EVITEMENT_RECOVERING_FIRST_TURN)) + LEFT_SIDE_OFFSET
 				state = State.recovering
 		
 		State.recovering:
