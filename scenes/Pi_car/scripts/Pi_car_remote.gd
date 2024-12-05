@@ -16,7 +16,7 @@ var V_TURN = 0.55*V_MAX
 var V_TIGHT_TURN = 0.35*V_MAX
 var start_time_sec = 0
 var timer_retrouver_ligne = 0.0
-var temps_retrouver_ligne = 0.85
+var temps_retrouver_ligne = 1
 var temps_cramper_roues = 0.2
 
 
