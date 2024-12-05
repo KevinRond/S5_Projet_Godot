@@ -1,4 +1,10 @@
 const State = Enums.State
+# Taille du buffer temporel (1 seconde de données, à raison de 10 mises à jour par seconde)
+const SENSOR_HISTORY_SIZE = 10
+
+# Historique des capteurs
+var sensor_history = []
+
 
 func set_state_text(state):
 	var state_text
@@ -35,12 +41,22 @@ func set_state_text(state):
 func line_detected(sensor_array):
 	return sensor_array != [false, false, false, false, false]
 		
-func finish_line_detected(sensor_array):
-	var sum = 0
-	for sensor in sensor_array:
-		if sensor:
-			sum += 1
-	return sum >= 3
+# Fonction pour mettre à jour l'historique des capteurs
+func update_sensor_history(sensor_array):
+	if len(sensor_history) >= SENSOR_HISTORY_SIZE:
+		# Supprimer les données les plus anciennes si le buffer est plein
+		sensor_history.pop_front()
+	sensor_history.append(sensor_array)
+# Vérifie si au moins 5 "1" différents ont été détectés dans l'historique
+func finish_line_detected():
+	var count = 0
+	for i in range(SENSOR_HISTORY_SIZE):
+		if i == 0 or not sensor_history[i] == sensor_history[i - 1]:
+			# Compare avec la valeur précédente pour détecter les changements
+			count += sensor_history[i].count(true)
+		if count >= 5:
+			return true
+	return false
 	
 func FIN_FINAL(sensor_array):
 	var sum = 0
