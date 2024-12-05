@@ -178,7 +178,7 @@ func suivre_ligne(delta, speed, capteurs):
 	var new_state = State.following_line
 	var new_rotation = PID_output
 	
-	if utils.finish_line_detected(capteurs) and !parcours_reverse:
+	if utils.FIN_FINAL(capteurs) and avoid_side_index > 3:
 		if speed > 0:
 			new_speed -= ACCELERATION * delta
 		new_rotation = 0 
@@ -367,10 +367,6 @@ func treat_info(delta, capteurs, robot_state):
 				rotation = avoid_side_array[avoid_side_index] * EVITEMENT_FIRST_TURN 
 				if avoid_side_array[avoid_side_index] == -1:
 					rotation = ( avoid_side_array[avoid_side_index] * EVITEMENT_FIRST_TURN ) + LEFT_SIDE_OFFSET
-				if avoid_side_index == 3:
-					rotation = avoid_side_array[avoid_side_index] * (EVITEMENT_FIRST_TURN - 3) 
-					if avoid_side_array[avoid_side_index] == -1:
-						rotation = (avoid_side_array[avoid_side_index] * (EVITEMENT_FIRST_TURN - 3)) + LEFT_SIDE_OFFSET
 			elif robot_state_string =="middle_of_evitement":
 				rotation = avoid_side_array[avoid_side_index] * EVITEMENT_MIDDLE_TURN
 				if avoid_side_array[avoid_side_index] == -1:
@@ -379,10 +375,6 @@ func treat_info(delta, capteurs, robot_state):
 				rotation = avoid_side_array[avoid_side_index] * EVITEMENT_RECOVERING_FIRST_TURN
 				if avoid_side_array[avoid_side_index] == -1:
 					rotation = ( avoid_side_array[avoid_side_index] * EVITEMENT_RECOVERING_FIRST_TURN ) + LEFT_SIDE_OFFSET
-				#if avoid_side_index == 3:
-					#rotation = avoid_side_array[avoid_side_index] * (EVITEMENT_RECOVERING_FIRST_TURN - 3) 
-					#if avoid_side_array[avoid_side_index] == -1:
-						#rotation = (avoid_side_array[avoid_side_index] * (EVITEMENT_RECOVERING_FIRST_TURN)) + LEFT_SIDE_OFFSET
 				state = State.recovering
 		
 		State.recovering:
