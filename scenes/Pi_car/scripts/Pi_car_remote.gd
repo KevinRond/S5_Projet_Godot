@@ -82,7 +82,7 @@ var DELTA_MAX = 0.0078
 
 # Côté de l'évitement: -1 -> Gauche, 1 -> Droite
 var avoid_side_array = [1 ,1 ,-1 ,1]
-var avoid_side_index = 0
+var avoid_side_index = 3
 
 #turns pour l evitement
 const EVITEMENT_FIRST_TURN=25
