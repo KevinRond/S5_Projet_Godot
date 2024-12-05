@@ -47,7 +47,7 @@ func FIN_FINAL(sensor_array):
 	for sensor in sensor_array:
 		if sensor:
 			sum += 1
-	return sum >= 2
+	return sum >= 4
 	
 func make_fake_sensor_data():
 	var SL = []

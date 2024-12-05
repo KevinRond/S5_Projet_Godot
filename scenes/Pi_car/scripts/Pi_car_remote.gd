@@ -265,7 +265,7 @@ func treat_info(delta, capteurs, robot_state):
 			if capteurs[i] == true:
 				array_fin[i] = true
 				
-	if array_fin == [true, true, true, true, true]:
+	if utils.FIN_FINAL(array_fin):
 		State.stopping
 			
 
