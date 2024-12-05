@@ -82,7 +82,7 @@ var DELTA_MAX = 0.0078
 
 # Côté de l'évitement: -1 -> Gauche, 1 -> Droite
 var avoid_side_array = [1 ,1 ,-1 ,1]
-var avoid_side_index = 0
+var avoid_side_index = 3
 
 #turns pour l evitement
 const EVITEMENT_FIRST_TURN=25
@@ -379,10 +379,10 @@ func treat_info(delta, capteurs, robot_state):
 				rotation = avoid_side_array[avoid_side_index] * EVITEMENT_RECOVERING_FIRST_TURN
 				if avoid_side_array[avoid_side_index] == -1:
 					rotation = ( avoid_side_array[avoid_side_index] * EVITEMENT_RECOVERING_FIRST_TURN ) + LEFT_SIDE_OFFSET
-				if avoid_side_index == 3:
-					rotation = avoid_side_array[avoid_side_index] * (EVITEMENT_RECOVERING_FIRST_TURN - 3) 
-					if avoid_side_array[avoid_side_index] == -1:
-						rotation = (avoid_side_array[avoid_side_index] * (EVITEMENT_RECOVERING_FIRST_TURN)) + LEFT_SIDE_OFFSET
+				#if avoid_side_index == 3:
+					#rotation = avoid_side_array[avoid_side_index] * (EVITEMENT_RECOVERING_FIRST_TURN - 3) 
+					#if avoid_side_array[avoid_side_index] == -1:
+						#rotation = (avoid_side_array[avoid_side_index] * (EVITEMENT_RECOVERING_FIRST_TURN)) + LEFT_SIDE_OFFSET
 				state = State.recovering
 		
 		State.recovering:
