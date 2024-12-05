@@ -16,5 +16,6 @@ enum State {
 	find_line,
 	waiting,
 	reverse_stopping,
+	test_acceleration
 }
 

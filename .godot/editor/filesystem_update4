@@ -1,3 +1,5 @@
 res://scenes/parcours/Parcours_SL/parcours_SL.tscn
 res://scenes/custom_bouton_theme.tres
 res://scenes/Pi_car/scripts/Pi_car_remote.gd
+res://scenes/Pi_car/scripts/utils.gd
+res://scripts/enums.gd

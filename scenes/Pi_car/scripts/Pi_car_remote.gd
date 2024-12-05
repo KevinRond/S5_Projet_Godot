@@ -8,7 +8,8 @@ var utils = load("res://scenes/Pi_car/scripts/utils.gd").new()
 
 signal test_completed
 
-var ACCELERATION = ((9.8*0.0015)/0.02) # 0.0049 m/s^2
+#var ACCELERATION = ((9.8*0.0015)/0.02) # 0.735 m/s^2
+var ACCELERATION = 2
 var V_MAX = 0.1 # m/s
 const V_MIN = 0.08
 
@@ -238,11 +239,16 @@ func suivre_ligne(delta, speed, capteurs):
 	
 func treat_info(delta, capteurs, robot_state):
 	print(robot_state)
+	state = State.test_acceleration
 	var robot_state_string = states_robot[int(robot_state)]
 	print(robot_state_string)
 	var rotation = 0
 
 	match state:
+		State.test_acceleration:
+			if speed < V_MAX:
+				speed += ACCELERATION * delta
+				rotation = 0
 		State.manual_control:
 			if utils.line_detected(capteurs):
 				state = State.following_line

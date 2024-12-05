@@ -27,6 +27,8 @@ func set_state_text(state):
 			state_text = "Stopping"
 		State.waiting:
 			state_text = "Waiting"
+		State.test_acceleration:
+			state_text = "test_accel"
 		_:
 			state_text = "Unknown State"
 	
