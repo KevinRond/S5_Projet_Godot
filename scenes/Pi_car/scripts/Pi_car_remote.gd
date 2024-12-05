@@ -9,14 +9,14 @@ var utils = load("res://scenes/Pi_car/scripts/utils.gd").new()
 signal test_completed
 
 var ACCELERATION = ((9.8*0.0015)/0.02) # 0.0049 m/s^2
-var V_MAX = 0.1 # m/s
-const V_MIN = 0.08
+var V_MAX = 0.11 # m/s
+const V_MIN = 0.085
 
 var V_TURN = 0.55*V_MAX
 var V_TIGHT_TURN = 0.35*V_MAX
 var start_time_sec = 0
 var timer_retrouver_ligne = 0.0
-var temps_retrouver_ligne = 0.95
+var temps_retrouver_ligne = 0.9
 var temps_cramper_roues = 0.2
 
 
@@ -378,7 +378,9 @@ func treat_info(delta, capteurs, robot_state):
 			#if avoid_timer < AVOID_TIME:
 				#rotation = AVOID_SIDE*GAUCHE
 			if robot_state_string=="start_of_evitement":
-				rotation = avoid_side_array[avoid_side_index] * EVITEMENT_FIRST_TURN 
+				rotation = avoid_side_array[avoid_side_index] * EVITEMENT_FIRST_TURN
+				if avoid_side_index == 1:
+					rotation = ( avoid_side_array[avoid_side_index] * EVITEMENT_FIRST_TURN ) + LEFT_SIDE_OFFSET + 3
 				if avoid_side_array[avoid_side_index] == -1:
 					rotation = ( avoid_side_array[avoid_side_index] * EVITEMENT_FIRST_TURN ) + LEFT_SIDE_OFFSET
 			elif robot_state_string =="middle_of_evitement":
